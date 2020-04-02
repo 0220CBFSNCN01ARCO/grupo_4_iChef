@@ -1,2 +1,2 @@
 # grupo_4_proyecto
-proyecto integrador Digital House
+Proyecto Integrador Digital House
