@@ -5,9 +5,8 @@ Sitio dedicado al rubro gastronomico, caja de recetas y productos para preparar 
 
 # Productos
 
- - Box productos frescos.
+ - Cajas de productos frescos.
  - Recetas.
- - 
  
 # Servicios
  
@@ -17,8 +16,10 @@ Sitio dedicado al rubro gastronomico, caja de recetas y productos para preparar 
 
 # Referencias
 
- - http://dagusto.com.ar/ https://rebox.by/howitworks/
+ - http://dagusto.com.ar/ 
+ - https://rebox.by/howitworks/
  - http://www.yotecocino.com.ar/
- -  https://www.lanacion.com.ar/lifestyle/las-fiaca-de-la-cocina-nid1479070
+ - https://www.lanacion.com.ar/lifestyle/las-fiaca-de-la-cocina-nid1479070
  - http://www.puntoletracatering.com.ar
-
+ - https://www.homechef.com/ 
+ - https://www.instagram.com/almacendemario/?hl=es-la
