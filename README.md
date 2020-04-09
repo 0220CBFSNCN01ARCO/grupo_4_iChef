@@ -1,20 +1,17 @@
 # grupo_4_proyecto
-# FoodBox , MealBox
+# iChef
 
-En "Nombre_del_negocio" nos dedicamos a brindar a nuestros clientes alternativas a la hora de elegir que cocinar. Tenemos desde los ingredientes para preparar los platos sencillos y rapidos hasta los mal deliciosos y sofisticados platos, nuestras caja incluyen los ingredientes, recetas e incluso el asesoramiento mas calificado para ayudarte a preparar las comidas mas ricas y deliciosas.
-
-//Otra opción:
-"Nombre del Negocio" ofrece una experiencia distinta a la hora de cocinar, permitiéndote optar por propuestas ya armadas con todos los productos necesarios y su correspondiente explicación paso a paso para que logres el resultado esperado, o puedas crear tus propios platos seleccionando tus ingredientes preferidos en nuestro "market".
+iChef ofrece una experiencia distinta a la hora de cocinar, permitiéndote optar por propuestas ya armadas con todos los productos necesarios y su correspondiente explicación paso a paso para que logres el resultado esperado, o puedas crear tus propios platos seleccionando tus ingredientes preferidos en nuestro "market".
 Además encontrarás distintas alternativas para mejorar tu experiencia, ya sea desde asesoramiento online para la preparación de los platos, hasta la posibilidad de contar con uno de nuestros expertos en tu cocina. Contamos con chefs profesionales, sommeliers, y otros especialistas que aportarán lo mejor de sí para que tu experiencia sea única.
-Nuestro deseo es que puedas, desde la comodidad de tu casa, compartir con tu pareja, familia, grupo de amigos o trabajo, etc, un momento especial lleno de aromas y sabores del mundo.  
-
+Hoy en día cocinan desde los niños a los adultos, por lo que iChef apunta a toda aquella persona que disfrute del arte de cocinar o, que a través de nosotros y de las recetas, diseñadas para ser accesibles y fáciles de seguir, descubran el chef que llevan dentro.
+Nuestro deseo es que puedas, desde la comodidad de tu casa, compartir con tu pareja, familia, grupo de amigos o trabajo, etc, un momento especial lleno de aromas y sabores del mundo.
 
 # Productos
 
- - Cajas de productos frescos.
- - Cajas de ingredientes y recetas.
+ - Market de productos.
+ - Cajas con ingredientes y recetas.
  - Recetas.
-
+ 
 # Servicios
 
  - Chef a domicilio.
@@ -23,7 +20,7 @@ Nuestro deseo es que puedas, desde la comodidad de tu casa, compartir con tu par
  - Sommelier a domicilio.
 
 # Referencias
-
+Consultamos los siguientes links para dar forma a nuestro proyecto, de los cuales fuimos tomando ideas de diseño, servicios ofrecidos y estructura, para así poder definir iChef.
  - http://dagusto.com.ar/
  - https://rebox.by/howitworks/
  - http://www.yotecocino.com.ar/
