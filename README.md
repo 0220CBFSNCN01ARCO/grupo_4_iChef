@@ -29,13 +29,11 @@ Esta orientado como una solución para esas personas que gustan del buen comer, 
 - Te enseñamos a preparar los platos que vos quieras.
 - Te ofrecemos clases de cocina a domicilio que te demuestran que en tu propia cocina y con los utensilios e ingredientes que tenés en casa, podés preparar "platos gourmet".
 
-
 # Referencias
 Consultamos los siguientes links para dar forma a nuestro proyecto, de los cuales fuimos tomando ideas de diseño, servicios ofrecidos y estructura, para así poder definir iChef.
  - http://dagusto.com.ar/
  - https://rebox.by/howitworks/
  - http://www.yotecocino.com.ar/
  - https://www.lanacion.com.ar/lifestyle/las-fiaca-de-la-cocina-nid1479070
- - http://www.puntoletracatering.com.ar
  - https://www.homechef.com/
  - https://www.instagram.com/almacendemario/?hl=es-la
