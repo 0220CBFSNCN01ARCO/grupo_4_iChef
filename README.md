@@ -1,5 +1,5 @@
 # grupo_4_proyecto
-# iChef, se me ocurrio este nombre tambien BoxGourmet
+# iChef
 
 iChef ofrece una experiencia distinta a la hora de cocinar, permitiéndote optar por propuestas ya armadas con todos los productos necesarios y su correspondiente explicación paso a paso para que logres el resultado esperado, o puedas crear tus propios platos seleccionando tus ingredientes preferidos en nuestro "market".
 Además encontrarás distintas alternativas para mejorar tu experiencia, ya sea desde asesoramiento online para la preparación de los platos, hasta la posibilidad de contar con uno de nuestros expertos en tu cocina. Contamos con chefs profesionales, sommeliers, y otros especialistas que aportarán lo mejor de sí para que tu experiencia sea única.
