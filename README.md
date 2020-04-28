@@ -1,4 +1,3 @@
-# grupo_4_proyecto
 # iChef
 
 iChef ofrece una experiencia distinta a la hora de cocinar, permitiéndote optar por propuestas ya armadas con todos los productos necesarios y su correspondiente explicación paso a paso para que logres el resultado esperado, o puedas crear tus propios platos seleccionando tus ingredientes preferidos en nuestro "market".
@@ -37,3 +36,10 @@ Consultamos los siguientes links para dar forma a nuestro proyecto, de los cuale
  - https://www.lanacion.com.ar/lifestyle/las-fiaca-de-la-cocina-nid1479070
  - https://www.homechef.com/
  - https://www.instagram.com/almacendemario/?hl=es-la
+ 
+ # Integrantes
+ 
+ - Gisela Soledad Ali
+ - Yuliya Sharapa
+ - José Eduardo Meyer
+ - José Salvini
