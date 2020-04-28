@@ -36,10 +36,18 @@ Consultamos los siguientes links para dar forma a nuestro proyecto, de los cuale
  - https://www.lanacion.com.ar/lifestyle/las-fiaca-de-la-cocina-nid1479070
  - https://www.homechef.com/
  - https://www.instagram.com/almacendemario/?hl=es-la
- 
+
+ # Tablero del proyecto
+
+Para la organización del proyecto se utiliza la herramienta [Trello](https://trello.com/es).
+
+ [Link al tablero de Trello](https://trello.com/b/x1z0XHNE)
+
+ **Aclaración: Únicamente los miembros del tablero pueden verlo y editarlo.**
+
  # Integrantes
- 
- - Gisela Soledad Ali
- - Yuliya Sharapa
- - José Eduardo Meyer
- - José Salvini
+
+ * Gisela Soledad Ali
+ * Yuliya Sharapa
+ * José Eduardo Meyer
+ * José Salvini
