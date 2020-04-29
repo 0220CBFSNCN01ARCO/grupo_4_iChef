@@ -1,11 +1,10 @@
-# iChef
-
 <div>
-<div>
-    <img title="Logo iChef" alt="Logo iChef" src="./public/iChef-Definitivo-Web.png" width="200" />
-</div>
-<div></div>
-    # iChef
+    <div>
+        <img title="Logo iChef" alt="Logo iChef" src="./public/iChef-Definitivo-Web.png" width="200" />
+    </div>
+    <div>
+      # iChef
+    </div>
 </div>
 
 iChef ofrece una experiencia distinta a la hora de cocinar, permitiéndote optar por propuestas ya armadas con todos los productos necesarios y su correspondiente explicación paso a paso para que logres el resultado esperado, o puedas crear tus propios platos seleccionando tus ingredientes preferidos en nuestro "market".
