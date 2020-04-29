@@ -1,6 +1,6 @@
 # iChef
 
-![Logo](https://github.com/0220CBFSNCN01ARCO/grupo_4_iChef/blob/master/public/iChef-Definitivo-Web.png)
+![Logo](https://github.com/0220CBFSNCN01ARCO/grupo_4_iChef/blob/master/public/iChef-Definitivo-Web.png){:height="50%" width="50%"}
 
 iChef ofrece una experiencia distinta a la hora de cocinar, permitiéndote optar por propuestas ya armadas con todos los productos necesarios y su correspondiente explicación paso a paso para que logres el resultado esperado, o puedas crear tus propios platos seleccionando tus ingredientes preferidos en nuestro "market".
 Además encontrarás distintas alternativas para mejorar tu experiencia, ya sea desde asesoramiento online para la preparación de los platos, hasta la posibilidad de contar con uno de nuestros expertos en tu cocina. Contamos con chefs profesionales, sommeliers, y otros especialistas que aportarán lo mejor de sí para que tu experiencia sea única.
