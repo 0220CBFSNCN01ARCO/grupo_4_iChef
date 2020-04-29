@@ -3,7 +3,7 @@
         <img title="Logo iChef" alt="Logo iChef" src="./public/iChef-Definitivo-Web.png" width="200" />
     </div>
     <div>
-      # iChef
+      <h1>iChef</h1>
     </div>
 </div>
 
