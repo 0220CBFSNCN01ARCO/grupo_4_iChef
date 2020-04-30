@@ -44,7 +44,7 @@ Para la organización del proyecto se utiliza la herramienta [Trello](https://tr
 
  [Link al tablero de Trello](https://trello.com/b/x1z0XHNE)
 
- **Aclaración: Únicamente los miembros del tablero pueden verlo y editarlo.**
+ ⚠ **Aclaración: Únicamente los miembros del tablero pueden verlo y editarlo.**
 
  # Licencia
 
