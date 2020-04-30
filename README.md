@@ -37,6 +37,17 @@ Para la organización del proyecto se utiliza la herramienta [Trello](https://tr
 
 ⚠ **Aclaración: Únicamente los miembros del tablero pueden verlo y editarlo.**
 
+## Tipografia
+
+[Open Sans](https://fonts.google.com/specimen/Open+Sans?sidebar.open&selection.family=Open+Sans:wght@300;400;700;800)
+
+### Familia seleccionada
+
+* Light 300 - (Notas y aclaraciones).
+* Regular 400 - (Parrafos y Textos en general).
+* Bold 700 - (Titulos).
+* Extra-bold 800 (Titulos y Textos a resaltar).
+
 ## Paleta de colores
 
 <table>
@@ -67,7 +78,9 @@ Para la organización del proyecto se utiliza la herramienta [Trello](https://tr
 [author4]: https://github.com/josesalvini
 
 ## Referencias
+
 Consultamos los siguientes links para dar forma a nuestro proyecto, de los cuales fuimos tomando ideas de diseño, servicios ofrecidos y estructura, para así poder definir iChef.
+
  - http://dagusto.com.ar/
  - https://rebox.by/howitworks/
  - http://www.yotecocino.com.ar/
