@@ -6,30 +6,30 @@ Además encontrarás distintas alternativas para mejorar tu experiencia, ya sea 
 Hoy en día cocinan desde los niños a los adultos, por lo que iChef apunta a toda aquella persona que disfrute del arte de cocinar o, que a través de nosotros y de las recetas, diseñadas para ser accesibles y fáciles de seguir, descubran el chef que llevan dentro.
 Nuestro deseo es que puedas, desde la comodidad de tu casa, compartir con tu pareja, familia, grupo de amigos o trabajo, etc, un momento especial lleno de aromas y sabores del mundo.
 
-# Productos
+## Productos
 
  - Market de productos.
  - Cajas con ingredientes y recetas.
  - Recetas.
 
-# Servicios
+## Servicios
 
  - Chef a domicilio.
  - Asistencia de cocina on line.
  - Envíos a domicilio (sin cargo para cuentas premiun).
  - Sommelier a domicilio.
 
-# Publico objetivo
+## Publico objetivo
 
 Esta orientado como una solución para esas personas que gustan del buen comer, y por razones de falta de tiempo, o de ganas, o tal vez por que no les gusta cocinar no pueden satisfacer ese gusto. Es para aquellos que no quieren o pueden contratar personal doméstico o están cansados del delivery.
 
-# Ofertas al publico
+## Ofertas al publico
 
 - Te ofrecemos la posibilidad de que un chef profesional te visite en tu casa.
 - Te enseñamos a preparar los platos que vos quieras.
 - Te ofrecemos clases de cocina a domicilio que te demuestran que en tu propia cocina y con los utensilios e ingredientes que tenés en casa, podés preparar "platos gourmet".
 
-# Tablero del proyecto
+## Tablero del proyecto
 
 Para la organización del proyecto se utiliza la herramienta [Trello](https://trello.com/es).
 
@@ -37,24 +37,24 @@ Para la organización del proyecto se utiliza la herramienta [Trello](https://tr
 
 ⚠ **Aclaración: Únicamente los miembros del tablero pueden verlo y editarlo.**
 
-## Paleta de colores:
+## Paleta de colores
 
 <table>
     <tr>
         <td align="left">
-            <img alt="Paleta colores originales" src="./public/paleta_original.png" width="450"/>
+            <img alt="Paleta colores originales" src="./public/paleta_original.png" width="600"/>
         </td>
-        <td align="right">
-            <img alt="Paleta colores claros" src="./public/paleta_claros.png" width="450"/>
-        </td>
+        <td>Colores originales</td>
     </tr>
     <tr>
-        <td>Colores originales</td>
+        <td align="left">
+            <img alt="Paleta colores claros" src="./public/paleta_claros.png" width="600"/>
+        </td>
         <td>Colores claros</td>
     </tr>
 </table>
 
- # Licencia
+## Licencia
 
 * &copy; [Gisela Soledad Ali][author1]
 * &copy; [Yuliya Sharapa][author2]
@@ -66,7 +66,7 @@ Para la organización del proyecto se utiliza la herramienta [Trello](https://tr
 [author3]: https://github.com/joseemeyer
 [author4]: https://github.com/josesalvini
 
-# Referencias
+## Referencias
 Consultamos los siguientes links para dar forma a nuestro proyecto, de los cuales fuimos tomando ideas de diseño, servicios ofrecidos y estructura, para así poder definir iChef.
  - http://dagusto.com.ar/
  - https://rebox.by/howitworks/
