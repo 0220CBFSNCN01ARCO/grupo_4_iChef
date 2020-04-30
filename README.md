@@ -1,8 +1,6 @@
 # iChef
 <img align="right" title="Logo iChef" alt="Logo iChef" src="./public/iChef-Definitivo-Web.png" width="200"/>
 
-> Logo iChef
-
 **iChef** ofrece una experiencia distinta a la hora de cocinar, permitiéndote optar por propuestas ya armadas con todos los productos necesarios y su correspondiente explicación paso a paso para que logres el resultado esperado, o puedas crear tus propios platos seleccionando tus ingredientes preferidos en nuestro "market".
 Además encontrarás distintas alternativas para mejorar tu experiencia, ya sea desde asesoramiento online para la preparación de los platos, hasta la posibilidad de contar con uno de nuestros expertos en tu cocina. Contamos con chefs profesionales, sommeliers, y otros especialistas que aportarán lo mejor de sí para que tu experiencia sea única.
 Hoy en día cocinan desde los niños a los adultos, por lo que iChef apunta a toda aquella persona que disfrute del arte de cocinar o, que a través de nosotros y de las recetas, diseñadas para ser accesibles y fáciles de seguir, descubran el chef que llevan dentro.
@@ -31,6 +29,26 @@ Esta orientado como una solución para esas personas que gustan del buen comer, 
 - Te enseñamos a preparar los platos que vos quieras.
 - Te ofrecemos clases de cocina a domicilio que te demuestran que en tu propia cocina y con los utensilios e ingredientes que tenés en casa, podés preparar "platos gourmet".
 
+# Tablero del proyecto
+
+Para la organización del proyecto se utiliza la herramienta [Trello](https://trello.com/es).
+
+ [Link al tablero de Trello](https://trello.com/b/x1z0XHNE)
+
+⚠ **Aclaración: Únicamente los miembros del tablero pueden verlo y editarlo.**
+
+ # Licencia
+
+* &copy; [Gisela Soledad Ali][author1]
+* &copy; [Yuliya Sharapa][author2]
+* &copy; [José Eduardo Meyer][author3]
+* &copy; [José Salvini][author4]
+
+[author1]: https://github.com/Gise09
+[author2]: https://github.com/yuliya-sharapa
+[author3]: https://github.com/joseemeyer
+[author4]: https://github.com/josesalvini
+
 # Referencias
 Consultamos los siguientes links para dar forma a nuestro proyecto, de los cuales fuimos tomando ideas de diseño, servicios ofrecidos y estructura, para así poder definir iChef.
  - http://dagusto.com.ar/
@@ -39,23 +57,3 @@ Consultamos los siguientes links para dar forma a nuestro proyecto, de los cuale
  - https://www.lanacion.com.ar/lifestyle/las-fiaca-de-la-cocina-nid1479070
  - https://www.homechef.com/
  - https://www.instagram.com/almacendemario/?hl=es-la
-
- # Tablero del proyecto
-
-Para la organización del proyecto se utiliza la herramienta [Trello](https://trello.com/es).
-
- [Link al tablero de Trello](https://trello.com/b/x1z0XHNE)
-
- ⚠ **Aclaración: Únicamente los miembros del tablero pueden verlo y editarlo.**
-
- # Licencia
-
- * &copy; [Gisela Soledad Ali][author1]
- * &copy; [Yuliya Sharapa][author2]
- * &copy; [José Eduardo Meyer][author3]
- * &copy; [José Salvini][author4]
-
-[author1]: https://github.com/Gise09
-[author2]: https://github.com/yuliya-sharapa
-[author3]: https://github.com/joseemeyer
-[author4]: https://github.com/josesalvini
