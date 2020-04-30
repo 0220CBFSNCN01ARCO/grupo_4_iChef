@@ -1,9 +1,8 @@
 <div>
     <div>
-        <img title="Logo iChef" alt="Logo iChef" src="./public/iChef-Definitivo-Web.png" width="200" />
-    </div>
-    <div>
-      <h1>iChef</h1>
+        <h1>iChef</h1>
+        <img style="align=left; " title="Logo iChef"
+            alt="Logo iChef" src="./public/iChef-Definitivo-Web.png" width="200" />
     </div>
 </div>
 
@@ -58,3 +57,8 @@ Para la organización del proyecto se utiliza la herramienta [Trello](https://tr
  * Yuliya Sharapa
  * José Eduardo Meyer
  * José Salvini
+
+<pre><code>&lt;div class="footer"&gt;
+    &amp;copy; 2020 iChef
+&lt;/div&gt;
+</code></pre>
