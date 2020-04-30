@@ -1,5 +1,6 @@
 # iChef
-<img align="left" title="Logo iChef" alt="Logo iChef" src="./public/iChef-Definitivo-Web.png" width="200"/>
+<img align="right" title="Logo iChef" alt="Logo iChef" src="./public/iChef-Definitivo-Web.png" width="200"/>
+
 **iChef** ofrece una experiencia distinta a la hora de cocinar, permitiéndote optar por propuestas ya armadas con todos los productos necesarios y su correspondiente explicación paso a paso para que logres el resultado esperado, o puedas crear tus propios platos seleccionando tus ingredientes preferidos en nuestro "market".
 Además encontrarás distintas alternativas para mejorar tu experiencia, ya sea desde asesoramiento online para la preparación de los platos, hasta la posibilidad de contar con uno de nuestros expertos en tu cocina. Contamos con chefs profesionales, sommeliers, y otros especialistas que aportarán lo mejor de sí para que tu experiencia sea única.
 Hoy en día cocinan desde los niños a los adultos, por lo que iChef apunta a toda aquella persona que disfrute del arte de cocinar o, que a través de nosotros y de las recetas, diseñadas para ser accesibles y fáciles de seguir, descubran el chef que llevan dentro.
