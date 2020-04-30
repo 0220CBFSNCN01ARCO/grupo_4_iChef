@@ -37,6 +37,23 @@ Para la organización del proyecto se utiliza la herramienta [Trello](https://tr
 
 ⚠ **Aclaración: Únicamente los miembros del tablero pueden verlo y editarlo.**
 
+## Paleta de colores:
+
+<table>
+    <tr>
+        <td align="left">
+            <img alt="Paleta colores originales" src="./public/paleta_original.png" width="450"/>
+        </td>
+        <td align="right">
+            <img alt="Paleta colores claros" src="./public/paleta_claros.png" width="450"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Colores originales</td>
+        <td>Colores claros</td>
+    </tr>
+</table>
+
  # Licencia
 
 * &copy; [Gisela Soledad Ali][author1]
