@@ -41,16 +41,16 @@ Para la organización del proyecto se utiliza la herramienta [Trello](https://tr
 
 <table>
     <tr>
+        <td>Colores originales</td>
         <td align="left">
             <img alt="Paleta colores originales" src="./public/paleta_original.png" width="600"/>
         </td>
-        <td>Colores originales</td>
     </tr>
     <tr>
+        <td>Colores claros</td>
         <td align="left">
             <img alt="Paleta colores claros" src="./public/paleta_claros.png" width="600"/>
         </td>
-        <td>Colores claros</td>
     </tr>
 </table>
 
