@@ -1,5 +1,5 @@
 # iChef
-<img align="right" title="Logo iChef" alt="Logo iChef" src="./public/iChef-Definitivo-Web.png" width="200"/>
+<img align="right" title="Logo iChef" alt="Logo iChef" src="./public/images/iChef-Definitivo-Web.png" width="200"/>
 
 **iChef** ofrece una experiencia distinta a la hora de cocinar, permitiéndote optar por propuestas ya armadas con todos los productos necesarios y su correspondiente explicación paso a paso para que logres el resultado esperado, o puedas crear tus propios platos seleccionando tus ingredientes preferidos en nuestro "market".
 Además encontrarás distintas alternativas para mejorar tu experiencia, ya sea desde asesoramiento online para la preparación de los platos, hasta la posibilidad de contar con uno de nuestros expertos en tu cocina. Contamos con chefs profesionales, sommeliers, y otros especialistas que aportarán lo mejor de sí para que tu experiencia sea única.
@@ -43,13 +43,13 @@ Para la organización del proyecto se utiliza la herramienta [Trello](https://tr
     <tr>
         <td>Colores originales</td>
         <td align="left">
-            <img alt="Paleta colores originales" src="./public/paleta_original.png" width="600"/>
+            <img alt="Paleta colores originales" src="./public/images/paleta_original.png" width="600"/>
         </td>
     </tr>
     <tr>
         <td>Colores claros</td>
         <td align="left">
-            <img alt="Paleta colores claros" src="./public/paleta_claros.png" width="600"/>
+            <img alt="Paleta colores claros" src="./public/images/paleta_claros.png" width="600"/>
         </td>
     </tr>
 </table>
