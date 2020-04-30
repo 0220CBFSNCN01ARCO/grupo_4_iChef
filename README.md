@@ -46,14 +46,14 @@ Para la organización del proyecto se utiliza la herramienta [Trello](https://tr
 
  **Aclaración: Únicamente los miembros del tablero pueden verlo y editarlo.**
 
- # Integrantes
+ # Licencia
 
- * Gisela Soledad Ali
- * Yuliya Sharapa
- * José Eduardo Meyer
- * José Salvini
+ * © [Gisela Soledad Ali][author1]
+ * © [Yuliya Sharapa][author2]
+ * © [José Eduardo Meyer][author3]
+ * © [José Salvini][author4]
 
-<pre><code>&lt;div class="footer"&gt;
-    &amp;copy; 2020 iChef
-&lt;/div&gt;
-</code></pre>
+[author1]: https://github.com/Gise09
+[author2]: https://github.com/yuliya-sharapa
+[author3]: https://github.com/joseemeyer
+[author4]: https://github.com/josesalvini
