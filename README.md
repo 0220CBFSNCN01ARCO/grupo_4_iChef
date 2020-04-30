@@ -37,9 +37,9 @@ Para la organización del proyecto se utiliza la herramienta [Trello](https://tr
 
 ⚠ **Aclaración: Únicamente los miembros del tablero pueden verlo y editarlo.**
 
-## Tipografia
+## Tipografía
 
-[Open Sans](https://fonts.google.com/specimen/Open+Sans?sidebar.open&selection.family=Open+Sans:wght@300;400;700;800)
+Link a Google Fonts [Open Sans](https://fonts.google.com/specimen/Open+Sans?sidebar.open&selection.family=Open+Sans:wght@300;400;700;800)
 
 ### Familia seleccionada
 
