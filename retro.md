@@ -1,5 +1,4 @@
-# Retrospectiva
+## Retrospectiva
 
-/*
-Archivo ​retro.md​ con el resultado de la retrospectiva. 
-*/
+Para la retrospectiva [Trello](https://trello.com/es).
+

@@ -1,4 +1,51 @@
-#logo {
-  width: 100px;
+:root {
+  --rojo: #A60D0D;
+  --rojo-intenso: #F20505;
+  --base-font-family: 'Open Sans', sans-serif
 }
 
+* {
+  box-sizing: border-box;
+}
+
+/* Color Theme Swatches in RGBA */
+.iChef-claros-1 { color: rgba(242, 5, 5, 1); }
+.iChef-claros-2 { color: rgba(166, 13, 13, 1); }
+.iChef-claros-3 { color: rgba(217, 102, 102, 1); }
+.iChef-claros-4 { color: rgba(242, 242, 242, 1); }
+.iChef-claros-5 { color: rgba(13, 13, 13, 1); }
+
+.navbar-brand {
+  margin: 0;
+  padding: 0;
+}
+
+#topNav {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.copyFooter {
+  font-size: small;
+}
+
+@media (min-width: 990px) {
+  .navbar-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /**optional offset from top**/
+  top: 0%;
+  }
+
+  .navbar {
+      height: 126px;
+  }
+
+}
+
+.copyFooter {
+  color: rgba(13, 13, 13, 1);
+  padding-top: 5px;
+  padding-bottom: 0px;
+}
