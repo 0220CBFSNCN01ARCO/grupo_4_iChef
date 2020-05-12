@@ -15,7 +15,7 @@
 .iChef-claros-4 { color: rgba(242, 242, 242, 1); }
 .iChef-claros-5 { color: rgba(13, 13, 13, 1); }
 
-.navbar-brand {
+.navbar-brand,.row {
   margin: 0;
   padding: 0;
 }
@@ -25,9 +25,7 @@
   padding-bottom: 0;
 }
 
-.copyFooter {
-  font-size: small;
-}
+
 
 @media (min-width: 990px) {
   .navbar-brand {
@@ -44,8 +42,104 @@
 
 }
 
+.iconMenu {
+  font-size: 48px;
+  color: #A60D0D;
+}
+
+.rowIcon {
+  justify-content: space-around;
+}
+
+.copyFooter {
+  font-size: small;
+}
+
 .copyFooter {
   color: rgba(13, 13, 13, 1);
   padding-top: 5px;
   padding-bottom: 0px;
+}
+
+#logo {
+    padding-top: 5px;
+}
+
+.rowHeader {
+    align-items: center;
+  }
+
+
+
+.itemIcon {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+.formHeader{
+  border-bottom: 1px solid #A60D0D;
+}
+.containerForm,.form-group,.btnForm {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.formHeader,.copyFooter {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top: 1px solid #A60D0D;
+}
+
+.fa-dollar-sign:before {
+    content: "\f155";
+}
+
+#precioProd, #ofertaProd {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+}
+
+#ofertaProd {
+  margin-bottom: 0;
+}
+
+span.input-group-text,.btn-primary {
+  background-color: #A60D0D;
+  color: white;
+  border-color:#A60D0D;
+}
+
+.custom-file-input:lang(en)~.custom-file-label::after {
+  content: "Elegir";
+}
+
+.custom-file-label::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: block;
+  height: 2.25rem;
+  padding: .375rem .75rem;
+  line-height: 1.5;
+  color: white;
+  content: "Elegir";
+  background-color: #A60D0D;
+  border-left: inherit;
+  border-radius: 0 .25rem .25rem 0;
+}
+
+.card {
+  margin-bottom: 5px;
+}
+
+/*Estilos footer de la pagina*/
+p.small {
+  margin-bottom: 0;
+}
+
+footer p {
+  margin-bottom: 0px;
 }

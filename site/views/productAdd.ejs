@@ -1,12 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css"/>
-    <title><%= title %></title>
-</head>
+
+<%- include('./partials/head') %>
+
 <body>
-    <h1><%= title %></h1>
+    <%- include('./partials/header') %>
+    <div class="container-fluid formHeader">
+        <div class="row mb-2">
+            <div class="col-sm-12">
+                <h1>Formulario producto</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid containerForm">
+        <form class="frmProducto needs-validation" novalidate>
+            <div class="card">
+                <div class="card-header">Datos del producto</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-12 col-md-7 col-lg-8">
+                            <label for="nombreProducto">Nombre</label>
+                            <input type="text" class="form-control" id="nombreProducto" placeholder="Ingrese nombre del producto" required>
+                            <div class="invalid-feedback">Debe ingresar un nombre para el producto.</div>
+                        </div>
+                        <div class="form-group col-12 col-md-5 col-lg-4">
+                            <label for="tipo">Tipo de producto</label>
+                            <select class="custom-select form-control" id="tipo" name="tipo" required>
+                                <option value="">Seleccione un tipo</option>
+                                <option value="tipo1">Generico</option>
+                                <option value="tipo2">Combo</option>
+                                <option value="tipo3">Caja 1</option>
+                                <option value="tipo4">Artículo 1</option>
+                                <option value="tipo5">Otro</option>
+                            </select>
+                            <div class="invalid-feedback">Debe seleccionar un grupo.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="precioProd" class="form-group col-7 col-md-6 col-lg-4">
+                            <label for="precioProducto">Precio</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <!--Ver agregar icono-->
+                                        <i class="fa fa-dollar-sign"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" id="precioProducto" placeholder="0" required>
+                                <div class="invalid-feedback">Debe ingresar un precio de venta.</div>
+                            </div>
+                        </div>
+                        <div id="ofertaProd" class="form-group d-flex justify-content-center align-items-center col-5 col-md-6 col-lg-4">
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="ofertaSwich" data-toggle="collapse" data-target="#precioOferta">
+                                <label for="ofertaSwich" class="custom-control-label">Oferta</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div id="precioOferta" class="collapse">
+                                <div class="row">
+                                    <div class="form-group col-6 col-md-6 col-lg-4">
+                                        <label for="descuentoProducto">Descuento</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="0" required>
+                                            <span class="input-group-text">
+                                                <i class="fa fa-percent"></i>
+                                            </span>
+                                            <div class="invalid-feedback">Ingrese porcentaje de descuento.</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6 col-md-6 col-lg-4">
+                                        <label for="precioOferta">Precio oferta</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-dollar-sign"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="0" required>
+                                            <div class="invalid-feedback">Ingrese precio de oferta.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-6 col-md-5 col-lg-4">
+                            <label for="grupo">Grupo</label>
+                            <select class="custom-select form-control" id="grupo" name="grupo" required>
+                                <option value="">Seleccione un grupo</option>
+                                <option value="grupo1">Generico</option>
+                                <option value="grupo2">Grupo 1</option>
+                                <option value="grupo3">Grupo 2</option>
+                                <option value="grupo4">Grupo 3</option>
+                                <option value="grupo5">Grupo 4</option>
+                            </select>
+                            <div class="invalid-feedback">Debe seleccionar un grupo.</div>
+                        </div>
+                        <div class="form-group col-xs-6 col-md-5 col-lg-4">
+                            <label for="marca">Marca</label>
+                            <select class="custom-select form-control" id="marca" name="marca" required>
+                                <option value="">Seleccione una marca</option>
+                                <option value="marca1">Generica</option>
+                                <option value="marca2">Marca 1</option>
+                                <option value="marca3">Marca 2</option>
+                                <option value="marca4">Marca 3</option>
+                                <option value="marca5">Marca 4</option>
+                            </select>
+                            <div class="invalid-feedback">Debe seleccionar una marca.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-md-12 col-lg-8">
+                            <label for="txtDescripcion">Descripción</label>
+                            <textarea class="form-control" id="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"></textarea>
+                            <div class="invalid-feedback">Debe agregar una descripción valida.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-md-12 col-lg-8">
+                            <label for="txtDescripcion">Ingredientes</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-5 col-md-3 col-lg-2">
+                            <label for="txtDescripcion">Calorias</label>
+                            <input type="text" class="form-control" placeholder="0" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Fotos</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-xs-10 col-md-6 col-lg-4">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="imgFile">
+                                <label class="custom-file-label" for="customFile">Seleccionar imagen</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row btnForm">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
+        </form>
+    </div>
+    <%-include('./partials/footer')%>
+    <%-include('./partials/script')%>
 </body>
 </html>

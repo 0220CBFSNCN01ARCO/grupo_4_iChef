@@ -1,56 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<%-include('./partials/head')%>
 
-    <link rel="stylesheet" href="/stylesheets/style.css">
-
-    <title><%= title %></title>
-</head>
 <body>
-    <nav id="topNav" class="navbar navbar-expand-md navbar-light bg-light">
-        <a class="navbar-brand mx-auto" href="/">
-            <img class="navbar-brand" src="/images/iChef-Web.png"
-            width="125px" height="125px" alt="Logo iChef">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse">
-            <ul class="navbar-nav">
-                <!--Link izquierda-->
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Productos</a>
-                    <div class="dropdown-menu bg-light">
-                        <a class="dropdown-item" href="#">Cajas</a>
-                        <a class="dropdown-item" href="#">Ingredientes</a>
-                        <a class="dropdown-item" href="#">Promos</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Servicio</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Staff chef</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
-                </li>
-            </ul>
-            <!--Link derecha-->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"> <a class="nav-link" href="#">Ingresar</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Registrarse</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Carrito</a> </li>
-            </ul>
-        </div>
-    </nav>
-
+    <%-include('./partials/header')%>
     <!--cuerpo-->
     <div class="jumbotron jumbotron-fluid text-center">
         <img class="img-fluid" src="https://dummyimage.com/900x500" alt="placeholder">
@@ -78,14 +32,7 @@
 
         </div>
     </div>
-    <footer class="container-fuid bg-light copyFooter">
-        <div class="text-center col-lg-6 offset-lg-3 ">
-            <p class="small">Copyright &copy; 2020 iChef | Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <%-include('./partials/footer')%>
+    <%-include('./partials/script')%>
 </body>
 </html>
