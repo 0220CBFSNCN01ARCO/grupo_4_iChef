@@ -1,27 +1,48 @@
-<header class="mainHeader">
-    <div class="container">
-        <div class="row rowHeader">
-            <div class="col-6 col-md-4">
-                <a href="/" class="main-header_home-link">
-                    <img id="logo" src="/images/iChef-Web.png" width="90px" height="90px">
+<header class="navbar navbar-expand-md navbar-dark flex-md-row bd-navbar">
+    <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="iChef">
+        <img id="logo" src="/images/iChef-Web.png" width="90px" height="90px">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerMenu">
+        <ul id="menuText" class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+            <a class="nav-link " href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                    Productos
                 </a>
-            </div>
-            <div class="col-6 col-md-8">
-                <div class="row rowIcon">
-                    <div class="col-3 col-md-4">
-                        <a href="register.ejs" class="iconMenu">
-                            <!--img class="icon" src="/icon/menu-black-18dp.svg" width="48px" height="48px"-->
-                            <i class="fa fa-bars"></i>
-                        </a>
-                    </div>
-                    <div class="col-3 col-md-4">
-                        <a href="productCart.ejs" class="iconMenu">
-                            <!--img class="icon" src="/icon/shopping_cart-48dp.svg" width="48px" height="48px"-->
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
-                    </div>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Cajas</a>
+                <a class="dropdown-item" href="#">Market</a>
+                <a class="dropdown-item" href="#">Promos del dia</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Promo 1</a>
                 </div>
-            </div>
-        </div>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link " href="/staff">Staff chef</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/contact">Contacto</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/nosotros">Nosotros</a>
+            </li>
+        </ul>
     </div>
-</header>
+    <ul class="navbar-nav ml-md-auto iconMenu">
+      <li class="nav-item">
+        <a class="nav-link pl-2 pr-1 mx-1 py-3 my-n2" href="/product/cart">
+            <i class="fa fa-shopping-cart"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link px-1 mx-1 py-3 my-n2" href="/register">
+            <i class="fa fa-user"></i>
+        </a>
+      </li>
+    </ul>
+  </header>

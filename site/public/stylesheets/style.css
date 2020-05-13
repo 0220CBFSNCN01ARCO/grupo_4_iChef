@@ -1,13 +1,9 @@
 :root {
-  --rojo: #A60D0D;
+  --rojo: #B30E0B;
+  --rojo2: #A60D0D;
   --rojo-intenso: #F20505;
   --base-font-family: 'Open Sans', sans-serif
 }
-
-* {
-  font-family: 'Open Sans', sans-serif;
-}
-
 
 /* Color Theme Swatches in RGBA */
 .iChef-claros-1 { color: rgba(242, 5, 5, 1); }
@@ -16,23 +12,38 @@
 .iChef-claros-4 { color: rgba(242, 242, 242, 1); }
 .iChef-claros-5 { color: rgba(13, 13, 13, 1); }
 
-.navbar-brand,.row {
-  margin: 0;
-  padding: 0;
+* {
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
 }
 
-#topNav {
-  padding-top: 0;
-  padding-bottom: 0;
+.bd-navbar {
+  min-height: 4rem;
+  background-color: #B30E0B;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+#menuText {
+  flex-direction: column;
+}
+
+#logo {
+  overflow: hidden;
+  vertical-align: middle;
 }
 
 .iconMenu {
-  font-size: 48px;
-  color: #A60D0D;
-}
-
-.rowIcon {
-  justify-content: space-around;
+  flex-direction: row;
 }
 
 .copyFooter {
@@ -45,24 +56,12 @@
   padding-bottom: 0px;
 }
 
-#logo {
-    padding-top: 5px;
-}
-
-.rowHeader {
-    align-items: center;
-  }
-
-.itemIcon {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
 .formHeader{
-  border-bottom: 1px solid #A60D0D;
-  background-color: #A60D0D;
+  border-bottom: 1px solid #B30E0B;
+  background-color: #B30E0B;
   color: white;
 }
+
 .containerForm,.form-group,.btnForm {
   padding-left: 5px;
   padding-right: 5px;
@@ -81,7 +80,7 @@
 .formHeader,.copyFooter {
     margin-top: 20px;
     margin-bottom: 20px;
-    border-top: 1px solid #A60D0D;
+    border-top: 1px solid #B30E0B;
 }
 
 .fa-dollar-sign:before {
@@ -99,9 +98,9 @@
 }
 
 span.input-group-text,.btn-primary {
-  background-color: #A60D0D;
+  background-color: #B30E0B;
   color: white;
-  border-color:#A60D0D;
+  border-color:#B30E0B;
 }
 
 .custom-file-input:lang(en)~.custom-file-label::after {
@@ -121,7 +120,7 @@ span.input-group-text,.btn-primary {
   line-height: 1.5;
   color: white;
   content: "Elegir";
-  background-color: #A60D0D;
+  background-color: #B30E0B;
   border-left: inherit;
   border-radius: 0 .25rem .25rem 0;
 }
@@ -212,7 +211,7 @@ cursor:pointer;
 width:30px;
 height:30px;
 border-radius:50%;
-background-color:#A60D0D;
+background-color:#B30E0B;
 color:#fff;
 box-shadow:0px 0px 2px 1px rgba(0,0,0,0.2);
 text-align:center;
@@ -243,25 +242,15 @@ margin-left: 15px;
   .imagePreview {
     height: 190px;
   }
+  #menuText {
+    flex-direction: row;
+}
 
 }
 
 @media (min-width: 992px) {
-  .navbar-brand {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0%;
-  }
-
-  .navbar {
-      height: 126px;
-  }
   .imagePreview {
     height: 190px;
-  }
-  * {
-    font-size: 1.5rem;
   }
 }
 
