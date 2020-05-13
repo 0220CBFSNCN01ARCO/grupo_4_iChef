@@ -1,0 +1,28 @@
+body {
+  background-image: url(../images/register/fondo-formulario.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.estilo{
+  margin: auto;
+}
+
+.primerBloque{
+  padding-top: 5vw;
+}
+
+
+.segundoBloque{
+  padding-top: 6vw;
+}
+
+.input-register{
+  padding: 1vw;
+}
+
+@media screen and (min-width: 768px){
+  input {
+    width: 55vw;
+  }
+}
