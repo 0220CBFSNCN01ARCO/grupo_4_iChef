@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <%- include('./partials/head') %>
-
 <body>
     <%- include('./partials/header') %>
     <div class="container-fluid formHeader">
@@ -26,7 +24,7 @@
                         <div class="form-group col-12 col-md-5 col-lg-4">
                             <label for="tipo">Tipo de producto</label>
                             <select class="custom-select form-control" id="tipo" name="tipo" required>
-                                <option value="">Seleccione un tipo</option>
+                                <option value="" selected>Seleccione un tipo</option>
                                 <option value="tipo1">Generico</option>
                                 <option value="tipo2">Combo</option>
                                 <option value="tipo3">Caja 1</option>
@@ -89,7 +87,7 @@
                         <div class="form-group col-xs-6 col-md-5 col-lg-4">
                             <label for="grupo">Grupo</label>
                             <select class="custom-select form-control" id="grupo" name="grupo" required>
-                                <option value="">Seleccione un grupo</option>
+                                <option value="" selected>Seleccione un grupo</option>
                                 <option value="grupo1">Generico</option>
                                 <option value="grupo2">Grupo 1</option>
                                 <option value="grupo3">Grupo 2</option>
@@ -101,7 +99,7 @@
                         <div class="form-group col-xs-6 col-md-5 col-lg-4">
                             <label for="marca">Marca</label>
                             <select class="custom-select form-control" id="marca" name="marca" required>
-                                <option value="">Seleccione una marca</option>
+                                <option value="" selected>Seleccione una marca</option>
                                 <option value="marca1">Generica</option>
                                 <option value="marca2">Marca 1</option>
                                 <option value="marca3">Marca 2</option>
@@ -114,7 +112,7 @@
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-12 col-lg-8">
                             <label for="txtDescripcion">Descripción</label>
-                            <textarea class="form-control" id="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción" required></textarea>
+                            <textarea class="form-control" id="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"  required></textarea>
                             <div class="invalid-feedback">Debe agregar una descripción valida.</div>
                         </div>
                     </div>

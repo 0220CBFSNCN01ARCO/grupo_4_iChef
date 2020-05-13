@@ -25,16 +25,21 @@
 
 .navbar-brand {
   display: inline-block;
-  padding-top: .3125rem;
-  padding-bottom: .3125rem;
   margin-right: 1rem;
+  padding-top: 0;
+  padding-bottom: 0;
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
 }
 
+.navbar-dark .navbar-toggler {
+  border-color: rgba(255,255,255,.5);
+}
+
 #menuText {
   flex-direction: column;
+  margin: auto;
 }
 
 #logo {
@@ -60,6 +65,10 @@
   border-bottom: 1px solid #B30E0B;
   background-color: #B30E0B;
   color: white;
+}
+
+#txtDescripcion {
+  resize: none;
 }
 
 .containerForm,.form-group,.btnForm {
@@ -165,6 +174,7 @@ footer p {
 }
 
 .imagePreview,.imageMin {
+  background-image: url('/images/no-imagen.jpg');
   background-position: center center;
   background-color:lightgrey;
   background-size: cover;
@@ -252,6 +262,17 @@ margin-left: 15px;
   .imagePreview {
     height: 190px;
   }
+
+  .row {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .card {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
 }
 
 @media (min-width: 1200px) {
@@ -262,4 +283,15 @@ margin-left: 15px;
     margin-left: 0;
     margin-right: 0;
   }
+
+  .row {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .card {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
 }
