@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+    <!--cuerpo-->
+    <div>
+        <h1>Imagenes</h1>
+        <div class="card">
+            <div class="card-header">Receta</div>
+            <div class="card-body">
+                <div class="row">
+                    <br>
+                    <div class="col-12 col-md-6 col-lg-5 imgUp">
+                        <div class="imagePreview"></div>
+                        <label class="btn btn-primary">Upload
+                            <input type="file" class="uploadFile img" value="subriImagen" style="width: 0px;height: 0px;overflow: hidden;">
+                        </label>
+                    </div><!-- col-2 -->
+                    <i class="fa fa-plus imgAdd"></i>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <%- include('./partials/footer') %>
+    <%-include('./partials/script')%>
+</body>
+</html>

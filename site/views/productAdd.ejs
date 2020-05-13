@@ -7,7 +7,7 @@
     <%- include('./partials/header') %>
     <div class="container-fluid formHeader">
         <div class="row mb-2">
-            <div class="col-sm-12">
+            <div class="col-12">
                 <h1>Formulario producto</h1>
             </div>
         </div>
@@ -18,7 +18,7 @@
                 <div class="card-header">Datos del producto</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="form-group col-12 col-md-7 col-lg-8">
+                        <div class="form-group col-12 col-md-7 col-lg-7">
                             <label for="nombreProducto">Nombre</label>
                             <input type="text" class="form-control" id="nombreProducto" placeholder="Ingrese nombre del producto" required>
                             <div class="invalid-feedback">Debe ingresar un nombre para el producto.</div>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div id="precioProd" class="form-group col-7 col-md-6 col-lg-4">
+                        <div id="precioProd" class="form-group col-7 col-md-5 col-lg-3">
                             <label for="precioProducto">Precio</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -50,7 +50,7 @@
                                 <div class="invalid-feedback">Debe ingresar un precio de venta.</div>
                             </div>
                         </div>
-                        <div id="ofertaProd" class="form-group d-flex justify-content-center align-items-center col-5 col-md-6 col-lg-4">
+                        <div id="ofertaProd" class="form-group d-flex justify-content-center align-items-center col-5 col-md-5 col-lg-3">
                             <div class="custom-control custom-switch">
                                 <input type="checkbox" class="custom-control-input" id="ofertaSwich" data-toggle="collapse" data-target="#precioOferta">
                                 <label for="ofertaSwich" class="custom-control-label">Oferta</label>
@@ -59,7 +59,7 @@
                         <div>
                             <div id="precioOferta" class="collapse">
                                 <div class="row">
-                                    <div class="form-group col-6 col-md-6 col-lg-4">
+                                    <div class="form-group col-6 col-md-5 col-lg-4">
                                         <label for="descuentoProducto">Descuento</label>
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="0" required>
@@ -69,7 +69,7 @@
                                             <div class="invalid-feedback">Ingrese porcentaje de descuento.</div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-6 col-md-6 col-lg-4">
+                                    <div class="form-group col-6 col-md-5 col-lg-4">
                                         <label for="precioOferta">Precio oferta</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -114,19 +114,51 @@
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-12 col-lg-8">
                             <label for="txtDescripcion">Descripción</label>
-                            <textarea class="form-control" id="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"></textarea>
+                            <textarea class="form-control" id="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción" required></textarea>
                             <div class="invalid-feedback">Debe agregar una descripción valida.</div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-12 col-lg-8">
-                            <label for="txtDescripcion">Ingredientes</label>
+                            <p>Cantidad comensales</p>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radio1" value="option1" name="radioPersonas" checked>
+                                <label class="form-check-label" for="radio1">1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radio2" name="radioPersonas" value="option2">
+                                <label class="form-check-label" for="cradio2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radio3" name="radioPersonas" value="option3">
+                                <label class="form-check-label" for="radio3">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radio4" name="radioPersonas" value="option4">
+                                <label class="form-check-label" for="radio4">Mas de 6</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Información nutricional</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-12 col-md-10 col-lg-8">
+                            <label for="ingredientes">Ingredientes</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-5 col-md-3 col-lg-2">
-                            <label for="txtDescripcion">Calorias</label>
+                        <div class="form-group col-5 col-md-3 col-lg-3">
+                            <label for="txtCalorias">Calorías</label>
                             <input type="text" class="form-control" placeholder="0" required>
+                            <div class="invalid-feedback">Ingrese cantidad calorias.</div>
+                        </div>
+                        <div class="form-group col-5 col-md-3 col-lg-3">
+                            <label for="txtPeso">Peso (KG)</label>
+                            <input type="text" class="form-control" placeholder="0" required>
+                            <div class="invalid-feedback">Ingrese peso en klogramos.</div>
                         </div>
                     </div>
                 </div>
@@ -134,18 +166,39 @@
             <div class="card">
                 <div class="card-header">Fotos</div>
                 <div class="card-body">
+                    <div class="container contenedorImg">
+                        <div class="row">
+                            <div class="col-12 col-md-4 col-lg-3 imgUp">
+                                <div class="imagePreview"></div>
+                                    <label class="btn btn-primary">Cargar
+                                        <input type="file" class="uploadFile img" value="Upload Photo">
+                                    </label>
+                                </div><!-- col-2 -->
+                                <i class="fa fa-plus imgAdd"></i>
+                        </div><!-- row -->
+                    </div><!-- container -->
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Receta</div>
+                <div class="card-body">
                     <div class="row">
-                        <div class="form-group col-xs-10 col-md-6 col-lg-4">
+                        <div class="form-group col-10 col-md-8 col-lg-6">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="imgFile">
-                                <label class="custom-file-label" for="customFile">Seleccionar imagen</label>
+                                <input type="file" class="custom-file-input" id="pdfFile">
+                                <label class="custom-file-label" for="customFile">Cargar receta</label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row btnForm">
-                <button class="btn btn-primary" type="submit">Guardar</button>
+                <div class="itemBtn col-4 col-md-2 col-lg-2">
+                    <button class="btn btn-primary" type="reset" value="limpiarProd">Limpiar</button>
+                </div>
+                <div class="itemBtn col-4 col-md-2 col-lg-2">
+                    <button class="btn btn-primary" type="submit" value="guardarProd">Guardar</button>
+                </div>
             </div>
         </form>
     </div>

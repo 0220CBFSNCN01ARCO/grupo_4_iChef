@@ -2,7 +2,6 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-
 <script>
     // Disable form submissions if there are invalid fields
     (function() {
@@ -23,3 +22,38 @@
       }, false);
     })();
     </script>
+<script>
+$(".imgAdd").click(function () {
+  $(this)
+    .closest(".row")
+    .find(".imgAdd")
+    .before(
+      '<div class="col-6 col-md-4 col-lg-3 imgUp"><div class="imagePreview"></div><label class="btn btn-primary">Cargar<input type="file" class="uploadFile img" value="Upload Photo"></label><i class="fa fa-times del"></i></div>'
+    );
+});
+$(document).on("click", "i.del", function () {
+  $(this).parent().remove();
+});
+$(function () {
+  $(document).on("change", ".uploadFile", function () {
+    var uploadFile = $(this);
+    var files = !!this.files ? this.files : [];
+    if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+    if (/^image/.test(files[0].type)) {
+      // only image file
+      var reader = new FileReader(); // instance of the FileReader
+      reader.readAsDataURL(files[0]); // read the local file
+
+      reader.onloadend = function () {
+        // set image data as background of div
+        //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+        uploadFile
+          .closest(".imgUp")
+          .find(".imagePreview")
+          .css("background-image", "url(" + this.result + ")");
+      };
+    }
+  });
+});
+</script>
