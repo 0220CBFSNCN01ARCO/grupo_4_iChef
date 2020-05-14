@@ -1,7 +1,10 @@
 
 let productController = {
     productDetail: function (req, res, next) {
-        res.render('productDetail', { title: 'Listado productos' });
+        res.render('productDetail', { title: 'Detalle productos' });
+      },
+    product_boxDetail: function (req, res, next) {
+        res.render('product-boxDetail', { title: 'Detalle caja' });  
       },
     productAdd: function (req, res, next) {
         res.render('productAdd', { title: 'Formulario producto' });
