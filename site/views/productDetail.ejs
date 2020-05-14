@@ -3,10 +3,15 @@
     <%- include('./partials/head') %>
 <body style="font-family: 'Open Sans';">
     <%- include('./partials/header') %>
-    <h1><%= title %></h1>
-
+    <div class="container-fluid formHeader">
+      <div class="row">
+          <div class="col-12">
+              <h1>Detalle del producto</h1>
+          </div>
+      </div>
+    </div>
     <div style="display: flex; justify-content: flex-end; padding: 2vw">
-        <a href="market.html" style="padding-right: 1vw;"><img src="../public/images/productDetail/icon-flecha.png" alt="Volver" width="35vw" height="35vw" ></a>
+        <a href="market.html" style="padding-right: 1vw;"><img src="/images/productDetail/icon-flecha.png" alt="Volver" width="35vw" height="35vw" ></a>
     </div>
     <div class="container">
       <div class="row">
@@ -18,10 +23,10 @@
           <div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="../public/images/productDetail/carrousel-1.webp" class="d-block w-100 img-fluid" alt="...">
+                <img src="/images/productDetail/carrousel-1.webp" class="d-block w-100 img-fluid" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="../public/images/productDetail/carrousel-2.webp" class="d-block w-100 img-fluid" alt="...">
+                <img src="/images/productDetail/carrousel-2.webp" class="d-block w-100 img-fluid" alt="...">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carousel-producto" role="button" data-slide="prev">
@@ -42,7 +47,7 @@
 
           <h6 style="padding-top: 2vw; padding-bottom: 1vw; font-size: 1.3rem;">Peso/Contenido</h6>
 
-          <p style="font-size: 1.3rem;"> Descripcion del producto. Lorem ipsum dolor sit amet Ea, porro? </p>
+          <p style="font-size: 1.3rem;">Descripcion del producto. Lorem ipsum dolor sit amet Ea, porro? </p>
 
           <h2>$800.00</h2>
 
@@ -52,7 +57,10 @@
               <label for="cantidad" style="margin-bottom: 0;"><h6 style="padding-top: 1vw;">Cantidad</h6></label></h6>
             </div>
 
-            <button title="Agregar al Carrito" style="background-color: transparent; border: solid #A60D0D;"><h6 style="color: #A60D0D ">Agregar al carrito</h6><img src="../public/images/productDetail/icon-carrito.png" alt="Carrito de compras" width="40" height="40"> </button>
+            <button title="Agregar al Carrito" style="background-color: transparent; border: solid #A60D0D;">
+              <h6 style="color: #A60D0D ">Agregar al carrito</h6>
+              <img src="/images/productDetail/icon-carrito.png" alt="Carrito de compras" width="40" height="40">
+            </button>
 
           </div>
 

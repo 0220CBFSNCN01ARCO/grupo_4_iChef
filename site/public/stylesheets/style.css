@@ -17,6 +17,11 @@
   box-sizing: border-box;
 }
 
+.navbar {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .bd-navbar {
   min-height: 4rem;
   background-color: #B30E0B;
@@ -166,6 +171,15 @@ footer p {
   padding-bottom: 10px;
 }
 
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
 /*CSS IMAGENES*/
 
 .contenedorImg{
@@ -256,6 +270,21 @@ margin-left: 15px;
     flex-direction: row;
 }
 
+.card {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.row {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.rowImagenes {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 }
 
 @media (min-width: 992px) {
@@ -263,15 +292,19 @@ margin-left: 15px;
     height: 190px;
   }
 
-  .row {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
+.row {
+  margin-left: 20px;
+  margin-right: 20px;
+}
 
-  .card {
-    margin-left: 30px;
-    margin-right: 30px;
-  }
+.card {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.rowImagenes {
+  margin-left: 0px;
+  margin-right: 0px;
+}
 
 }
 
@@ -292,6 +325,11 @@ margin-left: 15px;
   .card {
     margin-left: 40px;
     margin-right: 40px;
+  }
+
+  .rowImagenes {
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
 }

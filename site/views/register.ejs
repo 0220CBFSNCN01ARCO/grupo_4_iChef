@@ -1,40 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
     <%- include('./partials/head') %>
-    <link rel="stylesheet" href="../public/stylesheets/styleRegister.css">
+    <link rel="stylesheet" href="/stylesheets/styleRegister.css">
 <body>
     <%- include('./partials/header') %>
-    
-    
     <!--cuerpo-->
     <body  style="font-family: 'Open Sans'; margin: auto;">
 
         <div class="container">
         <div class="row">
-        
             <form class="col-12 col-md-12 col-lg-12" style="display: flex; flex-direction: column; border-bottom: solid rgba(166,13,13);" action="validar.php" method="POST">
                 <div class="primerBloque estilo">
-                    <div class="input-register"><input type="text" name="nombre" id="nombre" placeholder="NOMBRE" minlength="5" maxlength="30" required></div>
-                    <div class="input-register"><input type="text" name="apellido" id="apellido" placeholder="APELLIDO" minlength="5" maxlength="30" required></div>
-                    <div class="input-register"><input type="tel" name="telefono" id="telefono" placeholder="Nᵒ DE TELEFONO"></div>
-                    <div class="input-register"><input type="email" name="email" id="email" placeholder="CORREO ELECTRONICO" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required></div>
+                    <div class="input-register">
+                        <input type="text" name="nombre" id="nombre" placeholder="NOMBRE" minlength="5" maxlength="30" required>
+                    </div>
+                    <div class="input-register">
+                        <input type="text" name="apellido" id="apellido" placeholder="APELLIDO" minlength="5" maxlength="30" required>
+                    </div>
+                    <div class="input-register">
+                        <input type="tel" name="telefono" id="telefono" placeholder="Nᵒ DE TELEFONO">
+                    </div>
+                    <div class="input-register">
+                        <input type="email" name="email" id="email" placeholder="CORREO ELECTRONICO" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required>
+                    </div>
                 </div>
                 <div class="segundoBloque estilo">
-                    <div class="input-register"><input type="text" name="usuario" id="usuario" placeholder="USUARIO" minlength="5" maxlength="30" required></div>
-                    <div class="input-register"><input type="password" name="password" id="password" placeholder="CONTRASEÑA" minlength="6" maxlength="6" required></div>
-                    <div class="input-register" ><input class="input-register" type="submit" value="REGISTRARME" style="padding: 0.3vw; background-color: rgba(166,13,13,0.8); color:white; border: none;"></div>   
-                </div>                  
-            </form> 
-           
+                    <div class="input-register">
+                        <input type="text" name="usuario" id="usuario" placeholder="USUARIO" minlength="5" maxlength="30" required>
+                    </div>
+                    <div class="input-register">
+                        <input type="password" name="password" id="password" placeholder="CONTRASEÑA" minlength="6" maxlength="6" required>
+                    </div>
+                    <div class="input-register" >
+                        <input class="input-register" type="submit" value="REGISTRARME" style="padding: 0.3vw; background-color: rgba(166,13,13,0.8); color:white; border: none;">
+                    </div>
+                </div>
+            </form>
+
             <div class="tercerBloque estilo">
                 <div><h5>Ingresar con:</h5></div>
-                <button type="button" title="" style="background-color: transparent; border-radius: 9px; border: solid blue; width: auto;"><img src="./icon-facebook.png" alt="logo Facebook" width="40" height="40"> </button>
-                <button type="button" title="" style="background-color: transparent; border-radius: 9px; border: solid green; width: auto;"><img src="./icon-google.png" alt="logo Google" width="40" height="40"> </button>
+                <button type="button" title="" style="background-color: transparent; border-radius: 9px; border: solid blue; width: auto;">
+                    <img src="../public/icon/" alt="logo Facebook" width="40" height="40"> </button>
+                <button type="button" title="" style="background-color: transparent; border-radius: 9px; border: solid green; width: auto;">
+                    <img src="./icon-google.png" alt="logo Google" width="40" height="40"> </button>
             </div>
-        
-        </div>    
         </div>
-        
+        </div>
     <%- include('./partials/footer') %>
     <%-include('./partials/script')%>
 </body>
