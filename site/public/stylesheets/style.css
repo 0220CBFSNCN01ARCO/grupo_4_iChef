@@ -286,10 +286,11 @@ margin-left: 15px;
 .bgc-pink {
   background-color: #f1d3d3;
 }
+
 .btn-font {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: ;
+  /*font-size: 12px;*/
 }
 
 /* Como funcciona */
