@@ -11,6 +11,9 @@ let productController = {
       },
     productCart: function (req, res, next) {
         res.render('productCart', { title: 'Carrito compras' });
+      },
+    productMarket: function (req, res, next) {
+        res.render('market', { title: 'Market' });
       }
 
 
