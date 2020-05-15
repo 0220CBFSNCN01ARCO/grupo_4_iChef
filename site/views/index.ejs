@@ -6,32 +6,71 @@
 <body>
     <%-include('./partials/header')%>
     <!--cuerpo-->
-    <div class="jumbotron jumbotron-fluid text-center">
-        <img class="img-fluid" src="https://dummyimage.com/900x500" alt="placeholder">
-        <h1 class="display-4">Bootstrap</h1>
-        <hr class="my-4">
-        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p class="lead"> <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 align-self-center">
-                <h3>Responsive YouTube Video</h3>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/fqpsgH70fYk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <main>
+        <!------first-screen------>
+        <div class="flexbox-container">
+            <div class="flexbox-item flexbox-container-column">
+                <h1 class="center bold-uppercase white-blackshadow"> La mejor manera de cocinar en casa</h1>
+                <p class="bold-uppercase bgc-pink center">Delivery de productos con recetas</p>
+                <a class="btn btn-light" href="#"><span class="btn-font">conocer mas</span></a>
+                <br>
+                <a class="btn btn-light" href="#"><span class="btn-font">elegir un menu</span></a>
+            </div>
+        </div>
+        <!-----Como funcciona------>
+        <div id="funccioning">
+            <h3 class="mgb center uppercase">Como funcciona?</h3>
+            <div class="flexbox-container-feature">
+                <div class="mg-item">
+                    <img class="img-center mgbt-img" src="/images/man.png" alt="">
+                    <p class="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, nobis!</p>
+                </div>
+                <div class="mg-item">
+                    <img class="img-center mgbt-img" src="/images/print-products.png" alt="">
+                    <p class="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, nobis!</p>
+                </div>
+                <div class="mg-item">
+                    <img class="img-center mgbt-img" src="/images/commerce-and-shopping.png" alt="">
+                    <p class="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, nobis!</p>
+                </div>
+                <div class="mg-item">
+                    <img class="img-center mgbt-img" src="/images/boil.png" alt="">
+                    <p class="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, nobis!</p>
                 </div>
             </div>
-            <div class="col-md-4 align-self-center">
-                <h3>Heading 3</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat natus explicabo soluta sit alias eligendi, quod, unde modi dolor nostrum. Nobis cumque, eos dignissimos neque autem inventore necessitatibus ut eveniet!</p>
+        </div>
+
+         <!--
+            <div class="wrap-promo">
+            <div class="flexbox-container-promo" >
+                <div>
+                    <h3 class="uppercase center">Proba combo de 3 cenas</h3>
+                    <p class="uppercase center">*para 2 dos personas</p>
+                    <a class="btn btn-light mgl2r" href="#"><span class="btn-font">pedir solo por $1200</span></a>
+                </div>
+                <div>
+                    <img class="wd80" src="/images/lasana-de-carne-casera.jpg" alt="">
+                </div>
             </div>
         </div>
-        <hr>
-        <div class="row">
+         -->
 
+        <!-----Nuestro market---->
+        <div class="wrap-market">
+        <div class="flexbox-container-market" >
+            <div >
+                <h3 class="uppercase mg2r">Te invitamos a nuestro market de productos gourmet</h3>
+                <p class="mg2r">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit autem tempora voluptate laboriosam est nemo!</p>
+                <a class="btn btn-light mgl2r" href="#"><span class="btn-font">ver los productos</span></a>
+            </div>
+            <div>
+                <img class="wd100 mg2r" src="/images/gourmet1.jpg" alt="">
+            </div>
         </div>
-    </div>
+        </div>
+
+</main>
+
     <%-include('./partials/footer')%>
     <%-include('./partials/script')%>
 </body>

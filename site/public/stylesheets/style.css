@@ -252,6 +252,115 @@ margin-left: 15px;
   overflow: hidden;
 }
 
+/*homepage style*/
+/*----first screen style----*/
+.flexbox-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+  background-image: url('/images/mealkit.jpg');
+  background-size: cover;
+}
+.flexbox-item {
+  width: 80%;
+}
+.flexbox-container-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.center {
+  text-align: center;
+}
+.bold-uppercase {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.white-blackshadow{
+  color: white;
+  text-shadow: 0.2rem 0.2rem 0.2rem black;
+  background-color: rgba(0,0,0,0.4);
+}
+.bgc-pink {
+  background-color: #f1d3d3;
+}
+.btn-font {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: ;
+}
+
+/* Como funcciona */
+.flexbox-container-feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin:auto;
+}
+
+#funccioning {
+  margin: 3rem 1rem 3rem 1rem;
+}
+.mgb {
+  margin-bottom: 1.5rem;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.img-center {
+  display: block;
+  margin: 0 auto;
+}
+.mg-item {
+  margin: 0 .5rem;
+}
+.mgbt-img {
+  margin-bottom: .8rem;
+  margin-top: 1rem;
+}
+
+/* Promo */
+.flexbox-container-promo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.wd80 {
+  width: 80%;
+  height: 300px;
+  object-fit: cover;
+}
+
+
+/* Market */
+.wd100 {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.flexbox-container-market {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin:auto;
+}
+.wrap-market {
+  background-color: rgba(196, 190, 190, 0.5);
+}
+.mg2r {
+  margin: 2rem;
+}
+.mgl2r {
+  margin-left: 2rem;
+}
+
 
 /*FIN CSS IMAGENES*/
 /*Medias query*/
@@ -332,4 +441,13 @@ margin-left: 15px;
     margin-right: 0px;
   }
 
+}
+/*homepage*/
+@media (min-width:661px) {
+  .flexbox-container-feature {
+      flex-direction: row;
+  } 
+  .flexbox-container-market  {
+      flex-direction: row;
+  }
 }
