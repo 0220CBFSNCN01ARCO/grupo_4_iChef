@@ -4,7 +4,7 @@ let productController = {
         res.render('productDetail', { title: 'Detalle productos' });
       },
     product_boxDetail: function (req, res, next) {
-        res.render('product-boxDetail', { title: 'Detalle caja' });  
+        res.render('product-boxDetail', { title: 'Detalle caja' });
       },
     productAdd: function (req, res, next) {
         res.render('productAdd', { title: 'Formulario producto' });
@@ -15,8 +15,6 @@ let productController = {
     productMarket: function (req, res, next) {
         res.render('market', { title: 'Market' });
       }
-
-
 };
 
 module.exports = productController;
