@@ -8,6 +8,7 @@ let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let productRouter = require('./routes/product');
 let registerRouter = require('./routes/register');
+let infoRouter  = require('./routes/info');
 
 let app = express();
 
@@ -25,6 +26,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/product', productRouter);
 app.use('/register', registerRouter);
+app.use('/info',infoRouter)
 
 
 // catch 404 and forward to error handler
@@ -41,7 +43,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', { title: 'Error' });
 });
 
 module.exports = app;
