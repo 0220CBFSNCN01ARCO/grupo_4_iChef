@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="shortcut icon" href="/images/Icono-32x32.png" />
-    <title>Error</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <%- include('./partials/head') %>
 <body>
     <%- include('./partials/header') %>
     <!--cuerpo-->
     <div>
-        <h1><%= message %></h1>
-        <h2><%= error.status %></h2>
-        <pre><%= error.stack %></pre>
+        <h1>Pagina no encontrada: <%= error.status %> - <%= message %></h1>
+        <!--pre><%= error.stack %></pre-->
     </div>
 
     <%- include('./partials/footer') %>
