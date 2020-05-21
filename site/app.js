@@ -11,6 +11,8 @@ let productRouter = require('./routes/product');
 let registerRouter = require('./routes/register');
 let infoRouter  = require('./routes/info');
 
+let logMiddleware = require('./middleware/logMiddleware');
+
 let app = express();
 
 // view engine setup
@@ -24,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
-app.use('/', indexRouter);
+app.use('/', logMiddleware ,indexRouter);
 app.use('/users', usersRouter);
 app.use('/product', productRouter);
 app.use('/register', registerRouter);

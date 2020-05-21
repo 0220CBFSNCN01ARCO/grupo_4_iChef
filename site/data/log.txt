@@ -1,0 +1,9 @@
+20/05/2020 9:06:29 - Se ingreso a: /
+20/05/2020 9:06:30 - Se ingreso a: /
+20/05/2020 9:06:31 - Se ingreso a: /info/staff
+20/05/2020 9:06:32 - Se ingreso a: /info/contact
+20/05/2020 9:06:32 - Se ingreso a: /info/nosotros
+20/05/2020 9:16:01 - Se ingreso a: /register
+20/05/2020 9:16:01 - Se ingreso a: /product/cart
+20/05/2020 9:16:02 - Se ingreso a: /
+20/05/2020 9:16:05 - Se ingreso a: /
