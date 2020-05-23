@@ -16,7 +16,7 @@ let productController = {
         res.render('market', { title: 'Market' });
     },
     listProduct: function (req, res, next) {
-      res.render('market', { title: 'Listar' });
+      res.render('productList', { title: 'Listado productos' });
     },
     getProductById: function (req, res, next) {
 

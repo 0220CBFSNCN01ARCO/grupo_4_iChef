@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+    <div class="container-fluid formHeader">
+        <div class="row">
+            <div class="col-12">
+                <h1>Productos y cajas</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 col-md-10 col-lg-10">
+            <h5>Listado productos</h5>
+        </div>
+        <div class="col-2 col-md-2 col-lg-2">
+            <button type="button" class="btn btn-primary add-new"><i class="fa fa-plus"></i> Nuevo</button>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="product-tab" data-toggle="tab" href="#productos" role="tab" aria-controls="productos" aria-selected="true">Productos market</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="cajas-tab" data-toggle="tab" href="#cajas" role="tab" aria-controls="cajas" aria-selected="false">Cajas</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="tabContentProduct">
+            <div class="tab-pane fade show active" id="productos" role="tabpanel" aria-labelledby="product-tab">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="titleHead" scope="col">Código</th>
+                        <th class="titleHead" scope="col">Descripción</th>
+                        <th class="titleHead" scope="col">Precio</th>
+                        <th class="titleHead" scope="col">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Producto 1</td>
+                        <td class="colPrecio">$1</td>
+                        <td>
+                            <div class="row justify-content-around d-flex">
+                                <div class="row-item">
+                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
+                                        <i class="fa fa-pencil fa-1x"></i>
+                                    </a>
+                                </div>
+                                <div class="row-item">
+                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
+                                        <i class="fa fa-trash fa-1x"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Producto 2</td>
+                        <td class="colPrecio">$2</td>
+                        <td>
+                            <div class="row justify-content-around d-flex">
+                                <div class="row-item">
+                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
+                                        <i class="fa fa-pencil fa-1x"></i>
+                                    </a>
+                                </div>
+                                <div class="row-item">
+                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
+                                        <i class="fa fa-trash fa-1x"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Producto 3</td>
+                        <td class="colPrecio">$5</td>
+                        <td>
+                            <div class="row justify-content-around d-flex">
+                                <div class="row-item">
+                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
+                                        <i class="fa fa-pencil fa-1x"></i>
+                                    </a>
+                                </div>
+                                <div class="row-item">
+                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
+                                        <i class="fa fa-trash fa-1x"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="cajas" role="tabpanel" aria-labelledby="cajas-tab">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="titleHead" scope="col">Código</th>
+                        <th class="titleHead" scope="col">Descripción</th>
+                        <th class="titleHead" scope="col">Precio</th>
+                        <th class="titleHead" scope="col">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Caja 1</td>
+                        <td class="colPrecio">$100</td>
+                        <td>
+                            <div class="row justify-content-around d-flex">
+                                <div class="row-item">
+                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
+                                        <i class="fa fa-pencil fa-1x"></i>
+                                    </a>
+                                </div>
+                                <div class="row-item">
+                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
+                                        <i class="fa fa-trash fa-1x"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Caja 2</td>
+                        <td class="colPrecio">$150</td>
+                        <td>
+                            <div class="row justify-content-around d-flex">
+                                <div class="row-item">
+                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
+                                        <i class="fa fa-pencil fa-1x"></i>
+                                    </a>
+                                </div>
+                                <div class="row-item">
+                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
+                                        <i class="fa fa-trash fa-1x"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Caja 3</td>
+                        <td class="colPrecio">$200</td>
+                        <td>
+                            <div class="row justify-content-around d-flex">
+                                <div class="row-item">
+                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
+                                        <i class="fa fa-pencil fa-1x"></i>
+                                    </a>
+                                </div>
+                                <div class="row-item">
+                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
+                                        <i class="fa fa-trash fa-1x"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/footer') %>
+    <%-include('./partials/script')%>
+</body>
+</html>

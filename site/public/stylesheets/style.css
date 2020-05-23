@@ -252,6 +252,17 @@ margin-left: 15px;
   overflow: hidden;
 }
 
+#registerContainer::after{
+  margin:auto;
+  background-image: url('/images/comida.jpg');
+  background-repeat: repeat;
+  z-index: -1;
+  opacity: 0.4;
+  /*background-size: cover;*/
+}
+
+
+
 /*homepage style*/
 /*----first screen style----*/
 .flexbox-container {
@@ -362,6 +373,17 @@ margin-left: 15px;
   margin-left: 2rem;
 }
 
+.titleHead,.colPrecio {
+  text-align: center;
+}
+
+.editLink{
+  color: #F4D03F;
+}
+
+.deleteLink {
+  color: #E74C3C;
+}
 
 /*FIN CSS IMAGENES*/
 /*Medias query*/
