@@ -8,7 +8,6 @@ let methodOverride = require('method-override');
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let productRouter = require('./routes/product');
-let registerRouter = require('./routes/register');
 let infoRouter  = require('./routes/info');
 
 let logMiddleware = require('./middleware/logMiddleware');
@@ -29,7 +28,6 @@ app.use(methodOverride('_method'));
 app.use('/', logMiddleware ,indexRouter);
 app.use('/users', usersRouter);
 app.use('/product', productRouter);
-app.use('/register', registerRouter);
 app.use('/info',infoRouter)
 
 

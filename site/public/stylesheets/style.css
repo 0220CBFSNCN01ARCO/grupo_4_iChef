@@ -385,6 +385,10 @@ margin-left: 15px;
   color: #E74C3C;
 }
 
+.headUser {
+  padding-bottom: 10px;
+}
+
 /*FIN CSS IMAGENES*/
 /*Medias query*/
 @media (min-width: 576px) {
