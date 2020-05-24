@@ -3,14 +3,8 @@
     <%- include('./partials/head') %>
 <body>
     <%- include('./partials/header') %>
-    <div class="container-fluid formHeader">
-        <div class="row">
-            <div class="col-12">
-                <h1>Usuarios</h1>
-            </div>
-        </div>
-    </div>
-    <div class="row headUser">
+    <%- include('./partials/subtitle') %>
+    <div class="row headTable">
         <div class="col-10 col-md-10 col-lg-10">
             <h5>Listado usuarios</h5>
         </div>
@@ -29,48 +23,7 @@
                 <th class="titleHead" scope="col">Acciones</th>
             </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Ali</td>
-                    <td>Gisela</td>
-                    <td>gali@mail.com</td>
-                    <td>
-                        <div class="row justify-content-around d-flex">
-                            <div class="row-item">
-                                <a class="editLink" data-toggle="tooltip" href="/product/edit">
-                                    <i class="fa fa-pencil fa-1x"></i>
-                                </a>
-                            </div>
-                            <div class="row-item">
-                                <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
-                                    <i class="fa fa-trash fa-1x"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Meyer</td>
-                    <td>José</td>
-                    <td>jmeyer@mail.com</td>
-                    <td>
-                        <div class="row justify-content-around d-flex">
-                            <div class="row-item">
-                                <a class="editLink" data-toggle="tooltip" href="/product/edit">
-                                    <i class="fa fa-pencil fa-1x"></i>
-                                </a>
-                            </div>
-                            <div class="row-item">
-                                <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
-                                    <i class="fa fa-trash fa-1x"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
+            <%- include('./partials/bodyUsers') %>
         </table>
     </div>
     <%- include('./partials/footer') %>

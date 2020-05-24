@@ -3,13 +3,7 @@
 <%- include('./partials/head') %>
 <body>
     <%- include('./partials/header') %>
-    <div class="container-fluid formHeader">
-        <div class="row">
-            <div class="col-12">
-                <h1>Formulario producto</h1>
-            </div>
-        </div>
-    </div>
+    <%- include('./partials/subtitle') %>
     <div class="container-fluid containerForm">
         <form class="frmProducto needs-validation" novalidate>
             <div class="card">
@@ -144,8 +138,18 @@
                 <div class="card-header">Información nutricional</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="form-group col-12 col-md-10 col-lg-8">
+                        <div class="form-group col-12 col-md-6 col-lg-4">
                             <label for="ingredientes">Ingredientes</label>
+                            <select multiple class="custom-select mr-sm-2 form-control" id="ingredientes" name="ingredientes">
+                                <option>Ingrediente 1</option>
+                                <option>Ingrediente 2</option>
+                                <option>Ingrediente 3</option>
+                                <option>Ingrediente 4</option>
+                                <option>Ingrediente 5</option>
+                                <option>Ingrediente 6</option>
+                                <option>Ingrediente 7</option>
+                                <option>Ingrediente 8</option>
+                              </select>
                         </div>
                     </div>
                     <div class="row">

@@ -4,14 +4,8 @@
 
 <body style="font-family: 'Open Sans'; margin:auto; background-image: url(/images/fondo-formulario.jpg); background-repeat: no-repeat; background-size: cover;">
     <%- include('./partials/header') %>
+    <%- include('./partials/subtitle') %>
     <!--cuerpo-->
-    <div class="container-fluid formHeader">
-        <div class="row">
-            <div class="col-12">
-                <h1>Formulario registración</h1>
-            </div>
-        </div>
-    </div>
     <div class="container-fluid containerForm">
         <div class="row">
             <form class="col-12 col-md-12 col-lg-12" style="display: flex; flex-direction: column; border-bottom: solid rgba(166,13,13);" method="POST">
@@ -25,12 +19,10 @@
                     <div style="padding: 1vw;">
                         <input type="tel" name="telefono" id="telefono" placeholder="N° de telefono" style="width: 60vw">
                     </div>
-                    <div style="padding: 1vw;">
-                        <input type="email" name="email" id="email" placeholder="Dirección de email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required style="width: 60vw"></div>
                 </div>
                 <div style="margin: auto;">
                     <div style="padding: 1vw;">
-                        <input type="text" name="usuario" id="usuario" placeholder="Usuarios" minlength="5" maxlength="30" required style="width: 60vw">
+                        <input type="email" name="email" id="email" placeholder="Dirección de email" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required style="width: 60vw">
                     </div>
                     <div style="padding: 1vw;">
                         <input type="password" name="password" id="password" placeholder="Ingrese contarseña" minlength="6" maxlength="6" required style="width: 60vw">

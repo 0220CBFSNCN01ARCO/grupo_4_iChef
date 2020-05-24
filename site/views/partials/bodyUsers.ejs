@@ -1,0 +1,24 @@
+<tbody>
+<%for(let i=0; i < usuarios.length; i++ ) { %>
+    <tr>
+        <th scope="row"><%= usuarios[i].id %></th>
+        <td><%= usuarios[i].nombre %></td>
+        <td><%= usuarios[i].apellido %></td>
+        <td><%= usuarios[i].email %></td>
+        <td>
+            <div class="row justify-content-around d-flex">
+                <div class="row-item">
+                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
+                        <i class="fa fa-pencil fa-1x"></i>
+                    </a>
+                </div>
+                <div class="row-item">
+                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
+                        <i class="fa fa-trash fa-1x"></i>
+                    </a>
+                </div>
+            </div>
+        </td>
+    </tr>
+<% } %>
+</tbody>
