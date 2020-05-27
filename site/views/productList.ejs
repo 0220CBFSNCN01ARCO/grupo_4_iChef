@@ -33,63 +33,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Producto 1</td>
-                        <td class="colPrecio">$1</td>
-                        <td>
-                            <div class="row justify-content-around d-flex">
-                                <div class="row-item">
-                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
-                                        <i class="fa fa-pencil fa-1x"></i>
-                                    </a>
-                                </div>
-                                <div class="row-item">
-                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
-                                        <i class="fa fa-trash fa-1x"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Producto 2</td>
-                        <td class="colPrecio">$2</td>
-                        <td>
-                            <div class="row justify-content-around d-flex">
-                                <div class="row-item">
-                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
-                                        <i class="fa fa-pencil fa-1x"></i>
-                                    </a>
-                                </div>
-                                <div class="row-item">
-                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
-                                        <i class="fa fa-trash fa-1x"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Producto 3</td>
-                        <td class="colPrecio">$5</td>
-                        <td>
-                            <div class="row justify-content-around d-flex">
-                                <div class="row-item">
-                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
-                                        <i class="fa fa-pencil fa-1x"></i>
-                                    </a>
-                                </div>
-                                <div class="row-item">
-                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
-                                        <i class="fa fa-trash fa-1x"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                        <%for(let i=0; i < product.length; i++ ) { %>
+                            <% if(product[i].tipo == 'PRODUCTO') { %>
+                                <%- include('./partials/tableProduct', {producto: product[i]}) %>
+                            <% } %>
+                        <% } %>
                     </tbody>
                 </table>
             </div>
@@ -104,63 +52,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Caja 1</td>
-                        <td class="colPrecio">$100</td>
-                        <td>
-                            <div class="row justify-content-around d-flex">
-                                <div class="row-item">
-                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
-                                        <i class="fa fa-pencil fa-1x"></i>
-                                    </a>
-                                </div>
-                                <div class="row-item">
-                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
-                                        <i class="fa fa-trash fa-1x"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Caja 2</td>
-                        <td class="colPrecio">$150</td>
-                        <td>
-                            <div class="row justify-content-around d-flex">
-                                <div class="row-item">
-                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
-                                        <i class="fa fa-pencil fa-1x"></i>
-                                    </a>
-                                </div>
-                                <div class="row-item">
-                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
-                                        <i class="fa fa-trash fa-1x"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Caja 3</td>
-                        <td class="colPrecio">$200</td>
-                        <td>
-                            <div class="row justify-content-around d-flex">
-                                <div class="row-item">
-                                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
-                                        <i class="fa fa-pencil fa-1x"></i>
-                                    </a>
-                                </div>
-                                <div class="row-item">
-                                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
-                                        <i class="fa fa-trash fa-1x"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                        <%for(let i=0; i < product.length; i++ ) { %>
+                            <% if(product[i].tipo == 'CAJA') { %>
+                                <%- include('./partials/tableProduct', {producto: product[i]}) %>
+                            <% } %>
+                        <% } %>
                     </tbody>
                 </table>
             </div>

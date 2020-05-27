@@ -1,3 +1,4 @@
+const fs = require('fs');
 
 let productController = {
     productDetail: function (req, res, next) {
@@ -6,20 +7,29 @@ let productController = {
     product_boxDetail: function (req, res, next) {
         res.render('product-boxDetail', { title: 'Detalle caja', subtitle: 'Detalle caja' });
     },
-    productAdd: function (req, res, next) {
-        res.render('productAdd', { title: 'Formulario producto', subtitle: 'Formulario alta' });
-    },
     productCart: function (req, res, next) {
-        res.render('productCart', { title: 'Carrito compras', subtitle: 'Carrito' });
+        res.render('productCart', { title: 'Carrito compras', subtitle: 'Mi Carrito' });
     },
     productMarket: function (req, res, next) {
         res.render('market', { title: 'Market', subtitle: 'Market productos' });
     },
     listProduct: function (req, res, next) {
-      res.render('productList', { title: 'Listado productos', subtitle: 'Listado producto' });
+      let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
+      let productos;
+
+      if(productosJSON == ""){
+        productos = [];
+      }else{
+        productos = JSON.parse(productosJSON);
+      }
+
+      //console.log(productos);
+
+      res.render('productList', { title: 'Listado productos',
+                                  subtitle: 'Listado producto',
+                                  product: productos });
     },
     getProductById: function (req, res, next) {
-
       res.render('productAdd', { title: 'Producto id', subtitle: 'Detalle producto' });
     },
     createProduct: function (req, res, next) {

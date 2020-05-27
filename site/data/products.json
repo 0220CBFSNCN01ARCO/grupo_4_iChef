@@ -2,7 +2,7 @@
     {
         "codigo": 1,
         "nombre": "in",
-        "tipo": "Soup - Campbells, Lentil",
+        "tipo": "PRODUCTO",
         "precio": "$5.16",
         "oferta": false,
         "precioOferta": "$5.39",
@@ -11,36 +11,16 @@
         "marca": "Buick",
         "descripcion": "sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate",
         "comensales": 2,
-        "ingredientes": [
-            {
-                "nombre": "tortor eu"
-            }
-        ],
+        "ingredientes": ["tortor eu","tortor eu","tortor eu","tortor eu"],
         "calorias": 665.79,
         "peso": 205.69,
-        "fotos": [
-            {
-                "nombre": "Volutpat.jpeg"
-            },
-            {
-                "nombre": "NonMattis.tiff"
-            },
-            {
-                "nombre": "JustoPellentesqueViverra.tiff"
-            },
-            {
-                "nombre": "AccumsanFelisUt.tiff"
-            },
-            {
-                "nombre": "EtUltricesPosuere.tiff"
-            }
-        ],
+        "fotos": ["SapienCursusVestibulum.png","LoremInteger.tiff","Luctus.jpeg"],
         "receta": "Metus.pdf"
     },
     {
         "codigo": 2,
         "nombre": "luctus rutrum",
-        "tipo": "Puff Pastry - Sheets",
+        "tipo": "PRODUCTO",
         "precio": "$67.01",
         "oferta": true,
         "precioOferta": "$0.86",
@@ -49,42 +29,17 @@
         "marca": "Mazda",
         "descripcion": "lectus in quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris",
         "comensales": 3,
-        "ingredientes": [
-            {
-                "nombre": "in magna"
-            },
-            {
-                "nombre": "felis"
-            },
-            {
-                "nombre": "eu"
-            },
-            {
-                "nombre": "at velit"
-            },
-            {
-                "nombre": "volutpat eleifend"
-            }
+        "ingredientes": ["tortor eu","tortor eu","tortor eu","tortor eu"
         ],
         "calorias": 690.92,
         "peso": 1113.22,
-        "fotos": [
-            {
-                "nombre": "RisusAuctor.png"
-            },
-            {
-                "nombre": "ImperdietNullam.tiff"
-            },
-            {
-                "nombre": "SedVestibulum.jpeg"
-            }
-        ],
+        "fotos": ["SapienCursusVestibulum.png","LoremInteger.tiff","Luctus.jpeg"],
         "receta": "TempusVivamusIn.xls"
     },
     {
         "codigo": 3,
         "nombre": "faucibus orci luctus",
-        "tipo": "Wine - Vovray Sec Domaine Huet",
+        "tipo": "CAJA",
         "precio": "$8.13",
         "oferta": false,
         "precioOferta": "$8.18",
@@ -93,45 +48,16 @@
         "marca": "Lincoln",
         "descripcion": "duis bibendum felis sed interdum venenatis turpis enim blandit mi in porttitor pede justo eu massa donec dapibus duis at velit eu est congue",
         "comensales": 3,
-        "ingredientes": [
-            {
-                "nombre": "ligula vehicula"
-            },
-            {
-                "nombre": "rutrum"
-            },
-            {
-                "nombre": "vel ipsum"
-            },
-            {
-                "nombre": "erat nulla"
-            },
-            {
-                "nombre": "nulla eget"
-            }
-        ],
+        "ingredientes": ["tortor eu","tortor eu","tortor eu","tortor eu"],
         "calorias": 338.02,
         "peso": 631.23,
-        "fotos": [
-            {
-                "nombre": "NullaSedVel.jpeg"
-            },
-            {
-                "nombre": "ConvallisNuncProin.png"
-            },
-            {
-                "nombre": "Eget.tiff"
-            },
-            {
-                "nombre": "DolorQuis.jpeg"
-            }
-        ],
+        "fotos": ["SapienCursusVestibulum.png","LoremInteger.tiff","Luctus.jpeg"],
         "receta": "Quam.pdf"
     },
     {
         "codigo": 4,
         "nombre": "rutrum rutrum neque aenean",
-        "tipo": "Pastry - Mini French Pastries",
+        "tipo": "CAJA",
         "precio": "$21.74",
         "oferta": false,
         "precioOferta": "$0.08",
@@ -140,39 +66,16 @@
         "marca": "GMC",
         "descripcion": "enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in sapien iaculis congue",
         "comensales": 5,
-        "ingredientes": [
-            {
-                "nombre": "libero"
-            },
-            {
-                "nombre": "at"
-            },
-            {
-                "nombre": "dapibus"
-            }
-        ],
+        "ingredientes": ["tortor eu","tortor eu","tortor eu","tortor eu"],
         "calorias": 753.42,
         "peso": 103.56,
-        "fotos": [
-            {
-                "nombre": "OrciLuctusEt.jpeg"
-            },
-            {
-                "nombre": "Vel.tiff"
-            },
-            {
-                "nombre": "Vivamus.gif"
-            },
-            {
-                "nombre": "SapienIn.jpeg"
-            }
-        ],
+        "fotos": ["SapienCursusVestibulum.png","LoremInteger.tiff","Luctus.jpeg"],
         "receta": "RhoncusMauris.ppt"
     },
     {
         "codigo": 5,
         "nombre": "ut nulla",
-        "tipo": "Pimento - Canned",
+        "tipo": "PRODUCTO",
         "precio": "$35.68",
         "oferta": true,
         "precioOferta": "$2.76",
@@ -181,30 +84,10 @@
         "marca": "Mazda",
         "descripcion": "ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed",
         "comensales": 10,
-        "ingredientes": [
-            {
-                "nombre": "et magnis"
-            },
-            {
-                "nombre": "placerat ante"
-            },
-            {
-                "nombre": "donec"
-            }
-        ],
+        "ingredientes": ["tortor eu","tortor eu","tortor eu","tortor eu"],
         "calorias": 752.96,
         "peso": 516.38,
-        "fotos": [
-            {
-                "nombre": "SapienCursusVestibulum.png"
-            },
-            {
-                "nombre": "LoremInteger.tiff"
-            },
-            {
-                "nombre": "Luctus.jpeg"
-            }
-        ],
+        "fotos": ["SapienCursusVestibulum.png","LoremInteger.tiff","Luctus.jpeg"],
         "receta": "TinciduntEgetTempus.xls"
     }
 ]

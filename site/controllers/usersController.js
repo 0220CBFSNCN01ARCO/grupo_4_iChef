@@ -1,6 +1,5 @@
 const fs = require('fs');
 
-
 let usersController = {
     userRegister: function (req, res, next) {
         res.render('register', { title: 'Registro',
@@ -14,7 +13,6 @@ let usersController = {
         }else{
           users = JSON.parse(usuariosJSON);
         }
-        console.log(users);
 
         res.render('usersList', { title: 'Usuarios',
                                   subtitle: 'Listado usuarios',
