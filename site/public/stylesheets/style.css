@@ -265,8 +265,6 @@ margin-left: 15px;
   /*background-size: cover;*/
 }
 
-
-
 /*homepage style*/
 /*----first screen style----*/
 .flexbox-container {
@@ -428,10 +426,6 @@ p {
     margin-top: 30px;
 }
 
-.row:after, .row:before {
-  display: table;
-  content: " ";
-}
 .social-auth-links {
   margin: 10px 0;
 }
@@ -476,7 +470,8 @@ p {
   text-align: center;
   border-right: 1px solid rgba(0,0,0,0.2);
 }
-.fa {
+
+.iconSocial {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -490,41 +485,58 @@ p {
 }
 
 .input-group-addon {
+  border-radius: 0;
+  border-color: #d2d6de;
+  background-color: #fff;
+}
+
+.input-group-Login {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+
+.input-group-addon:first-child {
+  border-right: 0;
+}
+
+.input-group-addon {
   padding: 6px 12px;
   font-size: 14px;
   font-weight: 400;
   line-height: 1;
   color: #555;
   text-align: center;
-  background-color: #eee;
+  background-color: #fff;
   border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
-.input-group-addon, .input-group-btn {
+.input-group-addon {
   width: 1%;
   white-space: nowrap;
   vertical-align: middle;
 }
-
-.input-group .form-control, .input-group-addon, .input-group-btn {
+.input-group-Login, .input-group-addon{
   display: table-cell;
 }
 
-.input-group {
+.input-group-Login {
   position: relative;
   display: table;
   border-collapse: separate;
-  margin-bottom: 15px;
 }
 
-.input-group .input-group-addon {
-  border-radius: 0;
-  border-color: #d2d6de;
-  background-color: #fff;
+.iconLogin {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.input-group-addon:last-child {
-  border-left: 0;
+
+.form-control {
+  border-radius: 0px;
 }
 
 /*FIN LOGIN*/

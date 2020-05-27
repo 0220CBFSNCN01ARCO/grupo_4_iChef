@@ -6,44 +6,44 @@
     <div class="login-box">
         <div class="login-box-body">
           <h3 class="login-box-msg"><b>Login</b></h3>
-          <form action="#" method="post">
-            <div class="input-group has-feedback">
-              <input type="email" class="form-control" placeholder="Email">
-              <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            </div>
-            <div class="input-group has-feedback">
-              <input type="password" class="form-control" placeholder="Password">
-              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+          <form class="formLogin needs-validation" action="/" method="post" novalidate>
+            <div class="row">
+              <div class="form-group input-group-Login col-12">
+                <span class="input-group-addon"><i class="iconLogin fa fa-envelope"></i></span>
+                <input type="email" class="form-control" placeholder="Email" required>
+                <div class="invalid-feedback">Debe ingresar un email.</div>
+              </div>
+              <div class="form-group input-group-Login col-12">
+                <span class="input-group-addon"><i class="iconLogin fa fa-key"></i></span>
+                <input type="password" class="form-control" placeholder="Password" required>
+                <div class="invalid-feedback">Debe ingresar un password.</div>
+              </div>
             </div>
             <div class="row rowLogin">
               <div class="col-xs-8">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
+                    <input class="form-check-input" type="checkbox" value="" id="checkRecordame" checked>
+                    <label class="form-check-label" for="checkRecordame">
                       Recordarme
                     </label>
                   </div>
               </div>
-              <!-- /.col -->
               <div class="col-xs-4">
-                <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
               </div>
-              <!-- /.col -->
             </div>
           </form>
 
           <div class="social-auth-links text-center">
             <p>- OR -</p>
             <a href="#" class="btn btn-block btn-social btn-facebookLogin btn-flat">
-                <i class="fa fa-facebook"></i> Ingresar usando Facebook</a>
+                <i class="iconSocial fa fa-facebook"></i> Ingresar con Facebook</a>
             <a href="#" class="btn btn-block btn-social btn-google btn-flat">
-                <i class="fa fa-google"></i> Ingresar usando Google</a>
+                <i class="iconSocial fa fa-google"></i> Ingresar con Google</a>
           </div>
-          <!-- /.social-auth-links -->
           <a href="#">Olvide mi contraseña</a><br>
-          <a href="./users/login" class="text-center">Registrarme</a>
+          <a href="/users/register" class="text-center">Registrarme</a>
         </div>
-        <!-- /.login-box-body -->
       </div>
       <%- include('./partials/footer') %>
       <%-include('./partials/script')%>

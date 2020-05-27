@@ -8,6 +8,6 @@ const {check, validationResult, body} = require('express-validator');
 router.get('/', usersController.userList);
 
 router.get('/register', usersController.userRegister);
-
+router.get('/login', usersController.userLogin);
 
 module.exports = router;
