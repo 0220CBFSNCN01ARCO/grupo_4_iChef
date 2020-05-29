@@ -13,9 +13,11 @@
                     </a>
                 </div>
                 <div class="row-item">
-                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete">
-                        <i class="fa fa-trash fa-1x"></i>
-                    </a>
+                    <form action="/product/delete/<%= usuarios[i].id %>">
+                        <a class="deleteLink" data-toggle="tooltip" href="/product/delete/<%= usuarios[i].id %>">
+                            <i class="fa fa-trash fa-1x"></i>
+                        </a>
+                    </form>
                 </div>
             </div>
         </td>

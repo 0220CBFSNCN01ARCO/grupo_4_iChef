@@ -3,48 +3,63 @@
     <%- include('./partials/head') %>
 <body class="hold-transition login-page">
     <%- include('./partials/header') %>
-    <div class="login-box">
-        <div class="login-box-body">
-          <h3 class="login-box-msg"><b>Login</b></h3>
-          <form class="formLogin needs-validation" action="/" method="post" novalidate>
-            <div class="row">
-              <div class="form-group input-group-Login col-12">
-                <span class="input-group-addon"><i class="iconLogin fa fa-envelope"></i></span>
-                <input type="email" class="form-control" placeholder="Email" required>
-                <div class="invalid-feedback">Debe ingresar un email.</div>
+    <div class="fondoFormulario">
+      <div class="login-box">
+          <div class="login-box-body">
+            <h3 class="login-box-msg"><b>Login</b></h3>
+            <form class="formLogin needs-validation" action="/" method="post" novalidate>
+              <div class="row">
+                <div class="form-group col-12">
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                      </div>
+                      <input type="email" class="form-control" placeholder="Email" required>
+                      <div class="invalid-feedback">Debe ingresar un email.</div>
+                  </div>
+                </div>
+                <div class="form-group col-12">
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-key"></i></span>
+                      </div>
+                      <input type="password" class="form-control" placeholder="Password" required>
+                      <div class="invalid-feedback">Debe ingresar un password.</div>
+                  </div>
+                </div>
               </div>
-              <div class="form-group input-group-Login col-12">
-                <span class="input-group-addon"><i class="iconLogin fa fa-key"></i></span>
-                <input type="password" class="form-control" placeholder="Password" required>
-                <div class="invalid-feedback">Debe ingresar un password.</div>
-              </div>
-            </div>
-            <div class="row rowLogin">
-              <div class="col-xs-8">
-                <div class="form-check">
+              <div class="row rowLogin">
+                <div class="col-xs-8">
+                  <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="checkRecordame" checked>
                     <label class="form-check-label" for="checkRecordame">
-                      Recordarme
+                        Recordarme
                     </label>
                   </div>
+                </div>
+                <div class="col-xs-4">
+                  <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+                </div>
               </div>
-              <div class="col-xs-4">
-                <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+            </form>
+            <div class="container social-auth-links text-center">
+              <div class="row">
+                <p class="col-12">- Ingresar con -</p>
+              </div>
+              <div class="row row-social">
+                <a href="#" class="col btn btn-social btn-facebookLogin btn-flat m-1">
+                  <i class="iconSocial fa fa-facebook"></i> Facebook</a>
+                <a href="#" class="col btn btn-social btn-google btn-flat m-1">
+                  <i class="iconSocial fa fa-google"></i> Google</a>
               </div>
             </div>
-          </form>
-
-          <div class="social-auth-links text-center">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-social btn-facebookLogin btn-flat">
-                <i class="iconSocial fa fa-facebook"></i> Ingresar con Facebook</a>
-            <a href="#" class="btn btn-block btn-social btn-google btn-flat">
-                <i class="iconSocial fa fa-google"></i> Ingresar con Google</a>
+            <div class="row mt-2">
+              <a class="login-text col-12" href="#">Olvide mi contraseña</a><br>
+              <a class="login-text col-12" href="/users/register" class="text-center">Registrarme</a>
+            </div>
           </div>
-          <a href="#">Olvide mi contraseña</a><br>
-          <a href="/users/register" class="text-center">Registrarme</a>
-        </div>
       </div>
+    </div>
       <%- include('./partials/footer') %>
       <%-include('./partials/script')%>
 </body>

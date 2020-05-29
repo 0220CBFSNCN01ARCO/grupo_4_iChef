@@ -3,55 +3,115 @@
   <%- include('./partials/head') %>
 <body>
     <%- include('./partials/header') %>
-    <%- include('./partials/subtitle') %>
-    <div class="container-fluid containerForm">
+    <div class="container-fluid headerCart">
+      <h4>Mi carrito</h4>
+    </div>
+    <div class="container-orden">
       <div class="row">
-          <div class="producto">
-            <div class="card mb-3">
+        <div class="container-detalle">
+          <div class="productItem">
+            <div class="card mb-3" style="max-width: 540px;">
               <div class="row no-gutters">
-                <div class="col-md-2">
-                  <img src="..." class="card-img" alt="...">
+                <div class="col-6">
+                  <img src="/images/gourmet1.jpg" class="card-img" alt="">
                 </div>
-                <div class="col-md-10">
+                <div class="col-8">
                   <div class="card-body">
-                      <div class="row">
-                        <div class="col-4">
-                          <label>Detalle:</label>
-                          <span>Producto 1</span>
-                        </div>
-                        <div class="col-2">
-                          <label>Precio:</label>
-                          <span>$100</span>
-                        </div>
-                        <div class="col-2">
-                          <label>Cantidad:</label>
-                          <select class="form-control" id="idQuantity">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                          </select>
-                        </div>
-                        <div class="col-2">
-                          <label>Subtotal:</label>
-                          <span>$100</span>
-                        </div>
+                    <div class="row">
+                      <h5 class="card-title col-12">Descripcion producto</h5>
+                      <div class="precio col-6">
+                        <p>precio</p>
                       </div>
+                      <div class="cantidad col-6">
+                        <p>cantidad</p>
+                      </div>
+                    </div>
                   </div>
+                </div>
+                <div class="accion col-1">
+                  <a class="deleteLink" data-toggle="tooltip" href="">
+                    <i class="fa fa-trash fa-1x"></i>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="resumen">
-              <div class="detalle"></div>
-              <div class="accionesCarrito"></div>
+        </div>
+        <div class="container-resumen col-sm">
+          <div class="estadoOrden">
+            <form action="">
+              <div class="headerResumen">
+                <h4>Resumen de compra</h4>
+                <div>Subtotal $</div>
+              </div>
+              <div class="detalleResumen">
+                <div>
+                  <button>Continuar compra</button>
+                </div>
+              </div>
+            </form>
           </div>
+        </div>
       </div>
+
     </div>
+
+
+
+    <!--div class="container-fluid">
+      <div class="producto col-12 col-md-10 col-lg-8">
+        <div class="card car-product mb-3">
+          <div class="row no-gutters">
+            <div class="col-md-2">
+              <img src="/images/gourmet1.jpg" class="card-img" alt="...">
+            </div>
+            <div class="col-md-10">
+              <div class="card-body">
+                  <div class="row">
+                    <div class="col-4">
+                      <label>Detalle:</label>
+                      <span>Descripión producto 1</span>
+                    </div>
+                    <div class="col-2">
+                      <label>Precio:</label>
+                      <span>$100</span>
+                    </div>
+                    <div class="col-2">
+                      <label>Cantidad:</label>
+                      <select class="form-control" id="cantidad">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                      </select>
+                    </div>
+                    <div class="col-2">
+                      <label>Subtotal:</label>
+                      <span>$100</span>
+                    </div>
+                    <div>
+                      <form action="">
+                        <a class="deleteLink" data-toggle="tooltip" href="">
+                            <i class="fa fa-trash fa-1x"></i>
+                        </a>
+                      </form>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="resumen col-12 col-md-10 col-lg-4">
+          <div class="detalle">Detalle compra</div>
+          <div class="accionesCarrito"></div>
+      </div>
+    </div-->
+
     <%- include('./partials/footer') %>
     <%-include('./partials/script')%>
 </body>

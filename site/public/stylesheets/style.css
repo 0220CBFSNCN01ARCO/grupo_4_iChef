@@ -186,7 +186,7 @@ h1 {
 
 /*CSS IMAGENES*/
 
-.contenedorImg{
+.contenedorImg,.social-auth-links {
   padding-left: 0;
   padding-right: 0;
 }
@@ -256,13 +256,22 @@ margin-left: 15px;
   overflow: hidden;
 }
 
+/*FIN CSS IMAGENES*/
+
 #registerContainer::after{
   margin:auto;
   background-image: url('/images/comida.jpg');
   background-repeat: repeat;
   z-index: -1;
   opacity: 0.4;
-  /*background-size: cover;*/
+}
+
+.fondoFormulario {
+  background: url('/images/fondos/table2.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 /*homepage style*/
@@ -400,7 +409,7 @@ margin-left: 15px;
 }
 
 .login-box-body, .register-box-body {
-  padding: 20px;
+  padding: 10px;
   border-top: 0;
   color: #666;
 }
@@ -423,12 +432,8 @@ p {
     margin-right: -15px;
     margin-left: -15px;
     justify-content: space-around;
-    margin-top: 30px;
 }
 
-.social-auth-links {
-  margin: 10px 0;
-}
 
 .btn.btn-flat {
   border-radius: 0;
@@ -478,6 +483,12 @@ p {
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.row-social {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-wrap: nowrap;
 }
 
 .fa-check:before {
@@ -539,9 +550,23 @@ p {
   border-radius: 0px;
 }
 
+.login-text {
+  color:#666;
+  font-weight: bold;
+  text-align: center;
+}
+
 /*FIN LOGIN*/
 
-/*FIN CSS IMAGENES*/
+
+
+.car-product{
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+
+
 /*Medias query*/
 @media (min-width: 576px) {
   .imagePreview {
@@ -573,6 +598,17 @@ p {
   margin-right: 0px;
 }
 
+.register-box {
+  width: 420px;
+  margin: auto;
+}
+
+.row-social {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-wrap: nowrap;
+}
+
 }
 
 @media (min-width: 992px) {
@@ -592,6 +628,17 @@ p {
 .rowImagenes {
   margin-left: 0px;
   margin-right: 0px;
+}
+
+.row-social {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-wrap: nowrap;
+}
+
+.car-product{
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 }
@@ -619,13 +666,22 @@ p {
     margin-left: 0px;
     margin-right: 0px;
   }
+  .register-box {
+    width: 520px;
+    margin: auto;
+  }
+  .row-social {
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-wrap: nowrap;
+  }
 
 }
 /*homepage*/
 @media (min-width:661px) {
   .flexbox-container-feature {
       flex-direction: row;
-  } 
+  }
   .flexbox-container-market  {
       flex-direction: row;
   }
