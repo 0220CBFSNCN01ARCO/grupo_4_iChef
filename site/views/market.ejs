@@ -4,9 +4,21 @@
 <body>
     <%- include('./partials/header') %>
     <!--cuerpo-->
-    <div>
-        <h1>Pagina en construcción</h1>
-    </div>
+    <div class = "container fluid">
+        <div class = "row">
+    <% for(let i=0; i < productos.length; i++) { %>
+    <div class="card col-12 col-md-6 col-lg-3" style="width: 18rem;">
+        <img src="<%= productos[i].fotos %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"> <%= productos[i].nombre %> </h5>
+          <p class="card-text">Marca: <%= productos[i].marca %></p>
+          <p><%= productos[i].precio %></p>
+          <a href="#" class="btn btn-primary">Detalle producto</a>
+        </div>
+      </div>
+    <% } %>
+</div>
+</div>
 
     <%- include('./partials/footer') %>
     <%-include('./partials/script')%>

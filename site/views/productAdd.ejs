@@ -5,7 +5,7 @@
     <%- include('./partials/header') %>
     <%- include('./partials/subtitle') %>
     <div class="container-fluid containerForm">
-        <form class="frmProducto needs-validation" novalidate>
+        <form method="post" enctype="multipart/form-data" class="frmProducto needs-validation" novalidate>
             <div class="card">
                 <div class="card-header">Datos del producto</div>
                 <div class="card-body">
@@ -174,7 +174,7 @@
                             <div class="col-12 col-md-4 col-lg-3 imgUp">
                                 <div class="imagePreview"></div>
                                     <label class="btn btn-primary">Cargar
-                                        <input type="file" class="uploadFile img" value="Upload Photo">
+                                        <input type="file" class="uploadFile img" value="Upload Photo" id="file">
                                     </label>
                                 </div><!-- col-2 -->
                                 <i class="fa fa-plus imgAdd"></i>
