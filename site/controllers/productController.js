@@ -47,8 +47,10 @@ let productController = {
       const productoAguardar = {
         codigo: ultimoItem.codigo + 1,
         nombre: body.nombreProducto,
+        tipo: body.tipo,
         precio: body.precioProd,
         marca: body.marca,
+        peso: body.peso,
         descripcion: body.txtDescripcion,
         fotos: req.filename
       };

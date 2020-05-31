@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
     <%- include('./partials/head') %>
-<body>
+<body class="body_market">
     <%- include('./partials/header') %>
     <!--cuerpo-->
-    <div class = "container fluid">
-        <div class = "row">
+    <div>
+    <div class = "container" stye= "flex-direction: flex" >
+        <div class = "row"  >
     <% for(let i=0; i < productos.length; i++) { %>
-    <div class="card col-12 col-md-6 col-lg-3" style="width: 18rem;">
+    <div class="card-market col-12 col-md-6 col-lg-3" style="width: 18rem;">
         <img src="<%= productos[i].fotos %>" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"> <%= productos[i].nombre %> </h5>
@@ -16,6 +17,7 @@
           <a href="#" class="btn btn-primary">Detalle producto</a>
         </div>
       </div>
+    </div>
     <% } %>
 </div>
 </div>
