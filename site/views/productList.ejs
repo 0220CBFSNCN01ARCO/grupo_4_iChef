@@ -3,13 +3,14 @@
     <%- include('./partials/head') %>
 <body>
     <%- include('./partials/header') %>
-    <%- include('./partials/subtitle') %>
     <div class="row headTable">
         <div class="col-10 col-md-10 col-lg-10">
             <h5>Listado productos</h5>
         </div>
         <div class="col-2 col-md-2 col-lg-2">
-            <button type="button" class="btn btn-primary add-new"><i class="fa fa-plus"></i> Nuevo</button>
+            <a class="btn btn-primary" href="/product/add">
+                <i class="fa fa-plus fa-1x"></i> Nuevo
+            </a>
         </div>
     </div>
     <div class="container-fluid">

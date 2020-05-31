@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+    <!--cuerpo-->
+    <div class="container">
+        <div>
+            <div class="alert alert-success mt-2" role="alert">
+                Producto "<%= product.codigo %>,
+                <%= product.nombre %>"
+                eliminado exitosamente!!!</div>
+            <div class="btnVolver">
+                <a class="alert-link" href="/product">Volver</a>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/footer') %>
+    <%-include('./partials/script')%>
+</body>
+</html>

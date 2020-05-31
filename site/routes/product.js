@@ -7,6 +7,8 @@ router.get('/detail', productController.productDetail);
 router.get('/detail-box', productController.product_boxDetail);
 router.get('/cart', productController.productCart);
 router.get('/market', productController.productMarket);
+router.get('/productDelete', productController.productDelete);
+
 
 //1. /products​ (GET) - Listado de productos
 router.get('/', productController.listProduct);
@@ -21,7 +23,8 @@ router.post('/create', productController.createProduct);
 router.get('/:id/edit', productController.editProductById);
 //6. /products/​:id​ (PUT)  Acción de edición (a donde se envía el formulario): 
 router.post('/:id', productController.saveProductById);
+
 //7. /products/​:id​ (DELETE) Acción de borrado
-router.delete('/:id', productController.deleteProductById);
+router.delete('/:idProducto',productController.deleteProductById);
 
 module.exports = router;

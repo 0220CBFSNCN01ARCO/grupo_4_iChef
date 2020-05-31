@@ -4,114 +4,158 @@
 <body>
     <%- include('./partials/header') %>
     <div class="container-fluid headerCart">
-      <h4>Mi carrito</h4>
+      <h4 id="text-cart">Mi carrito</h4>
     </div>
-    <div class="container-orden">
-      <div class="row">
-        <div class="container-detalle">
-          <div class="productItem">
-            <div class="card mb-3" style="max-width: 540px;">
-              <div class="row no-gutters">
-                <div class="col-6">
-                  <img src="/images/gourmet1.jpg" class="card-img" alt="">
-                </div>
-                <div class="col-8">
-                  <div class="card-body">
-                    <div class="row">
-                      <h5 class="card-title col-12">Descripcion producto</h5>
-                      <div class="precio col-6">
-                        <p>precio</p>
-                      </div>
-                      <div class="cantidad col-6">
-                        <p>cantidad</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="accion col-1">
-                  <a class="deleteLink" data-toggle="tooltip" href="">
-                    <i class="fa fa-trash fa-1x"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
+    <div class="container-fluid detalleCart">
+      <div class="row item-cart align-items-center">
+          <div id="imagen-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
+            <img src="/images/gourmet1.jpg" class="img-producto" alt="" width="50px">
           </div>
-        </div>
-        <div class="container-resumen col-sm">
-          <div class="estadoOrden">
+          <div id="descripcion-cart" class="col-8 col-md-4 col-lg-4 col-xl-4">
+            <p>Descripción producto 1</p>
+          </div>
+          <div id="pu-cart" class="col-3 col-md-2 col-lg-2 col-xl-2">
+            <p>$850</p>
+          </div>
+          <div id="cantidad-cart" class="col-3 col-md-1 col-lg-1 col-xl-1">
+            <select class="custom-select" id="cantidad-cart">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select></td>
+          </div>
+          <div id="total-item-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
+            <p>$26800</p>
+          </div>
+          <div id="accion-cart" class="col-1 col-md-1 col-lg-1 col-xl-1">
             <form action="">
-              <div class="headerResumen">
-                <h4>Resumen de compra</h4>
-                <div>Subtotal $</div>
-              </div>
-              <div class="detalleResumen">
-                <div>
-                  <button>Continuar compra</button>
-                </div>
-              </div>
+              <a class="deleteLink" data-toggle="tooltip" href="">
+                  <i class="fa fa-trash fa-1x"></i>
+              </a>
             </form>
           </div>
+      </div>
+      <div class="row item-cart align-items-center">
+        <div id="imagen-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
+          <img src="/images/gourmet1.jpg" class="img-producto" alt="" width="50px">
+        </div>
+        <div id="descripcion-cart" class="col-8 col-md-4 col-lg-4 col-xl-4">
+          <p>Descripción producto 2</p>
+        </div>
+        <div id="pu-cart" class="col-3 col-md-2 col-lg-2 col-xl-2">
+          <p>$100</p>
+        </div>
+        <div id="cantidad-cart" class="col-3 col-md-1 col-lg-1 col-xl-1">
+          <select class="custom-select" id="cantidad-cart">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select></td>
+        </div>
+        <div id="total-item-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
+          <p>$100000</p>
+        </div>
+        <div id="accion-cart" class="col-1 col-md-1 col-lg-1 col-xl-1">
+          <form action="">
+            <a class="deleteLink" data-toggle="tooltip" href="">
+                <i class="fa fa-trash fa-1x"></i>
+            </a>
+          </form>
         </div>
       </div>
-
+      <div class="row item-cart align-items-center">
+        <div id="imagen-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
+          <img src="/images/gourmet1.jpg" class="img-producto" alt="" width="50px">
+        </div>
+        <div id="descripcion-cart" class="col-8 col-md-4 col-lg-4 col-xl-4">
+          <p>Descripción producto 3</p>
+        </div>
+        <div id="pu-cart" class="col-3 col-md-2 col-lg-2 col-xl-2">
+          <p>$50</p>
+        </div>
+        <div id="cantidad-cart" class="col-3 col-md-1 col-lg-1 col-xl-1">
+          <select class="custom-select" id="cantidad-cart">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select></td>
+        </div>
+        <div id="total-item-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
+          <p>$30500</p>
+        </div>
+        <div id="accion-cart" class="col-1 col-md-1 col-lg-1 col-xl-1">
+          <form action="">
+            <a class="deleteLink" data-toggle="tooltip" href="">
+                <i class="fa fa-trash fa-1x"></i>
+            </a>
+          </form>
+        </div>
+      </div>
     </div>
+    <div class="container-fluid resumenCart">
+      <div class="row row-resumen">
+          <!-- accepted payments column -->
+          <div class="col-6">
+            <p class="lead">Medios de pago</p>
+            <img src="/images/mediospago/visa.png" alt="Visa">
+            <img src="/images/mediospago/mastercard.png" alt="Mastercard">
+            <img src="/images/mediospago/american-express.png" alt="American Express">
+            <img src="/images/mediospago/paypal2.png" alt="Paypal">
 
-
-
-    <!--div class="container-fluid">
-      <div class="producto col-12 col-md-10 col-lg-8">
-        <div class="card car-product mb-3">
-          <div class="row no-gutters">
-            <div class="col-md-2">
-              <img src="/images/gourmet1.jpg" class="card-img" alt="...">
-            </div>
-            <div class="col-md-10">
-              <div class="card-body">
-                  <div class="row">
-                    <div class="col-4">
-                      <label>Detalle:</label>
-                      <span>Descripión producto 1</span>
-                    </div>
-                    <div class="col-2">
-                      <label>Precio:</label>
-                      <span>$100</span>
-                    </div>
-                    <div class="col-2">
-                      <label>Cantidad:</label>
-                      <select class="form-control" id="cantidad">
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                      </select>
-                    </div>
-                    <div class="col-2">
-                      <label>Subtotal:</label>
-                      <span>$100</span>
-                    </div>
-                    <div>
-                      <form action="">
-                        <a class="deleteLink" data-toggle="tooltip" href="">
-                            <i class="fa fa-trash fa-1x"></i>
-                        </a>
-                      </form>
-                    </div>
-                  </div>
-              </div>
+            <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dolorum fugiat
+               ea sunt voluptatem maiores eos voluptas voluptatum. Aspernatur nam incidunt
+               nobis porro excepturi nemo, molestias autem placeat non praesentium?
+            </p>
+          </div>
+          <!-- /.col -->
+          <div class="col-6">
+            <p class="tituloResumen"><b>Resumen compra</b></p>
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                <tr class="row">
+                  <th class="col" style="width:50%">Subtotal</th>
+                  <td class="col">$250.30</td>
+                </tr>
+                <tr class="row">
+                  <th class="col">Descuentos</th>
+                  <td class="col">-$1.80</td>
+                </tr>
+                <tr class="row">
+                  <th class="col">Envio</th>
+                  <td class="col">$5.80</td>
+                </tr>
+                <tr class="row">
+                  <th class="col">Total</th>
+                  <td class="col">$265.24</td>
+                </tr>
+                <tr>
+                  <th class="col">
+                      <button type="submit" class="btn btn-primary btn-block btn-flat">Finalizar</button>
+                  </th>
+                </tr>
+              </tbody></table>
             </div>
           </div>
-        </div>
+          <!-- /.col -->
       </div>
-      <div class="resumen col-12 col-md-10 col-lg-4">
-          <div class="detalle">Detalle compra</div>
-          <div class="accionesCarrito"></div>
-      </div>
-    </div-->
-
+    </div>
     <%- include('./partials/footer') %>
     <%-include('./partials/script')%>
 </body>

@@ -3,17 +3,15 @@
     <td><%= producto.nombre %></td>
     <td class="colPrecio"><%= producto.precio %></td>
     <td>
-        <div class="row justify-content-around d-flex">
+        <div class="row justify-content-around align-items-center d-flex">
             <div class="row-item">
-                <a class="editLink" data-toggle="tooltip" href="/product/edit">
+                <a class="editLink" data-toggle="tooltip" href="/product/<%= producto.codigo %>/edit">
                     <i class="fa fa-pencil fa-1x"></i>
                 </a>
             </div>
             <div class="row-item">
-                <form action="/product/delete/<%= producto.codigo %>">
-                    <a class="deleteLink" data-toggle="tooltip" href="/product/delete/<%= producto.codigo %>">
-                        <i class="fa fa-trash fa-1x"></i>
-                    </a>
+                <form method="POST" action="/product/<%= producto.codigo %>?_method=DELETE">
+                    <button class="btn deleteLink" type="submit"><i class="fa fa-trash fa-1x"></i></button>
                 </form>
             </div>
         </div>

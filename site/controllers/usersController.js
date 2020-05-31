@@ -20,7 +20,6 @@ let usersController = {
         }
 
         res.render('usersList', { title: 'Usuarios',
-                                  subtitle: 'Listado usuarios',
                                   usuarios: users });
       }
 };

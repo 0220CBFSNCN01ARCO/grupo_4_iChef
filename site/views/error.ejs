@@ -4,8 +4,14 @@
 <body>
     <%- include('./partials/header') %>
     <!--cuerpo-->
-    <div>
-        <h1>Pagina no encontrada: <%= error.status %> - <%= message %></h1>
+    <div class="container mt-2">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Pagina no encontrada</h4>
+            <p>Error: <%= error.status %></p>
+            <hr>
+            <p class="mb-0">Mensaje: <%= message %></p>
+        </div>
+
         <!--pre><%= error.stack %></pre-->
     </div>
 

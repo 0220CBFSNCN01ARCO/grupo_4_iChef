@@ -6,17 +6,15 @@
         <td><%= usuarios[i].apellido %></td>
         <td><%= usuarios[i].email %></td>
         <td>
-            <div class="row justify-content-around d-flex">
+            <div class="row justify-content-around align-items-center d-flex">
                 <div class="row-item">
-                    <a class="editLink" data-toggle="tooltip" href="/product/edit">
+                    <a class="editLink" data-toggle="tooltip" href="/users/<%= usuarios[i].id %>/edit">
                         <i class="fa fa-pencil fa-1x"></i>
                     </a>
                 </div>
                 <div class="row-item">
-                    <form action="/product/delete/<%= usuarios[i].id %>">
-                        <a class="deleteLink" data-toggle="tooltip" href="/product/delete/<%= usuarios[i].id %>">
-                            <i class="fa fa-trash fa-1x"></i>
-                        </a>
+                    <form method="POST" action="/users/<%= usuarios[i].id %>?_method=DELETE">
+                        <button class="btn deleteLink" type="submit"><i class="fa fa-trash fa-1x"></i></button>
                     </form>
                 </div>
             </div>

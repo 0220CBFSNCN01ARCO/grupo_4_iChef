@@ -23,10 +23,7 @@ let productController = {
         productos = JSON.parse(productosJSON);
       }
 
-      //console.log(productos);
-
       res.render('productList', { title: 'Listado productos',
-                                  subtitle: 'Listado producto',
                                   product: productos });
     },
     getProductById: function (req, res, next) {
@@ -43,11 +40,34 @@ let productController = {
 
       res.render('productAdd', { title: 'Guardar' });
     },
+    productDelete:function (req, res, next) {
+
+      res.render('productDelete', { title: 'Producto borrado' });
+    },
     deleteProductById: function (req, res, next) {
+      let idProducto = req.params.idProducto;
+      let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
+      let productos;
 
-      res.render('productAdd', { title: 'Delete' });
+      if(productosJSON == ""){
+        productos = [];
+      }else{
+        productos = JSON.parse(productosJSON);
+      }
+
+      let newPorductos = productos.filter(function (producto) {
+        return producto.codigo != idProducto;
+      });
+
+      let productoBorrado = productos.find(function (producto) {
+        return producto.codigo == idProducto;
+      });
+
+      fs.writeFileSync('./data/products.json', JSON.stringify(newPorductos, { encoding: 'UTF-8'}) );
+
+      res.render('productDelete', { title: 'Producto borrado',
+                                    product: productoBorrado });
     }
-
 };
 
 module.exports = productController;
