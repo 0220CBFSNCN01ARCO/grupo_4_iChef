@@ -695,6 +695,14 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.card-market{
-  background-color: rgba(255,255,255,0.8);
+.carrito-market{
+display: flex;
+justify-content: flex-end;
+justify-content: space-around;
+}
+.espacio-market{
+ margin-right: 1vw;
+}
+.background-card{
+ background-color: rgba(255,255,255,0.8)
 }
