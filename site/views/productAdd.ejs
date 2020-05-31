@@ -5,14 +5,14 @@
     <%- include('./partials/header') %>
     <%- include('./partials/subtitle') %>
     <div class="container-fluid containerForm">
-        <form class="frmProducto needs-validation" novalidate>
+        <form method="POST" action="/product/create" class="frmProducto needs-validation" novalidate>
             <div class="card">
                 <div class="card-header">Datos del producto</div>
                 <div class="card-body">
                     <div class="row">
                         <div class="form-group col-12 col-md-7 col-lg-7">
                             <label for="nombreProducto">Nombre</label>
-                            <input type="text" class="form-control" id="nombreProducto" placeholder="Ingrese nombre del producto" required>
+                            <input type="text" class="form-control" name="nombreProducto" placeholder="Ingrese nombre del producto" required>
                             <div class="invalid-feedback">Debe ingresar un nombre para el producto.</div>
                         </div>
                         <div class="form-group col-12 col-md-5 col-lg-4">
@@ -39,7 +39,7 @@
                                         <i class="fa fa-dollar-sign"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control" id="precioProducto" placeholder="0" required>
+                                <input type="text" class="form-control" name="precioProducto" placeholder="0" required>
                                 <div class="invalid-feedback">Debe ingresar un precio de venta.</div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                     <div class="form-group col-6 col-md-5 col-lg-4">
                                         <label for="descuentoProducto">Descuento</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="0" required>
+                                            <input type="text" name="descuento" class="form-control" placeholder="0">
                                             <span class="input-group-text">
                                                 <i class="fa fa-percent"></i>
                                             </span>
@@ -70,7 +70,7 @@
                                                     <i class="fa fa-dollar-sign"></i>
                                                 </span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="0" required>
+                                            <input type="text" name="precioOferta" class="form-control" placeholder="0">
                                             <div class="invalid-feedback">Ingrese precio de oferta.</div>
                                         </div>
                                     </div>
@@ -83,7 +83,7 @@
                             <label for="grupo">Grupo</label>
                             <select class="custom-select form-control" id="grupo" name="grupo" required>
                                 <option value="" selected>Seleccione un grupo</option>
-                                <option value="grupo1">Generico</option>
+                                <option value="generico">Generico</option>
                                 <option value="grupo2">Grupo 1</option>
                                 <option value="grupo3">Grupo 2</option>
                                 <option value="grupo4">Grupo 3</option>
@@ -93,9 +93,9 @@
                         </div>
                         <div class="form-group col-xs-6 col-md-5 col-lg-4">
                             <label for="marca">Marca</label>
-                            <select class="custom-select form-control" id="marca" name="marca" required>
+                            <select class="custom-select form-control" name="marca" required>
                                 <option value="" selected>Seleccione una marca</option>
-                                <option value="marca1">Generica</option>
+                                <option value="generica">Generica</option>
                                 <option value="marca2">Marca 1</option>
                                 <option value="marca3">Marca 2</option>
                                 <option value="marca4">Marca 3</option>
@@ -107,7 +107,7 @@
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-12 col-lg-8">
                             <label for="txtDescripcion">Descripción</label>
-                            <textarea class="form-control" id="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"  required></textarea>
+                            <textarea class="form-control" name="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"  required></textarea>
                             <div class="invalid-feedback">Debe agregar una descripción valida.</div>
                         </div>
                     </div>
@@ -115,19 +115,19 @@
                         <div class="form-group col-xs-12 col-md-12 col-lg-8">
                             <p>Cantidad comensales</p>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio1" value="option1" name="radioPersonas" checked>
+                                <input class="form-check-input" type="radio" id="radio1" name="radioPersonas" value="1" checked>
                                 <label class="form-check-label" for="radio1">1</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio2" name="radioPersonas" value="option2">
+                                <input class="form-check-input" type="radio" id="radio2" name="radioPersonas" value="2">
                                 <label class="form-check-label" for="cradio2">2</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio3" name="radioPersonas" value="option3">
+                                <input class="form-check-input" type="radio" id="radio3" name="radioPersonas" value="4">
                                 <label class="form-check-label" for="radio3">4</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio4" name="radioPersonas" value="option4">
+                                <input class="form-check-input" type="radio" id="radio4" name="radioPersonas" value="6">
                                 <label class="form-check-label" for="radio4">Mas de 6</label>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                     <div class="row">
                         <div class="form-group col-12 col-md-6 col-lg-4">
                             <label for="ingredientes">Ingredientes</label>
-                            <select multiple class="custom-select mr-sm-2 form-control" id="ingredientes" name="ingredientes">
+                            <select multiple class="custom-select mr-sm-2 form-control" name="ingredientes">
                                 <option>Ingrediente 1</option>
                                 <option>Ingrediente 2</option>
                                 <option>Ingrediente 3</option>
@@ -155,12 +155,12 @@
                     <div class="row">
                         <div class="form-group col-5 col-md-3 col-lg-3">
                             <label for="txtCalorias">Calorías</label>
-                            <input type="text" class="form-control" placeholder="0" required>
+                            <input type="text" class="form-control" name="calorias" placeholder="0" required>
                             <div class="invalid-feedback">Ingrese cantidad calorias.</div>
                         </div>
                         <div class="form-group col-5 col-md-3 col-lg-3">
                             <label for="txtPeso">Peso (KG)</label>
-                            <input type="text" class="form-control" placeholder="0" required>
+                            <input type="text" class="form-control" name="peso"  placeholder="0" required>
                             <div class="invalid-feedback">Ingrese peso en kilogramos.</div>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                             <div class="col-12 col-md-4 col-lg-3 imgUp">
                                 <div class="imagePreview"></div>
                                     <label class="btn btn-primary">Cargar
-                                        <input type="file" class="uploadFile img" value="Upload Photo">
+                                        <input type="file" class="uploadFile img" name="fotos" value="Upload Photo">
                                     </label>
                                 </div><!-- col-2 -->
                                 <i class="fa fa-plus imgAdd"></i>
@@ -188,7 +188,7 @@
                     <div class="row">
                         <div class="form-group col-10 col-md-8 col-lg-6">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="pdfFile">
+                                <input type="file" class="custom-file-input" name="pdfFile">
                                 <label class="custom-file-label" for="customFile">Cargar receta</label>
                             </div>
                         </div>

@@ -29,9 +29,16 @@ let productController = {
     getProductById: function (req, res, next) {
       res.render('productAdd', { title: 'Producto id', subtitle: 'Detalle producto' });
     },
-    createProduct: function (req, res, next) {
+
+    productAdd: function (req, res, next) {
       res.render('productAdd', { title: 'Crear producto', subtitle: 'Formulario alta' });
     },
+
+    createProduct: function (req, res, next) {
+      console.log(req.body);
+      res.render('productAdd', { title: 'Crear producto', subtitle: 'Formulario alta' });
+    },
+
     editProductById: function (req, res, next) {
 
       res.render('productAdd', { title: 'Editar', subtitle: 'Formulario edición'  });
