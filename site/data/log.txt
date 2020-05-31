@@ -39,3 +39,9 @@
 31/05/2020 04:16:38 - Se ingreso a: /product/create
 31/05/2020 04:20:32 - Se ingreso a: /product/create
 31/05/2020 04:29:31 - Se ingreso a: /product/create
+31/05/2020 05:30:01 - Se ingreso a: /productos
+31/05/2020 05:30:09 - Se ingreso a: /products/create
+31/05/2020 05:30:17 - Se ingreso a: /products/create
+31/05/2020 05:30:49 - Se ingreso a: /product/create
+31/05/2020 05:31:57 - Se ingreso a: /product/create
+31/05/2020 05:36:28 - Se ingreso a: /product/create
