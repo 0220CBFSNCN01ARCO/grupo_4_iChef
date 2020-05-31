@@ -137,3 +137,6 @@
 31/05/2020 06:43:27 - Se ingreso a: /product/SapienCursusVestibulum.png,LoremInteger.tiff,Luctus.jpeg
 31/05/2020 06:51:34 - Se ingreso a: /product/market
 31/05/2020 06:51:34 - Se ingreso a: /product/SapienCursusVestibulum.png,LoremInteger.tiff,Luctus.jpeg
+31/05/2020 07:16:49 - Se ingreso a: /product/create
+31/05/2020 07:29:14 - Se ingreso a: /product/create
+31/05/2020 07:29:23 - Se ingreso a: /product/create

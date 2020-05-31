@@ -48,11 +48,19 @@ let productController = {
         codigo: ultimoItem.codigo + 1,
         nombre: body.nombreProducto,
         tipo: body.tipo,
-        precio: body.precioProd,
+        precio: body.precioProducto,
+        oferta: body.oferta,
+        precioOferta: body.precioOferta,
+        descuentoOferta: body.descuento,
+        grupo: body.grupo,
         marca: body.marca,
-        peso: body.peso,
         descripcion: body.txtDescripcion,
-        fotos: req.filename
+        comensales: body.radioPersonas,
+        ingredientes: body.ingredientes,
+        calorias: body.calorias,
+        peso: body.peso,
+        fotos: req.filename,
+        receta: body.receta
       };
 
       productos.push(productoAguardar);

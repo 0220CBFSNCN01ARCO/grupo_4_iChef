@@ -39,13 +39,13 @@
                                         <i class="fa fa-dollar-sign"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control"  name="precioProd" id="precioProducto" placeholder="0" required>
+                                <input type="text" class="form-control"  name="precioProducto" id="precioProducto" placeholder="0" required>
                                 <div class="invalid-feedback">Debe ingresar un precio de venta.</div>
                             </div>
                         </div>
                         <div id="ofertaProd" class="form-group d-flex justify-content-center align-items-center col-5 col-md-5 col-lg-3">
                             <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="ofertaSwich" data-toggle="collapse" data-target="#precioOferta">
+                                <input type="checkbox" class="custom-control-input" id="ofertaSwich" data-toggle="collapse" data-target="#precioOferta" name="oferta">
                                 <label for="ofertaSwich" class="custom-control-label">Oferta</label>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                     <div class="form-group col-6 col-md-5 col-lg-4">
                                         <label for="descuentoProducto">Descuento</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="0" required>
+                                            <input type="text" class="form-control" placeholder="0" name="descuento" required>
                                             <span class="input-group-text">
                                                 <i class="fa fa-percent"></i>
                                             </span>
@@ -70,7 +70,7 @@
                                                     <i class="fa fa-dollar-sign"></i>
                                                 </span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="0" required>
+                                            <input type="text" class="form-control" placeholder="0" name="precioOferta" required>
                                             <div class="invalid-feedback">Ingrese precio de oferta.</div>
                                         </div>
                                     </div>
@@ -155,7 +155,7 @@
                     <div class="row">
                         <div class="form-group col-5 col-md-3 col-lg-3">
                             <label for="txtCalorias">Calorías</label>
-                            <input type="text" class="form-control" placeholder="0" required>
+                            <input type="text" class="form-control" placeholder="0" name="calorias" required>
                             <div class="invalid-feedback">Ingrese cantidad calorias.</div>
                         </div>
                         <div class="form-group col-5 col-md-3 col-lg-3">
@@ -188,7 +188,7 @@
                     <div class="row">
                         <div class="form-group col-10 col-md-8 col-lg-6">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="pdfFile">
+                                <input type="file" class="custom-file-input" id="pdfFile" name="receta">
                                 <label class="custom-file-label" for="customFile">Cargar receta</label>
                             </div>
                         </div>
