@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('./partials/head') %>
+<body class='body_market'>
+    <%- include('./partials/header') %>
+    <!--cuerpo-->
+    <div class = "container fluid">
+        <div class = "row" style="padding-top: 2vw">
+    <% for(let i=0; i < productos.length; i++) { %>
+        <div class="card col-12 col-md-6 col-lg-3 background-card" style="width: 18rem;">
+        <img src="<%= productos[i].fotos %>" class="card-img-top" alt="Imagen producto">
+        <div class="card-body">
+          <h5 class="card-title"> <%= productos[i].nombre %> </h5>
+          <p class="card-text">Marca: <%= productos[i].marca %></p>
+          <p style="color: #A60D0D; font-weight: 600; font-size: 2vw;"><%= productos[i].precio %></p>
+          <div class="carrito-market">
+          <a href="/product/<%= productos[i].codigo %>" class="btn btn-primary espacio-market" style="padding-right: 1vw;">Detalle producto</a>
+          <button class="btn btn-primary" title="Agregar al Carrito" style="background-color: transparent; border: solid #A60D0D; flex-direction: end;">
+            <img src="/images/icon-carrito.png" alt="Carrito de compras" width="40" height="40">
+          </button>
+        </div>
+        </div>
+        </div>
+    <% } %>
+        </div>
+    </div>
+    <%- include('./partials/footer') %>
+    <%-include('./partials/script')%>
+</body>
+</html>

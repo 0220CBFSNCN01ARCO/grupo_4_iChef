@@ -1,4 +1,5 @@
 const fs = require('fs');
+const multer = require('multer');
 
 let productController = {
     productDetail: function (req, res, next) {
@@ -10,8 +11,22 @@ let productController = {
     productCart: function (req, res, next) {
         res.render('productCart', { title: 'Carrito compras', subtitle: 'Mi Carrito' });
     },
-    productMarket: function (req, res, next) {
-        res.render('market', { title: 'Market', subtitle: 'Market productos' });
+    listarProductos: function (req, res, next) {
+      let tipoProducto = req.params.tipo
+
+      console.log("Tipo de producto: " + tipoProducto);
+
+      let productosJson = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
+      let productos = JSON.parse(productosJson);
+
+      let productFilter = productos.filter(function(product){
+          return product.tipo == tipoProducto;
+      });
+
+      console.log(productFilter);
+
+      res.render('products', { title: 'Listado',
+                             productos: productFilter });
     },
     listProduct: function (req, res, next) {
       let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
@@ -35,8 +50,51 @@ let productController = {
     },
 
     createProduct: function (req, res, next) {
-      console.log(req.body);
-      res.render('productAdd', { title: 'Crear producto', subtitle: 'Formulario alta' });
+
+      let esOferta = false;
+      if(req.body.ofertaSwich =='on'){
+        esOferta = true;
+      }
+      //console.log(req.body);
+      let productosJson = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
+      let productos = JSON.parse(productosJson);
+
+      const ultimoItem = productos.length-1;
+      let arrayIngredientes = [];
+      arrayIngredientes= req.body.ingredientes.slice();
+      let arrayFotos = [];
+      arrayFotos = req.body.fotos.slice();
+
+      let newProducto = {
+        codigo: ultimoItem,
+        nombre: req.body.nombreProducto,
+        tipo: req.body.tipo,
+        precio: req.body.precioProducto,
+        oferta: esOferta,
+        precioOferta: req.body.precioOferta,
+        descuentoOferta: req.body.descuento,
+        grupo: req.body.grupo,
+        marca: req.body.marca,
+        descripcion: req.body.txtDescripcion,
+        comensales: req.body.radioPersonas,
+        ingredientes: arrayIngredientes,
+        calorias: req.body.calorias,
+        peso: req.body.peso,
+        fotos: arrayFotos,
+        receta: req.body.pdfFile
+      }
+
+      productos.push(newProducto);
+
+      console.log(productos);
+
+      fs.writeFileSync('./data/products.json', JSON.stringify(productos));
+
+      //res.render('productAdd', { title: 'Crear producto', subtitle: 'Formulario alta' });
+      mensaje = `El Producto ${ newProducto.codigo }, ${ newProducto.nombre } fue creado exitosamente!!!`
+      res.render('productMsg', { title: 'Producto creado',
+                                    tipo: 'success',
+                                    mensaje: mensaje });
     },
 
     editProductById: function (req, res, next) {
@@ -62,7 +120,7 @@ let productController = {
         productos = JSON.parse(productosJSON);
       }
 
-      let newPorductos = productos.filter(function (producto) {
+      let newProductos = productos.filter(function (producto) {
         return producto.codigo != idProducto;
       });
 
@@ -70,11 +128,14 @@ let productController = {
         return producto.codigo == idProducto;
       });
 
-      fs.writeFileSync('./data/products.json', JSON.stringify(newPorductos, { encoding: 'UTF-8'}) );
+      fs.writeFileSync('./data/products.json', JSON.stringify(newProductos, { encoding: 'UTF-8'}) );
 
-      res.render('productDelete', { title: 'Producto borrado',
-                                    product: productoBorrado });
+      mensaje = `El Producto ${ productoBorrado.codigo }, ${ productoBorrado.nombre } eliminado exitosamente!!!`
+      res.render('productMsg', { title: 'Producto borrado',
+                                    tipo: 'success',
+                                    mensaje: mensaje });
     }
 };
+
 
 module.exports = productController;

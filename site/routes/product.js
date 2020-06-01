@@ -1,12 +1,25 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const path = require('path');
 
 const productController = require('../controllers/productController');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/images/products')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname))
+    }
+  })
+
+  var upload = multer({ storage: storage })
 
 router.get('/detail', productController.productDetail);
 router.get('/detail-box', productController.product_boxDetail);
 router.get('/cart', productController.productCart);
-router.get('/market', productController.productMarket);
+router.get('/list/:tipo', productController.listarProductos);
 router.get('/productDelete', productController.productDelete);
 
 

@@ -6,10 +6,8 @@
     <!--cuerpo-->
     <div class="container">
         <div>
-            <div class="alert alert-success mt-2" role="alert">
-                Producto "<%= product.codigo %>,
-                <%= product.nombre %>"
-                eliminado exitosamente!!!</div>
+            <div class="alert alert-<%= tipo %> mt-2" role="alert">
+                <%= mensaje %></div>
             <div class="btnVolver">
                 <a class="alert-link" href="/product">Volver</a>
             </div>

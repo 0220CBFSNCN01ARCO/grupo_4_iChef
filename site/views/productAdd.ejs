@@ -19,12 +19,8 @@
                             <label for="tipo">Tipo de producto</label>
                             <select class="custom-select form-control" id="tipo" name="tipo" required>
                                 <option value="" selected>Seleccione un tipo</option>
-                                <option value="tipo1">Producto</option>
-                                <option value="tipo2">Caja</option>
-                                <option value="tipo3">Combo</option>
-                                <option value="tipo4">Caja 1</option>
-                                <option value="tipo5">Artículo 1</option>
-                                <option value="tipo6">Otro</option>
+                                <option value="PRODUCTO">Producto</option>
+                                <option value="CAJA">Caja</option>
                             </select>
                             <div class="invalid-feedback">Debe seleccionar un grupo.</div>
                         </div>
@@ -45,7 +41,7 @@
                         </div>
                         <div id="ofertaProd" class="form-group d-flex justify-content-center align-items-center col-5 col-md-5 col-lg-3">
                             <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="ofertaSwich" data-toggle="collapse" data-target="#precioOferta">
+                                <input type="checkbox" class="custom-control-input" id="ofertaSwich" name="ofertaSwich" data-toggle="collapse" data-target="#precioOferta">
                                 <label for="ofertaSwich" class="custom-control-label">Oferta</label>
                             </div>
                         </div>
@@ -141,14 +137,14 @@
                         <div class="form-group col-12 col-md-6 col-lg-4">
                             <label for="ingredientes">Ingredientes</label>
                             <select multiple class="custom-select mr-sm-2 form-control" name="ingredientes">
-                                <option>Ingrediente 1</option>
-                                <option>Ingrediente 2</option>
-                                <option>Ingrediente 3</option>
-                                <option>Ingrediente 4</option>
-                                <option>Ingrediente 5</option>
-                                <option>Ingrediente 6</option>
-                                <option>Ingrediente 7</option>
-                                <option>Ingrediente 8</option>
+                                <option value="1">Ingrediente 1</option>
+                                <option value="2">Ingrediente 2</option>
+                                <option value="3">Ingrediente 3</option>
+                                <option value="4">Ingrediente 4</option>
+                                <option value="5">Ingrediente 5</option>
+                                <option value="6">Ingrediente 6</option>
+                                <option value="7">Ingrediente 7</option>
+                                <option value="8">Ingrediente 8</option>
                               </select>
                         </div>
                     </div>
