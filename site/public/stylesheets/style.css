@@ -403,10 +403,6 @@ margin-left: 15px;
 
 /*LOGIN*/
 
-.login-box, .register-box {
-  width: 320px;
-  margin: auto;
-}
 
 .login-box-body, .register-box-body {
   padding: 10px;
@@ -655,10 +651,6 @@ p {
   margin-right: 0px;
 }
 
-.register-box {
-  width: 420px;
-  margin: auto;
-}
 
 .row-social {
   margin-left: 10px;
@@ -735,10 +727,7 @@ p {
     margin-left: 0px;
     margin-right: 0px;
   }
-  .register-box {
-    width: 520px;
-    margin: auto;
-  }
+
   .row-social {
     margin-left: 10px;
     margin-right: 10px;
