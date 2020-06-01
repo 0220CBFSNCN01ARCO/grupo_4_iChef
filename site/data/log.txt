@@ -1,0 +1,15 @@
+01/06/2020 01:05:30 - Se ingreso a: /product
+01/06/2020 01:05:31 - Se ingreso a: /
+01/06/2020 01:05:33 - Se ingreso a: /product
+01/06/2020 01:05:35 - Se ingreso a: /users
+01/06/2020 01:05:39 - Se ingreso a: /product
+01/06/2020 01:05:43 - Se ingreso a: /product/6?_method=DELETE
+01/06/2020 01:05:44 - Se ingreso a: /product
+01/06/2020 01:05:46 - Se ingreso a: /product
+01/06/2020 01:05:54 - Se ingreso a: /product/detail-box
+01/06/2020 01:05:56 - Se ingreso a: /info/staff
+01/06/2020 01:05:58 - Se ingreso a: /product/detail
+01/06/2020 01:06:00 - Se ingreso a: /product/market
+01/06/2020 01:06:00 - Se ingreso a: /product/SapienCursusVestibulum.png,LoremInteger.tiff,Luctus.jpeg
+01/06/2020 01:06:00 - Se ingreso a: /product/DSC_0006.JPG
+01/06/2020 01:06:54 - Se ingreso a: /product
