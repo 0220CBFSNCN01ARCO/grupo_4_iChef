@@ -755,3 +755,23 @@ p {
       flex-direction: row;
   }
 }
+
+
+/*market*/
+.body_market{
+  font-family: 'Open Sans';
+  background-image: url(/images/fondo.jpg); 
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.carrito-market{
+display: flex;
+justify-content: flex-end;
+justify-content: space-around;
+}
+.espacio-market{
+ margin-right: 1vw;
+}
+.background-card{
+ background-color: rgba(255,255,255,0.8)
+}

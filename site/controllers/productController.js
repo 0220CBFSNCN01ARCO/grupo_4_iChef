@@ -1,4 +1,5 @@
 const fs = require('fs');
+const multer = require('multer');
 
 let productController = {
     productDetail: function (req, res, next) {
@@ -11,7 +12,10 @@ let productController = {
         res.render('productCart', { title: 'Carrito compras', subtitle: 'Mi Carrito' });
     },
     productMarket: function (req, res, next) {
-        res.render('market', { title: 'Market', subtitle: 'Market productos' });
+      let productosJson = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
+      let productos = JSON.parse(productosJson);
+
+        res.render('market', { title: 'Market', subtitle: 'Market productos', productos });
     },
     listProduct: function (req, res, next) {
       let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
@@ -121,5 +125,6 @@ let productController = {
                                     mensaje: mensaje });
     }
 };
+
 
 module.exports = productController;
