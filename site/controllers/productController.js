@@ -35,8 +35,51 @@ let productController = {
     },
 
     createProduct: function (req, res, next) {
-      console.log(req.body);
-      res.render('productAdd', { title: 'Crear producto', subtitle: 'Formulario alta' });
+
+      let esOferta = false;
+      if(req.body.ofertaSwich =='on'){
+        esOferta = true;
+      }
+      //console.log(req.body);
+      let productosJson = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
+      let productos = JSON.parse(productosJson);
+
+      const ultimoItem = productos.length-1;
+      let arrayIngredientes = [];
+      arrayIngredientes= req.body.ingredientes.slice();
+      let arrayFotos = [];
+      arrayFotos = req.body.fotos.slice();
+
+      let newProducto = {
+        codigo: ultimoItem,
+        nombre: req.body.nombreProducto,
+        tipo: req.body.tipo,
+        precio: req.body.precioProducto,
+        oferta: esOferta,
+        precioOferta: req.body.precioOferta,
+        descuentoOferta: req.body.descuento,
+        grupo: req.body.grupo,
+        marca: req.body.marca,
+        descripcion: req.body.txtDescripcion,
+        comensales: req.body.radioPersonas,
+        ingredientes: arrayIngredientes,
+        calorias: req.body.calorias,
+        peso: req.body.peso,
+        fotos: arrayFotos,
+        receta: req.body.pdfFile
+      }
+
+      productos.push(newProducto);
+
+      console.log(productos);
+
+      fs.writeFileSync('./data/products.json', JSON.stringify(productos));
+
+      //res.render('productAdd', { title: 'Crear producto', subtitle: 'Formulario alta' });
+      mensaje = `El Producto ${ newProducto.codigo }, ${ newProducto.nombre } fue creado exitosamente!!!`
+      res.render('productMsg', { title: 'Producto creado',
+                                    tipo: 'success',
+                                    mensaje: mensaje });
     },
 
     editProductById: function (req, res, next) {
@@ -72,8 +115,10 @@ let productController = {
 
       fs.writeFileSync('./data/products.json', JSON.stringify(newPorductos, { encoding: 'UTF-8'}) );
 
-      res.render('productDelete', { title: 'Producto borrado',
-                                    product: productoBorrado });
+      mensaje = `El Producto ${ productoBorrado.codigo }, ${ productoBorrado.nombre } eliminado exitosamente!!!`
+      res.render('productMsg', { title: 'Producto borrado',
+                                    tipo: 'success',
+                                    mensaje: mensaje });
     }
 };
 
