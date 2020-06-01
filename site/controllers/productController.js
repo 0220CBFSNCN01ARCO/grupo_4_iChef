@@ -11,11 +11,22 @@ let productController = {
     productCart: function (req, res, next) {
         res.render('productCart', { title: 'Carrito compras', subtitle: 'Mi Carrito' });
     },
-    productMarket: function (req, res, next) {
+    listarProductos: function (req, res, next) {
+      let tipoProducto = req.params.tipo
+
+      console.log("Tipo de producto: " + tipoProducto);
+
       let productosJson = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
       let productos = JSON.parse(productosJson);
 
-        res.render('market', { title: 'Market', subtitle: 'Market productos', productos });
+      let productFilter = productos.filter(function(product){
+          return product.tipo == tipoProducto;
+      });
+
+      console.log(productFilter);
+
+      res.render('products', { title: 'Listado',
+                             productos: productFilter });
     },
     listProduct: function (req, res, next) {
       let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
@@ -109,7 +120,7 @@ let productController = {
         productos = JSON.parse(productosJSON);
       }
 
-      let newPorductos = productos.filter(function (producto) {
+      let newProductos = productos.filter(function (producto) {
         return producto.codigo != idProducto;
       });
 
@@ -117,7 +128,7 @@ let productController = {
         return producto.codigo == idProducto;
       });
 
-      fs.writeFileSync('./data/products.json', JSON.stringify(newPorductos, { encoding: 'UTF-8'}) );
+      fs.writeFileSync('./data/products.json', JSON.stringify(newProductos, { encoding: 'UTF-8'}) );
 
       mensaje = `El Producto ${ productoBorrado.codigo }, ${ productoBorrado.nombre } eliminado exitosamente!!!`
       res.render('productMsg', { title: 'Producto borrado',

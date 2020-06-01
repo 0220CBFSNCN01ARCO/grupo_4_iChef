@@ -16,11 +16,10 @@ var storage = multer.diskStorage({
 
   var upload = multer({ storage: storage })
 
-
 router.get('/detail', productController.productDetail);
 router.get('/detail-box', productController.product_boxDetail);
 router.get('/cart', productController.productCart);
-router.get('/market', productController.productMarket);
+router.get('/list/:tipo', productController.listarProductos);
 router.get('/productDelete', productController.productDelete);
 
 

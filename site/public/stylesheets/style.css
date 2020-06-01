@@ -757,13 +757,15 @@ p {
 }
 
 
-/*market*/
+/*market
 .body_market{
   font-family: 'Open Sans';
-  background-image: url(/images/fondo.jpg); 
+  background-image: url(/images/fondo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
+*/
+
 .carrito-market{
 display: flex;
 justify-content: flex-end;
