@@ -25,6 +25,7 @@ router.get('/productDelete', productController.productDelete);
 
 //1. /products​ (GET) - Listado de productos
 router.get('/', productController.listProduct);
+
 //2. /products/create​ (GET)  Formulario de creación de productos 
 router.get('/create', productController.productAdd);
 

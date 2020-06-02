@@ -403,6 +403,10 @@ margin-left: 15px;
 
 /*LOGIN*/
 
+.login-box {
+  width: 320px;
+  margin: auto;
+}
 
 .login-box-body, .register-box-body {
   padding: 10px;

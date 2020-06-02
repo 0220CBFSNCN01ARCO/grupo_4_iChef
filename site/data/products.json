@@ -3,7 +3,7 @@
         "codigo": 2,
         "nombre": "luctus rutrum",
         "tipo": "PRODUCTO",
-        "precio": "$67.01",
+        "precio": "67.01",
         "oferta": true,
         "precioOferta": "$0.86",
         "descuentoOferta": 75,
@@ -30,7 +30,7 @@
         "codigo": 3,
         "nombre": "faucibus orci luctus",
         "tipo": "CAJA",
-        "precio": "$8.13",
+        "precio": "8.13",
         "oferta": false,
         "precioOferta": "$8.18",
         "descuentoOferta": 29,
@@ -57,7 +57,7 @@
         "codigo": 4,
         "nombre": "rutrum rutrum neque aenean",
         "tipo": "CAJA",
-        "precio": "$21.74",
+        "precio": "21.74",
         "oferta": false,
         "precioOferta": "$0.08",
         "descuentoOferta": 5,
@@ -97,8 +97,8 @@
             "3",
             "4"
         ],
-        "calorias": "123",
-        "peso": "345",
+        "calorias": "0",
+        "peso": "0",
         "fotos": "DSC_0006.JPG",
         "receta": "cocahotel.pdf"
     }

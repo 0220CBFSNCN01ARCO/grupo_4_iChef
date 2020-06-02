@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+    <%- include('./partials/subtitle') %>
+    <div class="container-fluid containerForm">
+        <form method="POST" action="/product/<%= producto.codigo %>?_method=PUT" class="frmProducto needs-validation" novalidate>
+            <div class="card">
+                <div class="card-header">Datos del producto</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-12 col-md-7 col-lg-7">
+                            <label for="nombreProducto">Nombre</label>
+                            <input type="text" class="form-control" name="nombreProducto" value="<%= producto[0].nombre %>" required>
+                            <div class="invalid-feedback">Debe ingresar un nombre para el producto.</div>
+                        </div>
+                        <div class="form-group col-12 col-md-5 col-lg-4">
+                            <label for="tipo">Tipo de producto</label>
+                            <select class="custom-select form-control" id="tipo" name="tipo" required>
+                                <option value="">Seleccione un tipo</option>
+                                <% if(producto[0].tipo == "PRODUCTO")  { %>
+                                    <option value="PRODUCTO" selected>Producto</option>
+                                    <option value="CAJA">Caja</option>
+                                <% } else { %>
+                                    <option value="PRODUCTO">Producto</option>
+                                    <option value="CAJA" selected>Caja</option>
+                                <% } %>
+                            </select>
+                            <div class="invalid-feedback">Debe seleccionar un tipo.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="precioProd" class="form-group col-7 col-md-5 col-lg-3">
+                            <label for="precioProducto">Precio</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <!--Ver agregar icono-->
+                                        <i class="fa fa-dollar-sign"></i>
+                                    </span>
+                                </div>
+                                <input type="number" maxlength="7" class="form-control" name="precioProducto" value="<%= producto[0].precio %>" required>
+                                <div class="invalid-feedback">Debe ingresar un precio de venta.</div>
+                            </div>
+                        </div>
+                        <div id="ofertaProd" class="form-group d-flex justify-content-center align-items-center col-5 col-md-5 col-lg-3">
+                            <div class="custom-control custom-switch">
+                                <% if( producto[0].oferta) { %>
+                                    <input type="checkbox" class="custom-control-input" id="ofertaSwich" name="ofertaSwich" data-toggle="collapse" data-target="#precioOferta" aria-expanded="true">
+                                <% } else { %>
+                                    <input type="checkbox" class="custom-control-input collapse" id="ofertaSwich" name="ofertaSwich" data-toggle="collapse" data-target="#precioOferta" aria-expanded="false">
+                                <% } %>
+                                <label for="ofertaSwich" class="custom-control-label">Oferta</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div id="precioOferta" class="collapse">
+                                <div class="row">
+                                    <div class="form-group col-6 col-md-5 col-lg-4">
+                                        <label for="descuentoProducto">Descuento</label>
+                                        <div class="input-group">
+                                            <input type="number" maxlength="3"  name="descuento" class="form-control" placeholder="0">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-percent"></i>
+                                            </span>
+                                            <div class="invalid-feedback">Ingrese porcentaje de descuento.</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6 col-md-5 col-lg-4">
+                                        <label for="precioOferta">Precio oferta</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fa fa-dollar-sign"></i>
+                                                </span>
+                                            </div>
+                                            <input type="number" maxlength="7" name="precioOferta" class="form-control" placeholder="0">
+                                            <div class="invalid-feedback">Ingrese precio de oferta.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-6 col-md-5 col-lg-4">
+                            <label for="grupo">Grupo</label>
+                            <select class="custom-select form-control" id="grupo" name="grupo" required>
+                                <option value="" selected>Seleccione un grupo</option>
+                                <option value="generico">Generico</option>
+                                <option value="grupo2">Grupo 1</option>
+                                <option value="grupo3">Grupo 2</option>
+                                <option value="grupo4">Grupo 3</option>
+                                <option value="grupo5">Grupo 4</option>
+                            </select>
+                            <div class="invalid-feedback">Debe seleccionar un grupo.</div>
+                        </div>
+                        <div class="form-group col-xs-6 col-md-5 col-lg-4">
+                            <label for="marca">Marca</label>
+                            <select class="custom-select form-control" name="marca" required>
+                                <option value="" selected>Seleccione una marca</option>
+                                <option value="generica">Generica</option>
+                                <option value="marca2">Marca 1</option>
+                                <option value="marca3">Marca 2</option>
+                                <option value="marca4">Marca 3</option>
+                                <option value="marca5">Marca 4</option>
+                            </select>
+                            <div class="invalid-feedback">Debe seleccionar una marca.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-md-12 col-lg-8">
+                            <label for="txtDescripcion">Descripción</label>
+                            <textarea class="form-control" name="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"  required></textarea>
+                            <div class="invalid-feedback">Debe agregar una descripción valida.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-md-12 col-lg-8">
+                            <p>Cantidad comensales</p>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radio1" name="radioPersonas" value="1" checked>
+                                <label class="form-check-label" for="radio1">1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radio2" name="radioPersonas" value="2">
+                                <label class="form-check-label" for="cradio2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radio3" name="radioPersonas" value="4">
+                                <label class="form-check-label" for="radio3">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="radio4" name="radioPersonas" value="6">
+                                <label class="form-check-label" for="radio4">Mas de 6</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Información nutricional</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-12 col-md-6 col-lg-4">
+                            <label for="ingredientes">Ingredientes</label>
+                            <select multiple class="custom-select mr-sm-2 form-control" name="ingredientes">
+                                <option value="1">Ingrediente 1</option>
+                                <option value="2">Ingrediente 2</option>
+                                <option value="3">Ingrediente 3</option>
+                                <option value="4">Ingrediente 4</option>
+                                <option value="5">Ingrediente 5</option>
+                                <option value="6">Ingrediente 6</option>
+                                <option value="7">Ingrediente 7</option>
+                                <option value="8">Ingrediente 8</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-5 col-md-3 col-lg-3">
+                            <label for="txtCalorias">Calorías</label>
+                            <input type="text" class="form-control" name="calorias" placeholder="0" required>
+                            <div class="invalid-feedback">Ingrese cantidad calorias.</div>
+                        </div>
+                        <div class="form-group col-5 col-md-3 col-lg-3">
+                            <label for="txtPeso">Peso (KG)</label>
+                            <input type="text" class="form-control" name="peso"  placeholder="0" required>
+                            <div class="invalid-feedback">Ingrese peso en kilogramos.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Fotos</div>
+                <div class="card-body">
+                    <div class="container contenedorImg">
+                        <div class="row rowImagenes">
+                            <div class="col-12 col-md-4 col-lg-3 imgUp">
+                                <div class="imagePreview"></div>
+                                    <label class="btn btn-primary">Cargar
+                                        <input type="file" class="uploadFile img" name="fotos" value="Upload Photo">
+                                    </label>
+                                </div><!-- col-2 -->
+                                <i class="fa fa-plus imgAdd"></i>
+                        </div><!-- row -->
+                    </div><!-- container -->
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Receta</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-10 col-md-8 col-lg-6">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="pdfFile">
+                                <label class="custom-file-label" for="customFile">Cargar receta</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row btnForm">
+                <div class="itemBtn col-4 col-md-2 col-lg-2">
+                    <button class="btn btn-primary" type="reset" value="limpiarProd">Limpiar</button>
+                </div>
+                <div class="itemBtn col-4 col-md-2 col-lg-2">
+                    <button class="btn btn-primary" type="submit" value="guardarProd">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <%-include('./partials/footer')%>
+    <%-include('./partials/script')%>
+</body>
+</html>

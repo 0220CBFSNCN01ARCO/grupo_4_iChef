@@ -61,9 +61,13 @@ let productController = {
 
       const ultimoItem = productos.length-1;
       let arrayIngredientes = [];
-      arrayIngredientes= req.body.ingredientes.slice();
+      if(req.body.ingredientes.length > 0){
+        arrayIngredientes= req.body.ingredientes.slice();
+      }
       let arrayFotos = [];
-      arrayFotos = req.body.fotos.slice();
+      if(req.body.fotos.length > 0){
+        arrayFotos = req.body.fotos.slice();
+      }
 
       let newProducto = {
         codigo: ultimoItem,
@@ -99,7 +103,23 @@ let productController = {
 
     editProductById: function (req, res, next) {
 
-      res.render('productAdd', { title: 'Editar', subtitle: 'Formulario edición'  });
+      let idProducto = req.params.id;
+      let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
+      let productos;
+
+      if(productosJSON == ""){
+        productos = [];
+      }else{
+        productos = JSON.parse(productosJSON);
+      }
+
+      let productEdit = productos.filter(function (producto) {
+        return producto.codigo == idProducto;
+      });
+
+      res.render('productEdit', { title: 'Editar',
+                                  subtitle: 'Formulario edición',
+                                  producto: productEdit});
     },
     saveProductById: function (req, res, next) {
 
