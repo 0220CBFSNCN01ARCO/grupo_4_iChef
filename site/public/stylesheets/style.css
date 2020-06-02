@@ -202,7 +202,7 @@ h1 {
 }
 
 .imagePreview {
-  width: 100%;
+  width: 250px;
   height: 180px;
 }
 
@@ -218,9 +218,11 @@ border-radius:0px;
 box-shadow:0px 4px 6px 2px rgba(0,0,0,0.2);
 margin-top:-5px;
 }
+
 .imgUp
 {
-margin-bottom:15px;
+  margin-bottom:15px;
+  max-width: 300px;
 }
 .del
 {
@@ -617,6 +619,27 @@ p {
   padding-bottom: 5px;
 }
 
+/*REGISTRACION*/
+
+.register-box{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.register-box{
+  max-width: 450px;;
+}
+
+.row-item {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.card-personales,.card-cuenta,.card-foto {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /*Medias query*/
 
 @media (max-width: 490px) {
@@ -662,6 +685,16 @@ p {
   flex-wrap: nowrap;
 }
 
+.row-item {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.card-personales,.card-cuenta,.card-foto {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 }
 
 
@@ -704,7 +737,15 @@ p {
 
 }
 
+.row-item {
+  margin-left: 0;
+  margin-right: 0;
+}
 
+.card-personales,.card-cuenta,.card-foto {
+  margin-left: 0;
+  margin-right: 0;
+}
 
 }
 
@@ -736,6 +777,25 @@ p {
     margin-left: 10px;
     margin-right: 10px;
     flex-wrap: nowrap;
+  }
+
+  .register-box {
+    max-width: 450px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+  }
+
+  .row-item {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .card-personales,.card-cuenta,.card-foto {
+    margin-left: 0;
+    margin-right: 0;
   }
 
 }

@@ -14,7 +14,7 @@ let productController = {
     listarProductos: function (req, res, next) {
       let tipoProducto = req.params.tipo
 
-      console.log("Tipo de producto: " + tipoProducto);
+      //console.log("Tipo de producto: " + tipoProducto);
 
       let productosJson = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
       let productos = JSON.parse(productosJson);
@@ -23,7 +23,7 @@ let productController = {
           return product.tipo == tipoProducto;
       });
 
-      console.log(productFilter);
+      //console.log(productFilter);
 
       res.render('products', { title: 'Listado',
                              productos: productFilter });
@@ -90,7 +90,7 @@ let productController = {
 
       productos.push(newProducto);
 
-      console.log(productos);
+      //console.log(productos);
 
       fs.writeFileSync('./data/products.json', JSON.stringify(productos));
 
@@ -129,6 +129,7 @@ let productController = {
 
       res.render('productDelete', { title: 'Producto borrado' });
     },
+
     deleteProductById: function (req, res, next) {
       let idProducto = req.params.idProducto;
       let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});

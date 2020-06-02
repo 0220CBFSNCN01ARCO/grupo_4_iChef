@@ -1,92 +1,142 @@
 [
-  {
-    "id": 1,
-    "nombre": "Micaela",
-    "apellido": "Rewcassell",
-    "email": "mrewcassell0@bloglines.com",
-    "password": "iQQX3ZuFQvr3",
-    "nroTelefono": "(773) 2046355",
-    "rol": 4
-  },
-  {
-    "id": 2,
-    "nombre": "Huey",
-    "apellido": "Bamfield",
-    "email": "hbamfield1@uol.com.br",
-    "password": "G6WYe8CNS",
-    "nroTelefono": "(294) 4785939",
-    "rol": 2
-  },
-  {
-    "id": 3,
-    "nombre": "Hy",
-    "apellido": "Bean",
-    "email": "hbean2@weather.com",
-    "password": "paL9isB2l",
-    "nroTelefono": "(627) 5292060",
-    "rol": 1
-  },
-  {
-    "id": 4,
-    "nombre": "Steven",
-    "apellido": "Roan",
-    "email": "sroan3@psu.edu",
-    "password": "RtkiH7f",
-    "nroTelefono": "(116) 9308674",
-    "rol": 4
-  },
-  {
-    "id": 5,
-    "nombre": "Cristal",
-    "apellido": "Pahler",
-    "email": "cpahler4@example.com",
-    "password": "5GVPN8tL",
-    "nroTelefono": "(241) 8437654",
-    "rol": 3
-  },
-  {
-    "id": 6,
-    "nombre": "Betteanne",
-    "apellido": "McAlpin",
-    "email": "bmcalpin5@wufoo.com",
-    "password": "HMAyag",
-    "nroTelefono": "(288) 5989510",
-    "rol": 2
-  },
-  {
-    "id": 7,
-    "nombre": "Hynda",
-    "apellido": "Cosins",
-    "email": "hcosins6@discuz.net",
-    "password": "DN8OeCmcz6",
-    "nroTelefono": "(981) 5161717",
-    "rol": 4
-  },
-  {
-    "id": 8,
-    "nombre": "Anastassia",
-    "apellido": "Kilfeder",
-    "email": "akilfeder7@craigslist.org",
-    "password": "SYjfVQ5qway",
-    "nroTelefono": "(568) 1776621",
-    "rol": 2
-  },
-  {
-    "id": 9,
-    "nombre": "Flinn",
-    "apellido": "Wilkison",
-    "email": "fwilkison8@sciencedirect.com",
-    "password": "hfmRG7BMj",
-    "nroTelefono": "(608) 9091684",
-    "rol": 1
-  },
-  {
-    "id": 10,
-    "nombre": "Guillemette",
-    "apellido": "Tuite",
-    "email": "gtuite9@hibu.com",
-    "password": "znOZQPTr86K",
-    "nroTelefono": "(429) 7466576",
-    "rol": 5
-  }
+    {
+        "id": 1,
+        "nombre": "Micaela",
+        "apellido": "Rewcassell",
+        "email": "mrewcassell0@bloglines.com",
+        "password": "iQQX3ZuFQvr3",
+        "nroTelefono": "(773) 2046355",
+        "rol": 4,
+        "imagen": "imagen1.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Huey",
+        "apellido": "Bamfield",
+        "email": "hbamfield1@uol.com.br",
+        "password": "G6WYe8CNS",
+        "nroTelefono": "(294) 4785939",
+        "rol": 2,
+        "imagen": "imagen1.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Hy",
+        "apellido": "Bean",
+        "email": "hbean2@weather.com",
+        "password": "paL9isB2l",
+        "nroTelefono": "(627) 5292060",
+        "rol": 1,
+        "imagen": "imagen1.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Steven",
+        "apellido": "Roan",
+        "email": "sroan3@psu.edu",
+        "password": "RtkiH7f",
+        "nroTelefono": "(116) 9308674",
+        "rol": 4,
+        "imagen": "imagen1.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Cristal",
+        "apellido": "Pahler",
+        "email": "cpahler4@example.com",
+        "password": "5GVPN8tL",
+        "nroTelefono": "(241) 8437654",
+        "rol": 3,
+        "imagen": "imagen1.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Betteanne",
+        "apellido": "McAlpin",
+        "email": "bmcalpin5@wufoo.com",
+        "password": "HMAyag",
+        "nroTelefono": "(288) 5989510",
+        "rol": 2,
+        "imagen": "imagen1.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "Hynda",
+        "apellido": "Cosins",
+        "email": "hcosins6@discuz.net",
+        "password": "DN8OeCmcz6",
+        "nroTelefono": "(981) 5161717",
+        "rol": 4,
+        "imagen": "imagen1.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "Anastassia",
+        "apellido": "Kilfeder",
+        "email": "akilfeder7@craigslist.org",
+        "password": "SYjfVQ5qway",
+        "nroTelefono": "(568) 1776621",
+        "rol": 2,
+        "imagen": "imagen1.jpg"
+    },
+    {
+        "id": 9,
+        "nombre": "Flinn",
+        "apellido": "Wilkison",
+        "email": "fwilkison8@sciencedirect.com",
+        "password": "hfmRG7BMj",
+        "nroTelefono": "(608) 9091684",
+        "rol": 1,
+        "imagen": "imagen1.jpg"
+    },
+    {
+        "id": 10,
+        "nombre": "Guillemette",
+        "apellido": "Tuite",
+        "email": "gtuite9@hibu.com",
+        "password": "znOZQPTr86K",
+        "nroTelefono": "(429) 7466576",
+        "rol": 5,
+        "imagen": "imagen1.jpg"
+    },
+    {
+        "id": 10,
+        "nombre": "jose",
+        "apellido": "aaaa",
+        "email": "josesalvini@gmail.com",
+        "password": "123456",
+        "nroTelefono": "2424234234",
+        "rol": 2,
+        "imagen": "DSC_0007.JPG"
+    },
+    {
+        "id": 11,
+        "nombre": "jose",
+        "apellido": "aaaa",
+        "email": "josesalvini@gmail.com",
+        "password": "1231",
+        "nroTelefono": "1313131313",
+        "rol": 2,
+        "imagen": "DSC_0006.JPG"
+    },
+    {
+        "id": 12,
+        "nombre": "jose",
+        "apellido": "aaaa",
+        "email": "josesalvini@gmail.com",
+        "password": "12121",
+        "nroTelefono": "213412312",
+        "rol": 2,
+        "imagen": "DSC_0007.JPG"
+    },
+    {
+        "id": 13,
+        "nombre": "jose",
+        "apellido": "aaaa",
+        "email": "josesalvini@gmail.com",
+        "password": "234234",
+        "nroTelefono": "2342342",
+        "rol": 2,
+        "imagen": "DSC_0007.JPG"
+    }
 ]

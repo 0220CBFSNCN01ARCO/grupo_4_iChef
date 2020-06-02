@@ -4,82 +4,100 @@
 <body class="hold-transition login-page">
     <%- include('./partials/header') %>
     <div class="fondoFormulario">
-        <div class="register-box">
-            <div class="register-box-body">
+        <div class="container register-box">
+            <div class="row register-box-body justify-content-center">
                 <h3 class="register-box-msg"><b>Registración</b></h3>
-                <form class="frmRegistro needs-validation" novalidate>
-                    <div class="row">
-                        <div class="card">
+                <form method="POST" action="/users/create" class="frmRegistro needs-validation" novalidate>
+                    <div class="row row-registro">
+                        <div class="card card-personales col-12">
                             <div class="card-header">Datos personales</div>
                             <div class="card-body">
-                                <div class="row">
+                                <div class="row row-item">
                                     <div class="form-group col-12">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+                                            <input type="text" class="form-control" id="nombre" name="nombreUser" placeholder="Nombre" required>
                                             <div class="invalid-feedback">Debe ingresar un nombre.</div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row row-item">
                                     <div class="form-group col-12">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-user-circle-o"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" id="apellido" placeholder="Apellido" required>
+                                            <input type="text" class="form-control" id="apellido" name="apellidoUser" placeholder="Apellido" required>
                                             <div class="invalid-feedback">Debe ingresar un apellido.</div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row row-item">
                                     <div class="form-group col-12">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-phone"></i></span>
                                             </div>
-                                            <input type="number" class="form-control" id="telefono" placeholder="Nro. teléfono" required>
+                                            <input type="number" class="form-control" id="telefono" name="nroTelefonoUser" placeholder="Nro. teléfono" required>
                                             <div class="invalid-feedback">Debe ingresar un número de teléfono.</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card card-cuenta col-12">
                             <div class="card-header">Datos cuenta</div>
                             <div class="card-body">
-                                <div class="row">
+                                <div class="row row-item">
                                     <div class="form-group col-12">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                                             </div>
-                                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                            <input type="email" class="form-control" id="email" name="emailUser" placeholder="Email" required>
                                             <div class="invalid-feedback">Debe ingresar una dirección de email.</div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row row-item">
                                     <div class="form-group col-12">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa fa-key"></i></span>
                                             </div>
-                                            <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+                                            <input type="password" class="form-control" id="password" name="passwordUser" placeholder="Contraseña" required>
                                             <div class="invalid-feedback">Debe ingresar una contraseña.</div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row row-item">
                                     <div class="form-group col-12">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa fa-key"></i></span>
                                             </div>
-                                            <input type="password" class="form-control" id="repeatPassword" placeholder="Repita contraseña" required>
+                                            <input type="password" class="form-control" id="repeatPassword" name="repeatPasswordUser" placeholder="Repita contraseña" required>
                                             <div class="invalid-feedback">Debe repetir la constraseña.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-foto col-12">
+                            <div class="card-header">Foto perfil</div>
+                            <div class="card-body">
+                                <div class="row rowImagenes">
+                                    <div class="form-group col-12">
+                                        <div class="input-group">
+                                            <div class="imgUp">
+                                                <div class="imagePreview"></div>
+                                                <label class="btn btn-primary">Cargar
+                                                    <input type="file" class="uploadFile img" name="fotoPerfil" value="Subir foto">
+                                                </label>
+                                            </div>
+                                            <div class="invalid-feedback">Debe ingresar una dirección de email.</div>
                                         </div>
                                     </div>
                                 </div>
