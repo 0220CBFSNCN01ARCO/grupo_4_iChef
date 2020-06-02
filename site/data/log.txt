@@ -354,3 +354,15 @@
 01/06/2020 10:01:16 - Se ingreso a: /product
 01/06/2020 10:01:20 - Se ingreso a: /product/3/edit
 01/06/2020 10:01:52 - Se ingreso a: /product/2/edit
+02/06/2020 10:03:20 - Se ingreso a: /
+02/06/2020 10:03:24 - Se ingreso a: /product/list/PRODUCTO
+02/06/2020 10:03:24 - Se ingreso a: /product/list/SapienCursusVestibulum.png,LoremInteger.tiff,Luctus.jpeg
+02/06/2020 10:04:15 - Se ingreso a: /product/list/CAJA
+02/06/2020 10:04:15 - Se ingreso a: /product/list/DSC_0006.JPG
+02/06/2020 10:04:15 - Se ingreso a: /product/list/SapienCursusVestibulum.png,LoremInteger.tiff,Luctus.jpeg
+02/06/2020 10:07:13 - Se ingreso a: /product/4
+02/06/2020 10:07:22 - Se ingreso a: /
+02/06/2020 10:07:37 - Se ingreso a: /product/
+02/06/2020 10:08:11 - Se ingreso a: /product/detail
+02/06/2020 10:08:49 - Se ingreso a: /product/detail-box
+02/06/2020 10:09:43 - Se ingreso a: /product/detail-box

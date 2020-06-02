@@ -2,15 +2,15 @@
 <html lang="en">
     <%- include('./partials/head') %>
 
-<body style="font-family: 'Open Sans'; background-image: url(/images/fondo.jpg); background-repeat: no-repeat; background-size: cover;">
+<body class="body-productDetail">
     <%- include('./partials/header') %>
     <%- include('./partials/subtitle') %>
-        <div style="display: flex; justify-content: flex-end; padding: 2vw">
-            <a href="market" style="padding-right: 1vw;"><img src="/images/icon-flecha.png" alt="Volver" width="35vw" height="35vw" ></a>
+        <div class="volver-productDetail">
+            <a href="market" class="icono-flecha-detail"><img src="/images/icon-flecha.png" alt="Volver" width="35vw" height="35vw" ></a>
         </div>
         <div class="container-fluid">
-          <div class="row" style="background-color: rgba(255,255,255,0.6);">
-            <div id="carousel-producto" class="carousel slide col-12 col-md-6 col-lg-6" data-ride="carousel" style="padding-top:3.5vw">
+          <div class="row row-detailProduct">
+            <div id="carousel-producto" class="carousel slide col-12 col-md-6 col-lg-6 carousel-productDetail" data-ride="carousel">
               <ol class="carousel-indicators">
                 <li data-target="#carousel-producto" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-producto" data-slide-to="1"></li>
@@ -35,35 +35,35 @@
               </div>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-6" style="padding-top:5vw;">
-              <h2 style="font-size: 2rem; border-bottom: solid #A60D0D ;">Nombre Caja</h2>
+            <div class="col-12 col-md-6 col-lg-6 div-productDetail">
+              <h2 class="h2-productDetail">Nombre Caja</h2>
 
-               <p style="font-size: 1.3rem; margin-bottom: 0.3rem;"> Descripcion del producto. Lorem ipsum dolor sit amet Ea, porro? </p>
+               <p class="p-productDetail"> Descripcion del producto. Lorem ipsum dolor sit amet Ea, porro? </p>
                <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="padding: 0; font-weight: 600;">
+                <button type="button" class="btn btn-default dropdown-toggle dropdown-productDetail" data-toggle="dropdown">
                   Ingredientes <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li style="margin-left: 1vw;"><a href="#" style="list-style: none; color: black;">Aceite de Oliva</a></li>
-                  <li style="margin-left: 1vw;"><a href="#" style="list-style: none; color: black;">Arroz bomba</a></li>
-                  <li style="margin-left: 1vw;"><a href="#" style="list-style: none; color: black;">Mariscos</a></li>
-                  <li style="margin-left: 1vw;"><a href="#" style="list-style: none; color: black;">Pollo</a></li>
-                  <li style="margin-left: 1vw;"><a href="#" style="list-style: none; color: black;">Verduras</a></li>
-                  <li style="margin-left: 1vw;"><a href="#" style="list-style: none; color: black;">Pimenton</a></li>
-                  <li style="margin-left: 1vw;"><a href="#" style="list-style: none; color: black;">Azafran</a></li>
-                  <li style="margin-left: 1vw;"><a href="#" style="list-style: none; color: black;">Caldo</a></li>
+                  <li style="margin-left: 1vw;"><a href="#" class="li-a-productDetail">Aceite de Oliva</a></li>
+                  <li style="margin-left: 1vw;"><a href="#" class="li-a-productDetail">Arroz bomba</a></li>
+                  <li style="margin-left: 1vw;"><a href="#" class="li-a-productDetail">Mariscos</a></li>
+                  <li style="margin-left: 1vw;"><a href="#" class="li-a-productDetail">Pollo</a></li>
+                  <li style="margin-left: 1vw;"><a href="#" class="li-a-productDetail">Verduras</a></li>
+                  <li style="margin-left: 1vw;"><a href="#" class="li-a-productDetail">Pimenton</a></li>
+                  <li style="margin-left: 1vw;"><a href="#" class="li-a-productDetail">Azafran</a></li>
+                  <li style="margin-left: 1vw;"><a href="#" class="li-a-productDetail">Caldo</a></li>
                 </ul>
               </div>
 
-              <h6 style="padding-top: 1vw; padding-bottom: 1vw; font-size: 1rem;">Cantidad de comensales: 2</h6> 
+              <h6 class="h6-productDetail">Cantidad de comensales: 2</h6> 
               <h2>$1200.00</h2>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; justify-content: flex-start; flex-direction: column; align-items: center;">
-                  <input type="number" size="10" min="0"  max="10" name="cantidad" style="border: solid #A60D0D; width: 50px;">
-                  <label for="cantidad" style="margin-bottom: 0;"><h6 style="padding-top: 1vw;">Cantidad</h6></label></h6>
+              <div class="cantidad-productDetail">
+                <div class="cant-prodDetail" >
+                  <input type="number" size="10" min="0"  max="10" name="cantidad" class="input-cant-prodDetail">
+                  <label for="cantidad"><h6 class="cant-padd-prodDetail">Cantidad</h6></label></h6>
                 </div>
 
-                <button title="Agregar al Carrito" style="background-color: transparent; border: solid #A60D0D;"><h6 style="color: #A60D0D ">Agregar al carrito</h6><img src="/images/icon-carrito.png" alt="Carrito de compras" width="40" height="40"> </button>
+                <button title="Agregar al Carrito" class="button-carrito-prodDetail"><h6 class="text-carrito-prodDetail">Agregar al carrito</h6><img src="/images/icon-carrito.png" alt="Carrito de compras" width="40" height="40"> </button>
 
               </div>
 
@@ -76,4 +76,5 @@
 </body>
 </html>
 
-    
+
+

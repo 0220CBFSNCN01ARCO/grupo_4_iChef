@@ -739,6 +739,78 @@ p {
   }
 
 }
+
+/*PRODUCT DETAIL*/
+.body-productDetail{
+  font-family: 'Open Sans';
+  background-image: url(/images/fondo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.volver-productDetail{
+  display: flex;
+  justify-content: flex-end;
+  padding: 2vw
+}
+.icono-flecha-detail{
+padding-right: 1vw;
+}
+.row-detailProduct{
+  background-color: rgba(255,255,255,0.6);
+}
+
+.carousel-productDetail{
+  padding-top:3.5vw;
+}
+.div-productDetail{
+  padding-top:5vw;
+}
+.h2-productDetail{
+  font-size: 2rem;
+  border-bottom: solid #A60D0D ;}
+.p-productDetail{
+  font-size: 1.3rem;
+}
+.dropdown-productDetail{
+  padding: 0;
+  font-weight: 600;
+}
+.li-a-productDetail{
+  list-style: none; 
+  color: black;
+}
+.h6-productDetail{
+  padding-top: 2vw; 
+  padding-bottom: 1vw; 
+  font-size: 1.3rem;
+}
+.cantidad-productDetail{
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+.cant-prodDetail{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+.input-cant-prodDetail{
+  border: solid #A60D0D; 
+  width: 50px;
+}
+.cant-padd-prodDetail{
+  padding-top: 1vw;
+}
+.button-carrito-prodDetail{
+  background-color: transparent;
+  border: solid #A60D0D;
+}
+.text-carrito-prodDetail{
+  color: #A60D0D
+}
+/*FIN PRODUCT DETAIL*/
+
 /*homepage*/
 @media (min-width:661px) {
   .flexbox-container-feature {
@@ -749,16 +821,13 @@ p {
   }
 }
 
-
-/*market
+/*MARKET*/
 .body_market{
   font-family: 'Open Sans';
-  background-image: url(/images/fondo.jpg);
+  background-image: url(/images/fondo.jpg); 
   background-repeat: no-repeat;
   background-size: cover;
 }
-*/
-
 .carrito-market{
 display: flex;
 justify-content: flex-end;
@@ -766,7 +835,23 @@ justify-content: space-around;
 }
 .espacio-market{
  margin-right: 1vw;
+ padding-right: 1vw;
 }
 .background-card{
- background-color: rgba(255,255,255,0.8)
+ background-color: rgba(255,255,255,0.8);
+ width: 18rem
 }
+.padding-row{
+  padding-top: 2vw
+}
+.p-market{
+  color: #A60D0D;
+  font-weight: 600; 
+  font-size: 2vw;
+}
+.agregar-carrito-market{
+  background-color: transparent;
+  border: solid #A60D0D; 
+  flex-direction: end;
+}
+/*FIN MARKET*/
