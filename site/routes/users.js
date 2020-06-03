@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const multer = require('multer');
+const path = require('path');
+const moment = require('moment');
 
 const usersController = require('../controllers/usersController');
 const {check, validationResult, body} = require('express-validator');
@@ -10,7 +12,13 @@ var storage = multer.diskStorage({
       cb(null, 'public/images/users')
     },
     filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname))
+      //console.log(req);
+      let fecha = moment().format('DD-MM-YYYY');
+
+      let nombre = req.body.emailUser.split('@');
+      //console.log(nombre);
+
+      cb(null, nombre[0] + '-' + fecha + path.extname(file.originalname))
     }
   })
 
@@ -24,5 +32,7 @@ router.get('/register' ,usersController.userRegister);
 router.post('/create', upload.single('fotoPerfil'), usersController.createUser);
 
 router.get('/login', usersController.userLogin);
+
+router.post('/login', usersController.loguearUsuario)
 
 module.exports = router;

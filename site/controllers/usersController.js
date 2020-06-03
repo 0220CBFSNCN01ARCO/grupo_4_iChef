@@ -8,7 +8,7 @@ let usersController = {
                                  subtitle: 'Registro usuario' });
       },
     createUser: function (req, res, next) {
-      //console.log(req.body);
+      //console.log(req);
 
       if(req.body.passwordUser != req.body.repeatPasswordUser){
         res.render('register', { title: 'Registro',
@@ -17,7 +17,7 @@ let usersController = {
           let usuariosJson = fs.readFileSync('./data/users.json', {encoding: 'utf-8'});
           let usuarios = JSON.parse(usuariosJson);
 
-          let idUser = usuarios.length;
+          let idUser = usuarios.length + 1;
 
           let passEncriptado = bcrypt.hashSync(req.body.passwordUser, saltNumber);
 
@@ -29,7 +29,7 @@ let usersController = {
             password: passEncriptado,
             nroTelefono: req.body.nroTelefonoUser,
             rol: 2,
-            imagen: req.body.fotoPerfil
+            imagen: req.file.filename
           };
 
           usuarios.push(newUser);
@@ -46,6 +46,29 @@ let usersController = {
         res.render('login', { title: 'Login',
                                  subtitle: 'Login usuario' });
       },
+
+    loguearUsuario: function(req, res, next) {
+
+      let usuariosJSON = fs.readFileSync('./data/users.json',{ encoding:'utf-8'});
+      let users;
+      if(usuariosJSON == ""){
+        users = [];
+      }else{
+        users = JSON.parse(usuariosJSON);
+      }
+
+      let usuarioLoguear = users.find(function(user){
+          return user.email == req.body.emailUsuario && bcrypt.compareSync (req.body.passwordUsuario,user.password);
+      });
+
+      if(usuarioLoguear == undefined){
+          res.render('error',{ title: 'Usuario' });
+      }
+
+      console.log(usuarioLoguear);
+      req.session.usuarioLogueado = usuarioLoguear;
+      res.render('index', { title: 'iChef' });
+    },
 
     userList: function (req, res, next) {
         let usuariosJSON = fs.readFileSync('./data/users.json',{ encoding:'utf-8'});

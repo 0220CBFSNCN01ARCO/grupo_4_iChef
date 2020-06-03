@@ -100,43 +100,23 @@
         "imagen": "imagen1.jpg"
     },
     {
-        "id": 10,
-        "nombre": "jose",
-        "apellido": "aaaa",
-        "email": "josesalvini@gmail.com",
-        "password": "123456",
-        "nroTelefono": "2424234234",
-        "rol": 2,
-        "imagen": "DSC_0007.JPG"
-    },
-    {
         "id": 11,
-        "nombre": "jose",
-        "apellido": "aaaa",
-        "email": "josesalvini@gmail.com",
-        "password": "1231",
-        "nroTelefono": "1313131313",
+        "nombre": "aaaaaaaa",
+        "apellido": "rrrrrrrr",
+        "email": "jose@gmail.com",
+        "password": "$2b$10$8BiuNmrKnAAiE8JsV5LVhu6q0H9LO4SjAs6WD.kJHO5FzbO0zNFFS",
+        "nroTelefono": "22222",
         "rol": 2,
-        "imagen": "DSC_0006.JPG"
+        "imagen": "jose-02-06-2020.jpg"
     },
     {
         "id": 12,
         "nombre": "jose",
-        "apellido": "aaaa",
-        "email": "josesalvini@gmail.com",
-        "password": "12121",
-        "nroTelefono": "213412312",
+        "apellido": "salvini",
+        "email": "jose@gmail.com",
+        "password": "$2b$10$r0OrKntMzRMLQJgEM11uY.o936kwZmMeED9sn1mm0hhD3D4Cc4jpe",
+        "nroTelefono": "12345678",
         "rol": 2,
-        "imagen": "DSC_0007.JPG"
-    },
-    {
-        "id": 13,
-        "nombre": "jose",
-        "apellido": "aaaa",
-        "email": "josesalvini@gmail.com",
-        "password": "234234",
-        "nroTelefono": "2342342",
-        "rol": 2,
-        "imagen": "DSC_0007.JPG"
+        "imagen": "jose-02-06-2020.jpg"
     }
 ]
