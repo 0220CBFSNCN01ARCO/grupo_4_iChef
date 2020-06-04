@@ -42,6 +42,12 @@
   border-color: rgba(255,255,255,.5);
 }
 
+.headerLogo,.headerMenu,.headerMenuUser{
+  text-align: center;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 #menuText {
   flex-direction: column;
   margin: auto;
@@ -801,12 +807,14 @@ p {
 }
 
 /*PRODUCT DETAIL*/
+/*
 .body-productDetail{
   font-family: 'Open Sans';
   background-image: url(/images/fondo.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-}
+}*/
+
 .volver-productDetail{
   display: flex;
   justify-content: flex-end;
@@ -882,12 +890,13 @@ padding-right: 1vw;
 }
 
 /*MARKET*/
+/*
 .body_market{
   font-family: 'Open Sans';
   background-image: url(/images/fondo.jpg); 
   background-repeat: no-repeat;
   background-size: cover;
-}
+}*/
 .carrito-market{
 display: flex;
 justify-content: flex-end;
