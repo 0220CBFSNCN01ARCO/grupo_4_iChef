@@ -48,6 +48,15 @@
   padding-right: 0px;
 }
 
+.rowNav{
+  justify-content: center;
+}
+
+.rowNav{
+  margin-left: 0;
+  margin-right: 0;
+}
+
 #menuText {
   flex-direction: column;
   margin: auto;
@@ -61,6 +70,15 @@
 .iconMenu {
   flex-direction: row;
 }
+
+.headerMenu {
+  width: 200px;
+}
+
+/*
+.dropdown-menu{
+  background-color:rgba(255, 255, 255 , 0.7) !important;
+}*/
 
 .copyFooter {
   font-size: small;
@@ -374,6 +392,13 @@ margin-left: 15px;
   height: 300px;
   object-fit: cover;
 }
+
+.wd80 {
+  width: 80%;
+  height: 300px;
+  object-fit: cover;
+}
+
 .flexbox-container-market {
   display: flex;
   flex-direction: column;
@@ -661,6 +686,7 @@ p {
 
 }
 
+
 @media (min-width: 768px) {
   .imagePreview {
     height: 190px;
@@ -699,6 +725,22 @@ p {
 .card-personales,.card-cuenta,.card-foto {
   margin-left: 0;
   margin-right: 0;
+}
+
+.rowNav {
+  justify-content: normal;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.row-user{
+  margin: 0px;
+}
+
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 }
@@ -753,6 +795,17 @@ p {
   margin-right: 0;
 }
 
+.rowNav {
+  justify-content: normal;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.row-user{
+  margin: 0px;
+}
+
 }
 
 @media (min-width: 1200px) {
@@ -803,6 +856,17 @@ p {
     margin-left: 0;
     margin-right: 0;
   }
+  .rowNav {
+    justify-content: normal;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .row-user{
+    margin: 0px;
+  }
+
 
 }
 
