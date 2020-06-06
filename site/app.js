@@ -12,6 +12,7 @@ let productRouter = require('./routes/product');
 let infoRouter  = require('./routes/info');
 
 let logMiddleware = require('./middleware/logMiddleware');
+let recordameMiddleware = require ('./middleware/recordameMiddleware');
 
 let app = express();
 
@@ -26,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(session({secret: 'iChefSession'}));
-
+app.use(recordameMiddleware);
 
 app.use('/', logMiddleware ,indexRouter);
 app.use('/users', usersRouter);
