@@ -8,7 +8,7 @@
                     </a>
                 </div>
             </div>
-            <div class="container-fluid contMenu col-sm-12 col-md-10 col-lg-10 col-xl-11">
+            <div class="container contMenu col-sm-12 col-md-10 col-lg-10 col-xl-11">
                 <div class="row rowMenu col-sm-12 col-md-12 col-lg-8 col-xl-10">
                     <div class="headerMenu col-sm-12 col-md-12 col-lg-10">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,11 +58,12 @@
                         <div class="row row-user justify-content-center">
                             <ul class="navbar-nav iconMenu">
                                 <li class="nav-item dropdown">
-                                    <!--span class="d-none d-sm-block">Iniciar sesion</span-->
+
                                     <a class="nav-link dropdown-toggle pl-1 mx-1 py-3 my-n2"
                                         id="navbarLogin" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false" href="/users/login">
                                         <i class="fa fa-user fa-2x"></i>
+                                        <span class="d-none d-sm-block">Iniciar sesion</span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarLogin">
                                         <a class="dropdown-item" href="/users/login"><i class="fa fa-vcard"></i> Iniciar sesión</a>
@@ -73,12 +74,12 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle pl-2 pr-1 mx-1 py-3 my-n2"
                                         id="navbarCarrito" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false"  href="/product/cart">
+                                        aria-haspopup="true" aria-expanded="false"  href="#">
                                         <i class="fa fa-shopping-cart fa-2x"></i>
-                                        <!--span class="d-none d-sm-block">(0) items</span-->
+                                        <span class="d-none d-sm-block">(0) items</span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarCarrito">
-                                        <a class="dropdown-item" href="#"><i class="fa fa-binoculars"></i> Ver</a>
+                                        <a class="dropdown-item" href="/product/cart"><i class="fa fa-binoculars"></i> Ver</a>
                                         <a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Vaciar</a>
                                     </div>
                                 </li>

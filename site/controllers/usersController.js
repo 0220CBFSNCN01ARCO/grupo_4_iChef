@@ -65,6 +65,9 @@ let usersController = {
           res.render('error',{ title: 'Usuario' });
       }
 
+
+      console.log(req.body);
+
       console.log(usuarioLoguear);
       req.session.usuarioLogueado = usuarioLoguear;
       res.render('index', { title: 'iChef' });
