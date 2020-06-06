@@ -123,7 +123,56 @@ let productController = {
     },
     saveProductById: function (req, res, next) {
 
-      res.render('productAdd', { title: 'Guardar' });
+      let esOferta = false;
+      if(req.body.ofertaSwich =='on'){
+        esOferta = true;
+      }
+      console.log(req.body);
+
+      let productosJson = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
+      let productos = JSON.parse(productosJson);
+
+      const idProducto = req.params.id;
+      //const ultimoItem = productos.length-1;
+      let arrayIngredientes = [];
+      if(req.body.ingredientes.length > 0){
+        arrayIngredientes= req.body.ingredientes.slice();
+      }
+      let arrayFotos = [];
+      if(req.body.fotos.length > 0){
+        arrayFotos = req.body.fotos.slice();
+      }
+
+      let productEdited = {
+        //codigo: ultimoItem,
+        codigo: idProducto,
+        nombre: req.body.nombreProducto,
+        tipo: req.body.tipo,
+        precio: req.body.precioProducto,
+        oferta: esOferta,
+        precioOferta: req.body.precioOferta,
+        descuentoOferta: req.body.descuento,
+        grupo: req.body.grupo,
+        marca: req.body.marca,
+        descripcion: req.body.txtDescripcion,
+        comensales: req.body.radioPersonas,
+        ingredientes: arrayIngredientes,
+        calorias: req.body.calorias,
+        peso: req.body.peso,
+        fotos: arrayFotos,
+        receta: req.body.pdfFile
+      }
+
+      productos.splice(idProducto-1,1,productEdited);
+      //productos.push(newProducto);
+
+      fs.writeFileSync('./data/products.json', JSON.stringify(productos));
+
+      //res.render('productAdd', { title: 'Crear producto', subtitle: 'Formulario alta' });
+      mensaje = `El Producto ${ productEdited.codigo }, ${ productEdited.nombre } fue editado exitosamente!!!`
+      res.render('productMsg', { title: 'Producto editado',
+                                    tipo: 'success',
+                                    mensaje: mensaje });
     },
     productDelete:function (req, res, next) {
 
