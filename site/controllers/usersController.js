@@ -65,8 +65,20 @@ let usersController = {
           res.render('error',{ title: 'Usuario' });
       }
 
+
+      console.log(req.body);
+
       console.log(usuarioLoguear);
       req.session.usuarioLogueado = usuarioLoguear;
+
+      console.log(req.body) 
+
+      if(req.body.checkRecordame != undefined){
+        res.cookie('recordame', usuarioLoguear.email, { maxAge: 120000 })
+      } 
+
+
+
       res.render('index', { title: 'iChef' });
     },
 
