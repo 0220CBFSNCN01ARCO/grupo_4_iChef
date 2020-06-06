@@ -5,7 +5,7 @@
     <%- include('./partials/header') %>
     <%- include('./partials/subtitle') %>
     <div class="container-fluid containerForm">
-        <form method="POST" action="/product/<%= producto.codigo %>?_method=PUT" class="frmProducto needs-validation" novalidate>
+        <form method="POST" action="/product/<%= producto[0].codigo %>/edit?_method=PUT" class="frmProducto needs-validation" novalidate>
             <div class="card">
                 <div class="card-header">Datos del producto</div>
                 <div class="card-body">
@@ -47,9 +47,10 @@
                         <div id="ofertaProd" class="form-group d-flex justify-content-center align-items-center col-5 col-md-5 col-lg-3">
                             <div class="custom-control custom-switch">
                                 <% if( producto[0].oferta) { %>
-                                    <input type="checkbox" class="custom-control-input" id="ofertaSwich" name="ofertaSwich" data-toggle="collapse" data-target="#precioOferta" aria-expanded="true">
+                                    <input type="checkbox" class="custom-control-input" id="ofertaSwich" name="ofertaSwich" data-toggle="collapse" data-target="#precioOferta" aria-expanded="false" checked>
+
                                 <% } else { %>
-                                    <input type="checkbox" class="custom-control-input collapse" id="ofertaSwich" name="ofertaSwich" data-toggle="collapse" data-target="#precioOferta" aria-expanded="false">
+                                    <input type="checkbox" class="custom-control-input collapse" id="ofertaSwich" name="ofertaSwich" data-toggle="collapse" data-target="#precioOferta" aria-expanded="true">
                                 <% } %>
                                 <label for="ofertaSwich" class="custom-control-label">Oferta</label>
                             </div>
@@ -87,13 +88,14 @@
                         <div class="form-group col-xs-6 col-md-5 col-lg-4">
                             <label for="grupo">Grupo</label>
                             <select class="custom-select form-control" id="grupo" name="grupo" required>
-                                <option value="" selected>Seleccione un grupo</option>
+                                <option value="">Seleccione un grupo</option>
                                 <option value="generico">Generico</option>
                                 <option value="grupo2">Grupo 1</option>
                                 <option value="grupo3">Grupo 2</option>
                                 <option value="grupo4">Grupo 3</option>
                                 <option value="grupo5">Grupo 4</option>
                             </select>
+
                             <div class="invalid-feedback">Debe seleccionar un grupo.</div>
                         </div>
                         <div class="form-group col-xs-6 col-md-5 col-lg-4">
@@ -112,7 +114,7 @@
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-12 col-lg-8">
                             <label for="txtDescripcion">Descripción</label>
-                            <textarea class="form-control" name="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"  required></textarea>
+                            <textarea class="form-control" name="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"  required><%= producto[0].descripcion%></textarea>
                             <div class="invalid-feedback">Debe agregar una descripción valida.</div>
                         </div>
                     </div>
@@ -145,7 +147,7 @@
                     <div class="row">
                         <div class="form-group col-12 col-md-6 col-lg-4">
                             <label for="ingredientes">Ingredientes</label>
-                            <select multiple class="custom-select mr-sm-2 form-control" name="ingredientes">
+                            <select multiple class="custom-select mr-sm-2 form-control" name="ingredientes" required>
                                 <option value="1">Ingrediente 1</option>
                                 <option value="2">Ingrediente 2</option>
                                 <option value="3">Ingrediente 3</option>
@@ -160,12 +162,12 @@
                     <div class="row">
                         <div class="form-group col-5 col-md-3 col-lg-3">
                             <label for="txtCalorias">Calorías</label>
-                            <input type="text" class="form-control" name="calorias" placeholder="0" required>
+                            <input type="text" class="form-control" name="calorias" value="<%= producto[0].calorias%>" required>
                             <div class="invalid-feedback">Ingrese cantidad calorias.</div>
                         </div>
                         <div class="form-group col-5 col-md-3 col-lg-3">
                             <label for="txtPeso">Peso (KG)</label>
-                            <input type="text" class="form-control" name="peso"  placeholder="0" required>
+                            <input type="text" class="form-control" name="peso"  value="<%= producto[0].peso%>" required>
                             <div class="invalid-feedback">Ingrese peso en kilogramos.</div>
                         </div>
                     </div>
@@ -205,12 +207,14 @@
                     <button class="btn btn-primary" type="reset" value="limpiarProd">Limpiar</button>
                 </div>
                 <div class="itemBtn col-4 col-md-2 col-lg-2">
-                    <button class="btn btn-primary" type="submit" value="guardarProd">Guardar</button>
+                    <button class="btn btn-primary" type="submit" value="guardarProd">Editar</button>
                 </div>
             </div>
         </form>
     </div>
+    
     <%-include('./partials/footer')%>
     <%-include('./partials/script')%>
+    
 </body>
 </html>

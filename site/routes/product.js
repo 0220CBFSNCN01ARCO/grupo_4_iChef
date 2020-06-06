@@ -41,7 +41,7 @@ router.post('/create', upload.array('fotos') , productController.createProduct);
 router.get('/:id/edit', productController.editProductById);
 
 //6. /products/​:id​ (PUT)  Acción de edición (a donde se envía el formulario): 
-router.post('/:id', productController.saveProductById);
+router.put('/:id/edit', productController.saveProductById);
 
 //7. /products/​:id​ (DELETE) Acción de borrado
 router.delete('/:idProducto',productController.deleteProductById);
