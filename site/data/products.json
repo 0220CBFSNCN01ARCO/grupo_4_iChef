@@ -1,24 +1,6 @@
 [
     {
         "codigo": "1",
-        "nombre": "dhfh",
-        "tipo": "PRODUCTO",
-        "precio": "123",
-        "oferta": false,
-        "precioOferta": "",
-        "descuentoOferta": "",
-        "grupo": "grupo2",
-        "marca": "marca3",
-        "descripcion": "ASDDDDDDDDDDDDDD",
-        "comensales": "1",
-        "ingredientes": "3",
-        "calorias": "343",
-        "peso": "1231",
-        "fotos": [],
-        "receta": ""
-    },
-    {
-        "codigo": "1",
         "nombre": "ADAS",
         "tipo": "CAJA",
         "precio": "123",
@@ -53,7 +35,7 @@
         "ingredientes": "3",
         "calorias": "343",
         "peso": "1231",
-        "fotos": [],
+        "fotos": ["carrousel-1.webp","carrousel-2.webp","carrousel-3.webp"],
         "receta": ""
     },
     {
@@ -74,24 +56,6 @@
         ],
         "calorias": "120",
         "peso": "120",
-        "fotos": [],
-        "receta": ""
-    },
-    {
-        "codigo": "2",
-        "nombre": "dhfh",
-        "tipo": "PRODUCTO",
-        "precio": "123",
-        "oferta": false,
-        "precioOferta": "",
-        "descuentoOferta": "",
-        "grupo": "grupo2",
-        "marca": "marca3",
-        "descripcion": "ASDDDDDDDDDDDDDD",
-        "comensales": "1",
-        "ingredientes": "3",
-        "calorias": "343",
-        "peso": "1231",
         "fotos": [],
         "receta": ""
     }
