@@ -6,6 +6,8 @@ const moment = require('moment');
 
 const usersController = require('../controllers/usersController');
 const {check, validationResult, body} = require('express-validator');
+let guestMiddleware = require('../middleware/guestMiddleware')
+let authMiddleware = require('../middleware/authMiddleware')
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -27,7 +29,7 @@ var upload = multer({ storage: storage })
 /* GET users listing. */
 router.get('/', usersController.userList);
 
-router.get('/register' ,usersController.userRegister);
+router.get('/register' , guestMiddleware ,usersController.userRegister);
 
 router.post('/create', upload.single('fotoPerfil'), usersController.createUser);
 

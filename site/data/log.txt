@@ -219,3 +219,7 @@
 06/06/2020 07:00:53 - Se ingreso a: /info/nosotros
 06/06/2020 07:01:05 - Se ingreso a: /product
 06/06/2020 07:01:12 - Se ingreso a: /product/3/edit
+06/06/2020 09:40:05 - Se ingreso a: /
+06/06/2020 09:40:09 - Se ingreso a: /users/login
+06/06/2020 09:40:16 - Se ingreso a: /users/login
+06/06/2020 09:40:25 - Se ingreso a: /users/login
