@@ -4,10 +4,10 @@ const saltNumber = 10;
 
 let usersController = {
     userRegister: function (req, res, next) {
-        let usuario;
+        
         res.render('register', { title: 'Registro',
-                                 subtitle: 'Registro usuario',
-                                 usuario: usuario });
+                                 subtitle: 'Registro usuario'
+                                 });
       },
     createUser: function (req, res, next) {
       //console.log(req);
@@ -45,9 +45,8 @@ let usersController = {
     },
 
     userLogin: function (req, res, next) {
-        let usuario;
-        res.render('login', { title: 'Login',
-                                 usuario: usuario });
+        res.render('login', { title: 'Login'
+                                  });
       },
 
     loguearUsuario: function(req, res, next) {
@@ -69,9 +68,9 @@ let usersController = {
       }
 
 
-      console.log(req.body);
+      //console.log(req.body);
 
-      console.log(usuarioLoguear);
+      //console.log(usuarioLoguear);
       req.session.usuarioLogueado = usuarioLoguear;
 
       if(req.body.checkRecordame != undefined){

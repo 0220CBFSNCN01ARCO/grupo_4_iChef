@@ -1,7 +1,7 @@
 function recordameMiddleware (req, res, next){
     next();
 
-    if(req.cookie.recordame != undefined && req.session.usuarioLogueado == undefined){
+    if(req.cookies.recordame != undefined && req.session.usuarioLogueado == undefined){
         let usuariosJSON = fs.readFileSync('./data/users.json',{ encoding:'utf-8'});
       let users;
       if(usuariosJSON == ""){
