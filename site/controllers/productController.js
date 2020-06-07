@@ -42,7 +42,22 @@ let productController = {
                                   product: productos });
     },
     getProductById: function (req, res, next) {
-      res.render('productAdd', { title: 'Producto id', subtitle: 'Detalle producto' });
+      let idProducto = req.params.id;
+      let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
+      let productos;
+
+      if(productosJSON == ""){
+        productos = [];
+      }else{
+        productos = JSON.parse(productosJSON);
+      }
+
+      let productDetail = productos.filter(function (producto) {
+        return producto.codigo == idProducto;
+      });
+      console.log(productDetail);
+      res.render('productDetail', { title: 'Producto id', subtitle: 'Detalle producto', producto: productDetail});
+      
     },
 
     productAdd: function (req, res, next) {
