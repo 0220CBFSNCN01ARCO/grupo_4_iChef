@@ -4,8 +4,10 @@ const saltNumber = 10;
 
 let usersController = {
     userRegister: function (req, res, next) {
+        let usuario;
         res.render('register', { title: 'Registro',
-                                 subtitle: 'Registro usuario' });
+                                 subtitle: 'Registro usuario',
+                                 usuario: usuario });
       },
     createUser: function (req, res, next) {
       //console.log(req);
@@ -43,8 +45,9 @@ let usersController = {
     },
 
     userLogin: function (req, res, next) {
+        let usuario;
         res.render('login', { title: 'Login',
-                                 subtitle: 'Login usuario' });
+                                 usuario: usuario });
       },
 
     loguearUsuario: function(req, res, next) {
@@ -71,15 +74,11 @@ let usersController = {
       console.log(usuarioLoguear);
       req.session.usuarioLogueado = usuarioLoguear;
 
-      console.log(req.body) 
-
       if(req.body.checkRecordame != undefined){
         res.cookie('recordame', usuarioLoguear.email, { maxAge: 120000 })
-      } 
+      }
 
-
-
-      res.render('index', { title: 'iChef' });
+      res.render('index', { title: 'iChef', usuario: usuarioLoguear });
     },
 
     userList: function (req, res, next) {

@@ -219,6 +219,58 @@
 06/06/2020 07:00:53 - Se ingreso a: /info/nosotros
 06/06/2020 07:01:05 - Se ingreso a: /product
 06/06/2020 07:01:12 - Se ingreso a: /product/3/edit
+<<<<<<< HEAD
+06/06/2020 07:21:18 - Se ingreso a: /product/list/PRODUCTO
+06/06/2020 07:22:03 - Se ingreso a: /product/list/CAJA
+06/06/2020 07:22:12 - Se ingreso a: /product/list/PRODUCTO
+06/06/2020 07:22:14 - Se ingreso a: /product/list/PRODUCTO
+06/06/2020 07:22:16 - Se ingreso a: /product/list/CAJA
+06/06/2020 07:22:51 - Se ingreso a: /product/1
+06/06/2020 07:23:52 - Se ingreso a: /product/1
+06/06/2020 07:23:53 - Se ingreso a: /
+06/06/2020 07:23:57 - Se ingreso a: /product/list/PRODUCTO
+06/06/2020 07:24:21 - Se ingreso a: /product/list/CAJA
+06/06/2020 07:25:05 - Se ingreso a: /product/1
+06/06/2020 07:25:47 - Se ingreso a: /product/1
+06/06/2020 07:31:05 - Se ingreso a: /
+06/06/2020 07:31:07 - Se ingreso a: /product/list/PRODUCTO
+06/06/2020 07:33:22 - Se ingreso a: /product/list/PRODUCTO
+06/06/2020 07:33:23 - Se ingreso a: /
+06/06/2020 07:33:25 - Se ingreso a: /product/list/PRODUCTO
+06/06/2020 07:46:57 - Se ingreso a: /product/list/PRODUCTO
+06/06/2020 07:46:58 - Se ingreso a: /
+06/06/2020 07:47:27 - Se ingreso a: /users/login
+06/06/2020 07:47:34 - Se ingreso a: /users/login
+06/06/2020 07:58:33 - Se ingreso a: /
+06/06/2020 08:01:34 - Se ingreso a: /
+06/06/2020 08:04:13 - Se ingreso a: /
+06/06/2020 08:04:14 - Se ingreso a: /
+06/06/2020 08:04:15 - Se ingreso a: /
+06/06/2020 08:04:15 - Se ingreso a: /
+06/06/2020 08:04:15 - Se ingreso a: /
+06/06/2020 08:04:15 - Se ingreso a: /
+06/06/2020 08:04:15 - Se ingreso a: /
+06/06/2020 08:04:16 - Se ingreso a: /
+06/06/2020 08:04:16 - Se ingreso a: /
+06/06/2020 08:04:57 - Se ingreso a: /
+06/06/2020 08:07:24 - Se ingreso a: /
+06/06/2020 08:08:05 - Se ingreso a: /users/login
+06/06/2020 08:12:22 - Se ingreso a: /users/login
+06/06/2020 08:12:25 - Se ingreso a: /
+06/06/2020 08:12:28 - Se ingreso a: /users/login
+06/06/2020 08:12:30 - Se ingreso a: /users/login
+06/06/2020 08:13:40 - Se ingreso a: /users/login
+06/06/2020 08:13:50 - Se ingreso a: /users/login
+06/06/2020 08:15:18 - Se ingreso a: /users/login
+06/06/2020 08:15:21 - Se ingreso a: /users/login
+06/06/2020 08:24:16 - Se ingreso a: /users/login
+06/06/2020 08:24:24 - Se ingreso a: /users/login
+06/06/2020 08:24:25 - Se ingreso a: /
+06/06/2020 08:24:26 - Se ingreso a: /
+06/06/2020 08:24:27 - Se ingreso a: /
+06/06/2020 08:24:29 - Se ingreso a: /users/login
+06/06/2020 08:24:31 - Se ingreso a: /users/login
+=======
 06/06/2020 07:40:34 - Se ingreso a: /product/detail
 06/06/2020 07:54:44 - Se ingreso a: /product/detail
 06/06/2020 07:55:32 - Se ingreso a: /product/detail
@@ -264,6 +316,7 @@
 06/06/2020 08:59:20 - Se ingreso a: /product/2
 06/06/2020 09:01:43 - Se ingreso a: /product/2
 06/06/2020 09:06:33 - Se ingreso a: /users/login
+<<<<<<< HEAD
 06/06/2020 09:12:37 - Se ingreso a: /product/cart
 06/06/2020 09:13:24 - Se ingreso a: /
 06/06/2020 09:16:03 - Se ingreso a: /product
@@ -304,3 +357,6 @@
 06/06/2020 09:22:41 - Se ingreso a: /product/list/carrousel-1.webp,carrousel-2.webp,carrousel-3.webp
 06/06/2020 09:22:43 - Se ingreso a: /
 06/06/2020 09:23:16 - Se ingreso a: /product/list/PRODUCTO
+=======
+>>>>>>> a588f99e532488d5b70a4337d0a30826dda4f4ef
+>>>>>>> d34152c905832bbabb03712355b587e08f0e73e3
