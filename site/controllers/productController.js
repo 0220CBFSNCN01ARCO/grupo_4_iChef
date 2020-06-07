@@ -42,6 +42,8 @@ let productController = {
                                   product: productos });
     },
     getProductById: function (req, res, next) {
+
+      
       res.render('productAdd', { title: 'Producto id', subtitle: 'Detalle producto' });
     },
 

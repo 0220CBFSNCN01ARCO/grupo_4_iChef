@@ -9,7 +9,6 @@ function recordameMiddleware (req, res, next){
       }else{
         users = JSON.parse(usuariosJSON);
       }
-      
         let usuarioLoguear;
         for(let i = 0; i < users.length; i++){
             if(users[i].email == req.cookies.recordame) {

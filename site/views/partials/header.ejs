@@ -63,7 +63,11 @@
                                         id="navbarLogin" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false" href="/users/login">
                                         <i class="fa fa-user fa-2x"></i>
-                                        <span class="d-none d-sm-block">Iniciar sesion</span>
+                                        <% if( typeof usuario != 'undefined') { %>
+                                            <span class="d-none d-sm-block"><%= usuario.nombre %></span>
+                                        <% } else { %>
+                                            <span class="d-none d-sm-block">Iniciar sesion</span>
+                                        <% } %>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarLogin">
                                         <a class="dropdown-item" href="/users/login"><i class="fa fa-vcard"></i> Iniciar sesión</a>
