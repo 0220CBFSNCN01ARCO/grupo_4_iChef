@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="container contMenu col-sm-12 col-md-10 col-lg-10 col-xl-11">
-                <div class="row rowMenu col-sm-12 col-md-12 col-lg-8 col-xl-10">
+                <div class="row rowMenu col-sm-12 col-md-8 col-lg-8 col-xl-10">
                     <div class="headerMenu col-sm-12 col-md-12 col-lg-10">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -32,13 +32,7 @@
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                <a class="nav-link " href="/info/staff">Staff chef</a>
-                                </li>
-                                <li class="nav-item">
                                 <a class="nav-link" href="/info/contact">Contacto</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="/info/nosotros">Nosotros</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
@@ -53,26 +47,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="row rowMenuUser col-sm-12 col-md-12 col-lg-4 col-xl-2">
+                <div class="row rowMenuUser col-sm-12 col-md-4 col-lg-4 col-xl-2">
                     <div class="headerMenuUser">
                         <div class="row row-user justify-content-center">
                             <ul class="navbar-nav iconMenu">
                                 <li class="nav-item dropdown">
-
                                     <a class="nav-link dropdown-toggle pl-1 mx-1 py-3 my-n2"
                                         id="navbarLogin" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false" href="/users/login">
                                         <i class="fa fa-user fa-2x"></i>
                                         <% if( typeof usuario != 'undefined') { %>
-                                            <span class="d-none d-sm-block"><%= usuario.nombre %></span>
+                                            <span class="d-none d-sm-block">Hola! <%= usuario.nombre %></span>
                                         <% } else { %>
                                             <span class="d-none d-sm-block">Iniciar sesion</span>
                                         <% } %>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarLogin">
-                                        <a class="dropdown-item" href="/users/login"><i class="fa fa-vcard"></i> Iniciar sesión</a>
-                                        <a class="dropdown-item" href="#"><i class="fa fa-address-book"></i> Perfil</a>
-                                        <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+                                        <% if( typeof usuario != 'undefined') { %>
+                                            <a class="dropdown-item d-none" href="/users/login"><i class="fa fa-vcard"></i> Iniciar sesión</a>
+                                            <a class="dropdown-item" href="/users/userprofile"><i class="fa fa-address-book"></i> Perfil</a>
+                                            <a class="dropdown-item" href="/users/logout"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+                                        <% } else { %>
+                                            <a class="dropdown-item" href="/users/login"><i class="fa fa-vcard"></i> Iniciar sesión</a>
+                                            <a class="dropdown-item d-none" href="/users/userprofile"><i class="fa fa-address-book"></i> Perfil</a>
+                                            <a class="dropdown-item d-none" href="/users/logout"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+                                        <% } %>
+
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">

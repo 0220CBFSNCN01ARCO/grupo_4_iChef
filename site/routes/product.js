@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+let authMiddleware = require ('../middleware/authMiddleware');
 
 const productController = require('../controllers/productController');
 
@@ -18,7 +19,7 @@ var upload = multer({ storage: storage })
 
 router.get('/detail', productController.productDetail);
 router.get('/detail-box', productController.product_boxDetail);
-router.get('/cart', productController.productCart);
+router.get('/cart', authMiddleware, productController.productCart);
 router.get('/list/:tipo', productController.listarProductos);
 router.get('/productDelete', productController.productDelete);
 

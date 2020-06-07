@@ -3,17 +3,16 @@ const multer = require('multer');
 
 let productController = {
     productDetail: function (req, res, next) {
-        res.render('productDetail', { title: 'Detalle productos', subtitle: 'Detalle producto' });
+        res.render('productDetail', { title: 'Detalle productos', subtitle: 'Detalle producto',usuario: req.session.usuarioLogueado });
     },
     product_boxDetail: function (req, res, next) {
-        res.render('product-boxDetail', { title: 'Detalle caja', subtitle: 'Detalle caja' });
+        res.render('product-boxDetail', { title: 'Detalle caja', subtitle: 'Detalle caja',usuario: req.session.usuarioLogueado });
     },
     productCart: function (req, res, next) {
-        res.render('productCart', { title: 'Carrito compras', subtitle: 'Mi Carrito' });
+        res.render('productCart', { title: 'Carrito compras', subtitle: 'Mi Carrito',usuario: req.session.usuarioLogueado });
     },
     listarProductos: function (req, res, next) {
       let tipoProducto = req.params.tipo
-
       //console.log("Tipo de producto: " + tipoProducto);
 
       let productosJson = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
@@ -26,7 +25,7 @@ let productController = {
       //console.log(productFilter);
 
       res.render('products', { title: 'Listado',
-                             productos: productFilter });
+                             productos: productFilter,usuario: req.session.usuarioLogueado });
     },
     listProduct: function (req, res, next) {
       let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
@@ -39,7 +38,7 @@ let productController = {
       }
 
       res.render('productList', { title: 'Listado productos',
-                                  product: productos });
+                                  product: productos, usuario: req.session.usuarioLogueado });
     },
     getProductById: function (req, res, next) {
       let idProducto = req.params.id;
@@ -56,16 +55,14 @@ let productController = {
         return producto.codigo == idProducto;
       });
       console.log(productDetail);
-      res.render('productDetail', { title: 'Producto id', subtitle: 'Detalle producto', producto: productDetail});
-      
+      res.render('productDetail', { title: 'Producto id', subtitle: 'Detalle producto', producto: productDetail,usuario: req.session.usuarioLogueado});
     },
 
     productAdd: function (req, res, next) {
-      res.render('productAdd', { title: 'Crear producto', subtitle: 'Formulario alta' });
+      res.render('productAdd', { title: 'Crear producto', subtitle: 'Formulario alta',usuario: req.session.usuarioLogueado });
     },
 
     createProduct: function (req, res, next) {
-
       let esOferta = false;
       if(req.body.ofertaSwich =='on'){
         esOferta = true;
@@ -113,11 +110,11 @@ let productController = {
       mensaje = `El Producto ${ newProducto.codigo }, ${ newProducto.nombre } fue creado exitosamente!!!`
       res.render('productMsg', { title: 'Producto creado',
                                     tipo: 'success',
-                                    mensaje: mensaje });
+                                    mensaje: mensaje,
+                                    usuario: req.session.usuarioLogueado });
     },
 
     editProductById: function (req, res, next) {
-
       let idProducto = req.params.id;
       let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
       let productos;
@@ -134,10 +131,10 @@ let productController = {
 
       res.render('productEdit', { title: 'Editar',
                                   subtitle: 'Formulario edición',
-                                  producto: productEdit});
+                                  producto: productEdit,
+                                  usuario: req.session.usuarioLogueado});
     },
     saveProductById: function (req, res, next) {
-
       let esOferta = false;
       if(req.body.ofertaSwich =='on'){
         esOferta = true;
@@ -187,11 +184,11 @@ let productController = {
       mensaje = `El Producto ${ productEdited.codigo }, ${ productEdited.nombre } fue editado exitosamente!!!`
       res.render('productMsg', { title: 'Producto editado',
                                     tipo: 'success',
-                                    mensaje: mensaje });
+                                    mensaje: mensaje,
+                                  usuario: req.session.usuarioLogueado });
     },
     productDelete:function (req, res, next) {
-
-      res.render('productDelete', { title: 'Producto borrado' });
+      res.render('productDelete', { title: 'Producto borrado', usuario: req.session.usuarioLogueado });
     },
 
     deleteProductById: function (req, res, next) {
@@ -218,7 +215,8 @@ let productController = {
       mensaje = `El Producto ${ productoBorrado.codigo }, ${ productoBorrado.nombre } eliminado exitosamente!!!`
       res.render('productMsg', { title: 'Producto borrado',
                                     tipo: 'success',
-                                    mensaje: mensaje });
+                                    mensaje: mensaje,
+                                    usuario: req.session.usuarioLogueado });
     }
 };
 

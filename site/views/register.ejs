@@ -19,7 +19,13 @@
                                                 <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
                                             </div>
                                             <input type="text" class="form-control" id="nombre" name="nombreUser" placeholder="Nombre" required>
-                                            <div class="invalid-feedback">Debe ingresar un nombre.</div>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'nombreUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
                                         </div>
                                     </div>
                                 </div>
@@ -30,7 +36,13 @@
                                                 <span class="input-group-text"><i class="fa fa-user-circle-o"></i></span>
                                             </div>
                                             <input type="text" class="form-control" id="apellido" name="apellidoUser" placeholder="Apellido" required>
-                                            <div class="invalid-feedback">Debe ingresar un apellido.</div>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'apellidoUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
                                         </div>
                                     </div>
                                 </div>
@@ -41,7 +53,13 @@
                                                 <span class="input-group-text"><i class="fa fa-phone"></i></span>
                                             </div>
                                             <input type="number" class="form-control" id="telefono" name="nroTelefonoUser" placeholder="Nro. teléfono" required>
-                                            <div class="invalid-feedback">Debe ingresar un número de teléfono.</div>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'nroTelefonoUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
                                         </div>
                                     </div>
                                 </div>
@@ -57,7 +75,13 @@
                                                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                                             </div>
                                             <input type="email" class="form-control" id="email" name="emailUser" placeholder="Email" required>
-                                            <div class="invalid-feedback">Debe ingresar una dirección de email.</div>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'emailUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +92,13 @@
                                                 <span class="input-group-text"><i class="fa fa fa-key"></i></span>
                                             </div>
                                             <input type="password" class="form-control" id="password" name="passwordUser" placeholder="Contraseña" required>
-                                            <div class="invalid-feedback">Debe ingresar una contraseña.</div>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'passwordUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +109,13 @@
                                                 <span class="input-group-text"><i class="fa fa fa-key"></i></span>
                                             </div>
                                             <input type="password" class="form-control" id="repeatPassword" name="repeatPasswordUser" placeholder="Repita contraseña" required>
-                                            <div class="invalid-feedback">Debe repetir la constraseña.</div>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'repeatPasswordUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
                                         </div>
                                     </div>
                                 </div>
@@ -94,10 +130,16 @@
                                             <div class="imgUp">
                                                 <div class="imagePreview"></div>
                                                 <label class="btn btn-primary">Cargar
-                                                    <input type="file" class="uploadFile img" name="fotoPerfil" value="Subir foto">
+                                                    <input type="file" class="uploadFile img" name="fotoPerfil" value="Subir foto" required>
                                                 </label>
                                             </div>
-                                            <div class="invalid-feedback">Debe ingresar una dirección de email.</div>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'fotoPerfil' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
                                         </div>
                                     </div>
                                 </div>

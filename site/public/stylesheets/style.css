@@ -600,6 +600,13 @@ p {
   text-align: center;
 }
 
+.msgError{
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
 /*FIN LOGIN*/
 
 /* INICIO ESTILO CARRITO */
