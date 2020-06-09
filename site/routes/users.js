@@ -7,8 +7,8 @@ const fs = require('fs');
 
 const usersController = require('../controllers/usersController');
 const {check, validationResult, body} = require('express-validator');
-let guestMiddleware = require('../middleware/guestMiddleware')
-/*let authMiddleware = require('../middleware/authMiddleware')*/
+const guestMiddleware = require('../middleware/guestMiddleware')
+const authMiddleware = require ('../middleware/authMiddleware');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -28,7 +28,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 
 /* GET users listing. */
-router.get('/', usersController.userList);
+router.get('/',authMiddleware, usersController.userList);
 
 router.get('/register' , guestMiddleware ,usersController.userRegister);
 
