@@ -297,7 +297,7 @@ margin-left: 15px;
 
 #registerContainer::after{
   margin:auto;
-  background-image: url('/images/comida.jpg');
+  background-image: url('/images/fondos/comida.jpg');
   background-repeat: repeat;
   z-index: -1;
   opacity: 0.4;
@@ -318,7 +318,7 @@ margin-left: 15px;
   justify-content: center;
   align-items: center;
   padding: 10%;
-  background-image: url('/images/mealkit.jpg');
+  background-image: url('/images/fondos/mealkit.jpg');
   background-size: cover;
 }
 .flexbox-item {
@@ -703,6 +703,14 @@ p {
   margin-right: 0px;
 }
 
+/**/
+
+.row-actions{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+/**/
 /*Medias query*/
 
 @media (max-width: 490px) {
@@ -780,6 +788,10 @@ p {
   margin-right: 0;
 }
 
+.row-actions{
+  margin-left: 0px;
+  margin-right: 0px;
+}
 
 }
 
@@ -854,6 +866,11 @@ body {
   font-size: 1.5rem;
 }
 
+.row-actions{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 }
 
 @media (min-width: 1200px) {
@@ -925,6 +942,10 @@ body {
     font-size: 1.7rem;
   }
 
+  .row-actions{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 
 }
 
