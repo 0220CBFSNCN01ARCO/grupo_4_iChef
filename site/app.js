@@ -27,6 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(session({secret: 'iChefSession'}));
+
 app.use(recordameMiddleware);
 
 app.use('/', logMiddleware ,indexRouter);
@@ -50,7 +51,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   let usuario;
-  res.render('error', { title: 'Error' , usuario: usuario});
+  res.render('error', { title: 'Error' });
 });
 
 module.exports = app;

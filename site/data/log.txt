@@ -220,6 +220,12 @@
 06/06/2020 07:01:05 - Se ingreso a: /product
 06/06/2020 07:01:12 - Se ingreso a: /product/3/edit
 <<<<<<< HEAD
+06/06/2020 09:40:05 - Se ingreso a: /
+06/06/2020 09:40:09 - Se ingreso a: /users/login
+06/06/2020 09:40:16 - Se ingreso a: /users/login
+06/06/2020 09:40:25 - Se ingreso a: /users/login
+=======
+<<<<<<< HEAD
 06/06/2020 07:21:18 - Se ingreso a: /product/list/PRODUCTO
 06/06/2020 07:22:03 - Se ingreso a: /product/list/CAJA
 06/06/2020 07:22:12 - Se ingreso a: /product/list/PRODUCTO
@@ -360,3 +366,17 @@
 =======
 >>>>>>> a588f99e532488d5b70a4337d0a30826dda4f4ef
 >>>>>>> d34152c905832bbabb03712355b587e08f0e73e3
+<<<<<<< HEAD
+=======
+06/06/2020 09:44:42 - Se ingreso a: /users/login
+06/06/2020 09:45:03 - Se ingreso a: /users/login
+06/06/2020 09:45:08 - Se ingreso a: /users/login
+06/06/2020 09:45:19 - Se ingreso a: /users/login
+06/06/2020 09:49:29 - Se ingreso a: /
+06/06/2020 09:49:33 - Se ingreso a: /users/login
+06/06/2020 09:49:40 - Se ingreso a: /users/login
+06/06/2020 09:49:46 - Se ingreso a: /users/login
+06/06/2020 09:49:48 - Se ingreso a: /users/register
+06/06/2020 09:50:09 - Se ingreso a: /users/create
+06/06/2020 09:50:17 - Se ingreso a: /users/login
+>>>>>>> d78f77d6e3035658c028e9685c0264f96f0c51e9

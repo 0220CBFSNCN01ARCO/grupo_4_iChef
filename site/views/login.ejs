@@ -7,15 +7,21 @@
       <div class="login-box">
           <div class="login-box-body">
             <h3 class="login-box-msg"><b>Login</b></h3>
-            <form class="formLogin needs-validation" action="login" method="post" novalidate>
+            <form class="formLogin" action="login" method="post">
               <div class="row">
                 <div class="form-group col-12">
                   <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                       </div>
-                      <input type="email" class="form-control" name="emailUsuario" placeholder="Email" required>
-                      <div class="invalid-feedback">Debe ingresar un email.</div>
+                      <input type="email" class="form-control" name="emailUsuario" placeholder="Email">
+                      <% if (typeof errores != 'undefined') { %>
+                        <% for (let i=0; i < errores.length; i++) { %>
+                          <% if(errores[i].param == 'emailUsuario' ) { %>
+                            <div class="msgError"><%= errores[i].msg %></div>
+                          <% } %>
+                        <% } %>
+                      <% } %>
                   </div>
                 </div>
                 <div class="form-group col-12">
@@ -23,8 +29,14 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-key"></i></span>
                       </div>
-                      <input type="password" class="form-control" name="passwordUsuario" placeholder="Password" required>
-                      <div class="invalid-feedback">Debe ingresar un password.</div>
+                      <input type="password" class="form-control" name="passwordUsuario" placeholder="Password">
+                      <% if (typeof errores != 'undefined') { %>
+                        <% for (let i=0; i < errores.length; i++) { %>
+                          <% if(errores[i].param == 'passwordUsuario' ) { %>
+                            <div class="msgError"><%= errores[i].msg %></div>
+                          <% } %>
+                        <% } %>
+                      <% } %>
                   </div>
                 </div>
               </div>

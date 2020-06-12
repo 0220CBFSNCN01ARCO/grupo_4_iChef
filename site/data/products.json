@@ -17,7 +17,7 @@
         ],
         "calorias": "4234",
         "peso": "43232",
-        "fotos": [],
+        "fotos": ["caja-1.png"],
         "receta": ""
     },
     {
@@ -35,7 +35,7 @@
         "ingredientes": "3",
         "calorias": "343",
         "peso": "1231",
-        "fotos": ["carrousel-1.webp","carrousel-2.webp","carrousel-3.webp"],
+        "fotos": ["caja-2.jpg"],
         "receta": ""
     },
     {
@@ -56,7 +56,28 @@
         ],
         "calorias": "120",
         "peso": "120",
-        "fotos": [],
+        "fotos": ["caja-3.png"],
+        "receta": ""
+    },
+    {
+        "codigo": "4",
+        "nombre": "qwerty",
+        "tipo": "CAJA",
+        "precio": "123",
+        "oferta": true,
+        "precioOferta": "",
+        "descuentoOferta": "",
+        "grupo": "grupo2",
+        "marca": "marca2",
+        "descripcion": "ASDDDDDDDDDDDDDD",
+        "comensales": "1",
+        "ingredientes": [
+            "3",
+            "4"
+        ],
+        "calorias": "120",
+        "peso": "120",
+        "fotos": ["caja-4.png"],
         "receta": ""
     }
 ]

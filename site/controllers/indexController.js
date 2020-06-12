@@ -1,10 +1,10 @@
 
 let indexController = {
     getIndex: function (req, res, next) {
-
-        let usuario;
-        res.render('index', { title: 'iChef',usuario: usuario });
-      }
+        //console.log("Usuario logueado: " + req.session);
+        //console.log("Usuario logueado: " + req.session.usuarioLogueado);
+        res.render('index', { title: 'iChef', usuario: req.session.usuarioLogueado });
+    }
 };
 
 module.exports = indexController;
