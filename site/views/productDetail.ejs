@@ -21,11 +21,11 @@
               <% for( let i = 0; i < producto[0].fotos.length; i++ ) { %>
                 <% if(i==0){ %>
                   <div class="carousel-item active">
-                    <img src="/images/products/<%=producto[0].fotos[i] %> " class="d-block w-100 img-fluid" alt="...">
+                    <img src="/images/products/box/<%=producto[0].fotos[i]%>" class="d-block w-100 img-fluid" alt="...">
                   </div>
                 <% } else { %>
                   <div class="carousel-item">
-                    <img src="/images/products/<%=producto[0].fotos[i] %>" class="d-block w-100 img-fluid" alt="...">
+                    <img src="/images/products/box/<%=producto[0].fotos[i] %>" class="d-block w-100 img-fluid" alt="...">
                   </div>
                 <% } %>
               <% } %>
@@ -47,9 +47,11 @@
 
           <h4><%=producto[0].marca %> </h4>
 
-          <h6 class="h6-productDetail"><%=producto[0].peso %></h6>
+          
 
-          <p class="p-productDetail">Descripcion del producto. <%=producto[0].descripcion %> </p>
+          <p class="p-productDetail">Descripcion del producto: <%=producto[0].descripcion %> </p>
+          <p class="p-productDetail">Ingredientes: <%=producto[0].ingredientes %> </p>
+          <p class="p-productDetail"><%=producto[0].peso %> g, <%=producto[0].calorias %> Kkal </p>
 
           <h2><%=producto[0].precio%></h2>
 
@@ -62,7 +64,7 @@
               <label for="cantidad"><h6 class="cant-padd-prodDetail">Cantidad</h6></label></h6>
             </div>
 
-            <button title="Agregar al Carrito" class="button-carrito-prodDetail"><h6 class="text-carrito-prodDetail">Agregar al carrito</h6><img src="/images/icon-carrito.png" alt="Carrito de compras" width="40" height="40"> </button>
+            <button title="Agregar al Carrito" class="button-carrito-prodDetail"><h6 class="text-carrito-prodDetail">Agregar al carrito</h6><img src="/images/icon/icon-carrito.png" alt="Carrito de compras" width="40" height="40"> </button>
 
           </div>
 
