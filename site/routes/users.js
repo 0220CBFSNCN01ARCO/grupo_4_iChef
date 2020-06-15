@@ -79,7 +79,7 @@ body("emailUsuario").custom(function(value){
       }
     }
     return false;
-  }).withMessage("El email ingresado no existe existe.")
+  }).withMessage("El email ingresado no existe.")
 ]
 ,usersController.loguearUsuario);
 

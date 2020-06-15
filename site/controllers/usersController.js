@@ -100,6 +100,7 @@ let usersController = {
       logoutUser: function (req, res, next) {
         //req.session.destroy();
         //res.redirect('/');
+        req.cookies.recordame = undefined;
         req.session.destroy((error) => {
           res.redirect('/users/login')
         });
