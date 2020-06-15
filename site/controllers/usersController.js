@@ -98,9 +98,11 @@ let usersController = {
                                   usuario: req.session.usuarioLogueado });
       },
       logoutUser: function (req, res, next) {
-        //res.render('index', { title: 'iChef' });
-        req.session.destroy();
-        res.redirect('/');
+        //req.session.destroy();
+        //res.redirect('/');
+        req.session.destroy((error) => {
+          res.redirect('/users/login')
+        });
       },
       userprofile: function (req, res, next) {
         res.render('userProfile', { title: 'Perfil',

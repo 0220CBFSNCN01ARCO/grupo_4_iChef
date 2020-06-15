@@ -65,10 +65,12 @@
                                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarLogin">
                                         <% if( typeof usuario != 'undefined') { %>
                                             <a class="dropdown-item d-none" href="/users/login"><i class="fa fa-vcard"></i> Iniciar sesión</a>
+                                            <a class="dropdown-item d-none" href="/users/register"><i class="fa fa-vcard"></i> Registrarse</a>
                                             <a class="dropdown-item" href="/users/userprofile"><i class="fa fa-address-book"></i> Perfil</a>
                                             <a class="dropdown-item" href="/users/logout"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
                                         <% } else { %>
                                             <a class="dropdown-item" href="/users/login"><i class="fa fa-vcard"></i> Iniciar sesión</a>
+                                            <a class="dropdown-item" href="/users/register"><i class="fa fa-user-plus"></i> Registrarse</a>
                                             <a class="dropdown-item d-none" href="/users/userprofile"><i class="fa fa-address-book"></i> Perfil</a>
                                             <a class="dropdown-item d-none" href="/users/logout"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
                                         <% } %>

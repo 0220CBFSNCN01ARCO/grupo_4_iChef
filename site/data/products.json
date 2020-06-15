@@ -17,7 +17,10 @@
         ],
         "calorias": "4234",
         "peso": "43232",
-        "fotos": ["box1.jpg", "box1ing.jpg"],
+        "fotos": [
+            "box1.jpg",
+            "box1ing.jpg"
+        ],
         "receta": ""
     },
     {
@@ -35,7 +38,10 @@
         "ingredientes": "3",
         "calorias": "343",
         "peso": "1231",
-        "fotos": ["box2.jpg", "box2ing.jpg"],
+        "fotos": [
+            "box2.jpg",
+            "box2ing.jpg"
+        ],
         "receta": ""
     },
     {
@@ -56,7 +62,10 @@
         ],
         "calorias": "120",
         "peso": "120",
-        "fotos": ["box3.jpg", "box3ing.jpg"],
+        "fotos": [
+            "box3.jpg",
+            "box3ing.jpg"
+        ],
         "receta": ""
     },
     {
@@ -77,7 +86,45 @@
         ],
         "calorias": "120",
         "peso": "120",
-        "fotos": ["caja-4.png"],
+        "fotos": [
+            "caja-4.png"
+        ],
+        "receta": ""
+    },
+    {
+        "codigo": "5",
+        "nombre": "Producto m1",
+        "tipo": "PRODUCTO",
+        "precio": "236",
+        "oferta": false,
+        "precioOferta": "",
+        "descuentoOferta": "",
+        "grupo": "grupo3",
+        "marca": "marca5",
+        "descripcion": "Producto market 1",
+        "comensales": "1",
+        "ingredientes": "8",
+        "calorias": "125",
+        "peso": "200",
+        "fotos": ["prod-2.png"],
+        "receta": ""
+    },
+    {
+        "codigo": "6",
+        "nombre": "Producto m2",
+        "tipo": "PRODUCTO",
+        "precio": "63",
+        "oferta": false,
+        "precioOferta": "",
+        "descuentoOferta": "",
+        "grupo": "grupo3",
+        "marca": "marca5",
+        "descripcion": "Producto market 2",
+        "comensales": "1",
+        "ingredientes": "8",
+        "calorias": "125",
+        "peso": "365",
+        "fotos": ["prod-3.png"],
         "receta": ""
     }
 ]

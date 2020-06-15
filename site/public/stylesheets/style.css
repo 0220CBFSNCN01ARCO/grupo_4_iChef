@@ -725,11 +725,24 @@ p {
   margin-right: 0px;
 }
 
-/**/
+/*LISTADO PRODUCTOS*/
 
 .row-actions{
   margin-left: 0px;
   margin-right: 0px;
+}
+
+.grillaProductos{
+  margin-top: 15px;
+}
+
+.rowNombre{
+  height: 50px;
+}
+
+.rowMarca{
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 /**/
@@ -1083,7 +1096,9 @@ justify-content: space-around;
 .p-market{
   color: #A60D0D;
   font-weight: 600; 
-  font-size: 2vw;
+  font-size: 2.5em;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 .agregar-carrito-market{
   background-color: transparent;
