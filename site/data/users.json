@@ -103,7 +103,7 @@
         "id": 11,
         "nombre": "aaaaaaaa",
         "apellido": "rrrrrrrr",
-        "email": "jose1@gmail.com",
+        "email": "jose@gmail.com",
         "password": "$2b$10$8BiuNmrKnAAiE8JsV5LVhu6q0H9LO4SjAs6WD.kJHO5FzbO0zNFFS",
         "nroTelefono": "22222",
         "rol": 2,
@@ -131,12 +131,32 @@
     },
     {
         "id": 14,
-        "nombre": "jose",
-        "apellido": "aaaa",
-        "email": "josesalvini@gmail.com",
-        "password": "$2b$10$CatbxLD.iiCAqPqbnmc1MO4oTWRvAJCuhSXTCgCoRRBlL5JRZIifW",
-        "nroTelefono": "12345678",
+        "nombre": "Gisela",
+        "apellido": "Ali",
+        "email": "GISELAALI@HOTMAIL.COM",
+        "password": "$2b$10$hLZur4OJBFQQ/4S4IzUQCuWMtUoXl1gZe3zHUCT62aqgK2M9I/tMK",
+        "nroTelefono": "0351152710938",
         "rol": 2,
-        "imagen": "josesalvini-08-06-2020.JPG"
+        "imagen": "GISELAALI-06-06-2020.jpg"
+    },
+    {
+        "id": 15,
+        "nombre": "Gisela",
+        "apellido": "Ali",
+        "email": "GISELAALI@HOTMAIL.COM",
+        "password": "$2b$10$UoI5SfSna19fiiWXHXHNcuwAyynWcoxiudQ1s5mJxpeucWehag0KS",
+        "nroTelefono": "0351152710938",
+        "rol": 2,
+        "imagen": "GISELAALI-06-06-2020.jpg"
+    },
+    {
+        "id": 16,
+        "nombre": "Yuliya",
+        "apellido": "Sharapa",
+        "email": "juliya.sharapa@gmail.com",
+        "password": "$2b$10$mO2IFs.V1lLBv6xHmxd9TeYLiV8wFv54bjTpOlNFwFDZBYhJcUZj2",
+        "nroTelefono": "03517862669",
+        "rol": 2,
+        "imagen": "juliya.sharapa-06-06-2020.jpg"
     }
 ]
