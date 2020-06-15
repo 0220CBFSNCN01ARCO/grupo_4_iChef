@@ -54,8 +54,8 @@ let productController = {
       let productDetail = productos.filter(function (producto) {
         return producto.codigo == idProducto;
       });
-      console.log(productDetail);
-      res.render('productDetail', { title: 'Producto id', subtitle: 'Detalle producto', producto: productDetail,usuario: req.session.usuarioLogueado});
+      //console.log(productDetail);
+      res.render('productDetail', { title: 'Producto ' + productDetail[0].codigo , subtitle: 'Detalle producto', producto: productDetail,usuario: req.session.usuarioLogueado});
     },
 
     productAdd: function (req, res, next) {
