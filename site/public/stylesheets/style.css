@@ -313,6 +313,11 @@ margin-left: 15px;
 
 /*homepage style*/
 /*----first screen style----*/
+.btn-light {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #231e1e;
+}
 .flexbox-container {
   display: flex;
   justify-content: center;
@@ -343,7 +348,7 @@ margin-left: 15px;
   background-color: rgba(0,0,0,0.4);
 }
 .bgc-pink {
-  background-color: #f1d3d3;
+  background-color:rgba(245, 161, 161, 0.75);
 }
 
 .btn-font {
@@ -382,21 +387,38 @@ margin-left: 15px;
   margin-bottom: .8rem;
   margin-top: 1rem;
 }
+.fs-h3 {
+ font-size: 1.3rem;
+}
 
 /* Promo */
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
+
+.black-uppercase-whitebg{
+  color: black;
+  text-transform: uppercase;
+  background-color: rgba(242, 242, 242, 0.5);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.bg {
+  background-color: rgba(242, 242, 242, 0.815);
+}
 .flexbox-container-promo {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  width: 100%;
+  margin:auto;
 }
-.wd80 {
-  width: 80%;
-  height: 300px;
-  object-fit: cover;
+.tb-pad{
+  padding: 3rem 1rem;
 }
-
-
 /* Market */
 .wd100 {
   width: 100%;
@@ -1028,6 +1050,9 @@ padding-right: 1vw;
       flex-direction: row;
   }
   .flexbox-container-market  {
+      flex-direction: row;
+  }
+  .flexbox-container-promo  {
       flex-direction: row;
   }
 }
