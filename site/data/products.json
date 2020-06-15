@@ -1,7 +1,7 @@
 [
     {
         "codigo": "1",
-        "nombre": "ADAS",
+        "nombre": "BIFE DE LOMO CON VERDURAS ASADAS",
         "tipo": "CAJA",
         "precio": "123",
         "oferta": false,
@@ -17,12 +17,12 @@
         ],
         "calorias": "4234",
         "peso": "43232",
-        "fotos": ["caja-1.png"],
+        "fotos": ["box1.jpg", "box1ing.jpg"],
         "receta": ""
     },
     {
         "codigo": "2",
-        "nombre": "dhfh",
+        "nombre": "POLLO TERIYAKI CON FIDEOS CHINOS",
         "tipo": "CAJA",
         "precio": "123",
         "oferta": false,
@@ -35,12 +35,12 @@
         "ingredientes": "3",
         "calorias": "343",
         "peso": "1231",
-        "fotos": ["caja-2.jpg"],
+        "fotos": ["box2.jpg", "box2ing.jpg"],
         "receta": ""
     },
     {
         "codigo": "3",
-        "nombre": "qwerty",
+        "nombre": "PAELLA DE MARISCO",
         "tipo": "CAJA",
         "precio": "123",
         "oferta": true,
@@ -56,7 +56,7 @@
         ],
         "calorias": "120",
         "peso": "120",
-        "fotos": ["caja-3.png"],
+        "fotos": ["box3.jpg", "box3ing.jpg"],
         "receta": ""
     },
     {
