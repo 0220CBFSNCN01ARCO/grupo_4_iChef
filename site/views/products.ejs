@@ -8,7 +8,7 @@
         <div class = "row padding-row">
     <% for(let i=0; i < productos.length; i++) { %>
         <div class="card col-12 col-md-6 col-lg-3 background-card">
-        <img src="<%= productos[i].fotos %>" class="card-img-top" alt="Imagen producto">
+        <img src="/images/products/box/<%= productos[i].fotos[0] %>" class="card-img-top" alt="Imagen producto">
         <div class="card-body">
           <h5 class="card-title"> <%= productos[i].nombre %> </h5>
           <p class="card-text">Marca: <%= productos[i].marca %></p>
@@ -16,7 +16,7 @@
           <div class="carrito-market">
           <a href="/product/<%= productos[i].codigo %>" class="btn btn-primary espacio-market">Detalle producto</a>
           <button class="btn btn-primary agregar-carrito-market" title="Agregar al Carrito">
-            <img src="/images/icon-carrito.png" alt="Carrito de compras" width="40" height="40">
+            <img src="/images/icon/icon-carrito.png" alt="Carrito de compras" width="40" height="40">
           </button>
         </div>
         </div>
