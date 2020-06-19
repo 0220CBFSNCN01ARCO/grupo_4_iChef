@@ -17,56 +17,69 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-}
-
-/*MENU */
 .navbar {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.bd-navbar {
+  min-height: 4rem;
   background-color: #B30E0B;
-  padding: 0;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
 }
 
-.navMenu {
-  justify-content: flex-end;
+.navbar-brand {
+  display: inline-block;
+  margin-right: 1rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
 }
 
-a {
-  color: white;
+.navbar-dark .navbar-toggler {
+  border-color: rgba(255,255,255,.5);
 }
 
-.nav-item a:hover {
-  color: rgba(0, 0, 0, 1);
-  background-color:  rgba(255, 255, 255, 0.95);
+.headerLogo,.headerMenu,.headerMenuUser{
+  text-align: center;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
-.nav-item .dropdown-item:hover{
-  color: white;
-  background-color: #B30E0B;
+.rowNav{
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  justify-content: center;
 }
 
-/*.menuUser {
-  margin-right: 80px;
-}*/
-
-nav .menuList li a:hover, nav .menuUser li a:hover {
-  border-bottom: 2px solid #5c8eb1;
-  border-radius: 4px;
+#menuText {
+  flex-direction: column;
+  margin: auto;
 }
 
-.navbarMenu {
-  justify-content: flex-end;
+#logo {
+  overflow: hidden;
+  vertical-align: middle;
 }
 
-.navbar-nav {
-  padding-left: 10px;
+.iconMenu {
+  flex-direction: row;
 }
 
-#btnMenu {
-  color: white;
+/*
+.headerMenu {
+  width: 200px;
+}
+*/
+
+.rowMenu, .rowMenuUser{
+  margin-left: 0;
+  margin-right: 0;
 }
 
-/*FIN MENU*/
 
 .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
   padding-right: 0px;
@@ -699,6 +712,13 @@ p {
   background-color: rgba(255,255,255,0.7);
 }
 
+.container.contLogo, .container-fluid.contMenu {
+  justify-content: center;
+}
+
+.rowMenuUser {
+  justify-content: center;
+}
 
 .container-fluid{
   margin-left: 0px;
@@ -765,21 +785,6 @@ a.btn-whatsapp:hover {
 }
 
 @media (min-width: 768px) {
-
-  .menuList, .menuUser {
-    width: 30vw;
-  }
-
-  .navbar-expand-md .navbar-nav {
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-
-  .navMenu {
-    justify-content: flex-end;
-  }
-
-
   .imagePreview {
     height: 190px;
   }
@@ -820,9 +825,25 @@ a.btn-whatsapp:hover {
   background-color: rgba(255,255,255,0.7);
 }
 
+.rowNav {
+  justify-content: normal;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.row-user{
+  margin: 0px;
+}
+
 .container-fluid {
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.rowMenu, .rowMenuUser{
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .row-actions{
@@ -832,19 +853,8 @@ a.btn-whatsapp:hover {
 
 }
 
+
 @media (min-width: 992px) {
-  /*.menuUser {
-    margin-left: 80px;
-  }*/
-
-  .menuList {
-    width: 55vw;
-  }
-
-  .menuUser {
-    margin-right: 4vw;
-  }
-
   .imagePreview {
     height: 190px;
   }
@@ -892,6 +902,26 @@ a.btn-whatsapp:hover {
   margin-left: 0;
   margin-right: 0;
   background-color: rgba(255,255,255,0.7);
+}
+
+.rowNav {
+  justify-content: normal;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.row-user{
+  margin: 0px;
+}
+
+.rowMenu, .rowMenuUser{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+body {
+  font-size: 1.5rem;
 }
 
 .row-actions{
@@ -950,9 +980,20 @@ a.btn-whatsapp:hover {
     margin-right: 0;
     background-color: rgba(255,255,255,0.7);
   }
+  .rowNav {
+    justify-content: normal;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
 
   .row-user{
     margin: 0px;
+  }
+
+  .rowMenu, .rowMenuUser{
+    margin-left: 0;
+    margin-right: 0;
   }
 
   body {
