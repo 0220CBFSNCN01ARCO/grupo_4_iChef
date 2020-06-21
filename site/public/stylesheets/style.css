@@ -214,7 +214,7 @@ h1 {
 }
 
 .imagePreview,.imageMin {
-  background-image: url('/images/no-imagen.jpg');
+  background-image: url('/images/fondos/no-imagen.jpg');
   background-position: center center;
   background-color:lightgrey;
   background-size: cover;
