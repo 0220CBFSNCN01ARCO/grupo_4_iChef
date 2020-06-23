@@ -64,6 +64,8 @@ nav .menuList li a:hover, nav .menuUser li a:hover {
 
 #btnMenu {
   color: white;
+  margin-right: 20px;
+  border: 1px solid white;
 }
 
 /*FIN MENU*/
@@ -78,15 +80,24 @@ nav .menuList li a:hover, nav .menuUser li a:hover {
   padding-left: 0px;
 }
 
+/* INICIO FOOTER*/
 .copyFooter {
   font-size: small;
 }
 
-.copyFooter {
-  color: rgba(13, 13, 13, 1);
-  padding-top: 5px;
-  padding-bottom: 0px;
+
+#copyFooter {
+  background-color: #383838;
+  color: white;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
+
+footer p {
+  margin-block-start:0;
+}
+
+/* FIN FOOTER*/
 
 .formHeader{
   border-bottom: 1px solid #B30E0B;
