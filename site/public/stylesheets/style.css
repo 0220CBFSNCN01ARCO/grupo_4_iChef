@@ -54,8 +54,9 @@ nav .menuList li a:hover, nav .menuUser li a:hover {
   border-radius: 4px;
 }
 
-.navbarMenu {
+#navbarMenu {
   justify-content: flex-end;
+  margin-bottom: 10px;
 }
 
 .navbar-nav {
@@ -64,9 +65,29 @@ nav .menuList li a:hover, nav .menuUser li a:hover {
 
 #btnMenu {
   color: white;
-  margin-right: 20px;
   border: 1px solid white;
+  margin-right: 20px;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
+
+#formBuscar {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.nav-link {
+  display: inline-flex;
+}
+
+#formHeader {
+  display: inline-flex;
+}
+
+.iconiChef{
+  padding-right: 5px;
+}
+
 
 /*FIN MENU*/
 
@@ -188,6 +209,68 @@ p.small {
 footer p {
   margin-bottom: 0px;
 }
+
+.rowFooter {
+  padding-top: 10px;
+}
+
+/*
+.gradient_line{ 
+  margin: 0 0 50px 0;
+  display: block;
+  border: none;
+  height: 1px;
+  background: #0071B9;
+  background: linear-gradient(to right, white, #0071B9, #26ABFF, #0071B9, white);
+}
+
+hr.style-seven {
+  overflow: visible;
+  height: 30px;
+  border-style: solid;
+  border-color: #B30E0B;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+}
+hr.style-seven:before { 
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: #B30E0B;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
+}*/
+
+/* Glyph, by Harry Roberts */
+
+hr.style-eight {
+  overflow: visible; /* For IE */
+  padding: 0;
+  border: none;
+  border-top: medium double #B30E0B;
+  color: #B30E0B;
+  text-align: center;
+}
+
+hr.style-eight:after {
+  content: "\f0f5";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.0em;
+  padding: 0 0.25em;
+  background: white;
+}
+
+
+
+/*Fin del footer*/
 
 /*CARGA DE IMAGENES*/
 .btn-primary:hover {
@@ -776,6 +859,10 @@ a.btn-whatsapp:hover {
 }
 
 @media (min-width: 768px) {
+  #formBuscar {
+    /*width: 50vw;*/
+    display: contents;
+  }
 
   .menuList, .menuUser {
     width: 30vw;
@@ -847,13 +934,16 @@ a.btn-whatsapp:hover {
   /*.menuUser {
     margin-left: 80px;
   }*/
-
-  .menuList {
-    width: 55vw;
+  .form-control {
+    width: 10vw;
   }
 
-  .menuUser {
-    margin-right: 4vw;
+  #inputBuscar {
+    width: 25vw;
+  }
+
+  .menuList {
+    width: 68vw;
   }
 
   .imagePreview {
@@ -910,9 +1000,22 @@ a.btn-whatsapp:hover {
   margin-right: 0px;
 }
 
+#navbarMenu {
+  width: 70vw;
+}
+
 }
 
 @media (min-width: 1200px) {
+
+  #inputBuscar {
+    width: 15vw;
+  }
+
+  .menuUser {
+    width: 35vw;
+  }
+
   .container, .container-lg, .container-md, .container-sm, .container-xl {
     max-width: 1140px;
   }
@@ -967,13 +1070,14 @@ a.btn-whatsapp:hover {
   }
 
   body {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
   }
 
   .row-actions{
     margin-left: 0px;
     margin-right: 0px;
   }
+
 
 }
 

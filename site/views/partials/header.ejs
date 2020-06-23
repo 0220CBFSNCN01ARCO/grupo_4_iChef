@@ -1,20 +1,28 @@
 <header>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-xl">
         <!--a class="navbar-brand" href="#">Navbar</a-->
-        <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="iChef">
+        <div id="logoHeader">
+          <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="iChef">
             <img id="logo" src="/images/logo/iChef-Web.png" width="90px" height="90px">
         </a>
+        </div>
+        <div id="formHeader">
+          <form id="formBuscar" class="my-2 my-lg-0">
+            <input id="inputBuscar" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
+          </form>
+        </div>
         <button id="btnMenu" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon ichef-menu"></span>
         </button>
         <div class="collapse navbar-collapse navMenu" id="navbarMenu">
           <ul class="navbar-nav menuList">
             <li class="nav-item active">
-              <a class="nav-link" href="/"><span class="ichef-home"></span> Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/"><span class="ichef-home iconiChef"></span> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="ichef-restaurant"></span> Productos
+                <span class="ichef-restaurant iconiChef"></span> Productos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownProd">
                 <a class="dropdown-item" href="/product/list/PRODUCTO"><span class="ichef-barcode"></span> Market</a>
@@ -24,15 +32,15 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/info/contact"><span class="ichef-contacts"></span> Contacto</a>
+              <a class="nav-link" href="/info/contact"><span class="ichef-contacts iconiChef"></span> Contacto</a>
             </li>
             <% if( typeof usuario != 'undefined') { %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-                    <span class="ichef-settings"></span> Panel control
+                    <span class="ichef-settings iconiChef"></span> Panel control
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/product"><span class="ichef-whatsapp"></span> Productos</a>
+                    <a class="dropdown-item" href="/product"><span class="ichef-shopping_basket"></span> Productos</a>
                     <a class="dropdown-item" href="/users"><span class="ichef-users"></span> Usuarios</a>
                 </div>
               </li>
@@ -41,7 +49,7 @@
           <ul class="navbar-nav menuUser">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownU" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="ichef-account_circle"></span>
+                <span class="ichef-account_circle iconiChef"></span>
                 <% if( typeof usuario != 'undefined') { %>
                     <span>Hola! <%= usuario.nombre %></span>
                 <% } else { %>
@@ -52,7 +60,7 @@
                 <% if( typeof usuario != 'undefined') { %>
                     <a class="dropdown-item d-none" href="/users/login"><span class="ichef-sign-in"></span> Ingresar</a>
                     <a class="dropdown-item d-none" href="/users/register"><span class="ichef-how_to_reg"></span> Registrarse</a>
-                    <a class="dropdown-item" href="/users/userprofile"><span class="ichef-profile"></span> Perfil</a>
+                    <a class="dropdown-item" href="/users/userprofile"><span class="ichef-recent_actors"></span> Perfil</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/users/logout"><span class="ichef-power_settings_new"></span> Cerrar sesión</a>
                 <% } else { %>
@@ -66,7 +74,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownC" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="ichef-shopping-cart"></span>
+                <span class="ichef-shopping-cart iconiChef"></span>
                 <span>(0) items</span>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownC">

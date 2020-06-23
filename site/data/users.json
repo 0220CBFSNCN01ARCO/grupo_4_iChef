@@ -138,5 +138,15 @@
         "nroTelefono": "03517862669",
         "rol": 2,
         "imagen": "juliya.sharapa-06-06-2020.jpg"
+    },
+    {
+        "id": 15,
+        "nombre": "Admin",
+        "apellido": "Admin",
+        "email": "admin@ichef.com",
+        "password": "$2b$10$7wmTOptmvMBtQ.dWxXenyO8cbrvRMuWUMNk8Me5qQ0pGIbO42ppei",
+        "nroTelefono": "11111111",
+        "rol": 2,
+        "imagen": "admin-23-06-2020.jpg"
     }
 ]
