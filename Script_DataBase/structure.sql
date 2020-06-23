@@ -54,15 +54,6 @@ CREATE TABLE `car_detail` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `car_detail`
---
-
-LOCK TABLES `car_detail` WRITE;
-/*!40000 ALTER TABLE `car_detail` DISABLE KEYS */;
-/*!40000 ALTER TABLE `car_detail` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `cart`
 --
 
@@ -83,14 +74,6 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cart`
---
-
-LOCK TABLES `cart` WRITE;
-/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `heading`
@@ -139,14 +122,6 @@ CREATE TABLE `ingredients_products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ingredients_products`
---
-
-LOCK TABLES `ingredients_products` WRITE;
-/*!40000 ALTER TABLE `ingredients_products` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ingredients_products` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `photos`
@@ -162,14 +137,6 @@ CREATE TABLE `photos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `photos`
---
-
-LOCK TABLES `photos` WRITE;
-/*!40000 ALTER TABLE `photos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `photos` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `photos_products`
@@ -190,14 +157,6 @@ CREATE TABLE `photos_products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `photos_products`
---
-
-LOCK TABLES `photos_products` WRITE;
-/*!40000 ALTER TABLE `photos_products` DISABLE KEYS */;
-/*!40000 ALTER TABLE `photos_products` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `product`
@@ -239,15 +198,6 @@ CREATE TABLE `product` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `product`
---
-
-LOCK TABLES `product` WRITE;
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `product_type`
 --
 
@@ -260,8 +210,6 @@ CREATE TABLE `product_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
-
 
 --
 -- Table structure for table `status_cart`
@@ -277,14 +225,6 @@ CREATE TABLE `status_cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `status_cart`
---
-
-LOCK TABLES `status_cart` WRITE;
-/*!40000 ALTER TABLE `status_cart` DISABLE KEYS */;
-/*!40000 ALTER TABLE `status_cart` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -298,7 +238,7 @@ CREATE TABLE `users` (
   `nombre` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `apellido` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `nroTelefono` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `avatar` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `categorie_id` int(11) NOT NULL,
@@ -307,15 +247,6 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `users_categories`
