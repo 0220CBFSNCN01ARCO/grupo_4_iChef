@@ -8,52 +8,62 @@ let usersController = {
         res.render('register', { title: 'Registro',
                                  subtitle: 'Registro usuario',
                                  usuario: req.session.usuarioLogueado});
-      },
+    },
     createUser: function (req, res, next) {
-      //console.log(req);
-      if(req.body.passwordUser != req.body.repeatPasswordUser){
-        res.render('register', { title: 'Registro',
-        subtitle: 'Registro usuario',
-        usuario: req.session.usuarioLogueado });
-      }else {
-          let usuariosJson = fs.readFileSync('./data/users.json', {encoding: 'utf-8'});
-          let usuarios = JSON.parse(usuariosJson);
+      let errores = validationResult(req);
 
-          let idUser = usuarios.length + 1;
+      console.log(req.body);
+      console.log(errores.errors);
 
-          let passEncriptado = bcrypt.hashSync(req.body.passwordUser, saltNumber);
+      if(errores.isEmpty()){
+        if(req.body.passwordUser != req.body.repeatPasswordUser){
+          return res.render('register', { title: 'Registro',
+                                          errores: errores.errors });
+        }else {
+            let usuariosJson = fs.readFileSync('./data/users.json', {encoding: 'utf-8'});
+            let usuarios = JSON.parse(usuariosJson);
 
-          let newUser = {
-            id: idUser,
-            nombre: req.body.nombreUser,
-            apellido: req.body.apellidoUser,
-            email: req.body.emailUser,
-            password: passEncriptado,
-            nroTelefono: req.body.nroTelefonoUser,
-            rol: 2,
-            imagen: req.file.filename
-          };
+            let idUser = usuarios.length + 1;
 
-          usuarios.push(newUser);
-          fs.writeFileSync('./data/users.json', JSON.stringify(usuarios));
+            let passEncriptado = bcrypt.hashSync(req.body.passwordUser, saltNumber);
 
-          mensaje = newUser.nombre;
-          res.render('userMsg', { title: 'Usuario',
-                                        tipo: 'success',
-                                        mensaje: mensaje,
-                                        usuario: req.session.usuarioLogueado });
+            let newUser = {
+              id: idUser,
+              nombre: req.body.nombreUser,
+              apellido: req.body.apellidoUser,
+              email: req.body.emailUser,
+              password: passEncriptado,
+              nroTelefono: req.body.nroTelefonoUser,
+              rol: 2,
+              imagen: req.file.filename
+            };
+
+            usuarios.push(newUser);
+            fs.writeFileSync('./data/users.json', JSON.stringify(usuarios));
+
+            mensaje = newUser.nombre;
+            res.render('userMsg', { title: 'Usuario',
+                                          tipo: 'success',
+                                          mensaje: mensaje,
+                                          errores: errores.errors,
+                                          usuario: req.session.usuarioLogueado });
+        }
+      }
+      else{
+        return res.render('register',{ title: 'Registro',
+                                    errores: errores.errors });
       }
     },
 
     userLogin: function (req, res, next) {
-        res.render('login', { title: 'Login',
+        return res.render('login', { title: 'Login',
                               usuario: req.session.usuarioLogueado });
     },
 
     loguearUsuario: function(req, res, next) {
 
       let errores = validationResult(req);
-      console.log(errores);
+      //console.log(errores);
 
       if(errores.isEmpty()){
         let usuariosJSON = fs.readFileSync('./data/users.json',{ encoding:'utf-8'});
