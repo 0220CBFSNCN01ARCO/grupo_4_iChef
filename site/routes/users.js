@@ -34,9 +34,9 @@ router.get('/register' , guestMiddleware ,usersController.userRegister);
 
 router.post('/create',
 [
-  check("nombreUser").isLength({ min: 8 }).withMessage("Debe ingresar un nombre de usuario valido."),
-  check("apellidoUser").isLength({ min: 8 }).withMessage("Debe ingresar un apellido de usuario valido."),
-  check("nroTelefonoUser").isNumeric({ no_symbols: false }).withMessage("Debe ingresar un numero de telefono."),
+  check("nombreUser").isLength({ min: 4 }).withMessage("Debe ingresar un nombre de usuario valido."),
+  check("apellidoUser").isLength({ min: 4 }).withMessage("Debe ingresar un apellido de usuario valido."),
+  check("nroTelefonoUser").isLength({ min: 10 }).withMessage("Debe ingresar un numero de telefono."),
   check("emailUser").isEmail().withMessage("Debe ingresar un email valido."),
   check("passwordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
   check("repeatPasswordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),

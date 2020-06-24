@@ -88,6 +88,18 @@ nav .menuList li a:hover, nav .menuUser li a:hover {
   padding-right: 5px;
 }
 
+.badge {
+  margin-right: 3px;
+}
+
+.subItem {
+  width: 180px;
+}
+
+#inputBuscar{
+  border-radius: 20px;
+}
+
 
 /*FIN MENU*/
 
@@ -119,6 +131,26 @@ footer p {
 }
 
 /* FIN FOOTER*/
+
+/*INICIO FORMULARIO REGISTRO*/
+
+#formRegister {
+  padding: 20px;
+}
+
+#formImagen{
+  text-align: -webkit-center;
+}
+
+#formDatos, #formImagen,.formLogin {
+  background-color: rgba(255,255,255,0.7);
+}
+
+#formAction {
+  padding-top: 20px;
+}
+
+/*FIN FORMULARIO REGISTRO*/
 
 .formHeader{
   border-bottom: 1px solid #B30E0B;
@@ -322,6 +354,15 @@ h1 {
   height: 180px;
 }
 
+#btnUpload {
+  width: 250px;
+  background-color: #343A40;
+  color: white;
+  text-align: center;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
 .imageMin {
   width: 100%;
   height: 70px;
@@ -338,7 +379,7 @@ margin-top:-5px;
 .imgUp
 {
   margin-bottom:15px;
-  max-width: 300px;
+  max-width: 250px;
 }
 .del
 {
@@ -550,6 +591,11 @@ margin-left: 15px;
 
 /*LOGIN*/
 
+.formLogin {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 .login-box {
   width: 320px;
   margin: auto;
@@ -564,7 +610,7 @@ margin-left: 15px;
 .login-box-msg, .register-box-msg {
   margin: 0;
   text-align: center;
-  padding: 0 20px 20px 20px;
+  padding: 10px 20px 20px 20px;
 }
 
 p {
@@ -934,16 +980,13 @@ a.btn-whatsapp:hover {
   /*.menuUser {
     margin-left: 80px;
   }*/
-  .form-control {
-    width: 10vw;
-  }
 
   #inputBuscar {
     width: 25vw;
   }
 
   .menuList {
-    width: 68vw;
+    width: 62vw;
   }
 
   .imagePreview {

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+<body class="hold-transition login-page">
+    <%- include('./partials/header') %>
+    <div class="fondoFormulario">
+        <div class="container register-box">
+            <div class="row register-box-body justify-content-center">
+                <h3 class="register-box-msg"><b>Registración</b></h3>
+                <form method="POST" action="/users/create" class="frmRegistro needs-validation" enctype="multipart/form-data" novalidate>
+                    <div class="row row-registro">
+                        <div class="card card-personales col-12">
+                            <div class="card-header">Datos personales</div>
+                            <div class="card-body">
+                                <div class="row row-item">
+                                    <div class="form-group col-12">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" id="nombre" name="nombreUser" placeholder="Nombre" required>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'nombreUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-item">
+                                    <div class="form-group col-12">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-user-circle-o"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" id="apellido" name="apellidoUser" placeholder="Apellido" required>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'apellidoUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-item">
+                                    <div class="form-group col-12">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                                            </div>
+                                            <input type="number" class="form-control" id="telefono" name="nroTelefonoUser" placeholder="Nro. teléfono" required>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'nroTelefonoUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-cuenta col-12">
+                            <div class="card-header">Datos cuenta</div>
+                            <div class="card-body">
+                                <div class="row row-item">
+                                    <div class="form-group col-12">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                            </div>
+                                            <input type="email" class="form-control" id="email" name="emailUser" placeholder="Email" required>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'emailUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-item">
+                                    <div class="form-group col-12">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa fa-key"></i></span>
+                                            </div>
+                                            <input type="password" class="form-control" id="password" name="passwordUser" placeholder="12345678" required>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'passwordUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-item">
+                                    <div class="form-group col-12">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa fa-key"></i></span>
+                                            </div>
+                                            <input type="password" class="form-control" id="repeatPassword" name="repeatPasswordUser" placeholder="Repita contraseña" required>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'repeatPasswordUser' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-foto col-12">
+                            <div class="card-header">Foto perfil</div>
+                            <div class="card-body">
+                                <div class="row rowImagenes">
+                                    <div class="form-group col-12">
+                                        <div class="input-group">
+                                            <div class="imgUp">
+                                                <div class="imagePreview"></div>
+                                                <label class="btn btn-primary">Cargar
+                                                    <input type="file" class="uploadFile img" name="fotoPerfil" value="Subir foto" required>
+                                                </label>
+                                            </div>
+                                            <% if (typeof errores != 'undefined') { %>
+                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                  <% if(errores[i].param == 'fotoPerfil' ) { %>
+                                                    <div class="msgError"><%= errores[i].msg %></div>
+                                                  <% } %>
+                                                <% } %>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-xs-12 mt-3">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarme</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/footer') %>
+    <%-include('./partials/script')%>
+</body>
+</html>

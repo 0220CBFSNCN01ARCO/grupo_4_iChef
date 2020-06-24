@@ -1,158 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/head') %>
+<%- include('./partials/head') %>
 <body class="hold-transition login-page">
     <%- include('./partials/header') %>
-    <div class="fondoFormulario">
-        <div class="container register-box">
-            <div class="row register-box-body justify-content-center">
-                <h3 class="register-box-msg"><b>Registración</b></h3>
-                <form method="POST" action="/users/create" class="frmRegistro needs-validation" enctype="multipart/form-data" novalidate>
-                    <div class="row row-registro">
-                        <div class="card card-personales col-12">
-                            <div class="card-header">Datos personales</div>
-                            <div class="card-body">
-                                <div class="row row-item">
-                                    <div class="form-group col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" id="nombre" name="nombreUser" placeholder="Nombre" required>
-                                            <% if (typeof errores != 'undefined') { %>
-                                                <% for (let i=0; i < errores.length; i++) { %>
-                                                  <% if(errores[i].param == 'nombreUser' ) { %>
-                                                    <div class="msgError"><%= errores[i].msg %></div>
-                                                  <% } %>
-                                                <% } %>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-item">
-                                    <div class="form-group col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-user-circle-o"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" id="apellido" name="apellidoUser" placeholder="Apellido" required>
-                                            <% if (typeof errores != 'undefined') { %>
-                                                <% for (let i=0; i < errores.length; i++) { %>
-                                                  <% if(errores[i].param == 'apellidoUser' ) { %>
-                                                    <div class="msgError"><%= errores[i].msg %></div>
-                                                  <% } %>
-                                                <% } %>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-item">
-                                    <div class="form-group col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-phone"></i></span>
-                                            </div>
-                                            <input type="number" class="form-control" id="telefono" name="nroTelefonoUser" placeholder="Nro. teléfono" required>
-                                            <% if (typeof errores != 'undefined') { %>
-                                                <% for (let i=0; i < errores.length; i++) { %>
-                                                  <% if(errores[i].param == 'nroTelefonoUser' ) { %>
-                                                    <div class="msgError"><%= errores[i].msg %></div>
-                                                  <% } %>
-                                                <% } %>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="container-fuid fondoFormulario">
+        <div>
+            <h3 class="register-box-msg register-box-body"><b>Registración</b></h3>
+        </div>
+        <div id="containerForm" class="container">
+            <form method="POST" id="formRegister" action="/users/create" enctype="multipart/form-data" novalidate>
+                <div class="row">
+                    <div id="formDatos" class="col-sm-12 col-md-12 col-lg-6">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nombreUser">Nombre</label>
+                                <input type="text" class="form-control" id="nombreUser" name="nombreUser" placeholder="Juan">
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                        <% if(errores[i].param == 'nombreUser' ) { %>
+                                            <div class="msgError"><%= errores[i].msg %></div>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="apellidoUser">Apellido</label>
+                                <input type="text" class="form-control" id="apellidoUser" name="apellidoUser" placeholder="Perez">
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                        <% if(errores[i].param == 'apellidoUser' ) { %>
+                                            <div class="msgError"><%= errores[i].msg %></div>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
                             </div>
                         </div>
-                        <div class="card card-cuenta col-12">
-                            <div class="card-header">Datos cuenta</div>
-                            <div class="card-body">
-                                <div class="row row-item">
-                                    <div class="form-group col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                                            </div>
-                                            <input type="email" class="form-control" id="email" name="emailUser" placeholder="Email" required>
-                                            <% if (typeof errores != 'undefined') { %>
-                                                <% for (let i=0; i < errores.length; i++) { %>
-                                                  <% if(errores[i].param == 'emailUser' ) { %>
-                                                    <div class="msgError"><%= errores[i].msg %></div>
-                                                  <% } %>
-                                                <% } %>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-item">
-                                    <div class="form-group col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa fa-key"></i></span>
-                                            </div>
-                                            <input type="password" class="form-control" id="password" name="passwordUser" placeholder="Contraseña" required>
-                                            <% if (typeof errores != 'undefined') { %>
-                                                <% for (let i=0; i < errores.length; i++) { %>
-                                                  <% if(errores[i].param == 'passwordUser' ) { %>
-                                                    <div class="msgError"><%= errores[i].msg %></div>
-                                                  <% } %>
-                                                <% } %>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-item">
-                                    <div class="form-group col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa fa-key"></i></span>
-                                            </div>
-                                            <input type="password" class="form-control" id="repeatPassword" name="repeatPasswordUser" placeholder="Repita contraseña" required>
-                                            <% if (typeof errores != 'undefined') { %>
-                                                <% for (let i=0; i < errores.length; i++) { %>
-                                                  <% if(errores[i].param == 'repeatPasswordUser' ) { %>
-                                                    <div class="msgError"><%= errores[i].msg %></div>
-                                                  <% } %>
-                                                <% } %>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                              <label for="nroTelefonoUser">Nro. teléfono</label>
+                              <input type="text" minlength="10" class="form-control" id="nroTelefonoUser" name="nroTelefonoUser" placeholder="3511234567">
+                              <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'nroTelefonoUser' ) { %>
+                                        <div class="msgError"><%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                              <% } %>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label for="emailUser">Email</label>
+                              <input type="email" class="form-control" id="emailUser" name="emailUser" placeholder="juanperez@ichef.com">
+                              <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'emailUser' ) { %>
+                                        <div class="msgError"><%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                              <% } %>
                             </div>
                         </div>
-                        <div class="card card-foto col-12">
-                            <div class="card-header">Foto perfil</div>
-                            <div class="card-body">
-                                <div class="row rowImagenes">
-                                    <div class="form-group col-12">
-                                        <div class="input-group">
-                                            <div class="imgUp">
-                                                <div class="imagePreview"></div>
-                                                <label class="btn btn-primary">Cargar
-                                                    <input type="file" class="uploadFile img" name="fotoPerfil" value="Subir foto" required>
-                                                </label>
-                                            </div>
-                                            <% if (typeof errores != 'undefined') { %>
-                                                <% for (let i=0; i < errores.length; i++) { %>
-                                                  <% if(errores[i].param == 'fotoPerfil' ) { %>
-                                                    <div class="msgError"><%= errores[i].msg %></div>
-                                                  <% } %>
-                                                <% } %>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="form-row">
+                              <div class="col-md-6 mb-3">
+                                <label for="passwordUser">Password</label>
+                                <input type="password" class="form-control" id="passwordUser" name="passwordUser">
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                      <% if(errores[i].param == 'passwordUser' ) { %>
+                                        <div class="msgError"><%= errores[i].msg %></div>
+                                      <% } %>
+                                    <% } %>
+                                <% } %>
+                              </div>
+                              <div class="col-md-6 mb-3">
+                                <label for="repeatPasswordUser">Reingrese password</label>
+                                <input type="password" class="form-control" id="repeatPasswordUser" name="repeatPasswordUser">
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                      <% if(errores[i].param == 'repeatPasswordUser' ) { %>
+                                        <div class="msgError"><%= errores[i].msg %></div>
+                                      <% } %>
+                                    <% } %>
+                                <% } %>
+                              </div>
                         </div>
                     </div>
-                    <div class="row justify-content-end">
-                        <div class="col-xs-12 mt-3">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Registrarme</button>
+                    <div id="formImagen" class="col-sm-12 col-md-12 col-lg-6">
+                        <label>Imagen perfil</label>
+                        <div class="imgUp">
+                            <div class="imagePreview"></div>
+                            <div >
+                                <label id="btnUpload" for="fotoPerfil"><span class="ichef-file_upload iconiChef"></span> Cargar</label>
+                                <input type="file" class="uploadFile img" id="fotoPerfil" name="fotoPerfil" value="Subir foto" required>
+                            </div>
                         </div>
+                        <% if (typeof errores != 'undefined') { %>
+                            <% for (let i=0; i < errores.length; i++) { %>
+                              <% if(errores[i].param == 'fotoPerfil' ) { %>
+                                <div class="msgError"><%= errores[i].msg %></div>
+                              <% } %>
+                            <% } %>
+                        <% } %>
                     </div>
-                </form>
-            </div>
+                    <div id="formAction">
+                        <button class="btn btn-dark" type="submit">Registrarme</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <%- include('./partials/footer') %>
