@@ -8,28 +8,28 @@
             <h3 class="register-box-msg register-box-body"><b>Registración</b></h3>
         </div>
         <div id="containerForm" class="container">
-            <form method="POST" id="formRegister" action="/users/create" enctype="multipart/form-data" novalidate>
+            <form method="POST" id="formRegister" action="/users/create" novalidate>
                 <div class="row">
                     <div id="formDatos" class="col-sm-12 col-md-12 col-lg-6">
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
-                                <label for="nombreUser">Nombre</label>
-                                <input type="text" class="form-control" id="nombreUser" name="nombreUser" placeholder="Juan">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" name="nombreUser">
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                         <% if(errores[i].param == 'nombreUser' ) { %>
-                                            <div class="msgError"><%= errores[i].msg %></div>
+                                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
                                         <% } %>
                                     <% } %>
                                 <% } %>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="apellidoUser">Apellido</label>
-                                <input type="text" class="form-control" id="apellidoUser" name="apellidoUser" placeholder="Perez">
+                                <label>Apellido</label>
+                                <input type="text" class="form-control" name="apellidoUser">
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                         <% if(errores[i].param == 'apellidoUser' ) { %>
-                                            <div class="msgError"><%= errores[i].msg %></div>
+                                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
                                         <% } %>
                                     <% } %>
                                 <% } %>
@@ -37,23 +37,23 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
-                              <label for="nroTelefonoUser">Nro. teléfono</label>
-                              <input type="text" minlength="10" class="form-control" id="nroTelefonoUser" name="nroTelefonoUser" placeholder="3511234567">
+                              <label>Nro. teléfono</label>
+                              <input type="text" minlength="10" class="form-control" name="nroTelefonoUser">
                               <% if (typeof errores != 'undefined') { %>
                                 <% for (let i=0; i < errores.length; i++) { %>
                                     <% if(errores[i].param == 'nroTelefonoUser' ) { %>
-                                        <div class="msgError"><%= errores[i].msg %></div>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
                                     <% } %>
                                 <% } %>
                               <% } %>
                             </div>
                             <div class="col-md-6 mb-3">
-                              <label for="emailUser">Email</label>
-                              <input type="email" class="form-control" id="emailUser" name="emailUser" placeholder="juanperez@ichef.com">
+                              <label>Email</label>
+                              <input type="email" class="form-control" name="emailUser">
                               <% if (typeof errores != 'undefined') { %>
                                 <% for (let i=0; i < errores.length; i++) { %>
                                     <% if(errores[i].param == 'emailUser' ) { %>
-                                        <div class="msgError"><%= errores[i].msg %></div>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
                                     <% } %>
                                 <% } %>
                               <% } %>
@@ -61,23 +61,23 @@
                         </div>
                         <div class="form-row">
                               <div class="col-md-6 mb-3">
-                                <label for="passwordUser">Password</label>
-                                <input type="password" class="form-control" id="passwordUser" name="passwordUser">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="passwordUser">
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                       <% if(errores[i].param == 'passwordUser' ) { %>
-                                        <div class="msgError"><%= errores[i].msg %></div>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
                                       <% } %>
                                     <% } %>
                                 <% } %>
                               </div>
                               <div class="col-md-6 mb-3">
-                                <label for="repeatPasswordUser">Reingrese password</label>
-                                <input type="password" class="form-control" id="repeatPasswordUser" name="repeatPasswordUser">
+                                <label>Reingrese password</label>
+                                <input type="password" class="form-control" name="repeatPasswordUser">
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                       <% if(errores[i].param == 'repeatPasswordUser' ) { %>
-                                        <div class="msgError"><%= errores[i].msg %></div>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
                                       <% } %>
                                     <% } %>
                                 <% } %>
@@ -89,14 +89,14 @@
                         <div class="imgUp">
                             <div class="imagePreview"></div>
                             <div >
-                                <label id="btnUpload" for="fotoPerfil"><span class="ichef-file_upload iconiChef"></span> Cargar</label>
-                                <input type="file" class="uploadFile img" id="fotoPerfil" name="fotoPerfil" value="Subir foto" required>
+                                <label id="btnUpload"><span class="ichef-file_upload iconiChef"></span> Cargar</label>
+                                <input type="file" class="uploadFile img" name="fotoPerfil" value="Subir foto" required>
                             </div>
                         </div>
                         <% if (typeof errores != 'undefined') { %>
                             <% for (let i=0; i < errores.length; i++) { %>
                               <% if(errores[i].param == 'fotoPerfil' ) { %>
-                                <div class="msgError"><%= errores[i].msg %></div>
+                                <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
                               <% } %>
                             <% } %>
                         <% } %>

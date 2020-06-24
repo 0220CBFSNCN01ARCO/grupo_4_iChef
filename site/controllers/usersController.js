@@ -12,8 +12,8 @@ let usersController = {
     createUser: function (req, res, next) {
       let errores = validationResult(req);
 
-      console.log(req.body);
-      console.log(errores.errors);
+      //console.log(req.body);
+      //console.log(errores.errors);
 
       if(errores.isEmpty()){
         if(req.body.passwordUser != req.body.repeatPasswordUser){

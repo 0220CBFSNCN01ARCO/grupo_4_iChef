@@ -18,7 +18,7 @@
                       <% if (typeof errores != 'undefined') { %>
                         <% for (let i=0; i < errores.length; i++) { %>
                           <% if(errores[i].param == 'emailUsuario' ) { %>
-                            <div class="msgError"><%= errores[i].msg %></div>
+                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
                           <% } %>
                         <% } %>
                       <% } %>
@@ -33,7 +33,7 @@
                       <% if (typeof errores != 'undefined') { %>
                         <% for (let i=0; i < errores.length; i++) { %>
                           <% if(errores[i].param == 'passwordUsuario' ) { %>
-                            <div class="msgError"><%= errores[i].msg %></div>
+                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
                           <% } %>
                         <% } %>
                       <% } %>
