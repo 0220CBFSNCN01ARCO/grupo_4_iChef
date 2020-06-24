@@ -17,5 +17,14 @@ module.exports = (sequelize, DataTypes) => {
 
     const StatusCart = sequelize.define(alias, cols, config);
 
+    /*StatusCart.associate = function(models){
+        StatusCart.hasMany(models.Cart, {
+            as: "carts",
+            foreignKey: "estado"
+        });
+                
+    }*/
+
+
     return StatusCart;
 }
