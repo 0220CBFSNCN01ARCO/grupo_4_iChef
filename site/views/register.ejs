@@ -88,9 +88,10 @@
                         <label>Imagen perfil</label>
                         <div class="imgUp">
                             <div class="imagePreview"></div>
-                            <div >
-                                <label id="btnUpload"><span class="ichef-file_upload iconiChef"></span> Cargar</label>
-                                <input type="file" class="uploadFile img" name="fotoPerfil" value="Subir foto" required>
+                            <div>
+                                <label for="fotoPerfil" id="btnUpload"><span class="ichef-file_upload iconiChef"></span> Cargar
+                                    <input type="file" class="uploadFile img" id="fotoPerfil" name="fotoPerfil">
+                                </label>
                             </div>
                         </div>
                         <% if (typeof errores != 'undefined') { %>

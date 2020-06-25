@@ -1,7 +1,15 @@
+let db = require('../database/models');
+
 
 let infoController = {
     getContact: function (req, res, next) {
-        res.render('contact', { title: 'Contacto',usuario: req.session.usuarioLogueado });
+
+        db.User.findAll()
+        .then(function(usuarios){
+          return res.render('contact', { title: 'Contacto',
+                                         listaUsuarios: usuarios,
+                                         usuario: req.session.usuarioLogueado });
+        });
     },
     getNosotros: function (req, res, next) {
         res.render('nosotros', { title: 'Nosotros',usuario: req.session.usuarioLogueado });

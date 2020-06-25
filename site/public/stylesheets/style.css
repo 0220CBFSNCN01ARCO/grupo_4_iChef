@@ -140,6 +140,7 @@ footer p {
 
 #formImagen{
   text-align: -webkit-center;
+  padding-bottom: 10px;
 }
 
 #formDatos, #formImagen,.formLogin {
@@ -886,6 +887,26 @@ a.btn-whatsapp:hover {
   background-color:#FFF;
 	color:#25d366;
 }
+
+.go-top {
+  position: fixed;
+  cursor: pointer;
+  bottom: 15px;
+  right: 15px;
+  font-size: 25px;
+  color: #ffffff;
+  background-color: #f02543b8;
+  z-index: 4;
+  width: 105px;
+  text-align: center;
+  border-radius: 20%;
+  -webkit-transition: .4s;
+  transition: .4s;
+  font-size: 20px;
+  padding: 10px;
+  border: 5px solid white;
+}
+
 
 /*FIN BOTON WHATSPAPP*/
 

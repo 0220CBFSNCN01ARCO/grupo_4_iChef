@@ -8,6 +8,18 @@
         <h1>Pagina de Contacto en construcción</h1>
     </div>
 
+    <div>
+        <ul>
+        <% for(let i=0; i < listaUsuarios.length ; i++) { %>
+            <li>
+                <p>Id: <%= listaUsuarios[i].id %></p>
+                <a>Nombre: <%= listaUsuarios[i].nombre %>, Apellido: <%= listaUsuarios[i].apellido %></a>
+            </li>
+        <% } %>
+        </ul>
+    </div>
+
+
     <%- include('./partials/footer') %>
     <%-include('./partials/script')%>
 </body>

@@ -54,7 +54,14 @@ router.post('/create',
       }
     }
     return true;
-  }).withMessage("El email ingresado ya existe.")
+  }).withMessage("El email ingresado ya existe."),
+  body("fotoPerfil").custom(function(value){
+      //console.log("Dato foto:" + value);
+      if(value == ''){
+        return false;
+      }
+      return true;
+  }).withMessage("Debe seleccionar una imagen de perfil.")
 ]
 
 ,upload.single('fotoPerfil'), usersController.createUser);
