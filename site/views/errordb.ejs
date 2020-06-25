@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+    <!--cuerpo-->
+    <div class="container-fluid mt-2 containerError">
+        <div id="containerError" class="row alert alert-danger" role="alert">
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <img class="img-fluid" src="/images/fondos/ya-volvemos.png" alt="Error">
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <h1 class="alert-heading">Error</h1>
+                <hr>
+                <p class="mb-0">Detalle: <%= error.name %></p>
+                <p class="mb-0">Estado: <%= error.parent.code %></p>
+                <p class="mb-0">Codigo: <%= error.parent.syscall %></p>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./partials/footer') %>
+    <%- include('./partials/script')%>
+</body>
+</html>

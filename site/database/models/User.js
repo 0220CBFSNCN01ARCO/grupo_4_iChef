@@ -39,10 +39,16 @@ module.exports = (sequelize, DataTypes) => {
     }
     let config = {
         tableName : "users",
-        timestamps: '0'
+        timestamps: 0
     };
 
     const User = sequelize.define(alias, cols, config);
 
+    User.associate = function(models){
+        User.belongsTo(models.UserCategorie,{
+            as: "categoria",
+            foreignKey: "categorie_id"
+        });
+    }
     return User;
 }

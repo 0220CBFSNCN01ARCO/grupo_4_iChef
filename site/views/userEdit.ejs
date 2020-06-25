@@ -5,7 +5,7 @@
     <%- include('./partials/header') %>
     <div class="container-fuid fondoFormulario">
         <div>
-            <h3 class="register-box-msg register-box-body"><b>Registración</b></h3>
+            <h3 class="register-box-msg register-box-body"><b>Estas editanto tu perfil <%= usuarioEdit.nombre %></b></h3>
         </div>
         <div id="containerForm" class="container">
             <form method="POST" id="formRegister" action="/users/create" novalidate>
@@ -14,7 +14,7 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" name="nombreUser">
+                                <input type="text" class="form-control" name="nombreUser" value="<%= usuarioEdit.nombre %>">
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                         <% if(errores[i].param == 'nombreUser' ) { %>
@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Apellido</label>
-                                <input type="text" class="form-control" name="apellidoUser">
+                                <input type="text" class="form-control" name="apellidoUser" value="<%= usuarioEdit.apellido %>">
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                         <% if(errores[i].param == 'apellidoUser' ) { %>
@@ -38,7 +38,7 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                               <label>Nro. teléfono</label>
-                              <input type="text" minlength="10" class="form-control" name="nroTelefonoUser">
+                              <input type="text" minlength="10" class="form-control" name="nroTelefonoUser" value="<%= usuarioEdit.nroTelefono %>">
                               <% if (typeof errores != 'undefined') { %>
                                 <% for (let i=0; i < errores.length; i++) { %>
                                     <% if(errores[i].param == 'nroTelefonoUser' ) { %>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                               <label>Email</label>
-                              <input type="email" class="form-control" name="emailUser">
+                              <input type="email" class="form-control" name="emailUser" value="<%= usuarioEdit.email %>">
                               <% if (typeof errores != 'undefined') { %>
                                 <% for (let i=0; i < errores.length; i++) { %>
                                     <% if(errores[i].param == 'emailUser' ) { %>
@@ -62,7 +62,7 @@
                         <div class="form-row">
                               <div class="col-md-6 mb-3">
                                 <label>Password</label>
-                                <input type="password" class="form-control" name="passwordUser">
+                                <input type="password" class="form-control" name="passwordUser" >
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                       <% if(errores[i].param == 'passwordUser' ) { %>
@@ -88,11 +88,11 @@
                         <label>Imagen perfil</label>
                         <div class="imgUp">
                             <div>
-                                <img src="/images/users/user-profile.png" class="imagePreview" alt="Imagen perfil">
+                                <img id="imgAvatar" class="imagePreview" alt="Imagen perfil">
                             </div>
                             <div>
                                 <label for="fotoPerfil" id="btnUpload"><span class="ichef-file_upload iconiChef"></span> Cargar
-                                    <input type="file" class="uploadFile img" id="fotoPerfil" name="fotoPerfil">
+                                    <input type="file" class="uploadFile img" id="fotoPerfil" name="fotoPerfil" onclick="loadImagen()">
                                 </label>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                         <% } %>
                     </div>
                     <div id="formAction">
-                        <button class="btn btn-dark" type="submit">Registrarme</button>
+                        <button class="btn btn-dark" type="submit">Guardar</button>
                     </div>
                 </div>
             </form>
@@ -113,5 +113,12 @@
     </div>
     <%- include('./partials/footer') %>
     <%-include('./partials/script')%>
+    <script>
+        function loadImagen() {
+          let x = document.getElementById("imgAvatar");
+          console.log(x)
+          //document.getElementById("demo").innerHTML = x;
+        }
+    </script>
 </body>
 </html>

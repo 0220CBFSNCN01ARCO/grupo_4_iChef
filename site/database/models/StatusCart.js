@@ -22,9 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             as: "carts",
             foreignKey: "estado"
         });
-                
     }*/
-
 
     return StatusCart;
 }

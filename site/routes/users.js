@@ -94,4 +94,8 @@ router.get('/logout', usersController.logoutUser);
 
 router.get('/userprofile', usersController.userprofile);
 
+router.get('/:id/edit', usersController.userEdit);
+
+router.put('/:id/edit', usersController.updateUser);
+
 module.exports = router;

@@ -1,5 +1,4 @@
 const fs = require('fs');
-const multer = require('multer');
 
 let productController = {
     productDetail: function (req, res, next) {

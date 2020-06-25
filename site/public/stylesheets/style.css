@@ -341,7 +341,7 @@ h1 {
 }
 
 .imagePreview,.imageMin {
-  background-image: url('/images/fondos/no-imagen.jpg');
+  /*background-image: url('/images/fondos/no-imagen.jpg');*/
   background-position: center center;
   background-color:lightgrey;
   background-size: cover;
@@ -573,7 +573,7 @@ margin-left: 15px;
   margin-left: 2rem;
 }
 
-.titleHead,.colPrecio {
+.titleHead,.colPrecio, .contentTable {
   text-align: center;
 }
 
@@ -589,6 +589,8 @@ margin-left: 15px;
   padding-bottom: 10px;
   margin-top: 10px;
 }
+
+
 
 /*LOGIN*/
 
@@ -1267,3 +1269,12 @@ justify-content: space-around;
   flex-direction: end;
 }
 /*FIN MARKET*/
+
+/* Error*/
+
+
+#containerError {
+  display: flex;
+}
+
+/**/

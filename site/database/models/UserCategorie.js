@@ -12,10 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     }
     let config = {
         tableName : "users_categories",
-        timestamps : false
+        timestamps : 0
     };
 
     const UserCategorie = sequelize.define(alias, cols, config);
+
+    UserCategorie.associate = function(models){
+        UserCategorie.hasMany(models.User,{
+            as: "usuario",
+            foreignKey: "categorie_id"
+        });
+    }
 
     return UserCategorie;
 }
