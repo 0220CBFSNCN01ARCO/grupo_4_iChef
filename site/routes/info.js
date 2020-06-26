@@ -7,5 +7,6 @@ router.get('/contact', infoController.getContact);
 router.get('/nosotros', infoController.getNosotros);
 router.get('/staff', infoController.getStaff);
 router.get('/guest', infoController.getGuest);
+router.get('/zonas', infoController.getZonas);
 
 module.exports = router;
