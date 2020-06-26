@@ -119,8 +119,17 @@ let usersController = {
         });
       },
       userprofile: function (req, res, next) {
-        return res.render('userProfile', { title: 'Perfil',
-                              usuario: req.session.usuarioLogueado });
+        //console.log(req.session.usuarioLogueado.id);
+        db.User.findByPk(req.session.usuarioLogueado.id)
+        .then(function(usuarioEdit){
+          return res.render('userProfile', { title: 'Perfil',
+                                             usuarioEdit: usuarioEdit,
+                                             usuario: req.session.usuarioLogueado });
+          }).catch(function(error){
+          return res.render('errordb', { title: 'Error',
+                                         error: error,
+                                         usuario: req.session.usuarioLogueado });
+        });
       },
       userEdit: function (req, res, next) {
         db.User.findByPk(req.params.id)

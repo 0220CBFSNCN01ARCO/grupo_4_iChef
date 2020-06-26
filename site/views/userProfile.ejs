@@ -1,17 +1,94 @@
 <!DOCTYPE html>
-<html lang="es">
-    <%- include('./partials/head') %>
-<body>
+<html lang="en">
+<%- include('./partials/head') %>
+<body class="hold-transition login-page" onload="loadImage()">
     <%- include('./partials/header') %>
-    <!--cuerpo-->
-    <div class="container">
+    <div class="container-fuid fondoFormulario">
         <div>
-            <div class="alert alert-primary mt-2" role="alert">
-                Perfil del usuario <%= usuario.nombre %>, <a class="alert-link" href="/">volver</a>.
-            </div>
+            <h3 class="register-box-msg register-box-body"><b>Tu perfil: <%= usuarioEdit.nombre %></b></h3>
+        </div>
+        <div id="containerForm" class="container">
+            <form method="POST" id="formRegister" action="/users/<%= usuarioEdit.id %>/edit?_method=PUT" novalidate>
+                <div class="row">
+                    <div id="formDatos" class="col-sm-12 col-md-12 col-lg-6">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" name="nombreUser" value="<%= usuarioEdit.nombre %>">
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                        <% if(errores[i].param == 'nombreUser' ) { %>
+                                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Apellido</label>
+                                <input type="text" class="form-control" name="apellidoUser" value="<%= usuarioEdit.apellido %>">
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                        <% if(errores[i].param == 'apellidoUser' ) { %>
+                                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                              <label>Nro. teléfono</label>
+                              <input type="text" minlength="10" class="form-control" name="nroTelefonoUser" value="<%= usuarioEdit.nroTelefono %>">
+                              <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'nroTelefonoUser' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                              <% } %>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <label>Email</label>
+                              <input type="email" class="form-control" name="emailUser" value="<%= usuarioEdit.email %>">
+                              <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'emailUser' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                              <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="formImagen" class="col-sm-12 col-md-12 col-lg-6">
+                        <label>Imagen perfil</label>
+                        <div class="imgUp">
+                            <div>
+                                <img src="/images/users/<%= usuarioEdit.avatar %>" id="imgAvatar" class="imagePreview" alt="Imagen perfil">
+                            </div>
+                            <div>
+                                <label for="fotoPerfil" id="btnUpload"><span class="ichef-file_upload iconiChef"></span> Cargar
+                                    <input type="file" class="img" id="fotoPerfil" name="fotoPerfil" accept="image/png, .jpeg, .jpg, image/gif" onchange="mostrar()">
+                                </label>
+                            </div>
+                        </div>
+                        <% if (typeof errores != 'undefined') { %>
+                            <% for (let i=0; i < errores.length; i++) { %>
+                              <% if(errores[i].param == 'fotoPerfil' ) { %>
+                                <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                              <% } %>
+                            <% } %>
+                        <% } %>
+                    </div>
+                    <div id="formAction">
+                        <button class="btn btn-dark" type="submit">Editar</button>
+                        <button class="btn btn-dark" type="submit">Guardar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <%- include('./partials/footer') %>
-    <%-include('./partials/script') %>
+    <%- include('./partials/script') %>
 </body>
 </html>

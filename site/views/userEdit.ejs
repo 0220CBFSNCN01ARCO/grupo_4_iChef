@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head') %>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" onload="loadImage()">
     <%- include('./partials/header') %>
     <div class="container-fuid fondoFormulario">
         <div>
-            <h3 class="register-box-msg register-box-body"><b>Estas editanto tu perfil <%= usuarioEdit.nombre %></b></h3>
+            <h3 class="register-box-msg register-box-body"><b>Editanto perfil usuario: <%= usuarioEdit.nombre %></b></h3>
         </div>
         <div id="containerForm" class="container">
-            <form method="POST" id="formRegister" action="/users/create" novalidate>
+            <form method="POST" id="formRegister" action="/users/<%= usuarioEdit.id %>/edit?_method=PUT" novalidate>
                 <div class="row">
                     <div id="formDatos" class="col-sm-12 col-md-12 col-lg-6">
                         <div class="form-row">
@@ -88,11 +88,11 @@
                         <label>Imagen perfil</label>
                         <div class="imgUp">
                             <div>
-                                <img id="imgAvatar" class="imagePreview" alt="Imagen perfil">
+                                <img src="/images/users/<%= usuarioEdit.avatar %>" id="imgAvatar" class="imagePreview" alt="Imagen perfil">
                             </div>
                             <div>
                                 <label for="fotoPerfil" id="btnUpload"><span class="ichef-file_upload iconiChef"></span> Cargar
-                                    <input type="file" class="uploadFile img" id="fotoPerfil" name="fotoPerfil" onclick="loadImagen()">
+                                    <input type="file" class="img" id="fotoPerfil" name="fotoPerfil" accept="image/png, .jpeg, .jpg, image/gif" onchange="mostrar()">
                                 </label>
                             </div>
                         </div>
@@ -112,13 +112,6 @@
         </div>
     </div>
     <%- include('./partials/footer') %>
-    <%-include('./partials/script')%>
-    <script>
-        function loadImagen() {
-          let x = document.getElementById("imgAvatar");
-          console.log(x)
-          //document.getElementById("demo").innerHTML = x;
-        }
-    </script>
+    <%- include('./partials/script') %>
 </body>
 </html>

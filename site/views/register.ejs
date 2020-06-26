@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head') %>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" onload="loadImage()">
     <%- include('./partials/header') %>
     <div class="container-fuid fondoFormulario">
         <div>
@@ -88,11 +88,11 @@
                         <label>Imagen perfil</label>
                         <div class="imgUp">
                             <div>
-                                <img src="/images/users/user-profile.png" class="imagePreview" alt="Imagen perfil">
+                                <img id="imgAvatar" class="imagePreview" alt="Imagen perfil">
                             </div>
                             <div>
                                 <label for="fotoPerfil" id="btnUpload"><span class="ichef-file_upload iconiChef"></span> Cargar
-                                    <input type="file" class="uploadFile img" id="fotoPerfil" name="fotoPerfil">
+                                    <input type="file" class="img" id="fotoPerfil" name="fotoPerfil">
                                 </label>
                             </div>
                         </div>
