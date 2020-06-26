@@ -1,15 +1,5 @@
 [
     {
-        "id": 1,
-        "nombre": "Micaela",
-        "apellido": "Rewcassell",
-        "email": "mrewcassell0@bloglines.com",
-        "password": "iQQX3ZuFQvr3",
-        "nroTelefono": "(773) 2046355",
-        "rol": 4,
-        "imagen": "imagen1.jpg"
-    },
-    {
         "id": 2,
         "nombre": "Huey",
         "apellido": "Bamfield",
@@ -110,7 +100,7 @@
         "imagen": "jose-02-06-2020.jpg"
     },
     {
-        "id": 12,
+        "id": 1,
         "nombre": "jose",
         "apellido": "salvini",
         "email": "jose@gmail.com",

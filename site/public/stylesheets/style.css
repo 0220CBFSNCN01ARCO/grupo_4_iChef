@@ -140,6 +140,7 @@ footer p {
 
 #formImagen{
   text-align: -webkit-center;
+  padding-bottom: 10px;
 }
 
 #formDatos, #formImagen,.formLogin {
@@ -340,7 +341,7 @@ h1 {
 }
 
 .imagePreview,.imageMin {
-  background-image: url('/images/fondos/no-imagen.jpg');
+  /*background-image: url('/images/fondos/no-imagen.jpg');*/
   background-position: center center;
   background-color:lightgrey;
   background-size: cover;
@@ -572,7 +573,7 @@ margin-left: 15px;
   margin-left: 2rem;
 }
 
-.titleHead,.colPrecio {
+.titleHead,.colPrecio, .contentTable {
   text-align: center;
 }
 
@@ -588,6 +589,8 @@ margin-left: 15px;
   padding-bottom: 10px;
   margin-top: 10px;
 }
+
+
 
 /*LOGIN*/
 
@@ -886,6 +889,25 @@ a.btn-whatsapp:hover {
   background-color:#FFF;
 	color:#25d366;
 }
+
+.go-top {
+  position: fixed;
+  cursor: pointer;
+  bottom: 15px;
+  right: 15px;
+  font-size: 15px;
+  color: #ffffff;
+  background-color: #f02543b8;
+  z-index: 4;
+  width: 85px;
+  text-align: center;
+  border-radius: 20%;
+  -webkit-transition: .4s;
+  transition: .4s;
+  padding: 10px;
+  border: 5px solid white;
+}
+
 
 /*FIN BOTON WHATSPAPP*/
 
@@ -1246,3 +1268,12 @@ justify-content: space-around;
   flex-direction: end;
 }
 /*FIN MARKET*/
+
+/* Error*/
+
+
+#containerError {
+  display: flex;
+}
+
+/**/

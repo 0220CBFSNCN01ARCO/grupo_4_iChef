@@ -2,6 +2,7 @@ const fs = require('fs');
 const {check, validationResult, body} = require('express-validator');
 const bcrypt = require('bcrypt');
 const saltNumber = 10;
+const db = require('../database/models');
 
 let usersController = {
     userRegister: function (req, res, next) {
@@ -12,8 +13,8 @@ let usersController = {
     createUser: function (req, res, next) {
       let errores = validationResult(req);
 
-      console.log(req.body);
-      console.log(errores.errors);
+      //console.log(req.body);
+      //console.log(errores.errors);
 
       if(errores.isEmpty()){
         if(req.body.passwordUser != req.body.repeatPasswordUser){
@@ -95,29 +96,68 @@ let usersController = {
     },
 
     userList: function (req, res, next) {
-        let usuariosJSON = fs.readFileSync('./data/users.json',{ encoding:'utf-8'});
-        let users;
-        if(usuariosJSON == ""){
-          users = [];
-        }else{
-          users = JSON.parse(usuariosJSON);
-        }
-
-        res.render('usersList', { title: 'Usuarios',
-                                  usuarios: users,
-                                  usuario: req.session.usuarioLogueado });
+        db.User.findAll(
+          {include:[{association: "categoria"}]}
+        )
+        .then(function(usuarios){
+          return res.render('usersList', { title: 'Usuarios',
+                                          usuarios: usuarios,
+                                          usuario: req.session.usuarioLogueado });
+        }).catch(function(error){
+          //console.log(error);
+          return res.render('errordb', { title: 'Error',
+                                         error: error,
+                                         usuario: req.session.usuarioLogueado });
+        });
       },
       logoutUser: function (req, res, next) {
         //req.session.destroy();
         //res.redirect('/');
         req.cookies.recordame = undefined;
         req.session.destroy((error) => {
-          res.redirect('/users/login')
+          return res.redirect('/users/login')
         });
       },
       userprofile: function (req, res, next) {
-        res.render('userProfile', { title: 'Perfil',
-                              usuario: req.session.usuarioLogueado });
+        //console.log(req.session.usuarioLogueado.id);
+        db.User.findByPk(req.session.usuarioLogueado.id)
+        .then(function(usuarioEdit){
+          return res.render('userProfile', { title: 'Perfil',
+                                             usuarioEdit: usuarioEdit,
+                                             usuario: req.session.usuarioLogueado });
+          }).catch(function(error){
+          return res.render('errordb', { title: 'Error',
+                                         error: error,
+                                         usuario: req.session.usuarioLogueado });
+        });
+      },
+      userEdit: function (req, res, next) {
+        db.User.findByPk(req.params.id)
+        .then(function(usuarioEdit){
+          //console.log(usuarioEdit)
+          return res.render('userEdit', { title: 'Editar perfil',
+                                    usuarioEdit: usuarioEdit,
+                                    usuario: req.session.usuarioLogueado });
+        }).catch(function(error){
+          //console.log(error);
+          return res.render('errordb', { title: 'Error',
+                                         error: error,
+                                         usuario: req.session.usuarioLogueado });
+        });
+      },
+      updateUser: function (req, res, next) {
+        db.User.findByPk(req.params.id)
+        .then(function(usuarioEdit){
+          console.log(usuarioEdit)
+          return res.render('userEdit', { title: 'Editar perfil',
+                                    usuarioEdit: usuarioEdit,
+                                    usuario: req.session.usuarioLogueado });
+        }).catch(function(error){
+          //console.log(error);
+          return res.render('errordb', { title: 'Error',
+                                         error: error,
+                                         usuario: req.session.usuarioLogueado });
+        });
       }
 };
 

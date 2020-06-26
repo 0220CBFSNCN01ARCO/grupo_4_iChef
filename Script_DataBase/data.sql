@@ -5,7 +5,7 @@ USE `ichef`;
 --
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('Admin', 'Admin', 'admin@ichef.com', '$2b$10$7wmTOptmvMBtQ.dWxXenyO8cbrvRMuWUMNk8Me5qQ0pGIbO42ppei', '11111111', 'admin-23-06-2020.jpg', '1');
+INSERT INTO `ichef`.`users` (`nombre`, `apellido`, `email`, `password`, `nroTelefono`, `avatar`, `categorie_id`) VALUES ('Admin', 'Admin', 'admin@ichef.com', '$2b$10$7wmTOptmvMBtQ.dWxXenyO8cbrvRMuWUMNk8Me5qQ0pGIbO42ppei', '11111111', 'admin-23-06-2020.jpg', '1');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 

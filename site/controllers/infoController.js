@@ -1,7 +1,7 @@
-
 let infoController = {
     getContact: function (req, res, next) {
-        res.render('contact', { title: 'Contacto',usuario: req.session.usuarioLogueado });
+      return res.render('contact', { title: 'Contacto',
+                                     usuario: req.session.usuarioLogueado });
     },
     getNosotros: function (req, res, next) {
         res.render('nosotros', { title: 'Nosotros',usuario: req.session.usuarioLogueado });

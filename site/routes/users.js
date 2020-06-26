@@ -34,9 +34,9 @@ router.get('/register' , guestMiddleware ,usersController.userRegister);
 
 router.post('/create',
 [
-  check("nombreUser").isLength({ min: 4 }).withMessage("Debe ingresar un nombre de usuario valido."),
-  check("apellidoUser").isLength({ min: 4 }).withMessage("Debe ingresar un apellido de usuario valido."),
-  check("nroTelefonoUser").isLength({ min: 10 }).withMessage("Debe ingresar un numero de telefono."),
+  check("nombreUser").isLength({ min: 4 }).withMessage("Debe ingresar un nombre valido."),
+  check("apellidoUser").isLength({ min: 4 }).withMessage("Debe ingresar un apellido valido."),
+  check("nroTelefonoUser").isLength({ min: 10 }).withMessage("Debe ingresar un número de telefono."),
   check("emailUser").isEmail().withMessage("Debe ingresar un email valido."),
   check("passwordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
   check("repeatPasswordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
@@ -54,7 +54,14 @@ router.post('/create',
       }
     }
     return true;
-  }).withMessage("El email ingresado ya existe.")
+  }).withMessage("El email ingresado ya existe."),
+  body("fotoPerfil").custom(function(value){
+      //console.log("Dato foto:" + value);
+      if(value == ''){
+        return false;
+      }
+      return true;
+  }).withMessage("Debe seleccionar una imagen de perfil.")
 ]
 
 ,upload.single('fotoPerfil'), usersController.createUser);
@@ -86,5 +93,9 @@ body("emailUsuario").custom(function(value){
 router.get('/logout', usersController.logoutUser);
 
 router.get('/userprofile', usersController.userprofile);
+
+router.get('/:id/edit', usersController.userEdit);
+
+router.put('/:id/edit', usersController.updateUser);
 
 module.exports = router;
