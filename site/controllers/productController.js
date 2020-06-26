@@ -32,7 +32,10 @@ let productController = {
     //listar productos segun tipo
     /*
     listarProductos: function (req, res, next) {
-        db.Product.findAll({include:[{model:ProductType, where: {product_type_id:req.params.tipo}}, {model:Brand}, {model:Heading}, {model:Photo}, {model:Ingredient} ]})
+        db.Product.findAll({
+          include:[{model:ProductType}, {model:Brand}, {model:Heading}, {model:Photo}],
+          where: {product_type_id:req.params.tipo}
+        })
         .then((productos)=>{
           res.render('products', { title: 'Listado', usuario: req.session.usuarioLogueado, productos:productos});
         }
