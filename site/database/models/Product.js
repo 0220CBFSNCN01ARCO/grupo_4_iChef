@@ -88,11 +88,21 @@ module.exports = (sequelize, DataTypes) => {
 
         /*Product - CarDetail
         Product.hasMany(models.CarDetail, {
-            as: "detalles",
+            as: "detallesCarrito",
             foreignKey: "id_producto"
         });
 
-                
+        /*Product - PhotoProduct
+        Product.belongsTo(models.PhotoProduct, {
+            as: "fotosProd",
+            foreignKey: "id_producto"
+        });
+
+        /*Product - IngredientProduct
+        Product.belongsTo(models.PhotoProduct, {
+            as: "ingredienteProd",
+            foreignKey: "id_product"
+        });               
     }*/
 
     return Product;

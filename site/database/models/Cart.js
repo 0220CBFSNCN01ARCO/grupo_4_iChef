@@ -46,10 +46,18 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: "estado"
         });
 
-               
+        /*Cart - CarDetail
+        Cart.hasMany(models.CarDetail, {
+            as: "detallesCarrito",
+            foreignKey: "cart_id"
+        });
+
+        /*Cart - User
+        Cart.belongsTo(models.User, {
+            as: "usuario",
+            foreignKey: "user_id"
+        });               
     }*/
-
-
-   
+  
     return Cart;
 }
