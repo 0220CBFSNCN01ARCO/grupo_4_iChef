@@ -4,6 +4,14 @@ let productController = {
     productDetail: function (req, res, next) {
         res.render('productDetail', { title: 'Detalle productos', subtitle: 'Detalle producto',usuario: req.session.usuarioLogueado });
     },
+    /*
+    productDetail: function (req, res, next) {
+        db.Producto.findByPk(req.params.id, {include:[{model:ProductType}, {model:Brand}, {model:Heading}, {model:Photo}, {model:Ingredient} ]})
+        .then((producto)=>{
+          res.render('productDetail', { title: 'Detalle productos', subtitle: 'Detalle producto',usuario: req.session.usuarioLogueado, producto:producto});
+        }
+    },
+    */
     product_boxDetail: function (req, res, next) {
         res.render('product-boxDetail', { title: 'Detalle caja', subtitle: 'Detalle caja',usuario: req.session.usuarioLogueado });
     },
