@@ -47,4 +47,7 @@ router.put('/:id/edit',authMiddleware, productController.saveProductById);
 //7. /products/​:id​ (DELETE) Acción de borrado
 router.delete('/:idProducto', authMiddleware, productController.deleteProductById);
 
+//8. /products/​search ​(GET) Busca productos 
+//router.get('/search', productController.searchProduct);
+
 module.exports = router;

@@ -1,4 +1,5 @@
 const fs = require('fs');
+const db = require('../database/models');
 
 let productController = {
     productDetail: function (req, res, next) {
@@ -241,7 +242,20 @@ let productController = {
                                     tipo: 'success',
                                     mensaje: mensaje,
                                     usuario: req.session.usuarioLogueado });
+    },
+    /*
+    searchProduct: function (req,res,next) {
+      db.Product.findAll({
+        include:[{model:ProductType}, {model:Brand}, {model:Heading}, {model:Photo}],
+        where: {descripcion:{
+          [Op.substring]: req.query.search}
+        }
+      })
+      .then((productos)=>{
+          res.render('productsResults', { title: 'Resultados de busqueda', usuario: req.session.usuarioLogueado, productos:productos});
+        }
     }
+    */
 };
 
 
