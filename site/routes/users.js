@@ -10,6 +10,8 @@ const {check, validationResult, body} = require('express-validator');
 const guestMiddleware = require('../middleware/guestMiddleware')
 const authMiddleware = require ('../middleware/authMiddleware');
 
+const db = require('../database/models');
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'public/images/users')
@@ -41,19 +43,21 @@ router.post('/create',
   check("passwordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
   check("repeatPasswordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
   body("emailUser").custom(function(value){
-    let usuariosJSON = fs.readFileSync('./data/users.json',{ encoding:'utf-8'});
-    let users;
-    if(usuariosJSON == ""){
-      users = [];
-    }else{
-      users = JSON.parse(usuariosJSON);
-    }
-    for(let i = 0;i< users.length ;i++){
-      if(users[i].email == value){
-        return false;
+    db.User.findOne({
+      where: {
+        email: value
       }
     }
-    return true;
+    )
+    .then(function(usuario){
+      if(usuario){
+        return false;
+      }
+      return true;
+    }).catch(function(error){
+      //console.log(error);
+      return false;
+    });
   }).withMessage("El email ingresado ya existe."),
   body("fotoPerfil").custom(function(value){
       //console.log("Dato foto:" + value);
@@ -73,19 +77,22 @@ router.post('/login',
 check("emailUsuario").isEmail().withMessage("Debe ingresar un email valido."),
 check("passwordUsuario").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
 body("emailUsuario").custom(function(value){
-    let usuariosJSON = fs.readFileSync('./data/users.json',{ encoding:'utf-8'});
-    let users;
-    if(usuariosJSON == ""){
-      users = [];
-    }else{
-      users = JSON.parse(usuariosJSON);
-    }
-    for(let i = 0;i< users.length ;i++){
-      if(users[i].email == value){
-        return true;
+  db.User.findOne({
+      where: {
+        email: value
       }
+  })
+  .then(function(usuario){
+    if(usuario != null){
+      console.log(usuario);
+      return true;
+    }else {
+      return false;
     }
+  }).catch(function(error){
+    //console.log(error);
     return false;
+  });
   }).withMessage("El email ingresado no existe.")
 ]
 ,usersController.loguearUsuario);

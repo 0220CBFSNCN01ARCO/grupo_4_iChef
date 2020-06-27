@@ -67,6 +67,25 @@ let usersController = {
       //console.log(errores);
 
       if(errores.isEmpty()){
+        db.User.findOne({
+            
+          }
+        )
+        .then(function(usuarios){
+          return res.render('usersList', { title: 'Usuarios',
+                                          usuarios: usuarios,
+                                          usuario: req.session.usuarioLogueado });
+        }).catch(function(error){
+          //console.log(error);
+          return res.render('errordb', { title: 'Error',
+                                         error: error,
+                                         usuario: req.session.usuarioLogueado });
+        });
+
+
+
+
+
         let usuariosJSON = fs.readFileSync('./data/users.json',{ encoding:'utf-8'});
         let users;
         if(usuariosJSON == ""){
@@ -148,7 +167,7 @@ let usersController = {
       updateUser: function (req, res, next) {
         db.User.findByPk(req.params.id)
         .then(function(usuarioEdit){
-          console.log(usuarioEdit)
+          //console.log(usuarioEdit)
           return res.render('userEdit', { title: 'Editar perfil',
                                     usuarioEdit: usuarioEdit,
                                     usuario: req.session.usuarioLogueado });
