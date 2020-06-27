@@ -29,12 +29,12 @@ let productController = {
       res.render('products', { title: 'Listado',
                              productos: productFilter,usuario: req.session.usuarioLogueado });
     },
-    //hay que agregar campo nombre (caja/market) en modelo de ProductType
+    //agregar campo nombre (caja/market) en modelo de ProductType
     //listar productos segun tipo
     /*
     listarProductos: function (req, res, next) {
         db.Product.findAll({
-          include:[{model:ProductType}, {model:Brand}, {model:Heading}, {model:Photo}],
+          include:[{association:"productType"}, {association:"marca"}, {association:"rubro"}, {association:"fotosProd"}],
           where: {product_type_id:req.params.tipo}
         })
         .then((productos)=>{
@@ -76,7 +76,7 @@ let productController = {
 
     /*
     getProductById: function (req, res, next) {
-        db.Product.findByPk(req.params.id, {include:[{model:ProductType}, {model:Brand}, {model:Heading}, {model:Photo}, {model:Ingredient} ]})
+        db.Product.findByPk(req.params.id, {include:[{association:"productType"}, {association:"marca"}, {association:"rubro"}, {association:"fotosProd"}, {association:"ingredienteProd"} ]})
         .then((producto)=>{
           res.render('productDetail', { title: 'Detalle productos', subtitle: 'Detalle producto',usuario: req.session.usuarioLogueado, producto:producto});
         }
@@ -159,6 +159,19 @@ let productController = {
                                   producto: productEdit,
                                   usuario: req.session.usuarioLogueado});
     },
+
+    /*
+      editProductById: function (req, res, next) {
+        db.Product.findByPk(req.params.id, {include:[{association:"productType"}, {association:"marca"}, {association:"rubro"}, {association:"fotosProd"}, {association:"ingredienteProd"} ]})
+        .then((producto)=>{
+          res.render('productEdit', { title: 'Editar',
+                                  subtitle: 'Formulario edición',
+                                  producto: producto,
+                                  usuario: req.session.usuarioLogueado});
+        }
+    },
+    */
+
     saveProductById: function (req, res, next) {
       let esOferta = false;
       if(req.body.ofertaSwich =='on'){
@@ -174,11 +187,11 @@ let productController = {
       let arrayIngredientes = [];
       if(req.body.ingredientes.length > 0){
         arrayIngredientes= req.body.ingredientes.slice();
-      }
+      };
       let arrayFotos = [];
       if(req.body.fotos.length > 0){
         arrayFotos = req.body.fotos.slice();
-      }
+      };
 
       let productEdited = {
         //codigo: ultimoItem,
@@ -212,6 +225,56 @@ let productController = {
                                     mensaje: mensaje,
                                   usuario: req.session.usuarioLogueado });
     },
+
+    /*
+      saveProductById: function (req, res, next) {
+        db.Product.update({
+          codigo: req.body.codigo,
+          descripcion: req.body.nombreProducto,
+          productType: {
+            descripcion:req.body.tipo,
+          },
+          precio: req.body.precioProducto,
+          oferta: esOferta,
+          precio_oferta: req.body.precioOferta,
+          descuento_oferta: req.body.descuento,
+          rubro: {
+            descripcion:req.body.grupo
+          },
+          marca: {
+            descripcion:req.body.marca
+          },
+          detalle: req.body.txtDescripcion,
+          cant_comensales: req.body.radioPersonas,
+                ingredientes: ingredients.forEach(ingrediente=>{
+                  ingrediente.descripcion:req.params
+                })
+                
+                  //descripcion:arrayIngredientes
+                },
+                calorias: req.body.calorias,
+                peso: req.body.peso,
+                fotos: {
+                  nombre:arrayFotos
+                },
+                receta: req.body.pdfFile
+        },
+        {
+          where: {id:req.params.id }
+        },
+          {
+            include:[{association:"productType"}, {association:"marca"}, {association:"rubro"}, {association:"fotosProd"}, {association:"ingredienteProd"} ]
+          }
+        )
+        .then((productEdited)=>{
+          mensaje = `El Producto ${ productEdited.id}, ${ productEdited.descripcion } fue editado exitosamente!!!`
+          res.render('productMsg', { title: 'Producto editado',
+                                     tipo: 'success',
+                                     mensaje: mensaje,
+                                     usuario: req.session.usuarioLogueado });
+        },
+    */
+
     productDelete:function (req, res, next) {
       res.render('productDelete', { title: 'Producto borrado', usuario: req.session.usuarioLogueado });
     },
@@ -246,7 +309,7 @@ let productController = {
     /*
     searchProduct: function (req,res,next) {
       db.Product.findAll({
-        include:[{model:ProductType}, {model:Brand}, {model:Heading}, {model:Photo}],
+        include:[{association:"productType"}, {association:"marca"}, {association:"rubro"}, {association:"fotosProd"}],
         where: {descripcion:{
           [Op.substring]: req.query.search}
         }
