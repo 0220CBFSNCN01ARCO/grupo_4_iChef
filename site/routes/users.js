@@ -77,23 +77,20 @@ router.post('/login',
 check("emailUsuario").isEmail().withMessage("Debe ingresar un email valido."),
 check("passwordUsuario").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
 body("emailUsuario").custom(function(value){
-  db.User.findOne({
+  return db.User.findOne({
       where: {
         email: value
       }
   })
   .then(function(usuario){
-    if(usuario != null){
-      console.log(usuario);
-      return true;
-    }else {
-      return false;
-    }
-  }).catch(function(error){
+    if(usuario == null){
+      Promise.reject("El email ingresado no existe.")}
+  })
+  .catch(function(error){
     //console.log(error);
     return false;
   });
-  }).withMessage("El email ingresado no existe.")
+  })
 ]
 ,usersController.loguearUsuario);
 

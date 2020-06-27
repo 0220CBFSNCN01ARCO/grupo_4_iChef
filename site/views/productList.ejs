@@ -34,8 +34,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <%for(let i=0; i < product.length; i++ ) { %>
-                            <% if(product[i].tipo == 'PRODUCTO') { %>
+                        <%for(let i=0; i < productos.length; i++ ) { %>
+                            <% if(producto[i].product_type_id == 1) { %>
                                 <%- include('./partials/tableProduct', {producto: product[i]}) %>
                             <% } %>
                         <% } %>

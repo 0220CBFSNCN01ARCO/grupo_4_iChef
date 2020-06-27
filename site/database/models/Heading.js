@@ -17,13 +17,12 @@ module.exports = (sequelize, DataTypes) => {
 
     const Heading = sequelize.define(alias, cols, config);
 
-     /*Heading.associate = function(models){
-        Product.hasMany(models.Product, {
+     Heading.associate = function(models){
+        Heading.hasMany(models.Product, {
             as: "rubroProductos",
             foreignKey: "rubro_id"
         });
-                
-    }*/
+    }
 
 
     return Heading;

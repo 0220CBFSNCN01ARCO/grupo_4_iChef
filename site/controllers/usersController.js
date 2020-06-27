@@ -68,45 +68,35 @@ let usersController = {
 
       if(errores.isEmpty()){
         db.User.findOne({
-            
+          where: {
+            email: req.body.emailUsuario
+          }
           }
         )
-        .then(function(usuarios){
-          return res.render('usersList', { title: 'Usuarios',
-                                          usuarios: usuarios,
-                                          usuario: req.session.usuarioLogueado });
+        .then(function(usuario){
+
+          if(bcrypt.compareSync(req.body.passwordUsuario,usuario.password)){
+            req.session.usuarioLogueado = usuario;
+            if(req.body.checkRecordame != undefined){
+              res.cookie('recordame', usuario.email, { maxAge: 120000 })
+            }
+            return res.redirect('/');
+          }else{
+              return res.render('login',{ title: 'Login',
+                                      errores: [
+                                        {
+                                          value: '',
+                                          msg: 'Contraseña invalida.',
+                                          param: 'passwordUsuario',
+                                          location: 'body'
+                                        }
+                                      ] });
+          }
         }).catch(function(error){
           //console.log(error);
-          return res.render('errordb', { title: 'Error',
-                                         error: error,
-                                         usuario: req.session.usuarioLogueado });
+          return res.render('login',{ title: 'Login',
+                                      errores: errores.errors });
         });
-
-
-
-
-
-        let usuariosJSON = fs.readFileSync('./data/users.json',{ encoding:'utf-8'});
-        let users;
-        if(usuariosJSON == ""){
-          users = [];
-        }else{
-          users = JSON.parse(usuariosJSON);
-        }
-        let usuarioLoguear = users.find(function(user){
-            return user.email == req.body.emailUsuario && bcrypt.compareSync (req.body.passwordUsuario,user.password);
-        });
-        if(usuarioLoguear == undefined){
-          return res.render('login',{ title: 'Login'});
-        }
-        //console.log(req.body);
-        //console.log(usuarioLoguear);
-        req.session.usuarioLogueado = usuarioLoguear;
-        if(req.body.checkRecordame != undefined){
-          res.cookie('recordame', usuarioLoguear.email, { maxAge: 120000 })
-        }
-        //res.render('index', { title: 'iChef', usuario: usuarioLoguear });
-        return res.redirect('/');
       }else{
         return res.render('login',{ title: 'Login',
                              errores: errores.errors });
@@ -116,7 +106,7 @@ let usersController = {
 
     userList: function (req, res, next) {
         db.User.findAll(
-          {include:[{association: "categoria"}]}
+          {include:[{association: "categoriaUsuario"}]}
         )
         .then(function(usuarios){
           return res.render('usersList', { title: 'Usuarios',

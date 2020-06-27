@@ -29,20 +29,20 @@ module.exports = (sequelize, DataTypes) => {
 
     const IngredientProduct = sequelize.define(alias, cols, config);
 
-     /*IngredientProduct.associate = function(models){
-        /*IngredientProduct - Product
-        PhotoProduct.hasMany(models.Product, {
+     IngredientProduct.associate = function(models){
+        /*IngredientProduct - Product*/
+        IngredientProduct.hasMany(models.Productos, {
             as: "productos",
             foreignKey: "ingredientes_id"
         });
 
-        /*IngredientProduct - Ingredient
+        /*IngredientProduct - Ingredient*/
         IngredientProduct.belongsTo(models.Ingredient, {
             as: "ingrediente",
             foreignKey: "id_ingredients"
-        });     
-    }*/
-   
+        });
+    }
+
 
     return IngredientProduct;
 }

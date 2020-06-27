@@ -40,20 +40,20 @@ module.exports = (sequelize, DataTypes) => {
 
     const CarDetail = sequelize.define(alias, cols, config);
 
-    /*CarDetail.associate = function(models){
+    CarDetail.associate = function(models){
 
-        /*CarDetail - Product
-        CarDetail.belongsTo(models.Product, {
+        /*CarDetail - Product*/
+        CarDetail.belongsTo(models.Productos, {
             as: "producto",
             foreignKey: "id_producto"
         });
 
-        /*CarDetail - Cart
+        /*CarDetail - Cart*/
         CarDetail.belongsTo(models.Cart, {
             as: "carrito",
             foreignKey: "cart_id"
         });      
-    }*/
+    }
 
    
     return CarDetail;

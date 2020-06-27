@@ -44,18 +44,15 @@ let productController = {
     */
 
     listProduct: function (req, res, next) {
-      let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
-      let productos;
-
-      if(productosJSON == ""){
-        productos = [];
-      }else{
-        productos = JSON.parse(productosJSON);
+      db.Productos.findAll({
+      })
+      .then((productos)=>{
+        console.log(productos);
+        res.render('productList', { title: 'Listado',
+                                usuario: req.session.usuarioLogueado,
+                                productos:productos});
       }
-
-      res.render('productList', { title: 'Listado productos',
-                                  product: productos, usuario: req.session.usuarioLogueado });
-    },
+      )},
     getProductById: function (req, res, next) {
       let idProducto = req.params.id;
       let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
@@ -306,7 +303,6 @@ let productController = {
                                     mensaje: mensaje,
                                     usuario: req.session.usuarioLogueado });
     },
-    /*
     searchProduct: function (req,res,next) {
       db.Product.findAll({
         include:[{association:"productType"}, {association:"marca"}, {association:"rubro"}, {association:"fotosProd"}],
@@ -315,10 +311,10 @@ let productController = {
         }
       })
       .then((productos)=>{
-          res.render('productsResults', { title: 'Resultados de busqueda', usuario: req.session.usuarioLogueado, productos:productos});
+          res.render('productsResults', { title: 'Resultados de busqueda', 
+                                        usuario: req.session.usuarioLogueado, productos:productos});
         }
-    }
-    */
+      )}
 };
 
 

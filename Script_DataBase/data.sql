@@ -58,3 +58,14 @@ LOCK TABLES `product_type` WRITE;
 INSERT INTO `product_type` VALUES (1,'PRODUCTO'),(2,'CAJA');
 /*!40000 ALTER TABLE `product_type` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES ('1', 'Prueba', '1', '12', '0', '0', '0', '1', '1', 'Prueba', '1', '1', '100', '100', '1', '');
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;

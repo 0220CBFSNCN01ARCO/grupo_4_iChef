@@ -17,15 +17,23 @@ module.exports = (sequelize, DataTypes) => {
 
     const Photo = sequelize.define(alias, cols, config);
 
-    /*Photo.associate = function(models){
-        /*Photo - PhotoProduct*/
-        /*Photo.hasMany(models.PhotoProduct, {
+    Photo.associate = function(models){
+        /*Photo - PhotoProduct
+        Photo.hasMany(models.PhotoProduct, {
             as: "fotos",
             foreignKey: "id_foto"
+        });*/
+
+        Photo.belongsToMany(models.Productos, {
+            as: "productos",
+            through: "photos_products",
+            foreignKey: "id_foto",
+            otherKey: "id_product",
+            timestamps: false
         });
     }
 
-        */
+    
 
     return Photo;
 }

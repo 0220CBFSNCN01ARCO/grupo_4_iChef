@@ -28,8 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     const PhotoProduct = sequelize.define(alias, cols, config);
-
-    /*PhotoProduct.associate = function(models){
+    /*
+    PhotoProduct.associate = function(models){
         /*PhotoProduct - Photo
         PhotoProduct.belongsTo(models.Photo, {
             as: "foto",
@@ -40,7 +40,8 @@ module.exports = (sequelize, DataTypes) => {
         PhotoProduct.hasMany(models.Product, {
             as: "fotoProductos",
             foreignKey: "foto_id"
-        });     
+        });
     }*/
+
     return PhotoProduct;
 }

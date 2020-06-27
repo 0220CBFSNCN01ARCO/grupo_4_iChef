@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = "Product";
+    let alias = "Producto";
     let cols = {
         id : {
             type: DataTypes.INTEGER,
@@ -27,11 +27,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         descuento_oferta : {
             type: DataTypes.FLOAT
-        },        
+        },
         rubro_id : {
             type: DataTypes.INTEGER,
             foreignKey: true
-        },        
+        },
         marca_id : {
             type: DataTypes.INTEGER,
             foreignKey: true
@@ -56,37 +56,37 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             foreignKey: true
         },
-        receta : {
+        receta: {
             type: DataTypes.STRING
         }
     }
     let config = {
         tableName : "product",
-        timestamps : false
+        timestamps : 0
     };
 
     const Product = sequelize.define(alias, cols, config);
 
-    /*Product.associate = function(models){
-        /*Product - ProductType
+    Product.associate = function(models){
+        /*Product - ProductType*/
         Product.belongsTo(models.ProductType, {
             as: "productType",
             foreignKey: "product_type_id"
         });
 
-        /*Product - Brand
+        /*Product - Brand*/
         Product.belongsTo(models.Brand, {
             as: "marca",
             foreignKey: "marca_id"
         });
 
-        /*Product - Heading
+        /*Product - Heading*/
         Product.belongsTo(models.Heading, {
             as: "rubro",
             foreignKey: "rubro_id"
         });
 
-        /*Product - CarDetail
+        /*Product - CarDetail*/
         Product.hasMany(models.CarDetail, {
             as: "detallesCarrito",
             foreignKey: "id_producto"
@@ -95,15 +95,24 @@ module.exports = (sequelize, DataTypes) => {
         /*Product - PhotoProduct
         Product.belongsTo(models.PhotoProduct, {
             as: "fotosProd",
-            foreignKey: "id_producto"
-        });
+            foreignKey: "id"
+        });*/
 
-        /*Product - IngredientProduct
-        Product.belongsTo(models.PhotoProduct, {
+        /*Product - IngredientProduct*/
+        Product.belongsTo(models.IngredientProduct, {
             as: "ingredienteProd",
             foreignKey: "id_product"
-        });               
-    }*/
+        });
+
+        Product.belongsToMany(models.Photo, {
+            as: "fotos",
+            through: "photos_products",
+            foreignKey: "id_product",
+            otherKey: "id_foto",
+            timestamps: false
+        });
+
+    }
 
     return Product;
 }
