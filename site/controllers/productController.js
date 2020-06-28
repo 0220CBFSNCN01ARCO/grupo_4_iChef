@@ -305,17 +305,33 @@ let productController = {
                                     usuario: req.session.usuarioLogueado });
     },
     searchProduct: function (req,res,next) {
+      console.log("estoy en el controller");
+      console.log(req.query);
+
+      /*
       db.Product.findAll({
-        include:[{association:"productType"}, {association:"marca"}, {association:"rubro"}, {association:"fotosProd"}],
+        include:[{association:"productType"},
+                {association:"marca"},
+                {association:"rubro"},
+                {association:"fotos"}],
         where: {descripcion:{
-          [Op.substring]: req.query.search}
+          [Op.substring]: req.query.buscarHeader}
         }
       })
       .then((productos)=>{
-          res.render('productsResults', { title: 'Resultados de busqueda', 
-                                        usuario: req.session.usuarioLogueado, productos:productos});
-        }
-      )}
+         console.log(productos);
+          res.render('productsResults', { title: 'Resultados de busqueda',
+                                          productos: productos,
+                                          usuario: req.session.usuarioLogueado});
+        })
+        .catch(function(error){
+          return res.render('errordb', { title: 'Error',
+                                         error: error,
+                                         usuario: req.session.usuarioLogueado });
+        });*/
+        return res.render('index', { title: 'Index',
+                usuario: req.session.usuarioLogueado });
+    }
 };
 
 

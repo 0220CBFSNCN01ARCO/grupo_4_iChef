@@ -81,7 +81,7 @@ let usersController = {
 
     userList: function (req, res, next) {
         db.User.findAll(
-          {include:[{association: "categoria"}]}
+          {include:[{association: "categoriaUsuario"}]}
         )
         .then(function(usuarios){
           return res.render('usersList', { title: 'Usuarios',

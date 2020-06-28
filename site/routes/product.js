@@ -48,6 +48,9 @@ router.put('/:id/edit',authMiddleware, productController.saveProductById);
 router.delete('/:idProducto', authMiddleware, productController.deleteProductById);
 
 //8. /products/​search ​(GET) Busca productos 
-router.get('/search', productController.searchProduct);
+router.get('/search', function (req,res,next) {
+  console.log("estoy en el controller");
+  console.log(req.query); }
+); //productController.searchProduct
 
 module.exports = router;
