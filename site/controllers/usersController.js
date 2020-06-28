@@ -21,27 +21,17 @@ let usersController = {
           return res.render('register', { title: 'Registro',
                                           errores: errores.errors });
         }else {
-            let usuariosJson = fs.readFileSync('./data/users.json', {encoding: 'utf-8'});
-            let usuarios = JSON.parse(usuariosJson);
-
-            let idUser = usuarios.length + 1;
-
-            let passEncriptado = bcrypt.hashSync(req.body.passwordUser, saltNumber);
-
-            let newUser = {
-              id: idUser,
+          
+            let newUser = db.User.create({
               nombre: req.body.nombreUser,
               apellido: req.body.apellidoUser,
               email: req.body.emailUser,
-              password: passEncriptado,
+              password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
               nroTelefono: req.body.nroTelefonoUser,
-              rol: 2,
-              imagen: req.file.filename
-            };
-
-            usuarios.push(newUser);
-            fs.writeFileSync('./data/users.json', JSON.stringify(usuarios));
-
+              categorie_id: 2,
+              avatar: req.file.filename
+            });
+          
             mensaje = newUser.nombre;
             res.render('userMsg', { title: 'Usuario',
                                           tipo: 'success',
@@ -67,36 +57,32 @@ let usersController = {
       //console.log(errores);
 
       if(errores.isEmpty()){
-        db.User.findOne({
-          where: {
-            email: req.body.emailUsuario
-          }
-          }
-        )
-        .then(function(usuario){
-
-          if(bcrypt.compareSync(req.body.passwordUsuario,usuario.password)){
-            req.session.usuarioLogueado = usuario;
-            if(req.body.checkRecordame != undefined){
-              res.cookie('recordame', usuario.email, { maxAge: 120000 })
-            }
-            return res.redirect('/');
-          }else{
-              return res.render('login',{ title: 'Login',
-                                      errores: [
-                                        {
-                                          value: '',
-                                          msg: 'Contraseña invalida.',
-                                          param: 'passwordUsuario',
-                                          location: 'body'
-                                        }
-                                      ] });
-          }
-        }).catch(function(error){
-          //console.log(error);
-          return res.render('login',{ title: 'Login',
-                                      errores: errores.errors });
-        });
+        /*let usuariosJSON = fs.readFileSync('./data/users.json',{ encoding:'utf-8'});
+        let users;
+        if(usuariosJSON == ""){
+          users = [];
+        }else{
+          users = JSON.parse(usuariosJSON);
+        }*/
+        
+        db.User.findAll()
+          .then(function (users){
+            let usuarioLoguear = users.find(function(user){
+            return user.email == req.body.emailUsuario && bcrypt.compareSync (req.body.passwordUsuario,user.password);
+            if(usuarioLoguear == undefined){
+          return res.render('login',{ title: 'Login'});
+        }
+          })
+      });
+        
+        //console.log(req.body);
+        //console.log(usuarioLoguear);
+        req.session.usuarioLogueado = usuarioLoguear;
+        if(req.body.checkRecordame != undefined){
+          res.cookie('recordame', usuarioLoguear.email, { maxAge: 120000 })
+        }
+        //res.render('index', { title: 'iChef', usuario: usuarioLoguear });
+        return res.redirect('/');
       }else{
         return res.render('login',{ title: 'Login',
                              errores: errores.errors });
@@ -106,7 +92,7 @@ let usersController = {
 
     userList: function (req, res, next) {
         db.User.findAll(
-          {include:[{association: "categoriaUsuario"}]}
+          {include:[{association: "categoria"}]}
         )
         .then(function(usuarios){
           return res.render('usersList', { title: 'Usuarios',
@@ -157,7 +143,7 @@ let usersController = {
       updateUser: function (req, res, next) {
         db.User.findByPk(req.params.id)
         .then(function(usuarioEdit){
-          //console.log(usuarioEdit)
+          console.log(usuarioEdit)
           return res.render('userEdit', { title: 'Editar perfil',
                                     usuarioEdit: usuarioEdit,
                                     usuario: req.session.usuarioLogueado });
