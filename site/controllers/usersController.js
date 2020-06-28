@@ -54,6 +54,7 @@ let usersController = {
     loguearUsuario: function(req, res, next) {
       let errores = validationResult(req);
       //console.log(errores);
+      console.log("loguear usuario");
       if(errores.isEmpty()){
         db.User.findAll()
           .then(function (users){
