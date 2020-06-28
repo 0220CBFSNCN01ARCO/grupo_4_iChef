@@ -44,7 +44,8 @@ let productController = {
     */
 
     listProduct: function (req, res, next) {
-      db.Productos.findAll({
+      db.Product.findAll({
+        include:[{association: "productType"}]
       })
       .then((productos)=>{
         console.log(productos);

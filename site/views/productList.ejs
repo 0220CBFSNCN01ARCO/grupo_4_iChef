@@ -35,8 +35,8 @@
                     </thead>
                     <tbody>
                         <%for(let i=0; i < productos.length; i++ ) { %>
-                            <% if(producto[i].product_type_id == 1) { %>
-                                <%- include('./partials/tableProduct', {producto: product[i]}) %>
+                            <% if(productos[i].product_type_id == 1) { %>
+                                <%- include('./partials/tableProduct', {productos: productos[i]}) %>
                             <% } %>
                         <% } %>
                     </tbody>
@@ -53,9 +53,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <%for(let i=0; i < product.length; i++ ) { %>
-                            <% if(product[i].tipo == 'CAJA') { %>
-                                <%- include('./partials/tableProduct', {producto: product[i]}) %>
+                        <%for(let i=0; i < productos.length; i++ ) { %>
+                            <% if(productos[i].product_type_id == 2) { %>
+                                <%- include('./partials/tableProduct', {productos: productos[i]}) %>
                             <% } %>
                         <% } %>
                     </tbody>

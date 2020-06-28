@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: "id_foto"
         });*/
 
-        Photo.belongsToMany(models.Productos, {
+        Photo.belongsToMany(models.Product, {
             as: "productos",
             through: "photos_products",
             foreignKey: "id_foto",
