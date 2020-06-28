@@ -66,6 +66,43 @@ UNLOCK TABLES;
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES ('1', 'Prueba', '1', '12', '0', '0', '0', '1', '1', 'Prueba', '1', '1', '100', '100', '1', '');
+INSERT INTO `product` VALUES ('1', 'Market 1', '1', '12.5', '0', '0', '0', '1', '1', 'Market 1', '2', '2', '250', '350', '2', '');
+INSERT INTO `product` VALUES ('2', 'Box 1', '2', '12.5', '0', '0', '0', '1', '1','Box 1','1', '1', '100', '100', '1', '');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+--
+-- Dumping data for table `ingredients_products`
+--
+
+LOCK TABLES `ingredients_products` WRITE;
+/*!40000 ALTER TABLE `ingredients_products` DISABLE KEYS */;
+INSERT INTO `ichef`.`ingredients_products` (`id_product`, `id_ingredients`) VALUES ('1', '1');
+INSERT INTO `ichef`.`ingredients_products` (`id_product`, `id_ingredients`) VALUES ('2', '1');
+/*!40000 ALTER TABLE `ingredients_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `photos_products`
+--
+
+LOCK TABLES `photos_products` WRITE;
+/*!40000 ALTER TABLE `photos_products` DISABLE KEYS */;
+INSERT INTO `ichef`.`photos_products` (`id_producto`, `id_foto`) VALUES ('1', '1');
+INSERT INTO `ichef`.`photos_products` (`id_producto`, `id_foto`) VALUES ('2', '2');
+/*!40000 ALTER TABLE `photos_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `photos`
+--
+
+LOCK TABLES `photos` WRITE;
+/*!40000 ALTER TABLE `photos` DISABLE KEYS */;
+INSERT INTO `ichef`.`photos` (`nombre`) VALUES ('box1.jpg');
+INSERT INTO `ichef`.`photos` (`nombre`) VALUES ('prod-1.png');
+/*!40000 ALTER TABLE `photos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+

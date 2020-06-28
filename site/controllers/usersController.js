@@ -52,42 +52,31 @@ let usersController = {
     },
 
     loguearUsuario: function(req, res, next) {
-
       let errores = validationResult(req);
       //console.log(errores);
-
       if(errores.isEmpty()){
-        /*let usuariosJSON = fs.readFileSync('./data/users.json',{ encoding:'utf-8'});
-        let users;
-        if(usuariosJSON == ""){
-          users = [];
-        }else{
-          users = JSON.parse(usuariosJSON);
-        }*/
-        
         db.User.findAll()
           .then(function (users){
-            let usuarioLoguear = users.find(function(user){
-            return user.email == req.body.emailUsuario && bcrypt.compareSync (req.body.passwordUsuario,user.password);
-            if(usuarioLoguear == undefined){
-          return res.render('login',{ title: 'Login'});
-        }
-          })
-      });
-        
-        //console.log(req.body);
-        //console.log(usuarioLoguear);
-        req.session.usuarioLogueado = usuarioLoguear;
-        if(req.body.checkRecordame != undefined){
-          res.cookie('recordame', usuarioLoguear.email, { maxAge: 120000 })
-        }
-        //res.render('index', { title: 'iChef', usuario: usuarioLoguear });
-        return res.redirect('/');
+              let usuarioLoguear = users.find(function(user){
+                  return user.email == req.body.emailUsuario && bcrypt.compareSync (req.body.passwordUsuario,user.password);
+              });
+              if(usuarioLoguear == undefined){
+                return res.render('login',{ title: 'Login'});
+              }else{
+                  //console.log(req.body);
+                  //console.log(usuarioLoguear);
+                  req.session.usuarioLogueado = usuarioLoguear;
+                  if(req.body.checkRecordame != undefined){
+                    res.cookie('recordame', usuarioLoguear.email, { maxAge: 120000 })
+                  }
+                //res.render('index', { title: 'iChef', usuario: usuarioLoguear });
+                return res.redirect('/');
+              }
+          });
       }else{
-        return res.render('login',{ title: 'Login',
-                             errores: errores.errors });
+            return res.render('login',{ title: 'Login',
+                                        errores: errores.errors });
       }
-
     },
 
     userList: function (req, res, next) {
