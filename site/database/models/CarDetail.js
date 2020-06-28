@@ -43,9 +43,9 @@ module.exports = (sequelize, DataTypes) => {
     CarDetail.associate = function(models){
 
         /*CarDetail - Product*/
-        CarDetail.belongsTo(models.Productos, {
+        CarDetail.belongsTo(models.Product, {
             as: "producto",
-            foreignKey: "id_producto"
+            foreignKey: "id"
         });
 
         /*CarDetail - Cart*/
