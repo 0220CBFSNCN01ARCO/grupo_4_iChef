@@ -61,18 +61,6 @@ UNLOCK TABLES;
 
 
 --
--- Dumping data for table `product`
---
-
-LOCK TABLES `product` WRITE;
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES ('1', 'Market 1', '1', '12.5', '0', '0', '0', '1', '1', 'Market 1', '2', '2', '250', '350', '2', '');
-INSERT INTO `product` VALUES ('2', 'Box 1', '2', '12.5', '0', '0', '0', '1', '1','Box 1','1', '1', '100', '100', '1', '');
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
---
 -- Dumping data for table `ingredients_products`
 --
 
@@ -106,3 +94,13 @@ INSERT INTO `ichef`.`photos` (`nombre`) VALUES ('prod-1.png');
 UNLOCK TABLES;
 
 
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES ('1', 'Market 1', '1', '12.5', '0', '0', '0', '1', '1', 'Market 1', '2', '2', '250', '350', '2', '');
+INSERT INTO `product` VALUES ('2', 'Box 1', '2', '12.5', '0', '0', '0', '1', '1','Box 1','1', '1', '100', '100', '1', '');
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;

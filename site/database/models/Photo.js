@@ -28,12 +28,10 @@ module.exports = (sequelize, DataTypes) => {
             as: "productos",
             through: "photos_products",
             foreignKey: "id_foto",
-            otherKey: "id_product",
+            otherKey: "id_producto",
             timestamps: false
         });
     }
-
-    
 
     return Photo;
 }

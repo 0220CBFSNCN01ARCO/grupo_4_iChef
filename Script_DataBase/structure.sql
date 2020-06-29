@@ -166,9 +166,9 @@ DROP TABLE IF EXISTS `product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_product` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` int(11) NOT NULL,
-  `descripcion` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `product_type_id` int(11) NOT NULL,
   `precio` float NOT NULL,
   `oferta` tinyint(4) NOT NULL,
@@ -176,14 +176,14 @@ CREATE TABLE `product` (
   `descuento_oferta` float NOT NULL,
   `rubro_id` int(11) DEFAULT NULL,
   `marca_id` int(11) DEFAULT NULL,
-  `detalle` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `detalle` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `cant_comensales` int(11) NOT NULL,
   `ingredientes_id` int(11) DEFAULT NULL,
   `calorias` float NOT NULL,
   `peso` float NOT NULL,
   `foto_id` int(11) DEFAULT NULL,
-  `receta` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
+  `receta` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id_product`),
   KEY `tipo_producto_id_fk` (`product_type_id`),
   KEY `marca_producto_id_fk` (`marca_id`),
   KEY `rubro_producto_id_fk` (`rubro_id`),
@@ -192,9 +192,9 @@ CREATE TABLE `product` (
   CONSTRAINT `foto_id_fk` FOREIGN KEY (`foto_id`) REFERENCES `photos_products` (`id_producto`),
   CONSTRAINT `ingredientes_id_fk` FOREIGN KEY (`ingredientes_id`) REFERENCES `ingredients_products` (`id_product`),
   CONSTRAINT `marca_producto_id_fk` FOREIGN KEY (`marca_id`) REFERENCES `brand` (`id`),
-  CONSTRAINT `rubro_producto_id_fk` FOREIGN KEY (`rubro_id`) REFERENCES `heading` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `rubro_producto_id_fk` FOREIGN KEY (`rubro_id`) REFERENCES `heading` (`id`),
   CONSTRAINT `tipo_producto_id_fk` FOREIGN KEY (`product_type_id`) REFERENCES `product_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

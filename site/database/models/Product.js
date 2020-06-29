@@ -107,7 +107,7 @@ module.exports = (sequelize, DataTypes) => {
         Product.belongsToMany(models.Photo, {
             as: "fotos",
             through: "photos_products",
-            foreignKey: "id_product",
+            foreignKey: "id_producto",
             otherKey: "id_foto",
             timestamps: false
         });

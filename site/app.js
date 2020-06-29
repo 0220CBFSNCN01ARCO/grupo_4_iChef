@@ -28,6 +28,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(session({secret: 'iChefSession'}));
 
+let bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+
 app.use(recordameMiddleware);
 
 app.use('/', logMiddleware ,indexRouter);

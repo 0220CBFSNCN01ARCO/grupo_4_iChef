@@ -1,15 +1,14 @@
 const fs = require('fs');
 const db = require('../database/models');
+const { Op } = require("sequelize");
 
 let productController = {
     productDetail: function (req, res, next) {
         res.render('productDetail', { title: 'Detalle productos', subtitle: 'Detalle producto',usuario: req.session.usuarioLogueado });
     },
-    
     product_boxDetail: function (req, res, next) {
         res.render('product-boxDetail', { title: 'Detalle caja', subtitle: 'Detalle caja',usuario: req.session.usuarioLogueado });
     },
-    
     productCart: function (req, res, next) {
         res.render('productCart', { title: 'Carrito compras', subtitle: 'Mi Carrito',usuario: req.session.usuarioLogueado });
     },
@@ -305,22 +304,18 @@ let productController = {
                                     usuario: req.session.usuarioLogueado });
     },
     searchProduct: function (req,res,next) {
-      console.log("estoy en el controller");
-      console.log(req.query);
-
-      /*
       db.Product.findAll({
         include:[{association:"productType"},
                 {association:"marca"},
                 {association:"rubro"},
                 {association:"fotos"}],
         where: {descripcion:{
-          [Op.substring]: req.query.buscarHeader}
+          [Op.substring]: req.body.buscarHeader}
         }
       })
       .then((productos)=>{
-         console.log(productos);
-          res.render('productsResults', { title: 'Resultados de busqueda',
+         //console.log(productos);
+         return res.render('productsResults', { title: 'Resultados de busqueda',
                                           productos: productos,
                                           usuario: req.session.usuarioLogueado});
         })
@@ -328,9 +323,7 @@ let productController = {
           return res.render('errordb', { title: 'Error',
                                          error: error,
                                          usuario: req.session.usuarioLogueado });
-        });*/
-        return res.render('index', { title: 'Index',
-                usuario: req.session.usuarioLogueado });
+        });
     }
 };
 
