@@ -97,11 +97,11 @@ let usersController = {
         return res.redirect('/users/login')
       });
     },
-    userprofile: function (req, res, next) {
+    userProfile: function (req, res, next) {
       //console.log(req.session.usuarioLogueado.id);
-      db.User.findByPk(req.session.usuarioLogueado.id)
+      db.User.findByPk(req.params.id)
       .then(function(usuarioEdit){
-        return res.render('userAccount', { title: 'Cuenta usuario',
+        return res.render('userProfile', { title: 'Perfil usuario',
                                             usuarioEdit: usuarioEdit,
                                             usuario: req.session.usuarioLogueado });
         }).catch(function(error){
@@ -189,7 +189,20 @@ let usersController = {
                                           error: error,
                                           usuario: req.session.usuarioLogueado });
         });
-    }
+    },
+    userAccount: function (req, res, next) {
+      //console.log(req.session.usuarioLogueado.id);
+      db.User.findByPk(req.params.id)
+      .then(function(usuarioEdit){
+        return res.render('userAccount', { title: 'Cuenta usuario',
+                                            usuarioEdit: usuarioEdit,
+                                            usuario: req.session.usuarioLogueado });
+        }).catch(function(error){
+        return res.render('errordb', { title: 'Error',
+                                        error: error,
+                                        usuario: req.session.usuarioLogueado });
+      });
+    },
 };
 
 module.exports = usersController;

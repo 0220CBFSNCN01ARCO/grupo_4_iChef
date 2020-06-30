@@ -4,13 +4,13 @@
 <body class="hold-transition login-page" onload="loadImage()">
     <%- include('./partials/header') %>
     <div class="container-fuid fondoFormulario">
-        <div>
-            <h3 class="register-box-msg register-box-body"><b>Tu perfil: <%= usuarioEdit.nombre %></b></h3>
-        </div>
         <div id="containerForm" class="container">
             <form method="POST" id="formRegister" action="/users/<%= usuarioEdit.id %>/edit?_method=PUT" novalidate>
                 <div class="row">
                     <div id="formDatos" class="col-sm-12 col-md-12 col-lg-6">
+                        <div>
+                            <h3 class="register-box-msg register-box-body"><b>Tu perfil: <%= usuarioEdit.nombre %></b></h3>
+                        </div>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label>Nombre</label>
@@ -81,10 +81,8 @@
                         <% } %>
                     </div>
                     <div id="formAction">
-                        <button class="btn btn-dark" type="submit"><span class="ichef-brightness_1 iconiChef"></span> Perfil</button>
-                        <button class="btn btn-dark" type="submit"><span class="ichef-brightness_1 iconiChef"></span> Cambiar contraseña</button>
-                        <button class="btn btn-dark" type="submit"><span class="ichef-brightness_1 iconiChef"></span> Mis ordenes</button>
-                        <button class="btn btn-dark" type="submit"><span class="ichef-brightness_1 iconiChef"></span> Guardar</button>
+                        <button class="btn btn-dark" type="submit">Cancelar</button>
+                        <button class="btn btn-dark" type="submit">Guardar</button>
                     </div>
                 </div>
             </form>

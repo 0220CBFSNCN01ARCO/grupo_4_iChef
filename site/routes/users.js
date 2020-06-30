@@ -95,7 +95,9 @@ body("emailUsuario").custom(function(value){
 ,usersController.loguearUsuario);
 
 router.get('/logout', usersController.logoutUser);
-router.get('/userprofile', usersController.userprofile);
+router.get('/userAccount/userprofile/:id', usersController.userProfile);
+
+router.get('/userAccount/:id', usersController.userAccount);
 
 router.get('/:id/edit', usersController.userEdit);
 router.put('/:id/edit', usersController.updateUser);

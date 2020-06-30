@@ -149,6 +149,7 @@ footer p {
 
 #formAction {
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 /*FIN FORMULARIO REGISTRO*/
@@ -379,6 +380,7 @@ margin-top:-5px;
 
 .imgUp
 {
+  margin-top:15px;
   margin-bottom:15px;
   max-width: 250px;
 }
@@ -1355,3 +1357,27 @@ justify-content: space-around;
 }
 
 /* FIN ZONAS ENTREGAS*/
+
+
+/*Account user*/
+
+.datosUser {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#containerForm {
+  padding-top: 20px;
+}
+
+.btnAccion {
+  margin: 5px 5px 5px 5px;
+  max-width: 200px;
+}
+
+#rowAction {
+  justify-content: center;
+}
+
+
+/**/
