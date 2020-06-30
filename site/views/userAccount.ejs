@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+<body class="hold-transition login-page" onload="loadImage()">
+    <%- include('./partials/header') %>
+    <div class="container-fuid fondoFormulario">
+        <div>
+            <h3 class="register-box-msg register-box-body"><b>Tu perfil: <%= usuarioEdit.nombre %></b></h3>
+        </div>
+        <div id="containerForm" class="container">
+            <div class="row">
+                <div id="formDatos" class="col-sm-12 col-md-12 col-lg-6">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <p>Nombre</p>
+                            <p><%= usuarioEdit.nombre %></p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <p>Apellido</p>
+                            <p><%= usuarioEdit.apellido %></p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <p>Nro. teléfono</p>
+                            <p><%= usuarioEdit.nroTelefono %></p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <p>Email</p>
+                            <p><%= usuarioEdit.email %></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="formImagen" class="col-sm-12 col-md-12 col-lg-6">
+                    <label>Imagen perfil</label>
+                    <div class="imgUp">
+                        <div>
+                            <img src="/images/users/<%= usuarioEdit.avatar %>" id="imgAvatar" class="imagePreview" alt="Imagen perfil">
+                        </div>
+                    </div>
+                </div>
+                <div id="formAction">
+                    <button class="btn btn-dark" type="submit"><span class="ichef-settings_applications iconiChef"></span> Perfil</button>
+                    <button class="btn btn-dark" type="submit"><span class="ichef-security iconiChef"></span> Cambiar contraseña</button>
+                    <button class="btn btn-dark" type="submit"><span class="ichef-event_note iconiChef"></span> Mis ordenes</button>
+                    <button class="btn btn-dark" type="submit"><span class="ichef-power_settings_new iconiChef"></span> Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/footer') %>
+    <%- include('./partials/script') %>
+</body>
+</html>

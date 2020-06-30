@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                              <div class="col-md-6 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <label>Password</label>
                                 <input type="password" class="form-control" name="passwordUser">
                                 <% if (typeof errores != 'undefined') { %>
@@ -70,18 +70,18 @@
                                       <% } %>
                                     <% } %>
                                 <% } %>
-                              </div>
-                              <div class="col-md-6 mb-3">
-                                <label>Reingrese password</label>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Confirmar password</label>
                                 <input type="password" class="form-control" name="repeatPasswordUser">
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
-                                      <% if(errores[i].param == 'repeatPasswordUser' ) { %>
+                                    <% if(errores[i].param == 'repeatPasswordUser' ) { %>
                                         <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
-                                      <% } %>
+                                    <% } %>
                                     <% } %>
                                 <% } %>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     <div id="formImagen" class="col-sm-12 col-md-12 col-lg-6">

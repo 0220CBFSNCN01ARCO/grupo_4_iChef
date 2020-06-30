@@ -3,7 +3,7 @@ var router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const moment = require('moment');
-const fs = require('fs');
+const bcrypt = require('bcrypt');
 
 const usersController = require('../controllers/usersController');
 const {check, validationResult, body} = require('express-validator');
@@ -95,12 +95,32 @@ body("emailUsuario").custom(function(value){
 ,usersController.loguearUsuario);
 
 router.get('/logout', usersController.logoutUser);
-
 router.get('/userprofile', usersController.userprofile);
 
 router.get('/:id/edit', usersController.userEdit);
-
 router.put('/:id/edit', usersController.updateUser);
+
+router.get('/:id/changePassword', usersController.changePassword);
+router.put('/:id/changePassword',
+[
+  check("passwordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
+  check("passwordUserNew").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
+  check("repeatPasswordUserNew").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
+  body("passwordUser").custom(function(value){
+    return db.User.findByPk(req.params.id)
+      .then(function(usuario){
+          //Comparo la contraseña ingresada con la guardada en la bd
+          let checkPass = bcrypt.compareSync(value,usuario.password);
+          if(!checkPass){
+            Promise.reject("La contraseña anterior es incorrecta.");
+          }
+        })
+      .catch(function(error){
+          return false;
+      });
+    })
+  ]
+ ,usersController.updatePassword);
 
 router.delete('/:idUser', usersController.deleteUserById);
 

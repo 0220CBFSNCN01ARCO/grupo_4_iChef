@@ -42,12 +42,10 @@ let usersController = {
                                     errores: errores.errors });
       }
     },
-
     userLogin: function (req, res, next) {
         return res.render('login', { title: 'Login',
                               usuario: req.session.usuarioLogueado });
     },
-
     loguearUsuario: function(req, res, next) {
       let errores = validationResult(req);
       //console.log(errores);
@@ -76,89 +74,122 @@ let usersController = {
                                         errores: errores.errors });
       }
     },
-
     userList: function (req, res, next) {
-        db.User.findAll(
-          {include:[{association: "categoriaUsuario"}]}
-        )
-        .then(function(usuarios){
-          return res.render('usersList', { title: 'Usuarios',
-                                          usuarios: usuarios,
-                                          usuario: req.session.usuarioLogueado });
+      db.User.findAll(
+        {include:[{association: "categoriaUsuario"}]}
+      )
+      .then(function(usuarios){
+        return res.render('usersList', { title: 'Usuarios',
+                                        usuarios: usuarios,
+                                        usuario: req.session.usuarioLogueado });
+      }).catch(function(error){
+        //console.log(error);
+        return res.render('errordb', { title: 'Error',
+                                        error: error,
+                                        usuario: req.session.usuarioLogueado });
+      });
+    },
+    logoutUser: function (req, res, next) {
+      //req.session.destroy();
+      //res.redirect('/');
+      req.cookies.recordame = undefined;
+      req.session.destroy((error) => {
+        return res.redirect('/users/login')
+      });
+    },
+    userprofile: function (req, res, next) {
+      //console.log(req.session.usuarioLogueado.id);
+      db.User.findByPk(req.session.usuarioLogueado.id)
+      .then(function(usuarioEdit){
+        return res.render('userAccount', { title: 'Cuenta usuario',
+                                            usuarioEdit: usuarioEdit,
+                                            usuario: req.session.usuarioLogueado });
         }).catch(function(error){
-          //console.log(error);
-          return res.render('errordb', { title: 'Error',
-                                         error: error,
-                                         usuario: req.session.usuarioLogueado });
-        });
-      },
-      logoutUser: function (req, res, next) {
-        //req.session.destroy();
-        //res.redirect('/');
-        req.cookies.recordame = undefined;
-        req.session.destroy((error) => {
-          return res.redirect('/users/login')
-        });
-      },
-      userprofile: function (req, res, next) {
-        //console.log(req.session.usuarioLogueado.id);
-        db.User.findByPk(req.session.usuarioLogueado.id)
-        .then(function(usuarioEdit){
-          return res.render('userProfile', { title: 'Perfil',
-                                             usuarioEdit: usuarioEdit,
-                                             usuario: req.session.usuarioLogueado });
-          }).catch(function(error){
-          return res.render('errordb', { title: 'Error',
-                                         error: error,
-                                         usuario: req.session.usuarioLogueado });
-        });
-      },
-      userEdit: function (req, res, next) {
-        db.User.findByPk(req.params.id)
-        .then(function(usuarioEdit){
-          //console.log(usuarioEdit)
-          return res.render('userEdit', { title: 'Editar perfil',
-                                    usuarioEdit: usuarioEdit,
-                                    usuario: req.session.usuarioLogueado });
-        }).catch(function(error){
-          //console.log(error);
-          return res.render('errordb', { title: 'Error',
-                                         error: error,
-                                         usuario: req.session.usuarioLogueado });
-        });
-      },
-      updateUser: function (req, res, next) {
-        db.User.findByPk(req.params.id)
-        .then(function(usuarioEdit){
-          console.log(usuarioEdit)
-          return res.render('userEdit', { title: 'Editar perfil',
-                                    usuarioEdit: usuarioEdit,
-                                    usuario: req.session.usuarioLogueado });
-        }).catch(function(error){
-          //console.log(error);
-          return res.render('errordb', { title: 'Error',
-                                         error: error,
-                                         usuario: req.session.usuarioLogueado });
-        });
-      },
-      deleteUserById: function (req, res, next) {
-        db.User.destroy({
-          where: {id: req.params.idUser }
-        })
-        .then(function(result){
-          console.log(result)
-          let mensaje = "Usuario eliminado correctamente"
-          res.render('message', { title: 'Usuario',
-                                  tipo: 'success',
-                                  mensaje: mensaje,
+        return res.render('errordb', { title: 'Error',
+                                        error: error,
+                                        usuario: req.session.usuarioLogueado });
+      });
+    },
+    userEdit: function (req, res, next) {
+      db.User.findByPk(req.params.id)
+      .then(function(usuarioEdit){
+        //console.log(usuarioEdit)
+        return res.render('userProfile', { title: 'Editar perfil',
+                                  usuarioEdit: usuarioEdit,
                                   usuario: req.session.usuarioLogueado });
+      }).catch(function(error){
+        //console.log(error);
+        return res.render('errordb', { title: 'Error',
+                                        error: error,
+                                        usuario: req.session.usuarioLogueado });
+      });
+    },
+    updateUser: function (req, res, next) {
+      db.User.findByPk(req.params.id)
+      .then(function(usuarioEdit){
+        //console.log(usuarioEdit)
+        return res.render('userEdit', { title: 'Editar perfil',
+                                  usuarioEdit: usuarioEdit,
+                                  usuario: req.session.usuarioLogueado });
+      }).catch(function(error){
+        //console.log(error);
+        return res.render('errordb', { title: 'Error',
+                                        error: error,
+                                        usuario: req.session.usuarioLogueado });
+      });
+    },
+    deleteUserById: function (req, res, next) {
+      db.User.destroy({
+        where: {id: req.params.idUser }
+      })
+      .then(function(result){
+        console.log(result)
+        let mensaje = "Usuario eliminado correctamente"
+        res.render('message', { title: 'Usuario',
+                                tipo: 'success',
+                                mensaje: mensaje,
+                                usuario: req.session.usuarioLogueado });
+      })
+      .catch(function(error){
+          return res.render('errordb', { title: 'Error',
+                                          error: error,
+                                          usuario: req.session.usuarioLogueado });
+        });
+    },
+    changePassword: function (req, res, next) {
+      db.User.findByPk(req.params.id)
+      .then(function(usuarioEdit){
+          return res.render('userProfile', { title: 'Perfil',
+                                                usuarioEdit: usuarioEdit,
+                                                usuario: req.session.usuarioLogueado });
         })
+      .catch(function(error){
+        return res.render('errordb', { title: 'Error',
+                                        error: error,
+                                        usuario: req.session.usuarioLogueado });
+      });
+    },
+    updatePassword: function (req, res, next) {
+      let errores = validationResult(req);
+      db.User.findByPk(req.params.id)
+        .then(function(usuarioEdit){
+          if(errores.isEmpty()){
+            return res.render('changePassword', { title: 'Cambiar contraseña',
+                                                  usuarioEdit: usuarioEdit,
+                                                  usuario: req.session.usuarioLogueado });
+           }else{
+              return res.render('changePassword', { title: 'Cambiar contraseña',
+                                                usuarioEdit: usuarioEdit,
+                                                errores: errores,
+                                                usuario: req.session.usuarioLogueado });
+                }
+          })
         .catch(function(error){
             return res.render('errordb', { title: 'Error',
-                                           error: error,
-                                           usuario: req.session.usuarioLogueado });
-          });
-      }
+                                          error: error,
+                                          usuario: req.session.usuarioLogueado });
+        });
+    }
 };
 
 module.exports = usersController;
