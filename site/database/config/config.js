@@ -1,8 +1,8 @@
 module.exports = {
   "development": {
     "username": "root",
-    //"password": null,
-    "password": "root",
+    "password": null,
+    //"password": "root",
     "database": "iChef",
     "host": "127.0.0.1",
     "dialect": "mysql",
@@ -10,8 +10,8 @@ module.exports = {
   },
   "test": {
     "username": "root",
-    //"password": null,
-    "password": "root",
+    "password": null,
+    //"password": "root",
     "database": "iChef_test",
     "host": "127.0.0.1",
     "dialect": "mysql",
@@ -19,8 +19,8 @@ module.exports = {
   },
   "production": {
     "username": "root",
-    //"password": null,
-    "password": "root",
+    "password": null,
+    //"password": "root",
     "database": "iChef_production",
     "host": "127.0.0.1",
     "dialect": "mysql",

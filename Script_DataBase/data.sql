@@ -45,7 +45,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `users_categories` WRITE;
 /*!40000 ALTER TABLE `users_categories` DISABLE KEYS */;
-INSERT INTO `users_categories` VALUES (1,'ADMINISTRADOR'),(2,'CHEF'),(3,'INVITADO'),(4,'CLIENTE');
+INSERT INTO `users_categories` VALUES (1,'ADMINISTRADOR'),(2,'CHEF'),(3,'INVITADO'),(4,'USER');
 /*!40000 ALTER TABLE `users_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,8 +88,8 @@ UNLOCK TABLES;
 
 LOCK TABLES `photos` WRITE;
 /*!40000 ALTER TABLE `photos` DISABLE KEYS */;
-INSERT INTO `ichef`.`photos` (`nombre`) VALUES ('box1.jpg');
 INSERT INTO `ichef`.`photos` (`nombre`) VALUES ('prod-1.png');
+INSERT INTO `ichef`.`photos` (`nombre`) VALUES ('box1.jpg');
 /*!40000 ALTER TABLE `photos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,7 +100,9 @@ UNLOCK TABLES;
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES ('1', 'Market 1', '1', '12.5', '0', '0', '0', '1', '1', 'Market 1', '2', '2', '250', '350', '2', '');
-INSERT INTO `product` VALUES ('2', 'Box 1', '2', '12.5', '0', '0', '0', '1', '1','Box 1','1', '1', '100', '100', '1', '');
+INSERT INTO `ichef`.`product` (`codigo`, `descripcion`, `product_type_id`, `precio`, `oferta`, `precio_oferta`, `descuento_oferta`, `rubro_id`, `marca_id`, `detalle`, `cant_comensales`, `ingredientes_id`, `calorias`, `peso`, `foto_id`) 
+VALUES ('1', 'Market 1', '1', '12.5', '0', '0', '0', '1', '1', 'Market 1', '2', '2', '250', '350', '2');
+INSERT INTO `ichef`.`product` (`codigo`, `descripcion`, `product_type_id`, `precio`, `oferta`, `precio_oferta`, `descuento_oferta`, `rubro_id`, `marca_id`, `detalle`, `cant_comensales`, `ingredientes_id`, `calorias`, `peso`, `foto_id`) 
+VALUES ('2', 'Box 1', '2', '22.5', '0', '0', '0', '1', '1','Box 1','1', '1', '100', '100', '1');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;

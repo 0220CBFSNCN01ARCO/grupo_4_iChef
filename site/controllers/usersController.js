@@ -15,13 +15,11 @@ let usersController = {
 
       //console.log(req.body);
       //console.log(errores.errors);
-
       if(errores.isEmpty()){
         if(req.body.passwordUser != req.body.repeatPasswordUser){
           return res.render('register', { title: 'Registro',
                                           errores: errores.errors });
         }else {
-          
             let newUser = db.User.create({
               nombre: req.body.nombreUser,
               apellido: req.body.apellidoUser,
@@ -31,7 +29,6 @@ let usersController = {
               categorie_id: 2,
               avatar: req.file.filename
             });
-          
             mensaje = newUser.nombre;
             res.render('userMsg', { title: 'Usuario',
                                           tipo: 'success',
@@ -143,6 +140,24 @@ let usersController = {
                                          error: error,
                                          usuario: req.session.usuarioLogueado });
         });
+      },
+      deleteUserById: function (req, res, next) {
+        db.User.destroy({
+          where: {id: req.params.idUser }
+        })
+        .then(function(result){
+          console.log(result)
+          let mensaje = "Usuario eliminado correctamente"
+          res.render('message', { title: 'Usuario',
+                                  tipo: 'success',
+                                  mensaje: mensaje,
+                                  usuario: req.session.usuarioLogueado });
+        })
+        .catch(function(error){
+            return res.render('errordb', { title: 'Error',
+                                           error: error,
+                                           usuario: req.session.usuarioLogueado });
+          });
       }
 };
 

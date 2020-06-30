@@ -4,44 +4,41 @@ const { Op } = require("sequelize");
 
 let productController = {
     productDetail: function (req, res, next) {
-        res.render('productDetail', { title: 'Detalle productos', subtitle: 'Detalle producto',usuario: req.session.usuarioLogueado });
+        res.render('productDetail', { title: 'Detalle productos',
+                                      subtitle: 'Detalle producto',
+                                      usuario: req.session.usuarioLogueado });
     },
     product_boxDetail: function (req, res, next) {
-        res.render('product-boxDetail', { title: 'Detalle caja', subtitle: 'Detalle caja',usuario: req.session.usuarioLogueado });
+        res.render('product-boxDetail', { title: 'Detalle caja',
+                                          subtitle: 'Detalle caja',
+                                          usuario: req.session.usuarioLogueado });
     },
     productCart: function (req, res, next) {
-        res.render('productCart', { title: 'Carrito compras', subtitle: 'Mi Carrito',usuario: req.session.usuarioLogueado });
+        res.render('productCart', { title: 'Carrito compras',
+                                    subtitle: 'Mi Carrito',
+                                    usuario: req.session.usuarioLogueado });
     },
     listarProductos: function (req, res, next) {
-      let tipoProducto = req.params.tipo
-      //console.log("Tipo de producto: " + tipoProducto);
-
-      let productosJson = fs.readFileSync('./data/products.json', {encoding: 'utf-8'});
-      let productos = JSON.parse(productosJson);
-
-      let productFilter = productos.filter(function(product){
-          return product.tipo == tipoProducto;
+      //console.log("Tipo de producto: " + req.params.tipo);
+      db.Product.findAll({
+        include:[{association:"productType"},
+                  {association:"marca"},
+                  {association:"rubro"},
+                  {association:"fotos"}],
+        where: { product_type_id: req.params.tipo}
+      })
+      .then((productos)=>{
+        //console.log(productos);
+        res.render('products', { title: 'Listado',
+                                usuario: req.session.usuarioLogueado,
+                                productos: productos});
+      })
+      .catch(function(error){
+        return res.render('errordb', { title: 'Error',
+                                       error: error,
+                                       usuario: req.session.usuarioLogueado });
       });
-
-      //console.log(productFilter);
-
-      res.render('products', { title: 'Listado',
-                             productos: productFilter,usuario: req.session.usuarioLogueado });
     },
-    //agregar campo nombre (caja/market) en modelo de ProductType
-    //listar productos segun tipo
-    /*
-    listarProductos: function (req, res, next) {
-        db.Product.findAll({
-          include:[{association:"productType"}, {association:"marca"}, {association:"rubro"}, {association:"fotosProd"}],
-          where: {product_type_id:req.params.tipo}
-        })
-        .then((productos)=>{
-          res.render('products', { title: 'Listado', usuario: req.session.usuarioLogueado, productos:productos});
-        }
-    },
-    */
-
     listProduct: function (req, res, next) {
       db.Product.findAll({
         include:[{association: "productType"}]
@@ -51,39 +48,37 @@ let productController = {
         res.render('productList', { title: 'Listado',
                                 usuario: req.session.usuarioLogueado,
                                 productos:productos});
-      }
-      )},
-    getProductById: function (req, res, next) {
-      let idProducto = req.params.id;
-      let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
-      let productos;
-
-      if(productosJSON == ""){
-        productos = [];
-      }else{
-        productos = JSON.parse(productosJSON);
-      }
-
-      let productDetail = productos.filter(function (producto) {
-        return producto.codigo == idProducto;
+      })
+      .catch(function(error){
+        return res.render('errordb', { title: 'Error',
+                                       error: error,
+                                       usuario: req.session.usuarioLogueado });
       });
-      //console.log(productDetail);
-      res.render('productDetail', { title: 'Producto ' + productDetail[0].codigo , subtitle: 'Detalle producto', producto: productDetail,usuario: req.session.usuarioLogueado});
     },
-
-    /*
     getProductById: function (req, res, next) {
-        db.Product.findByPk(req.params.id, {include:[{association:"productType"}, {association:"marca"}, {association:"rubro"}, {association:"fotosProd"}, {association:"ingredienteProd"} ]})
-        .then((producto)=>{
-          res.render('productDetail', { title: 'Detalle productos', subtitle: 'Detalle producto',usuario: req.session.usuarioLogueado, producto:producto});
-        }
+      db.Product.findByPk(req.params.id,
+        { include:[{association:"productType"},
+                  {association:"marca"},
+                  {association:"rubro"},
+                  {association:"fotosProd"},
+                  {association:"ingredienteProd"} ]})
+      .then((producto)=>{
+        res.render('productDetail', { title: 'Producto ' + producto.codigo,
+                                      subtitle: 'Detalle producto',
+                                      usuario: req.session.usuarioLogueado,
+                                      producto: producto });
+      })
+      .catch(function(error){
+        return res.render('errordb', { title: 'Error',
+                                       error: error,
+                                       usuario: req.session.usuarioLogueado });
+      });
     },
-    */
-
     productAdd: function (req, res, next) {
-      res.render('productAdd', { title: 'Crear producto', subtitle: 'Formulario alta',usuario: req.session.usuarioLogueado });
+      res.render('productAdd', {  title: 'Crear producto',
+                                  subtitle: 'Formulario alta',
+                                  usuario: req.session.usuarioLogueado });
     },
-
     createProduct: function (req, res, next) {
       let esOferta = false;
       if(req.body.ofertaSwich =='on'){
@@ -105,7 +100,7 @@ let productController = {
 
       let newProducto = {
         codigo: ultimoItem,
-        nombre: req.body.nombreProducto,
+        descripcion: req.body.nombreProducto,
         tipo: req.body.tipo,
         precio: req.body.precioProducto,
         oferta: esOferta,
@@ -273,35 +268,27 @@ let productController = {
     */
 
     productDelete:function (req, res, next) {
-      res.render('productDelete', { title: 'Producto borrado', usuario: req.session.usuarioLogueado });
+        res.render('productDelete', { title: 'Producto borrado',
+                                    usuario: req.session.usuarioLogueado });
     },
 
     deleteProductById: function (req, res, next) {
-      let idProducto = req.params.idProducto;
-      let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
-      let productos;
-
-      if(productosJSON == ""){
-        productos = [];
-      }else{
-        productos = JSON.parse(productosJSON);
-      }
-
-      let newProductos = productos.filter(function (producto) {
-        return producto.codigo != idProducto;
-      });
-
-      let productoBorrado = productos.find(function (producto) {
-        return producto.codigo == idProducto;
-      });
-
-      fs.writeFileSync('./data/products.json', JSON.stringify(newProductos, { encoding: 'UTF-8'}) );
-
-      mensaje = `El Producto ${ productoBorrado.codigo }, ${ productoBorrado.nombre } eliminado exitosamente!!!`
-      res.render('productMsg', { title: 'Producto borrado',
-                                    tipo: 'success',
-                                    mensaje: mensaje,
-                                    usuario: req.session.usuarioLogueado });
+      db.Product.destroy({
+        where: {id: req.params.idProducto }
+      })
+      .then(function(result){
+        console.log(result)
+        mensaje = `El Producto fue eliminado exitosamente!!!`
+        res.render('productMsg', { title: 'Producto borrado',
+                                      tipo: 'success',
+                                      mensaje: mensaje,
+                                      usuario: req.session.usuarioLogueado });
+      })
+      .catch(function(error){
+          return res.render('errordb', { title: 'Error',
+                                         error: error,
+                                         usuario: req.session.usuarioLogueado });
+        });
     },
     searchProduct: function (req,res,next) {
       db.Product.findAll({
@@ -314,8 +301,8 @@ let productController = {
         }
       })
       .then((productos)=>{
-         //console.log(productos);
-         return res.render('productsResults', { title: 'Resultados de busqueda',
+         console.log(productos);
+         return res.render('products', { title: 'Resultados de busqueda',
                                           productos: productos,
                                           usuario: req.session.usuarioLogueado});
         })

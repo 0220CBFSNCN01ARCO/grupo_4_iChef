@@ -9,14 +9,14 @@
         <% for(let i=0; i < productos.length; i++) { %>
           <div class="col mb-4">
             <div class="card h-100">
-              <img src="/images/products/<%=productos[i].tipo %>/<%=productos[i].fotos[0] %>"
-                  class="card-img-top img-fluid" alt="<%= productos[i].nombre %>">
+              <img src="/images/products/<%=productos[i].product_type_id %>/<%=productos[i].fotos[0].nombre %>"
+                  class="card-img-top img-fluid" alt="<%= productos[i].descripcion %>">
               <div class="card-body">
                 <div class="row rowNombre">
-                  <h5 class="card-title"><%= productos[i].nombre %></h5>
+                  <h5 class="card-title"><%= productos[i].descripcion %></h5>
                 </div>
                 <div class="row rowMarca">
-                  <p class="card-text text-muted">Marca: <%= productos[i].marca %></p>
+                  <p class="card-text text-muted">Marca: <%= productos[i].marca.descripcion %></p>
                 </div>
                 <div class="row rowprecio">
                   <p class="p-market">$<%= productos[i].precio %></p>

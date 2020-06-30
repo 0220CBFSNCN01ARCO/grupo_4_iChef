@@ -102,4 +102,6 @@ router.get('/:id/edit', usersController.userEdit);
 
 router.put('/:id/edit', usersController.updateUser);
 
+router.delete('/:idUser', usersController.deleteUserById);
+
 module.exports = router;
