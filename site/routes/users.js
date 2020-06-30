@@ -43,22 +43,20 @@ router.post('/create',
   check("passwordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
   check("repeatPasswordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
   body("emailUser").custom(function(value){
-    db.User.findOne({
+    return db.User.findOne({
       where: {
         email: value
       }
     }
     )
     .then(function(usuario){
-      if(usuario){
-        return false;
-      }
-      return true;
+      if(usuario != null){
+        Promise.reject("El email ingresado ya existe.")}
     }).catch(function(error){
       //console.log(error);
       return false;
     });
-  }).withMessage("El email ingresado ya existe."),
+  }),
   body("fotoPerfil").custom(function(value){
       //console.log("Dato foto:" + value);
       if(value == ''){

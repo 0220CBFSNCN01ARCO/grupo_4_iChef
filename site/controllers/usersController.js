@@ -12,25 +12,27 @@ let usersController = {
     },
     createUser: function (req, res, next) {
       let errores = validationResult(req);
-
-      //console.log(req.body);
-      //console.log(errores.errors);
+      console.log(errores);
       if(errores.isEmpty()){
         if(req.body.passwordUser != req.body.repeatPasswordUser){
           return res.render('register', { title: 'Registro',
-                                          errores: errores.errors });
+                                          errores: [{ value: '',
+                                                      msg: 'Las contraseñas no coinciden.',
+                                                      param: 'passwordUser',
+                                                      location: 'body'
+                                                    }] });
         }else {
             let newUser = db.User.create({
-              nombre: req.body.nombreUser,
-              apellido: req.body.apellidoUser,
-              email: req.body.emailUser,
-              password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
-              nroTelefono: req.body.nroTelefonoUser,
-              categorie_id: 2,
-              avatar: req.file.filename
-            });
+                                        nombre: req.body.nombreUser,
+                                        apellido: req.body.apellidoUser,
+                                        email: req.body.emailUser,
+                                        password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
+                                        nroTelefono: req.body.nroTelefonoUser,
+                                        categorie_id: 2,
+                                        avatar: req.file.filename
+                                      });
             mensaje = newUser.nombre;
-            res.render('userMsg', { title: 'Usuario',
+            return res.render('userMsg', { title: 'Usuario',
                                           tipo: 'success',
                                           mensaje: mensaje,
                                           errores: errores.errors,
@@ -48,7 +50,7 @@ let usersController = {
     },
     loguearUsuario: function(req, res, next) {
       let errores = validationResult(req);
-      //console.log(errores);
+      console.log(errores);
       console.log("loguear usuario");
       if(errores.isEmpty()){
         db.User.findAll()
