@@ -192,20 +192,40 @@ let usersController = {
       let errores = validationResult(req);
       console.log(errores)
       if(errores.isEmpty()){
-        db.User.update({
-              password: req.body.passwordUser
-          },
-          { where:{
-              id: req.params.id
-            }})
-          .then(function(usuarioEdit){
-              return res.redirect(301, 'userAccount' );
-            })
-          .catch(function(error){
-              return res.render('errordb', { title: 'Error',
-                                            error: error,
-                                            usuario: req.session.usuarioLogueado });
-          });
+        db.User.findByPk(req.params.id)
+        .then(function(usuario){
+            let checkPass = bcrypt.compareSync(req.body.passwordUser,usuario.password);
+            if(!checkPass){
+              return res.render('changePassword', { title: 'Cambiar contraseña',
+                                                    usuarioEdit: usuario,
+                                                    errores: [{ value: '',
+                                                                msg: 'Las contraseñas no coinciden.',
+                                                                param: 'passwordUser',
+                                                                location: 'body'}],
+                                                    usuario: req.session.usuarioLogueado });
+
+            }else {
+              db.User.update({
+                password: req.body.passwordUser
+                },
+                { where:{
+                    id: req.params.id
+                  }})
+                .then(function(usuarioEdit){
+                    return res.redirect(301, 'userAccount' );
+                  })
+                .catch(function(error){
+                    return res.render('errordb', { title: 'Error',
+                                                  error: error,
+                                                  usuario: req.session.usuarioLogueado });
+                });
+            }
+        })
+        .catch(function(error){
+        return res.render('errordb', { title: 'Error',
+                                        error: error,
+                                        usuario: req.session.usuarioLogueado });
+        });
       } else {
           return res.render('changePassword',{ title: 'Cambiar contraseña',
                                              errores: errores.errors,

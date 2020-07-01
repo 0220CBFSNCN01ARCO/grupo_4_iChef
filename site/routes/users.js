@@ -111,20 +111,7 @@ router.put('/:id/changePassword',
 [
   check("passwordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
   check("passwordUserNew").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
-  check("repeatPasswordUserNew").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
-  body("passwordUser").custom(function(value){
-    return db.User.findByPk(req.params.id)
-      .then(function(usuario){
-          //Comparo la contraseña ingresada con la guardada en la bd
-          let checkPass = bcrypt.compareSync(value,usuario.password);
-          if(!checkPass){
-            Promise.reject("La contraseña anterior es incorrecta.");
-          }
-        })
-      .catch(function(error){
-          return false;
-      });
-    })
+  check("repeatPasswordUserNew").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres.")
   ]
  ,usersController.updatePassword);
 
