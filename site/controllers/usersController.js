@@ -22,22 +22,30 @@ let usersController = {
                                                       location: 'body'
                                                     }] });
         }else {
+            console.log(req.body);
+            console.log(req.file);
             let newUser = db.User.create({
                                         nombre: req.body.nombreUser,
                                         apellido: req.body.apellidoUser,
                                         email: req.body.emailUser,
                                         password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
                                         nroTelefono: req.body.nroTelefonoUser,
-                                        categorie_id: 2,
+                                        categorie_id: 4,
                                         avatar: req.file.filename
+                                      })
+                                      .then(function(newUsuario){
+                                          return res.render('userMsg', { title: 'Usuario',
+                                                                      tipo: 'success',
+                                                                      mensaje: newUsuario.nombre,
+                                                                      errores: errores.errors,
+                                                                      usuario: req.session.usuarioLogueado });
+                                        })
+                                      .catch(function(error){
+                                        return res.render('errordb', { title: 'Error',
+                                                                        error: error,
+                                                                        usuario: req.session.usuarioLogueado });
                                       });
-            mensaje = newUser.nombre;
-            return res.render('userMsg', { title: 'Usuario',
-                                          tipo: 'success',
-                                          mensaje: mensaje,
-                                          errores: errores.errors,
-                                          usuario: req.session.usuarioLogueado });
-        }
+          }
       }
       else{
         return res.render('register',{ title: 'Registro',
@@ -127,13 +135,22 @@ let usersController = {
       });
     },
     updateUser: function (req, res, next) {
-      db.User.findByPk(req.params.id)
+      //console.log(req.file)
+      db.User.update({
+          nombre: req.body.nombreUser,
+          apellido: req.body.apellidoUser,
+          email: req.body.emailUser,
+          nroTelefono: req.body.nroTelefonoUser
+          //avatar: req.file.filename
+      },
+      { where:{
+          id: req.params.id
+        }})
       .then(function(usuarioEdit){
         //console.log(usuarioEdit)
-        return res.render('userEdit', { title: 'Editar perfil',
-                                  usuarioEdit: usuarioEdit,
-                                  usuario: req.session.usuarioLogueado });
-      }).catch(function(error){
+        return res.redirect(301, 'userAccount' );
+      })
+      .catch(function(error){
         //console.log(error);
         return res.render('errordb', { title: 'Error',
                                         error: error,
@@ -145,7 +162,7 @@ let usersController = {
         where: {id: req.params.idUser }
       })
       .then(function(result){
-        console.log(result)
+        //console.log(result)
         let mensaje = "Usuario eliminado correctamente"
         res.render('message', { title: 'Usuario',
                                 tipo: 'success',
@@ -161,7 +178,7 @@ let usersController = {
     changePassword: function (req, res, next) {
       db.User.findByPk(req.params.id)
       .then(function(usuarioEdit){
-          return res.render('userProfile', { title: 'Perfil',
+          return res.render('changePassword', { title: 'Cambiar contraseña',
                                                 usuarioEdit: usuarioEdit,
                                                 usuario: req.session.usuarioLogueado });
         })
@@ -173,38 +190,41 @@ let usersController = {
     },
     updatePassword: function (req, res, next) {
       let errores = validationResult(req);
-      db.User.findByPk(req.params.id)
-        .then(function(usuarioEdit){
-          if(errores.isEmpty()){
-            return res.render('changePassword', { title: 'Cambiar contraseña',
-                                                  usuarioEdit: usuarioEdit,
-                                                  usuario: req.session.usuarioLogueado });
-           }else{
-              return res.render('changePassword', { title: 'Cambiar contraseña',
-                                                usuarioEdit: usuarioEdit,
-                                                errores: errores,
-                                                usuario: req.session.usuarioLogueado });
-                }
-          })
-        .catch(function(error){
-            return res.render('errordb', { title: 'Error',
-                                          error: error,
-                                          usuario: req.session.usuarioLogueado });
-        });
+      if(errores.isEmpty()){
+        db.User.update({
+              password: req.body.passwordUser
+          },
+          { where:{
+              id: req.params.id
+            }})
+          .then(function(usuarioEdit){
+              return res.redirect(301, 'userAccount' );
+            })
+          .catch(function(error){
+              return res.render('errordb', { title: 'Error',
+                                            error: error,
+                                            usuario: req.session.usuarioLogueado });
+          });
+      } else {
+          return res.render('changePassword',{ title: 'Cambiar contraseña',
+                                             errores: errores.errors,
+                                             usuario: req.session.usuarioLogueado });
+        }
     },
     userAccount: function (req, res, next) {
       //console.log(req.session.usuarioLogueado.id);
       db.User.findByPk(req.params.id)
-      .then(function(usuarioEdit){
+        .then(function(usuarioEdit){
         return res.render('userAccount', { title: 'Cuenta usuario',
                                             usuarioEdit: usuarioEdit,
                                             usuario: req.session.usuarioLogueado });
-        }).catch(function(error){
+        })
+        .catch(function(error){
         return res.render('errordb', { title: 'Error',
                                         error: error,
                                         usuario: req.session.usuarioLogueado });
       });
-    },
+    }
 };
 
 module.exports = usersController;

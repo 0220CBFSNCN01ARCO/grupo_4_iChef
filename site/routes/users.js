@@ -34,7 +34,7 @@ router.get('/',authMiddleware, usersController.userList);
 
 router.get('/register' , guestMiddleware ,usersController.userRegister);
 
-router.post('/create',
+router.post('/create', upload.single('fotoPerfil'),
 [
   check("nombreUser").isLength({ min: 4 }).withMessage("Debe ingresar un nombre valido."),
   check("apellidoUser").isLength({ min: 4 }).withMessage("Debe ingresar un apellido valido."),
@@ -66,7 +66,7 @@ router.post('/create',
   }).withMessage("Debe seleccionar una imagen de perfil.")
 ]
 
-,upload.single('fotoPerfil'), usersController.createUser);
+, usersController.createUser);
 
 router.get('/login', usersController.userLogin);
 
@@ -93,12 +93,18 @@ body("emailUsuario").custom(function(value){
 ,usersController.loguearUsuario);
 
 router.get('/logout', usersController.logoutUser);
-router.get('/userAccount/userprofile/:id', usersController.userProfile);
+router.get('/:id/userprofile', usersController.userProfile);
 
-router.get('/userAccount/:id', usersController.userAccount);
+router.get('/:id/userAccount', usersController.userAccount);
 
 router.get('/:id/edit', usersController.userEdit);
-router.put('/:id/edit', usersController.updateUser);
+router.put('/:id/edit', upload.single('fotoPerfil'),
+[
+  check("nombreUser").isLength({ min: 4 }).withMessage("Debe ingresar un nombre valido."),
+  check("apellidoUser").isLength({ min: 4 }).withMessage("Debe ingresar un apellido valido."),
+  check("nroTelefonoUser").isLength({ min: 10 }).withMessage("Debe ingresar un número de telefono.")
+]
+ ,usersController.updateUser);
 
 router.get('/:id/changePassword', usersController.changePassword);
 router.put('/:id/changePassword',

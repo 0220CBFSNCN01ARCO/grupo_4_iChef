@@ -5,7 +5,7 @@
     <%- include('./partials/header') %>
     <div class="container-fuid fondoFormulario">
         <div id="containerForm" class="container">
-            <form method="POST" id="formRegister" action="/users/<%= usuarioEdit.id %>/edit?_method=PUT" novalidate>
+            <form method="POST" id="formRegister" action="edit?_method=PUT" novalidate>
                 <div class="row">
                     <div id="formDatos" class="col-sm-12 col-md-12 col-lg-6">
                         <div>
@@ -47,17 +47,6 @@
                                 <% } %>
                               <% } %>
                             </div>
-                            <div class="col-md-6 mb-3">
-                              <label>Email</label>
-                              <input type="email" class="form-control" name="emailUser" value="<%= usuarioEdit.email %>">
-                              <% if (typeof errores != 'undefined') { %>
-                                <% for (let i=0; i < errores.length; i++) { %>
-                                    <% if(errores[i].param == 'emailUser' ) { %>
-                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
-                                    <% } %>
-                                <% } %>
-                              <% } %>
-                            </div>
                         </div>
                     </div>
                     <div id="formImagen" class="col-sm-12 col-md-12 col-lg-6">
@@ -81,7 +70,7 @@
                         <% } %>
                     </div>
                     <div id="formAction">
-                        <button class="btn btn-dark" type="submit">Cancelar</button>
+                        <a class="btn btn-dark" href="userAccount">Cancelar</a>
                         <button class="btn btn-dark" type="submit">Guardar</button>
                     </div>
                 </div>
