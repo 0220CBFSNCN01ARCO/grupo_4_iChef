@@ -44,7 +44,7 @@ let productController = {
         include:[{association: "productType"}]
       })
       .then((productos)=>{
-        console.log(productos);
+        //console.log(productos);
         res.render('productList', { title: 'Listado',
                                 usuario: req.session.usuarioLogueado,
                                 productos:productos});
@@ -130,7 +130,6 @@ let productController = {
                                     mensaje: mensaje,
                                     usuario: req.session.usuarioLogueado });
     },
-
     editProductById: function (req, res, next) {
       let idProducto = req.params.id;
       let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
