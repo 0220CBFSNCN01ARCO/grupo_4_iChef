@@ -190,6 +190,7 @@ let usersController = {
     },
     updatePassword: function (req, res, next) {
       let errores = validationResult(req);
+      console.log(errores)
       if(errores.isEmpty()){
         db.User.update({
               password: req.body.passwordUser
