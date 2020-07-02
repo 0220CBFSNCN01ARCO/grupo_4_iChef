@@ -35,6 +35,7 @@
               <a class="nav-link" href="/info/zonas"><span class="ichef-contacts iconiChef"></span> Zonas entrega</a>
             </li>
             <% if( typeof usuario != 'undefined') { %>
+              <% if(  usuario.categorie_id == 1 ) { %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
                     <span class="ichef-settings iconiChef"></span> Panel control
@@ -44,6 +45,7 @@
                     <a class="dropdown-item" href="/users"><span class="ichef-users"></span> Usuarios</a>
                 </div>
               </li>
+              <% } %>
             <% } %>
           </ul>
           <ul class="navbar-nav menuUser">
