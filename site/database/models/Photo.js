@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         nombre : {
             type: DataTypes.STRING
+        },
+        id_producto : {
+            type: DataTypes.INTEGER
         }
     }
     let config = {

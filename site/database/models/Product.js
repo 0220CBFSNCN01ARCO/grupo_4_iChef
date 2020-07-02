@@ -42,19 +42,11 @@ module.exports = (sequelize, DataTypes) => {
         cant_comensales : {
             type: DataTypes.INTEGER
         },
-        ingredientes_id : {
-            type: DataTypes.INTEGER,
-            foreignKey: true
-        },
         calorias : {
             type: DataTypes.FLOAT
         },
         peso : {
             type: DataTypes.FLOAT
-        },
-        foto_id : {
-            type: DataTypes.INTEGER,
-            foreignKey: true
         },
         receta: {
             type: DataTypes.STRING
