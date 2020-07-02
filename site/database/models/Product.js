@@ -92,24 +92,16 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: "id_producto"
         });
 
-        /*Product - PhotoProduct
-        Product.belongsTo(models.PhotoProduct, {
-            as: "fotosProd",
-            foreignKey: "id"
-        });*/
+        /*Product - Photo */
+        Product.hasMany(models.Photo, {
+            as: "fotos",
+            foreignKey: "id_producto"
+        });
 
         /*Product - IngredientProduct*/
         Product.belongsTo(models.IngredientProduct, {
             as: "ingredienteProd",
             foreignKey: "id_product"
-        });
-
-        Product.belongsToMany(models.Photo, {
-            as: "fotos",
-            through: "photos_products",
-            foreignKey: "id_producto",
-            otherKey: "id_foto",
-            timestamps: false
         });
 
     }
