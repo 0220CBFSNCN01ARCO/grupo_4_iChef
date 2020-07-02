@@ -1,15 +1,6 @@
 USE `ichef`;
 
 --
--- Dumping data for table `users`
---
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `ichef`.`users` (`nombre`, `apellido`, `email`, `password`, `nroTelefono`, `avatar`, `categorie_id`) VALUES ('Admin', 'Admin', 'admin@ichef.com', '$2b$10$7wmTOptmvMBtQ.dWxXenyO8cbrvRMuWUMNk8Me5qQ0pGIbO42ppei', '11111111', 'admin-23-06-2020.jpg', '1');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Dumping data for table `brand`
 --
 
@@ -29,6 +20,7 @@ INSERT INTO `heading` VALUES (1,'Alimentos Congelados'),(2,'Almacén'),(3,'Bebid
 /*!40000 ALTER TABLE `heading` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
 --
 -- Dumping data for table `ingredients`
 --
@@ -37,6 +29,46 @@ LOCK TABLES `ingredients` WRITE;
 /*!40000 ALTER TABLE `ingredients` DISABLE KEYS */;
 INSERT INTO `ingredients` VALUES (1,'Carne vacuna'),(2,'Cebolla'),(3,'Limón'),(4,'bicarbonato'),(5,'pimienta negra'),(6,'cilantro'),(7,'tomillo'),(8,'romero'),(9,'Pechuga de pollo'),(10,'Bondiola de cerdo'),(11,'salsa teriyaki'),(12,'manteca'),(13,'zanahoria'),(14,'morrón rojo/verde/amarillo'),(15,'albahaca fresca'),(16,'nuez moscada'),(17,'semillas de girasol'),(18,'aceite de girasol'),(19,'sal fina'),(20,'Carré de cerdo'),(21,'batter'),(22,'avena'),(23,'arroz carnaroli'),(24,'zapallo cabutia,'),(25,'queso parrillero tipo provoleta'),(26,'ajo'),(27,'papa'),(28,'Crema'),(29,'leche entera'),(30,'salsa mediterránea'),(31,'harina 0000'),(32,'harina de centeno'),(33,'queso porsalut'),(34,'huevo'),(35,'puerro'),(36,'Espinaca'),(37,'salvado'),(38,'centeno'),(39,'queso reggianito'),(40,'berenjena'),(41,'comino'),(42,'curry'),(43,'batata');
 /*!40000 ALTER TABLE `ingredients` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `ingredients_products`
+--
+
+LOCK TABLES `ingredients_products` WRITE;
+/*!40000 ALTER TABLE `ingredients_products` DISABLE KEYS */;
+INSERT INTO `ingredients_products` VALUES (1,1,1,NULL,NULL),(2,2,1,NULL,NULL);
+/*!40000 ALTER TABLE `ingredients_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `product_type`
+--
+
+LOCK TABLES `product_type` WRITE;
+/*!40000 ALTER TABLE `product_type` DISABLE KEYS */;
+INSERT INTO `product_type` VALUES (1,'PRODUCTO'),(2,'CAJA');
+/*!40000 ALTER TABLE `product_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,1,'Market 1',1,12.5,0,0,0,1,1,'Market 1',2,250,350,NULL),(2,2,'Box 1',2,12.5,0,0,0,1,1,'Box 1',1,100,100,NULL);
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `photos`
+--
+
+LOCK TABLES `photos` WRITE;
+/*!40000 ALTER TABLE `photos` DISABLE KEYS */;
+INSERT INTO `photos` VALUES (1,'prod-1.png',1),(2,'box1.jpg',2);
+/*!40000 ALTER TABLE `photos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -50,59 +82,12 @@ INSERT INTO `users_categories` VALUES (1,'ADMINISTRADOR'),(2,'CHEF'),(3,'INVITAD
 UNLOCK TABLES;
 
 --
--- Dumping data for table `product_type`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `product_type` WRITE;
-/*!40000 ALTER TABLE `product_type` DISABLE KEYS */;
-INSERT INTO `product_type` VALUES (1,'PRODUCTO'),(2,'CAJA');
-/*!40000 ALTER TABLE `product_type` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Admin','Admin','admin@ichef.com','$2b$10$7wmTOptmvMBtQ.dWxXenyO8cbrvRMuWUMNk8Me5qQ0pGIbO42ppei','11111111','admin-23-06-2020.jpg',1,'2020-06-29 23:48:27','2020-06-29 20:48:27'),(2,'jose','jose','jose@ichef.com','$2b$10$6PUC9H6bHrmrIV5Z1lIjJeRN08ZMWrtrH4RKT7G7mAj24f2OsMwLK','1234567891','jose-30-06-2020.png',4,'2020-07-01 00:14:29','2020-07-01 00:14:29');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
---
--- Dumping data for table `ingredients_products`
---
-
-LOCK TABLES `ingredients_products` WRITE;
-/*!40000 ALTER TABLE `ingredients_products` DISABLE KEYS */;
-INSERT INTO `ichef`.`ingredients_products` (`id_product`, `id_ingredients`) VALUES ('1', '1');
-INSERT INTO `ichef`.`ingredients_products` (`id_product`, `id_ingredients`) VALUES ('2', '1');
-/*!40000 ALTER TABLE `ingredients_products` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `photos_products`
---
-
-LOCK TABLES `photos_products` WRITE;
-/*!40000 ALTER TABLE `photos_products` DISABLE KEYS */;
-INSERT INTO `ichef`.`photos_products` (`id_producto`, `id_foto`) VALUES ('1', '1');
-INSERT INTO `ichef`.`photos_products` (`id_producto`, `id_foto`) VALUES ('2', '2');
-/*!40000 ALTER TABLE `photos_products` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `photos`
---
-
-LOCK TABLES `photos` WRITE;
-/*!40000 ALTER TABLE `photos` DISABLE KEYS */;
-INSERT INTO `ichef`.`photos` (`nombre`) VALUES ('prod-1.png');
-INSERT INTO `ichef`.`photos` (`nombre`) VALUES ('box1.jpg');
-/*!40000 ALTER TABLE `photos` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
---
--- Dumping data for table `product`
---
-
-LOCK TABLES `product` WRITE;
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `ichef`.`product` (`codigo`, `descripcion`, `product_type_id`, `precio`, `oferta`, `precio_oferta`, `descuento_oferta`, `rubro_id`, `marca_id`, `detalle`, `cant_comensales`, `ingredientes_id`, `calorias`, `peso`, `foto_id`) 
-VALUES ('1', 'Market 1', '1', '12.5', '0', '0', '0', '1', '1', 'Market 1', '2', '2', '250', '350', '2');
-INSERT INTO `ichef`.`product` (`codigo`, `descripcion`, `product_type_id`, `precio`, `oferta`, `precio_oferta`, `descuento_oferta`, `rubro_id`, `marca_id`, `detalle`, `cant_comensales`, `ingredientes_id`, `calorias`, `peso`, `foto_id`) 
-VALUES ('2', 'Box 1', '2', '22.5', '0', '0', '0', '1', '1','Box 1','1', '1', '100', '100', '1');
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
-UNLOCK TABLES;
