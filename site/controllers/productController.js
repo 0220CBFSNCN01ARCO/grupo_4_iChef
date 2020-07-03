@@ -300,7 +300,7 @@ let productController = {
         }
       })
       .then((productos)=>{
-         console.log(productos);
+         //console.log(productos);
          return res.render('products', { title: 'Resultados de busqueda',
                                           productos: productos,
                                           usuario: req.session.usuarioLogueado});

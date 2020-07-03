@@ -199,26 +199,40 @@ let usersController = {
               return res.render('changePassword', { title: 'Cambiar contraseña',
                                                     usuarioEdit: usuario,
                                                     errores: [{ value: '',
-                                                                msg: 'Las contraseñas no coinciden.',
+                                                                msg: 'Las contraseña anterior no coincide.',
                                                                 param: 'passwordUser',
                                                                 location: 'body'}],
                                                     usuario: req.session.usuarioLogueado });
-
             }else {
-              db.User.update({
-                password: req.body.passwordUser
-                },
-                { where:{
-                    id: req.params.id
-                  }})
-                .then(function(usuarioEdit){
-                    return res.redirect(301, 'userAccount' );
-                  })
-                .catch(function(error){
-                    return res.render('errordb', { title: 'Error',
-                                                  error: error,
-                                                  usuario: req.session.usuarioLogueado });
+              if (req.body.passwordUserNew != req.body.repeatPasswordUserNew){
+                  return res.render('changePassword', { title: 'Cambiar contraseña',
+                                                    usuarioEdit: usuario,
+                                                    errores: [{ value: '',
+                                                                msg: 'Las contraseñas no coinciden.',
+                                                                param: 'passwordUserNew',
+                                                                location: 'body'},
+                                                                { value: '',
+                                                                  msg: 'Las contraseñas no coinciden.',
+                                                                  param: 'repeatPasswordUserNew',
+                                                                  location: 'body'}
+                                                              ],
+                                                    usuario: req.session.usuarioLogueado });
+              }else{
+                db.User.update({
+                  password: req.body.passwordUser
+                  },
+                  { where:{
+                      id: req.params.id
+                    }})
+                  .then(function(usuarioEdit){
+                      return res.redirect(301, 'userAccount' );
+                    })
+                  .catch(function(error){
+                      return res.render('errordb', { title: 'Error',
+                                                    error: error,
+                                                    usuario: req.session.usuarioLogueado });
                 });
+              }
             }
         })
         .catch(function(error){
