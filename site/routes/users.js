@@ -37,26 +37,23 @@ router.get('/register' , guestMiddleware ,usersController.userRegister);
 router.post('/create', upload.single('fotoPerfil'),
 [
   check("nombreUser").isLength({ min: 4 }).withMessage("Debe ingresar un nombre valido."),
-  check("apellidoUser").isLength({ min: 4 }).withMessage("Debe ingresar un apellido valido."),
-  check("nroTelefonoUser").isLength({ min: 10 }).withMessage("Debe ingresar un número de telefono."),
+  check("apellidoUser").isLength({ min: 3 }).withMessage("Debe ingresar un apellido valido."),
+  check("nroTelefonoUser").isLength({ min: 7 }).withMessage("Debe ingresar un número de telefono."),
   check("emailUser").isEmail().withMessage("Debe ingresar un email valido."),
   check("passwordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
   check("repeatPasswordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
-  body("emailUser").custom(function(value){
-    return db.User.findOne({
-      where: {
-        email: value
-      }
-    }
-    )
-    .then(function(usuario){
-      if(usuario != null){
-        Promise.reject("El email ingresado ya existe.")}
-    }).catch(function(error){
-      //console.log(error);
-      return false;
-    });
-  }),
+  /*body("emailUser").custom( function(value){
+   return db.User.findOne({where: {email: value}})
+      .then(function(usuario){
+          if(usuario != null){
+            Promise.reject("El email ingresado ya existe.")
+          }
+        })
+      .catch(function(error){
+          //console.log(error);
+          return false;
+        });
+  }),*/
   body("fotoPerfil").custom(function(value){
       //console.log("Dato foto:" + value);
       if(value == ''){
@@ -73,8 +70,8 @@ router.get('/login', usersController.userLogin);
 router.post('/login',
 [
 check("emailUsuario").isEmail().withMessage("Debe ingresar un email valido."),
-check("passwordUsuario").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
-body("emailUsuario").custom(function(value){
+check("passwordUsuario").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres.")
+/*body("emailUsuario").custom(function(value){
   return db.User.findOne({
       where: {
         email: value
@@ -88,7 +85,7 @@ body("emailUsuario").custom(function(value){
     //console.log(error);
     return false;
   });
-  })
+  })*/
 ]
 ,usersController.loguearUsuario);
 
