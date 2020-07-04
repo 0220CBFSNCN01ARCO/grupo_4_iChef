@@ -10,7 +10,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
         id_producto : {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'Product',
+                key: 'id'
+            }
         }
     }
     let config = {

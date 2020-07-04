@@ -79,6 +79,7 @@ let productController = {
                                   subtitle: 'Formulario alta',
                                   usuario: req.session.usuarioLogueado });
     },
+    /*
     createProduct: function (req, res, next) {
       let esOferta = false;
       if(req.body.ofertaSwich =='on'){
@@ -130,6 +131,57 @@ let productController = {
                                     mensaje: mensaje,
                                     usuario: req.session.usuarioLogueado });
     },
+    */
+  
+    createProduct: function (req, res, next) {
+  
+      let esOferta = 0;
+      if(req.body.ofertaSwich =='on'){
+      esOferta = 1;
+      };
+
+      let arrayFotos = [];
+      if(req.body.fotos.length > 0){
+        arrayFotos = req.body.fotos.slice();
+      }
+      let arrayIngredientes = [];
+      if(req.body.ingredientes.length > 0){
+        arrayIngredientes= req.body.ingredientes.slice();
+      }
+
+      db.Product.create({
+          descripcion: req.body.nombreProducto,
+          product_type_id: req.body.tipo,
+          precio: req.body.precioProducto,
+          oferta: esOferta,
+          precio_oferta: req.body.precioOferta,
+          descuento_oferta: req.body.descuento,
+          rubro_id: req.body.grupo,
+          marca_id :req.body.marca,
+          detalle: req.body.txtDescripcion,
+          cant_comensales: req.body.radioPersonas,
+          calorias: req.body.calorias,
+          peso: req.body.peso,
+          receta: req.body.pdfFile,
+          fotos: arrayFotos ,
+          ingredientes: arrayIngredientes
+      }, {
+        include:[
+        {association:"productType"},
+        {association:"marca"},
+        {association:"rubro"},
+        {association:"fotos"},
+        {association:"ingredientes"}
+        ]
+      }).then((productoNew)=>{
+        mensaje = `El ${productoNew.descripcion} fue creado exitosamente!!!`
+        res.render('productMsg', { title: 'Producto creado',
+                                    tipo: 'success',
+                                    mensaje: mensaje,
+                                    usuario: req.session.usuarioLogueado });
+      })
+    },
+
     editProductById: function (req, res, next) {
       let idProducto = req.params.id;
       let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
