@@ -13,7 +13,9 @@
                 <h1 class="alert-heading">Error</h1>
                 <hr>
                 <p class="mb-0">Detalle: <%= error.name %></p>
-                <p class="mb-0">Estado: <%= error.parent.code %></p>
+                <% if( typeof error.parent != 'undefined' ) { %>
+                    <p class="mb-0">Estado: <%= error.parent.code %></p>
+                <% } %>
                 <p class="mb-0">Codigo: <%= error.parent.syscall %></p>
             </div>
         </div>

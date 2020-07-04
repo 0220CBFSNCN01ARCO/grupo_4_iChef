@@ -62,7 +62,9 @@
                 <% if( typeof usuario != 'undefined') { %>
                     <a class="dropdown-item d-none" href="/users/login"><span class="ichef-sign-in"></span> Ingresar</a>
                     <a class="dropdown-item d-none" href="/users/register"><span class="ichef-how_to_reg"></span> Registrarse</a>
-                    <a class="dropdown-item" href="/users/<%= usuario.id %>/userAccount"><span class="ichef-recent_actors"></span> Mi cuenta</a>
+                    <% if(  usuario.categorie_id != 1 ) { %>
+                        <a class="dropdown-item" href="/users/<%= usuario.id %>/userAccount"><span class="ichef-recent_actors"></span> Mi cuenta</a>
+                    <% } %>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/users/logout"><span class="ichef-power_settings_new"></span> Cerrar sesión</a>
                 <% } else { %>
