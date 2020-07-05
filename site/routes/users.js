@@ -36,31 +36,34 @@ router.get('/register' , guestMiddleware ,usersController.userRegister);
 
 router.post('/create', upload.single('fotoPerfil'),
 [
-  check("nombreUser").isLength({ min: 4 }).withMessage("Debe ingresar un nombre valido."),
-  check("apellidoUser").isLength({ min: 3 }).withMessage("Debe ingresar un apellido valido."),
-  check("nroTelefonoUser").isLength({ min: 7 }).withMessage("Debe ingresar un número de telefono."),
-  check("emailUser").isEmail().withMessage("Debe ingresar un email valido."),
-  check("passwordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
-  check("repeatPasswordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
-  /*body("emailUser").custom( function(value){
-   return db.User.findOne({where: {email: value}})
-      .then(function(usuario){
-          if(usuario != null){
-            Promise.reject("El email ingresado ya existe.")
-          }
-        })
-      .catch(function(error){
-          //console.log(error);
-          return false;
-        });
-  }),*/
-  body("fotoPerfil").custom(function(value){
+  check("nombreUser")
+    .isLength({ min: 2 })
+    .withMessage("Debe ingresar un nombre valido."),
+  check("apellidoUser")
+    .isLength({ min: 2 })
+    .withMessage("Debe ingresar un apellido valido."),
+  check("nroTelefonoUser")
+    .isLength({ min: 7 })
+    .withMessage("Debe ingresar un número de telefono."),
+  check("emailUser")
+    .isEmail()
+    .normalizeEmail()
+    .withMessage("Debe ingresar un email valido."),
+  check("passwordUser")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
+  check("repeatPasswordUser")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
+  body("fotoPerfil")
+    .custom(function(value){
       //console.log("Dato foto:" + value);
       if(value == ''){
         return false;
       }
       return true;
-  }).withMessage("Debe seleccionar una imagen de perfil.")
+    })
+    .withMessage("Debe seleccionar una imagen de perfil.")
 ]
 
 , usersController.createUser);
@@ -69,23 +72,10 @@ router.get('/login', usersController.userLogin);
 
 router.post('/login',
 [
-check("emailUsuario").isEmail().withMessage("Debe ingresar un email valido."),
-check("passwordUsuario").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres.")
-/*body("emailUsuario").custom(function(value){
-  return db.User.findOne({
-      where: {
-        email: value
-      }
-  })
-  .then(function(usuario){
-    if(usuario == null){
-      Promise.reject("El email ingresado no existe.")}
-  })
-  .catch(function(error){
-    //console.log(error);
-    return false;
-  });
-  })*/
+check("emailUsuario")
+  .isEmail()
+  .normalizeEmail()
+  .withMessage("Debe ingresar un email valido.")
 ]
 ,usersController.loguearUsuario);
 
@@ -97,18 +87,30 @@ router.get('/:id/userAccount', usersController.userAccount);
 router.get('/:id/edit', usersController.userEdit);
 router.put('/:id/edit', upload.single('fotoPerfil'),
 [
-  check("nombreUser").isLength({ min: 4 }).withMessage("Debe ingresar un nombre valido."),
-  check("apellidoUser").isLength({ min: 4 }).withMessage("Debe ingresar un apellido valido."),
-  check("nroTelefonoUser").isLength({ min: 10 }).withMessage("Debe ingresar un número de telefono.")
+  check("nombreUser")
+    .isLength({ min: 2 })
+    .withMessage("Debe ingresar un nombre valido."),
+  check("apellidoUser")
+    .isLength({ min: 2 })
+    .withMessage("Debe ingresar un apellido valido."),
+  check("nroTelefonoUser")
+    .isLength({ min: 7 })
+    .withMessage("Debe ingresar un número de telefono.")
 ]
  ,usersController.updateUser);
 
 router.get('/:id/changePassword', usersController.changePassword);
 router.put('/:id/changePassword',
 [
-  check("passwordUser").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
-  check("passwordUserNew").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres."),
-  check("repeatPasswordUserNew").isLength({ min: 8 }).withMessage("La contraseña debe tener un minimo de 8 caracteres.")
+  check("passwordUser")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
+  check("passwordUserNew")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
+  check("repeatPasswordUserNew")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial.")
   ]
  ,usersController.updatePassword);
 

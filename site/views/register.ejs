@@ -76,9 +76,9 @@
                                 <input type="password" class="form-control" name="repeatPasswordUser">
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
-                                    <% if(errores[i].param == 'repeatPasswordUser' ) { %>
-                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
-                                    <% } %>
+                                        <% if(errores[i].param == 'repeatPasswordUser' ) { %>
+                                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                        <% } %>
                                     <% } %>
                                 <% } %>
                             </div>

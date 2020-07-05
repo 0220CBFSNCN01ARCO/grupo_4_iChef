@@ -63,35 +63,49 @@ let usersController = {
         return res.render('login', { title: 'Login',
                               usuario: req.session.usuarioLogueado });
     },
-    loguearUsuario: function(req, res, next) {
+    loguearUsuario: async function(req, res, next) {
       let errores = validationResult(req);
       //console.log(errores);
       //console.log("loguear usuario");
       if(errores.isEmpty()){
         try{
-            let usuarioLoguear = db.User.findOne({where: {email: req.body.emailUsuario}});
-            console.log(usuarioLoguear);
-            if (bcrypt.compareSync(req.body.passwordUsuario,usuarioLoguear.password))
-            {
-              req.session.usuarioLogueado = usuarioLoguear;
-              if(req.body.checkRecordame != undefined){
-                res.cookie('recordame', usuarioLoguear.email, { maxAge: 120000 })
-              }
-              return res.redirect(301, '/');
-            }else{
-                return res.render('login', { title: 'Login',
+            let usuarioLoguear = await db.User.findOne({where: {email: req.body.emailUsuario}});
+            if(usuarioLoguear === null){
+              return res.render('login', {  title: 'Login',
+                                            errores: [{ value: '',
+                                                      msg: 'El email ingresado no existe.',
+                                                      param: 'emailUsuario',
+                                                      location: 'body'}
+                                                    ],
+                                            usuario: req.session.usuarioLogueado });
+            }else {
+                //console.log(usuarioLoguear);
+                if (bcrypt.compareSync(req.body.passwordUsuario,usuarioLoguear.password))
+                {
+                  req.session.usuarioLogueado = usuarioLoguear;
+                  if(req.body.checkRecordame != undefined){
+                    res.cookie('recordame', usuarioLoguear.email, { maxAge: 120000 })
+                  }
+                  return res.redirect(301, '/');
+                }else{
+                    return res.render('login', { title: 'Login',
+                                                errores: [{ value: '',
+                                                              msg: 'Contraseña incorrecta.',
+                                                              param: 'passwordUsuario',
+                                                              location: 'body'}
+                                                            ],
+                                                usuario: req.session.usuarioLogueado });
+                }
+            }
+        }catch(error){
+              console.log(error);
+              return res.render('login', { title: 'Login',
                                              errores: [{ value: '',
-                                                          msg: 'Contraseña incorrecta.',
+                                                          msg: 'Error al validar usuario.',
                                                           param: 'passwordUsuario',
                                                           location: 'body'}
                                                         ],
                                              usuario: req.session.usuarioLogueado });
-            }
-        }catch(error){
-              console.log(error);
-              return res.render('errordb', { title: 'Error',
-                                              error: error,
-                                              usuario: req.session.usuarioLogueado });
             }
       }else{
             return res.render('login',{ title: 'Login',
