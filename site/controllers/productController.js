@@ -60,8 +60,9 @@ let productController = {
         { include:[{association:"productType"},
                   {association:"marca"},
                   {association:"rubro"},
-                  {association:"fotosProd"},
-                  {association:"ingredienteProd"} ]})
+                  {association:"fotos"},
+                  {association:"ingredientes"}
+                  ]})
       .then((producto)=>{
         res.render('productDetail', { title: 'Producto ' + producto.codigo,
                                       subtitle: 'Detalle producto',
@@ -73,6 +74,7 @@ let productController = {
                                        error: error,
                                        usuario: req.session.usuarioLogueado });
       });
+      
     },
     productAdd: function (req, res, next) {
       res.render('productAdd', {  title: 'Crear producto',
@@ -140,15 +142,6 @@ let productController = {
       esOferta = 1;
       };
 
-      let arrayFotos = [];
-      if(req.body.fotos.length > 0){
-        arrayFotos = req.body.fotos.slice();
-      }
-      let arrayIngredientes = [];
-      if(req.body.ingredientes.length > 0){
-        arrayIngredientes= req.body.ingredientes.slice();
-      }
-
       db.Product.create({
           descripcion: req.body.nombreProducto,
           product_type_id: req.body.tipo,
@@ -163,7 +156,7 @@ let productController = {
           calorias: req.body.calorias,
           peso: req.body.peso,
           receta: req.body.pdfFile,
-          fotos: arrayFotos ,
+          fotos: req.files[0].filename ,
           ingredientes: arrayIngredientes
       }, {
         include:[

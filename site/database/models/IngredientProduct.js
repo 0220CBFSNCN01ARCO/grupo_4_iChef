@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
                 model: 'Product',
                 key: 'id'
             }
-            
+
         },
         id_ingredients : {
             type: DataTypes.INTEGER,
