@@ -19,9 +19,6 @@ module.exports = (sequelize, DataTypes) => {
         precio : {
             type: DataTypes.FLOAT
         },
-        oferta : {
-            type: DataTypes.INTEGER
-        },
         precio_oferta : {
             type: DataTypes.FLOAT
         },

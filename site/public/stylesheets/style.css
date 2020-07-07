@@ -171,7 +171,8 @@ footer p {
 
 .btnForm {
   justify-content: flex-end;
-  margin-top: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .itemBtn {

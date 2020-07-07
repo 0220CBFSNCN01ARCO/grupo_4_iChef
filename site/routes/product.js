@@ -6,16 +6,20 @@ const authMiddleware = require ('../middleware/authMiddleware');
 
 const productController = require('../controllers/productController');
 
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'public/images/products')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname))
-    }
+const storage = multer.diskStorage({
+      destination: function (req, file, cb) {
+        if (file.originalname.match(/\.(pdf)$/)){
+          cb(null, 'public/recetas')
+        }else{
+          cb(null, `public/images/products/${req.body.tipo}`)
+        }
+      },
+      filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + path.extname(file.originalname))
+      }
   })
 
-var upload = multer({ storage: storage })
+  const upload = multer({ storage: storage })
 
 router.get('/detail', productController.productDetail);
 router.get('/detail-box', productController.product_boxDetail);
@@ -36,7 +40,9 @@ router.get('/:id', productController.getProductById);
 //4. /products​ (POST)  Acción de creación (a donde se envía el formulario) 
 //router.post('/create', productController.createProduct);
 
-router.post('/create', authMiddleware, upload.array('image_uploads') , productController.createProduct);
+router.post('/create', upload.fields([{ name: 'image_uploads', maxCount: 5 },
+                                      { name: 'pdfFile', maxCount: 1}]),
+                       productController.createProduct);
 
 //5. /products/​:id​/edit ​(GET)  Formulario de edición de productos 
 router.get('/:id/edit', authMiddleware, productController.editProductById);

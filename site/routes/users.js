@@ -19,7 +19,6 @@ var storage = multer.diskStorage({
     filename: function (req, file, cb) {
       //console.log(req);
       let fecha = moment().format('DD-MM-YYYY');
-
       let nombre = req.body.emailUser.split('@');
       //console.log(nombre);
 

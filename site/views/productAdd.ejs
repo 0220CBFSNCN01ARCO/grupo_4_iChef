@@ -4,17 +4,22 @@
 <body>
     <%- include('./partials/header') %>
     <div class="container-fluid containerForm">
-        <form method="POST" action="/product/create" class="frmProducto needs-validation" novalidate>
+        <form method="POST" action="/product/create" class="frmProducto" enctype="multipart/form-data" novalidate>
             <div class="card">
                 <div class="card-header">Datos del producto</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="form-group col-12 col-md-7 col-lg-7">
+                        <div class="form-group col-sm-12 col-md-3 col-lg-2">
+                            <label for="codigoProducto">Codigo</label>
+                            <input type="text" class="form-control" name="codigoProducto" placeholder="Código de producto" required>
+                            <div class="invalid-feedback">Debe ingresar un codigo para el producto</div>
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6 col-lg-7">
                             <label for="nombreProducto">Nombre</label>
                             <input type="text" class="form-control" name="nombreProducto" placeholder="Ingrese nombre del producto" required>
                             <div class="invalid-feedback">Debe ingresar un nombre para el producto.</div>
                         </div>
-                        <div class="form-group col-12 col-md-5 col-lg-4">
+                        <div class="form-group col-sm-12 col-md-3 col-lg-3">
                             <label for="tipo">Tipo de producto</label>
                             <select class="custom-select form-control" id="tipo" name="tipo" required>
                                 <option value="" selected>Seleccione un tipo</option>
@@ -26,7 +31,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div id="precioProd" class="form-group col-7 col-md-5 col-lg-3">
+                        <div id="precioProd" class="form-group col-7 col-md-5 col-lg-4">
                             <label for="precioProducto">Precio</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -39,36 +44,28 @@
                                 <div class="invalid-feedback">Debe ingresar un precio de venta.</div>
                             </div>
                         </div>
-                        <div id="ofertaProd" class="form-group d-flex justify-content-center align-items-center col-5 col-md-5 col-lg-3">
-                            <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="ofertaSwich" name="ofertaSwich" data-toggle="collapse" data-target="#precioOferta">
-                                <label for="ofertaSwich" class="custom-control-label">Oferta</label>
-                            </div>
-                        </div>
-                        <div>
-                            <div id="precioOferta" class="collapse">
-                                <div class="row">
-                                    <div class="form-group col-6 col-md-5 col-lg-4">
-                                        <label for="descuentoProducto">Descuento</label>
-                                        <div class="input-group">
-                                            <input type="text" name="descuento" class="form-control" placeholder="0">
-                                            <span class="input-group-text">
-                                                <i class="fa fa-percent"></i>
-                                            </span>
-                                            <div class="invalid-feedback">Ingrese porcentaje de descuento.</div>
-                                        </div>
+                        <div id="ofertaProd" class="form-group col-5 col-md-7 col-lg-8">
+                            <div class="row">
+                                <div class="form-group col-6 col-md-5 col-lg-4">
+                                    <label for="descuentoProducto">Descuento</label>
+                                    <div class="input-group">
+                                        <input type="text" name="descuento" class="form-control" placeholder="0">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-percent"></i>
+                                        </span>
+                                        <div class="invalid-feedback">Ingrese porcentaje de descuento.</div>
                                     </div>
-                                    <div class="form-group col-6 col-md-5 col-lg-4">
-                                        <label for="precioOferta">Precio oferta</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">
-                                                    <i class="fa fa-dollar-sign"></i>
-                                                </span>
-                                            </div>
-                                            <input type="text" name="precioOferta" class="form-control" placeholder="0">
-                                            <div class="invalid-feedback">Ingrese precio de oferta.</div>
+                                </div>
+                                <div class="form-group col-6 col-md-5 col-lg-4">
+                                    <label for="precioOferta">Precio oferta</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-dollar-sign"></i>
+                                            </span>
                                         </div>
+                                        <input type="text" name="precioOferta" class="form-control" placeholder="0">
+                                        <div class="invalid-feedback">Ingrese precio de oferta.</div>
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +184,7 @@
             </div>
             <div class="row btnForm">
                 <div class="itemBtn col-4 col-md-2 col-lg-2">
-                    <button class="btn btn-primary" type="reset" value="limpiarProd">Limpiar</button>
+                    <button class="btn btn-primary" type="reset" value="limpiarProd">Cancelar</button>
                 </div>
                 <div class="itemBtn col-4 col-md-2 col-lg-2">
                     <button class="btn btn-primary" type="submit" value="guardarProd">Guardar</button>

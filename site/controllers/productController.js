@@ -45,7 +45,7 @@ let productController = {
       })
       .then((productos)=>{
         //console.log(productos);
-        res.render('productList', { title: 'Listado',
+        res.render('productList', { title: 'Productos',
                                 usuario: req.session.usuarioLogueado,
                                 productos:productos});
       })
@@ -148,44 +148,42 @@ let productController = {
                                     usuario: req.session.usuarioLogueado });
     },
     */
-    createProduct: function (req, res, next) {
-      let esOferta = 0;
-      if(req.body.ofertaSwich =='on'){
-          esOferta = 1;
-      };
-      console.log(req.files);
+    createProduct: async function (req, res, next) {
+      let precioOferta = 0;
+      let descuento = 0;
+      if(req.body.precioOferta > 0 || req.body.descuento > 0 ){
+          precioOferta = req.body.precioOferta;
+          descuento = req.body.descuento;
+      }
+      console.log(req.body);
+      //console.log(req.file);
+      try{
+          const productNew = await db.Product.create({
+              codigo: req.body.codigoProducto,
+              descripcion: req.body.nombreProducto,
+              product_type_id: req.body.tipo,
+              precio: req.body.precioProducto,
+              precio_oferta: precioOferta,
+              descuento_oferta: descuento,
+              rubro_id: req.body.grupo,
+              marca_id :req.body.marca,
+              detalle: req.body.txtDescripcion,
+              cant_comensales: req.body.radioPersonas,
+              calorias: req.body.calorias,
+              peso: req.body.peso,
+              receta: req.files.pdfFile[0].originalname
+          })
+          if (productNew instanceof db.Product){
+            mensaje = `El ${productoNew.descripcion} fue creado exitosamente!!!`
+            res.render('productMsg', { title: 'Producto creado',
+                                          tipo: 'success',
+                                          mensaje: mensaje,
+                                          usuario: req.session.usuarioLogueado });
+          }
+      }catch(error){
+        console.log(error);
+      }
 
-      db.Product.create({
-          descripcion: req.body.nombreProducto,
-          product_type_id: req.body.tipo,
-          precio: req.body.precioProducto,
-          oferta: esOferta,
-          precio_oferta: req.body.precioOferta,
-          descuento_oferta: req.body.descuento,
-          rubro_id: req.body.grupo,
-          marca_id :req.body.marca,
-          detalle: req.body.txtDescripcion,
-          cant_comensales: req.body.radioPersonas,
-          calorias: req.body.calorias,
-          peso: req.body.peso,
-          receta: req.body.pdfFile,
-          fotos: req.files[0].filename ,
-          ingredientes: arrayIngredientes
-      }, {
-        include:[
-        {association:"productType"},
-        {association:"marca"},
-        {association:"rubro"},
-        {association:"fotos"},
-        {association:"ingredientes"}
-        ]
-      }).then((productoNew)=>{
-        mensaje = `El ${productoNew.descripcion} fue creado exitosamente!!!`
-        res.render('productMsg', { title: 'Producto creado',
-                                    tipo: 'success',
-                                    mensaje: mensaje,
-                                    usuario: req.session.usuarioLogueado });
-      })
     },
 
     editProductById: function (req, res, next) {
