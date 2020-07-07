@@ -1380,4 +1380,48 @@ justify-content: space-around;
 }
 
 
-/**/
+/*custom input*/
+
+#lblSelect:hover {
+  background-color: #F20505;
+}
+
+#lblSelect:active {
+  background-color: #F20505;
+}
+
+.pPreview {
+  background: #eee;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  list-style-type: none;
+  border: 1px solid grey;
+}
+
+.lblSelect {
+  background-color: #B30E0B;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  height: auto;
+}
+
+.preview > p ,.previewReceta > p {
+  padding-left: 20px;
+}
+
+.preview img {
+  height: 64px;
+  order: 1;
+}
+
+.preview li, .previewReceta > p {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid gray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+

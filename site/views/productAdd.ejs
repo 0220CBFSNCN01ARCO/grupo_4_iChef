@@ -167,15 +167,15 @@
             <div class="card">
                 <div class="card-header">Fotos</div>
                 <div class="card-body">
-                    <div class="container contenedorImg">
-                        <div class="row rowImagenes">
-                            <div class="col-12 col-md-4 col-lg-3 imgUp">
-                                <div class="imagePreview"></div>
-                                <label class="btn btn-primary">Cargar
-                                    <input type="file" class="uploadFile img"  value="Upload Photo">
-                                </label>
+                    <div class="row">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <div>
+                                <label class="lblSelect" for="image_uploads">Seleccionar imagen/es (.jpg, .jpeg, .png)</label>
+                                <input class="inputFileCustom" type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
                             </div>
-                            <i class="fa fa-plus imgAdd"></i>
+                            <div class="preview">
+                                <p class="pPreview">No hay archivos seleccionados para cargar.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -184,10 +184,13 @@
                 <div class="card-header">Receta</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="form-group col-10 col-md-8 col-lg-6">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="pdfFile">
-                                <label class="custom-file-label" for="customFile">Cargar receta</label>
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <div>
+                                <label class="lblSelect" for="pdfFile">Seleccionar receta (.pdf)</label>
+                                <input class="inputFileCustom" type="file" id="pdfFile" name="pdfFile" accept=".pdf">
+                            </div>
+                            <div class="previewReceta">
+                                <p class="pPreview">No hay ninguna receta para cargar.</p>
                             </div>
                         </div>
                     </div>
@@ -204,6 +207,8 @@
         </form>
     </div>
     <%-include('./partials/footer')%>
+    <script src="../js/uploadImages.js" type="text/javascript"></script>
+
     <%-include('./partials/script')%>
 </body>
 </html>
