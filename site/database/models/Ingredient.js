@@ -18,12 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     const Ingredient = sequelize.define(alias, cols, config);
 
     Ingredient.associate = function(models){
-        /*Ingredient - IngredientProduct
-        Ingredient.hasMany(models.IngredientProduct, {
-            as: "ingredientesProd",
-            foreignKey: "id_ingredients"
-        });
-        */
+
        Ingredient.belongsToMany(models.Product, {
            as:'productos',
            through: models.IngredientProduct,

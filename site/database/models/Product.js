@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     let alias = "Product";
     let cols = {
-        id_product : {
+        id : {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -90,13 +90,8 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: "id_producto"
         });
 
-        /*Product - IngredientProduct
-        Product.belongsTo(models.IngredientProduct, {
-            as: "ingredienteProd",
-            foreignKey: "id_product"
-        });
-        */
-       Product.belongsToMany(models.Ingredient, {
+        /*Product - Ingredient */
+        Product.belongsToMany(models.Ingredient, {
         as:'ingredientes',
         through: models.IngredientProduct,
         foreignKey: 'id_product',
