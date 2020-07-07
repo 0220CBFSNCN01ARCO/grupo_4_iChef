@@ -74,12 +74,26 @@ let productController = {
                                        error: error,
                                        usuario: req.session.usuarioLogueado });
       });
-      
     },
-    productAdd: function (req, res, next) {
-      res.render('productAdd', {  title: 'Crear producto',
-                                  subtitle: 'Formulario alta',
-                                  usuario: req.session.usuarioLogueado });
+    productAdd: async function (req, res, next) {
+      try{
+        const tipoProducto = await db.ProductType.findAll();
+        const rubros = await db.Heading.findAll();
+        const marcas = await db.Brand.findAll();
+        const ingredientes = await db.Ingredient.findAll();
+
+        res.render('productAdd', {  title: 'Crear producto',
+                                    subtitle: 'Formulario alta',
+                                    tipoProducto,
+                                    rubros,
+                                    marcas,
+                                    ingredientes,
+                                    usuario: req.session.usuarioLogueado });
+      }catch(errorP){
+        return res.render('error', { title: 'Error',
+                                       error: errorP,
+                                       usuario: req.session.usuarioLogueado });
+      };
     },
     /*
     createProduct: function (req, res, next) {
@@ -134,13 +148,12 @@ let productController = {
                                     usuario: req.session.usuarioLogueado });
     },
     */
-  
     createProduct: function (req, res, next) {
-  
       let esOferta = 0;
       if(req.body.ofertaSwich =='on'){
-      esOferta = 1;
+          esOferta = 1;
       };
+      console.log(req.files);
 
       db.Product.create({
           descripcion: req.body.nombreProducto,

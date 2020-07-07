@@ -3,7 +3,6 @@
 <%- include('./partials/head') %>
 <body>
     <%- include('./partials/header') %>
-    <%- include('./partials/subtitle') %>
     <div class="container-fluid containerForm">
         <form method="POST" action="/product/create" class="frmProducto needs-validation" novalidate>
             <div class="card">
@@ -19,8 +18,9 @@
                             <label for="tipo">Tipo de producto</label>
                             <select class="custom-select form-control" id="tipo" name="tipo" required>
                                 <option value="" selected>Seleccione un tipo</option>
-                                <option value="1">Producto</option>
-                                <option value="2">Caja</option>
+                                <% for (let i=0; i < tipoProducto.length; i++) { %>
+                                    <option value="<%= tipoProducto[i].id %>"><%= tipoProducto[i].descripcion %></option>
+                                <% } %>
                             </select>
                             <div class="invalid-feedback">Debe seleccionar un grupo.</div>
                         </div>
@@ -79,13 +79,9 @@
                             <label for="grupo">Rubro</label>
                             <select class="custom-select form-control" id="grupo" name="grupo" required>
                                 <option value="" selected>Seleccione un rubro</option>
-                                <option value="1">Alimentos Congelados</option>
-                                <option value="2">Almacén</option>
-                                <option value="3">Bebidas con Alcohol</option>
-                                <option value="4">Bebidas sin Alcohol</option>
-                                <option value="5">Frescos</option>
-                                <option value="6">grupo3</option>
-                                <option value="7" >grupo2</option>
+                                <% for (let i=0; i < rubros.length; i++) { %>
+                                    <option value="<%= rubros[i].id %>"><%= rubros[i].descripcion %></option>
+                                <% } %>
                             </select>
                             <div class="invalid-feedback">Debe seleccionar un rubro.</div>
                         </div>
@@ -93,11 +89,9 @@
                             <label for="marca">Marca</label>
                             <select class="custom-select form-control" name="marca" required>
                                 <option value="" selected>Seleccione una marca</option>
-                                <option value="1">Arcor</option>
-                                <option value="2">Alicante</option>
-                                <option value="4">Andresito</option>
-                                <option value="5">Baggio</option>
-                                <option value="10">Branca</option>
+                                <% for (let i=0; i < marcas.length; i++) { %>
+                                    <option value="<%= marcas[i].id %>"><%= marcas[i].descripcion %></option>
+                                <% } %>
                             </select>
                             <div class="invalid-feedback">Debe seleccionar una marca.</div>
                         </div>
@@ -139,14 +133,9 @@
                         <div class="form-group col-12 col-md-6 col-lg-4">
                             <label for="ingredientes">Ingredientes</label>
                             <select multiple class="custom-select mr-sm-2 form-control" name="ingredientes">
-                                <option value="1">Carne vacuna</option>
-                                <option value="2">Cebolla</option>
-                                <option value="3">Limón</option>
-                                <option value="4">bicarbonato</option>
-                                <option value="6">cilantro</option>
-                                <option value="7">tomillo</option>
-                                <option value="8">romero</option>
-                                <option value="13">zanahoria</option>
+                                <% for (let i=0; i < ingredientes.length; i++) { %>
+                                    <option value="<%= ingredientes[i].id %>"><%= ingredientes[i].descripcion %></option>
+                                <% } %>
                               </select>
                         </div>
                     </div>

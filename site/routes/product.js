@@ -36,7 +36,7 @@ router.get('/:id', productController.getProductById);
 //4. /products​ (POST)  Acción de creación (a donde se envía el formulario) 
 //router.post('/create', productController.createProduct);
 
-router.post('/create', authMiddleware, upload.array('fotos') , productController.createProduct);
+router.post('/create', authMiddleware, upload.array('image_uploads') , productController.createProduct);
 
 //5. /products/​:id​/edit ​(GET)  Formulario de edición de productos 
 router.get('/:id/edit', authMiddleware, productController.editProductById);
