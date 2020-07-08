@@ -18,12 +18,12 @@ module.exports = (sequelize, DataTypes) => {
     const Ingredient = sequelize.define(alias, cols, config);
 
     Ingredient.associate = function(models){
-
        Ingredient.belongsToMany(models.Product, {
            as:'productos',
-           through: models.IngredientProduct,
-           foreignKey: 'id_ingredients',
-           otherKey: 'id_product'
+           through: 'ingredients_products',
+           foreignKey: 'product_id',
+           otherKey: 'ingredients_id',
+           timestamps: 0
        });
 
 

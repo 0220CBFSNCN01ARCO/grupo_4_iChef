@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
     let alias = "IngredientProduct";
     let cols = {
-        id : {
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        id_product : {
+        product_id: {
             type: DataTypes.INTEGER,
             reference: {
                 model: 'Product',
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             }
 
         },
-        id_ingredients : {
+        ingredients_id: {
             type: DataTypes.INTEGER,
             reference: {
                 model: 'Ingredient',
@@ -37,16 +37,16 @@ module.exports = (sequelize, DataTypes) => {
 
     const IngredientProduct = sequelize.define(alias, cols, config);
 
-    IngredientProduct.associate = function(models){
+    /*IngredientProduct.associate = function(models){
         IngredientProduct.belongsTo(models.Product, {
             as: 'productos',
-            foreignKey: 'id_product'
+            foreignKey: 'product_id'
         });
         IngredientProduct.belongsTo(models.Ingredient, {
             as: 'ingredientes',
-            foreignKey: 'id_ingredients'
+            foreignKey: 'ingredients_id'
         });
-    }
+    }*/
 
     return IngredientProduct;
 

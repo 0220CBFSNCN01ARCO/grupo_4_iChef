@@ -89,11 +89,12 @@ module.exports = (sequelize, DataTypes) => {
 
         /*Product - Ingredient */
         Product.belongsToMany(models.Ingredient, {
-        as:'ingredientes',
-        through: models.IngredientProduct,
-        foreignKey: 'id_product',
-        otherKey: 'id_ingredients'
-    });
+                as:'ingredientes',
+                through: 'ingredients_products',
+                foreignKey: 'product_id',
+                otherKey: 'ingredients_id',
+                timestamps: 0
+        });
 
     }
 
