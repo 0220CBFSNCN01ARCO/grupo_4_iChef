@@ -1,6 +1,7 @@
 const fs = require('fs');
 const db = require('../database/models');
 const { Op } = require("sequelize");
+const Sequelize = require('sequelize');
 
 let productController = {
     productDetail: function (req, res, next) {
@@ -81,9 +82,15 @@ let productController = {
         const rubros = await db.Heading.findAll();
         const marcas = await db.Brand.findAll();
         const ingredientes = await db.Ingredient.findAll();
-
+        const maxCodigo = await db.Product.findAll({
+          attributes: [[Sequelize.fn('max', Sequelize.col('id_product')), 'codigo']],
+          raw: true
+        });
+        //console.log(maxCodigo);
+        let codigo = maxCodigo[0].codigo + 1
         res.render('productAdd', {  title: 'Crear producto',
                                     subtitle: 'Formulario alta',
+                                    codigo,
                                     tipoProducto,
                                     rubros,
                                     marcas,
@@ -158,6 +165,13 @@ let productController = {
       console.log(req.body);
       //console.log(req.file);
       try{
+          let arrayIngredientes = [{id_product: req.body.codigoProducto, id_ingredients:1 },
+                              {id_product: req.body.codigoProducto, id_ingredients:2 },
+                              {id_product: req.body.codigoProducto, id_ingredients:3 }]
+
+          const ingredientes = await db.IngredientProduct.create({arrayIngredientes});
+          console.log(ingredientes);
+
           const productNew = await db.Product.create({
               codigo: req.body.codigoProducto,
               descripcion: req.body.nombreProducto,
@@ -172,7 +186,16 @@ let productController = {
               calorias: req.body.calorias,
               peso: req.body.peso,
               receta: req.files.pdfFile[0].originalname
-          })
+          }); //fin create
+          let arrayFotos =  [{ nombre: 'foto 1',id_producto: req.body.codigoProducto},
+                             { nombre: 'foto 2',id_producto: req.body.codigoProducto}]
+
+          const fotos = await db.Photo.create({arrayFotos});
+          console.log(fotos);
+
+           /*, {
+            include:[{association: "productos"},{association: "ingredientes"}]
+          }*/ 
           if (productNew instanceof db.Product){
             mensaje = `El ${productoNew.descripcion} fue creado exitosamente!!!`
             res.render('productMsg', { title: 'Producto creado',
@@ -187,37 +210,14 @@ let productController = {
     },
 
     editProductById: function (req, res, next) {
-      let idProducto = req.params.id;
-      let productosJSON = fs.readFileSync('./data/products.json',{ encoding:'utf-8'});
-      let productos;
-
-      if(productosJSON == ""){
-        productos = [];
-      }else{
-        productos = JSON.parse(productosJSON);
-      }
-
-      let productEdit = productos.filter(function (producto) {
-        return producto.codigo == idProducto;
-      });
-
-      res.render('productEdit', { title: 'Editar',
-                                  subtitle: 'Formulario edición',
-                                  producto: productEdit,
-                                  usuario: req.session.usuarioLogueado});
-    },
-
-    /*
-      editProductById: function (req, res, next) {
         db.Product.findByPk(req.params.id, {include:[{association:"productType"}, {association:"marca"}, {association:"rubro"}, {association:"fotosProd"}, {association:"ingredienteProd"} ]})
         .then((producto)=>{
           res.render('productEdit', { title: 'Editar',
                                   subtitle: 'Formulario edición',
                                   producto: producto,
                                   usuario: req.session.usuarioLogueado});
-        }
+        })
     },
-    */
 
     saveProductById: function (req, res, next) {
       let esOferta = false;
@@ -272,61 +272,10 @@ let productController = {
                                     mensaje: mensaje,
                                   usuario: req.session.usuarioLogueado });
     },
-
-    /*
-      saveProductById: function (req, res, next) {
-        db.Product.update({
-          codigo: req.body.codigo,
-          descripcion: req.body.nombreProducto,
-          productType: {
-            descripcion:req.body.tipo,
-          },
-          precio: req.body.precioProducto,
-          oferta: esOferta,
-          precio_oferta: req.body.precioOferta,
-          descuento_oferta: req.body.descuento,
-          rubro: {
-            descripcion:req.body.grupo
-          },
-          marca: {
-            descripcion:req.body.marca
-          },
-          detalle: req.body.txtDescripcion,
-          cant_comensales: req.body.radioPersonas,
-                ingredientes: ingredients.forEach(ingrediente=>{
-                  ingrediente.descripcion:req.params
-                })
-                
-                  //descripcion:arrayIngredientes
-                },
-                calorias: req.body.calorias,
-                peso: req.body.peso,
-                fotos: {
-                  nombre:arrayFotos
-                },
-                receta: req.body.pdfFile
-        },
-        {
-          where: {id:req.params.id }
-        },
-          {
-            include:[{association:"productType"}, {association:"marca"}, {association:"rubro"}, {association:"fotosProd"}, {association:"ingredienteProd"} ]
-          }
-        )
-        .then((productEdited)=>{
-          mensaje = `El Producto ${ productEdited.id}, ${ productEdited.descripcion } fue editado exitosamente!!!`
-          res.render('productMsg', { title: 'Producto editado',
-                                     tipo: 'success',
-                                     mensaje: mensaje,
-                                     usuario: req.session.usuarioLogueado });
-        },
-    */
-
     productDelete:function (req, res, next) {
         res.render('productDelete', { title: 'Producto borrado',
                                     usuario: req.session.usuarioLogueado });
     },
-
     deleteProductById: function (req, res, next) {
       db.Product.destroy({
         where: {id: req.params.idProducto }
@@ -368,6 +317,8 @@ let productController = {
         });
     }
 };
+
+
 
 
 module.exports = productController;

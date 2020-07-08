@@ -1,5 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define("IngredientProduct", {
+    let alias = "IngredientProduct";
+    let cols = {
         id : {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -28,20 +29,25 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             field: 'updatedAt'
         }
-    }, {
-        tableName : "ingredients_products"
-    });
-
-     /*IngredientProduct.associate = function(models){
-        IngredientProduct - Product
-        IngredientProduct.hasMany(models.Product, {
-            as: "productos",
-            foreignKey: "ingredientes_id"
-        });
-
-        IngredientProduct - Ingredient
-        IngredientProduct.belongsTo(models.Ingredient, {
-            as: "ingrediente",
-            foreignKey: "id_ingredients"
-        });*/
     }
+    let config = {
+        tableName : "ingredients_products",
+        timestamps : 0
+    };
+
+    const IngredientProduct = sequelize.define(alias, cols, config);
+
+    IngredientProduct.associate = function(models){
+        IngredientProduct.belongsTo(models.Product, {
+            as: 'productos',
+            foreignKey: 'id_product'
+        });
+        IngredientProduct.belongsTo(models.Ingredient, {
+            as: 'ingredientes',
+            foreignKey: 'id_ingredients'
+        });
+    }
+
+    return IngredientProduct;
+
+}

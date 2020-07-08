@@ -15,7 +15,11 @@ const storage = multer.diskStorage({
         }
       },
       filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + path.extname(file.originalname))
+        if (file.originalname.match(/\.(pdf)$/)){
+          cb(null, 'Receta-' + req.codigoProducto + '-' + path.extname(file.originalname))
+        }else {
+          cb(null, req.tipo + '-' + req.codigoProducto + '-' + path.extname(file.originalname))
+        }
       }
   })
 

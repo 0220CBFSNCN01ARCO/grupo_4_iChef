@@ -37,7 +37,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `ingredients_products` WRITE;
 /*!40000 ALTER TABLE `ingredients_products` DISABLE KEYS */;
-INSERT INTO `ingredients_products` VALUES (1,1,1,NULL,NULL),(2,2,1,NULL,NULL);
+INSERT INTO `ingredients_products` VALUES (1,1),(2,1);
 /*!40000 ALTER TABLE `ingredients_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +57,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,1,'Market 1',1,12.5,0,0,0,1,1,'Market 1',2,250,350,NULL),(2,2,'Box 1',2,12.5,0,0,0,1,1,'Box 1',1,100,100,NULL);
+INSERT INTO `product` VALUES (1,1,'Market 1',1,12.5,0,0,1,1,'Market 1',2,250,350,NULL),(2,2,'Box 1',2,12.5,0,0,1,1,'Box 1',1,100,100,NULL);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
