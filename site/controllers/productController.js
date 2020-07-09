@@ -179,21 +179,19 @@ let productController = {
               receta: req.files.pdfFile[0].originalname
           }); //fin create
 
-          console.log("ID producto: " + productNew.id_product);
-          console.log(req.files);
+          //console.log("ID producto: " + productNew.id_product);
+          //console.log(req.files);
 
           for (i = 0; i < req.body.ingredientes.length ; i++){
             const ingredientes = await db.IngredientProduct
               .create({ product_id: productNew.id_product ,
                         ingredient_id: req.body.ingredientes[i] });
-            console.log(ingredientes);
           }
 
           for (i = 0; i < req.files.image_uploads.length ; i++){
             const foto = await db.Photo
               .create({ nombre: req.files.image_uploads[i].filename ,
                         product_id: productNew.id_product });
-            console.log(foto);
           }
 
           if (productNew instanceof db.Product){
