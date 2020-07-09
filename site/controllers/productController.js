@@ -162,16 +162,7 @@ let productController = {
           precioOferta = req.body.precioOferta;
           descuento = req.body.descuento;
       }
-      console.log(req.body);
-      //console.log(req.file);
       try{
-          let arrayIngredientes = [{id_product: req.body.codigoProducto, id_ingredients:1 },
-                              {id_product: req.body.codigoProducto, id_ingredients:2 },
-                              {id_product: req.body.codigoProducto, id_ingredients:3 }]
-
-          const ingredientes = await db.IngredientProduct.create({arrayIngredientes});
-          console.log(ingredientes);
-
           const productNew = await db.Product.create({
               codigo: req.body.codigoProducto,
               descripcion: req.body.nombreProducto,
@@ -187,21 +178,26 @@ let productController = {
               peso: req.body.peso,
               receta: req.files.pdfFile[0].originalname
           }); //fin create
-          let arrayFotos =  [{ nombre: 'foto 1',id_producto: req.body.codigoProducto},
-                             { nombre: 'foto 2',id_producto: req.body.codigoProducto}]
 
-          const fotos = await db.Photo.create({arrayFotos});
-          console.log(fotos);
+          console.log("ID producto: " + productNew.id_product);
+          console.log(req.files);
 
-           /*, {
-            include:[{association: "productos"},{association: "ingredientes"}]
-          }*/ 
+          for (i = 0; i < req.body.ingredientes.length ; i++){
+            const ingredientes = await db.IngredientProduct
+              .create({ product_id: productNew.id_product ,
+                        ingredient_id: req.body.ingredientes[i] });
+            console.log(ingredientes);
+          }
+
+          for (i = 0; i < req.files.image_uploads.length ; i++){
+            const foto = await db.Photo
+              .create({ nombre: req.files.image_uploads[i].filename ,
+                        product_id: productNew.id_product });
+            console.log(foto);
+          }
+
           if (productNew instanceof db.Product){
-            mensaje = `El ${productoNew.descripcion} fue creado exitosamente!!!`
-            res.render('productMsg', { title: 'Producto creado',
-                                          tipo: 'success',
-                                          mensaje: mensaje,
-                                          usuario: req.session.usuarioLogueado });
+            return res.redirect(301, '/product' );
           }
       }catch(error){
         console.log(error);

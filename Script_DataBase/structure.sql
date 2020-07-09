@@ -1,15 +1,15 @@
 CREATE DATABASE  IF NOT EXISTS `ichef` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `ichef`;
--- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
+-- MariaDB dump 10.17  Distrib 10.4.11-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: ichef
 -- ------------------------------------------------------
--- Server version	8.0.13
+-- Server version	10.4.11-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,10 +23,10 @@ USE `ichef`;
 
 DROP TABLE IF EXISTS `brand`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `brand` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,7 +37,7 @@ CREATE TABLE `brand` (
 
 DROP TABLE IF EXISTS `car_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `car_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cart_id` int(11) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE `car_detail` (
 
 DROP TABLE IF EXISTS `cart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -79,10 +79,10 @@ CREATE TABLE `cart` (
 
 DROP TABLE IF EXISTS `heading`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `heading` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -93,10 +93,10 @@ CREATE TABLE `heading` (
 
 DROP TABLE IF EXISTS `ingredients`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ingredients` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -107,18 +107,18 @@ CREATE TABLE `ingredients` (
 
 DROP TABLE IF EXISTS `ingredients_products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ingredients_products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_product` int(11) NOT NULL,
-  `id_ingredients` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `ingredient_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `producto_id_fk` (`id_product`),
-  KEY `ingredients_id_fk` (`id_ingredients`),
-  CONSTRAINT `ing_prod_id_ingrediente_fk` FOREIGN KEY (`id_ingredients`) REFERENCES `ingredients` (`id`),
-  CONSTRAINT `ing_prod_id_producto_fk` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`)
+  KEY `producto_id_fk` (`product_id`),
+  KEY `ingredients_id_fk` (`ingredient_id`),
+  CONSTRAINT `ing_prod_id_ingrediente_fk` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`id`),
+  CONSTRAINT `ing_prod_id_producto_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`id_product`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -128,16 +128,17 @@ CREATE TABLE `ingredients_products` (
 
 DROP TABLE IF EXISTS `photos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `photos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `id_producto` int(11) NOT NULL,
+  `nombre` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `product_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `foto_producto_fk` (`id_producto`),
-  CONSTRAINT `foto_producto_fk` FOREIGN KEY (`id_producto`) REFERENCES `product` (`id_product`)
+  CONSTRAINT `foto_producto_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`id_product`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `product`
@@ -145,22 +146,22 @@ CREATE TABLE `photos` (
 
 DROP TABLE IF EXISTS `product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product` (
   `id_product` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` int(11) NOT NULL,
-  `descripcion` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `product_type_id` int(11) NOT NULL,
   `precio` float NOT NULL,
   `precio_oferta` float NOT NULL,
   `descuento_oferta` float NOT NULL,
   `rubro_id` int(11) NOT NULL,
   `marca_id` int(11) NOT NULL,
-  `detalle` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `detalle` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `cant_comensales` int(11) NOT NULL,
   `calorias` float NOT NULL,
   `peso` float NOT NULL,
-  `receta` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `receta` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_product`),
   KEY `tipo_producto_id_fk` (`product_type_id`),
   KEY `marca_producto_id_fk` (`marca_id`),
@@ -177,10 +178,10 @@ CREATE TABLE `product` (
 
 DROP TABLE IF EXISTS `product_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -191,10 +192,10 @@ CREATE TABLE `product_type` (
 
 DROP TABLE IF EXISTS `status_cart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `status_cart` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -205,18 +206,18 @@ CREATE TABLE `status_cart` (
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `apellido` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `nroTelefono` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `avatar` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `nombre` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `apellido` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `nroTelefono` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `categorie_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -227,14 +228,13 @@ CREATE TABLE `users` (
 
 DROP TABLE IF EXISTS `users_categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `descripcion` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -246,4 +246,4 @@ CREATE TABLE `users_categories` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-08 12:02:01
+-- Dump completed on 2020-07-09 15:44:44
