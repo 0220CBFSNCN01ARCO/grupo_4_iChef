@@ -32,27 +32,6 @@ CREATE TABLE `brand` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `car_detail`
---
-
-DROP TABLE IF EXISTS `car_detail`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `car_detail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cart_id` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `precio_unitario` float NOT NULL,
-  `neto_total` float NOT NULL,
-  `descuentos` float NOT NULL,
-  `subtotal` float NOT NULL,
-  `total` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `cart`
 --
 
@@ -71,6 +50,55 @@ CREATE TABLE `cart` (
   `estado` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `cart_detail`
+--
+
+DROP TABLE IF EXISTS `cart_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cart_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cart_id` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `precio_unitario` float NOT NULL,
+  `neto_total` float NOT NULL,
+  `descuentos` float NOT NULL,
+  `subtotal` float NOT NULL,
+  `total` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `cart_status`
+--
+
+DROP TABLE IF EXISTS `cart_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cart_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `diners`
+--
+
+DROP TABLE IF EXISTS `diners`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `diners` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nro_comensales` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +147,7 @@ CREATE TABLE `ingredients_products` (
   KEY `ingredients_id_fk` (`ingredient_id`),
   CONSTRAINT `ing_prod_id_ingrediente_fk` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`id`),
   CONSTRAINT `ing_prod_id_producto_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,11 +162,10 @@ CREATE TABLE `photos` (
   `nombre` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `product_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `foto_producto_fk` (`id_producto`),
+  KEY `foto_producto_fk` (`product_id`),
   CONSTRAINT `foto_producto_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 
 --
 -- Table structure for table `product`
@@ -162,14 +189,31 @@ CREATE TABLE `product` (
   `calorias` float NOT NULL,
   `peso` float NOT NULL,
   `receta` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `estado` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_product`),
   KEY `tipo_producto_id_fk` (`product_type_id`),
   KEY `marca_producto_id_fk` (`marca_id`),
   KEY `rubro_producto_id_fk` (`rubro_id`),
+  KEY `estado_producto_fk` (`estado`),
+  CONSTRAINT `estado_producto_fk` FOREIGN KEY (`estado`) REFERENCES `product_status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `marca_producto_id_fk` FOREIGN KEY (`marca_id`) REFERENCES `brand` (`id`),
   CONSTRAINT `rubro_producto_id_fk` FOREIGN KEY (`rubro_id`) REFERENCES `heading` (`id`),
   CONSTRAINT `tipo_producto_id_fk` FOREIGN KEY (`product_type_id`) REFERENCES `product_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `product_status`
+--
+
+DROP TABLE IF EXISTS `product_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,20 +228,6 @@ CREATE TABLE `product_type` (
   `descripcion` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `status_cart`
---
-
-DROP TABLE IF EXISTS `status_cart`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `status_cart` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,7 +248,10 @@ CREATE TABLE `users` (
   `categorie_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
+  `estado` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`),
+  KEY `estado_usuario_fk` (`estado`),
+  CONSTRAINT `estado_usuario_fk` FOREIGN KEY (`estado`) REFERENCES `users_status` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -236,6 +269,21 @@ CREATE TABLE `users_categories` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `users_status`
+--
+
+DROP TABLE IF EXISTS `users_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(45) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -246,4 +294,4 @@ CREATE TABLE `users_categories` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-09 15:44:44
+-- Dump completed on 2020-07-11 12:38:32

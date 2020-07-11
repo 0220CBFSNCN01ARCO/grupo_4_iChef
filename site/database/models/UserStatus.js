@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = "StatusCart";
+    let alias = "UserStatus";
     let cols = {
         id : {
             type: DataTypes.INTEGER,
@@ -11,18 +11,20 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     let config = {
-        tableName : "status_cart",
-        timestamps : false
+        tableName : "users_status",
+        timestamps : 0
     };
 
-    const StatusCart = sequelize.define(alias, cols, config);
+    const UserStatus = sequelize.define(alias, cols, config);
 
-    StatusCart.associate = function(models){
-        StatusCart.hasMany(models.Cart, {
-            as: "carts",
+    UserStatus.associate = function(models){
+        /*UserStatus - User*/
+        UserStatus.hasMany(models.User, {
+            as: "estadoUsuario",
             foreignKey: "estado"
         });
     }
 
-    return StatusCart;
+
+    return UserStatus;
 }

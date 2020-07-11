@@ -17,3 +17,7 @@ Para la retrospectiva se utilizo la herramienta [FunRetro](https://funretro.io).
 ### Imagen tablero retrospectiva Sprint 4
 
 <img alt="Retrospectiva Sprint 4" src="./img/retro-sprint-4.png" width="900"/>
+
+### Imagen tablero retrospectiva Sprint 5
+
+<img alt="Retrospectiva Sprint 5" src="./img/retro-sprint-5.png" width="900"/>

@@ -6,7 +6,7 @@ const db = require('../database/models');
 
 let usersController = {
     userRegister: function (req, res, next) {
-        res.render('register', { title: 'Registro',
+        res.render('register', { title: 'iChef - Registro',
                                  subtitle: 'Registro usuario',
                                  usuario: req.session.usuarioLogueado});
     },
@@ -15,7 +15,7 @@ let usersController = {
       //console.log(errores);
       if(errores.isEmpty()){
         if(req.body.passwordUser != req.body.repeatPasswordUser){
-          return res.render('register', { title: 'Registro',
+          return res.render('register', { title: 'iChef - Registro',
                                           errores: [{ value: '',
                                                       msg: 'Las contraseñas no coinciden.',
                                                       param: 'passwordUser',
@@ -60,7 +60,7 @@ let usersController = {
       }
     },
     userLogin: function (req, res, next) {
-        return res.render('login', { title: 'Login',
+        return res.render('login', { title: 'iChef - Login',
                               usuario: req.session.usuarioLogueado });
     },
     loguearUsuario: async function(req, res, next) {
@@ -71,7 +71,7 @@ let usersController = {
         try{
             let usuarioLoguear = await db.User.findOne({where: {email: req.body.emailUsuario}});
             if(usuarioLoguear === null){
-              return res.render('login', {  title: 'Login',
+              return res.render('login', {  title: 'iChef - Login',
                                             errores: [{ value: '',
                                                       msg: 'El email ingresado no existe.',
                                                       param: 'emailUsuario',
@@ -114,10 +114,11 @@ let usersController = {
     },
     userList: function (req, res, next) {
       db.User.findAll(
-        {include:[{association: "categoriaUsuario"}]}
+        {include:[{association: "categoriaUsuario"},
+                  {association: "estadoUsuario"} ]}
       )
       .then(function(usuarios){
-        return res.render('usersList', { title: 'Usuarios',
+        return res.render('usersList', { title: 'iChef - Usuarios',
                                         usuarios: usuarios,
                                         usuario: req.session.usuarioLogueado });
       }).catch(function(error){
@@ -139,7 +140,7 @@ let usersController = {
       //console.log(req.session.usuarioLogueado.id);
       db.User.findByPk(req.params.id)
       .then(function(usuarioEdit){
-        return res.render('userProfile', { title: 'Perfil usuario',
+        return res.render('userProfile', { title: 'iChef - Perfil usuario',
                                             usuarioEdit: usuarioEdit,
                                             usuario: req.session.usuarioLogueado });
         }).catch(function(error){
@@ -152,7 +153,7 @@ let usersController = {
       db.User.findByPk(req.params.id)
       .then(function(usuarioEdit){
         //console.log(usuarioEdit)
-        return res.render('userProfile', { title: 'Editar perfil',
+        return res.render('userProfile', { title: 'iChef - Editar perfil',
                                   usuarioEdit: usuarioEdit,
                                   usuario: req.session.usuarioLogueado });
       }).catch(function(error){
@@ -192,7 +193,7 @@ let usersController = {
       .then(function(result){
         //console.log(result)
         let mensaje = "Usuario eliminado correctamente"
-        res.render('message', { title: 'Usuario',
+        res.render('message', { title: 'iChef - Usuario',
                                 tipo: 'success',
                                 mensaje: mensaje,
                                 usuario: req.session.usuarioLogueado });
@@ -206,7 +207,7 @@ let usersController = {
     changePassword: function (req, res, next) {
       db.User.findByPk(req.params.id)
       .then(function(usuarioEdit){
-          return res.render('changePassword', { title: 'Cambiar contraseña',
+          return res.render('changePassword', { title: 'iChef - Cambiar contraseña',
                                                 usuarioEdit: usuarioEdit,
                                                 usuario: req.session.usuarioLogueado });
         })
@@ -224,7 +225,7 @@ let usersController = {
           let usuario = await db.User.findByPk(req.params.id);
           let checkPass = bcrypt.compareSync(req.body.passwordUser,usuario.password);
           if(!checkPass){
-            return res.render('changePassword', { title: 'Cambiar contraseña',
+            return res.render('changePassword', { title: 'iChef - Cambiar contraseña',
                                                   usuarioEdit: usuario,
                                                   errores: [{ value: '',
                                                               msg: 'Las contraseña anterior no coincide.',
@@ -276,7 +277,7 @@ let usersController = {
       //console.log(req.session.usuarioLogueado.id);
       db.User.findByPk(req.params.id)
         .then(function(usuarioEdit){
-        return res.render('userAccount', { title: 'Cuenta usuario',
+        return res.render('userAccount', { title: 'iChef - Cuenta usuario',
                                             usuarioEdit: usuarioEdit,
                                             usuario: req.session.usuarioLogueado });
         })

@@ -10,6 +10,16 @@ INSERT INTO `brand` VALUES (1,'Arcor'),(2,'Alicante'),(3,'Aquarius'),(4,'Andresi
 UNLOCK TABLES;
 
 --
+-- Dumping data for table `diners`
+--
+
+LOCK TABLES `diners` WRITE;
+/*!40000 ALTER TABLE `diners` DISABLE KEYS */;
+INSERT INTO `diners` VALUES (1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'Mas de 6');
+/*!40000 ALTER TABLE `diners` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `heading`
 --
 
@@ -30,6 +40,16 @@ INSERT INTO `ingredients` VALUES (1,'Carne vacuna'),(2,'Cebolla'),(3,'Limón'),(
 UNLOCK TABLES;
 
 --
+-- Dumping data for table `product_status`
+--
+
+LOCK TABLES `product_status` WRITE;
+/*!40000 ALTER TABLE `product_status` DISABLE KEYS */;
+INSERT INTO `product_status` VALUES (1,'Activo'),(2,'Suspendido'),(3,'Eliminado'),(4,'Sin stock');
+/*!40000 ALTER TABLE `product_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `product_type`
 --
 
@@ -45,8 +65,19 @@ UNLOCK TABLES;
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,1,'Market 1',1,12.5,0,0,1,1,'Market 1',2,250,350,NULL),(2,2,'Box 1',2,12.5,0,0,1,1,'Box 1',1,100,100,NULL);
+INSERT INTO `product` VALUES (1,1,'Market 1',1,12.5,0,0,1,1,'Market 1',2,250,350,NULL,1),(2,2,'Box 1',2,12.5,0,0,1,1,'Box 1',1,100,100,NULL,1),(13,3,'Market 2',1,361,355,2,2,14,'Market 2',2,265,280,'',1),(14,14,'Market 3',1,230,225,5,2,9,'Market 3',2,169,248,'',1);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+--
+-- Dumping data for table `photos`
+--
+
+LOCK TABLES `photos` WRITE;
+/*!40000 ALTER TABLE `photos` DISABLE KEYS */;
+INSERT INTO `photos` VALUES (1,'prod-1.png',1),(2,'box1.jpg',2),(5,'1-3.jpg',13),(6,'1-14.png',14);
+/*!40000 ALTER TABLE `photos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -55,19 +86,28 @@ UNLOCK TABLES;
 
 LOCK TABLES `ingredients_products` WRITE;
 /*!40000 ALTER TABLE `ingredients_products` DISABLE KEYS */;
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (1,1);
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (2,1);
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (1,1),
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (2,1)
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,39)
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,8)
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,19)
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,30)
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,7)
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,13)
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (14,18)
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (14,26)
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (14,15)
 /*!40000 ALTER TABLE `ingredients_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping data for table `photos`
+-- Dumping data for table `users_status`
 --
 
-LOCK TABLES `photos` WRITE;
-/*!40000 ALTER TABLE `photos` DISABLE KEYS */;
-INSERT INTO `photos` VALUES (1,'prod-1.png',1),(2,'box1.jpg',2);
-/*!40000 ALTER TABLE `photos` ENABLE KEYS */;
+LOCK TABLES `users_status` WRITE;
+/*!40000 ALTER TABLE `users_status` DISABLE KEYS */;
+INSERT INTO `users_status` VALUES (1,'Activo'),(2,'Suspendido'),(3,'Bloqueado'),(4,'Dado baja');
+/*!40000 ALTER TABLE `users_status` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -86,6 +126,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Admin','Admin','admin@ichef.com','$2b$10$7wmTOptmvMBtQ.dWxXenyO8cbrvRMuWUMNk8Me5qQ0pGIbO42ppei','11111111','admin-23-06-2020.jpg',1,'2020-06-29 23:48:27','2020-06-29 20:48:27'),(2,'jose','jose','jose@ichef.com','$2b$10$6PUC9H6bHrmrIV5Z1lIjJeRN08ZMWrtrH4RKT7G7mAj24f2OsMwLK','1234567891','jose-30-06-2020.png',4,'2020-07-01 00:14:29','2020-07-01 00:14:29');
+INSERT INTO `users` VALUES (1,'Admin','Admin','admin@ichef.com','$2b$10$7wmTOptmvMBtQ.dWxXenyO8cbrvRMuWUMNk8Me5qQ0pGIbO42ppei','11111111','admin-23-06-2020.jpg',1,'2020-06-30 02:48:27','2020-06-29 20:48:27',1),(2,'jose','jose','jose@ichef.com','$2b$10$6PUC9H6bHrmrIV5Z1lIjJeRN08ZMWrtrH4RKT7G7mAj24f2OsMwLK','1234567891','jose-30-06-2020.png',4,'2020-07-01 03:14:29','2020-07-01 00:14:29',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+

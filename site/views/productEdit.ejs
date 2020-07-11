@@ -3,35 +3,39 @@
 <%- include('./partials/head') %>
 <body>
     <%- include('./partials/header') %>
-    <%- include('./partials/subtitle') %>
     <div class="container-fluid containerForm">
-        <form method="POST" action="/product/<%= producto[0].codigo %>/edit?_method=PUT" class="frmProducto needs-validation" novalidate>
+        <form method="POST" action="/product/<%= producto.id_product %>/edit" class="frmProducto" enctype="multipart/form-data" novalidate>
             <div class="card">
                 <div class="card-header">Datos del producto</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="form-group col-12 col-md-7 col-lg-7">
+                        <div class="form-group col-sm-12 col-md-3 col-lg-2">
+                            <label for="codigoProducto">Codigo</label>
+                            <input type="text" class="form-control" name="codigoProducto" value="<%= producto.codigo %>">
+                            <div class="invalid-feedback">Debe ingresar un codigo para el producto</div>
+                        </div>
+                        <div class="form-group col-sm-12 col-md-6 col-lg-7">
                             <label for="nombreProducto">Nombre</label>
-                            <input type="text" class="form-control" name="nombreProducto" value="<%= producto[0].nombre %>" required>
+                            <input type="text" class="form-control" name="nombreProducto" value="<%= producto.descripcion %>" required>
                             <div class="invalid-feedback">Debe ingresar un nombre para el producto.</div>
                         </div>
-                        <div class="form-group col-12 col-md-5 col-lg-4">
+                        <div class="form-group col-sm-12 col-md-3 col-lg-3">
                             <label for="tipo">Tipo de producto</label>
                             <select class="custom-select form-control" id="tipo" name="tipo" required>
                                 <option value="">Seleccione un tipo</option>
-                                <% if(producto[0].tipo == "PRODUCTO")  { %>
-                                    <option value="PRODUCTO" selected>Producto</option>
-                                    <option value="CAJA">Caja</option>
-                                <% } else { %>
-                                    <option value="PRODUCTO">Producto</option>
-                                    <option value="CAJA" selected>Caja</option>
+                                <% for (let i=0; i < tipoProducto.length; i++) { %>
+                                    <% if(producto.product_type_id == tipoProducto[i].id) { %>
+                                        <option value="<%= tipoProducto[i].id %>" selected><%= tipoProducto[i].descripcion %></option>
+                                    <% } else { %>
+                                        <option value="<%= tipoProducto[i].id %>"><%= tipoProducto[i].descripcion %></option>
+                                    <% } %>
                                 <% } %>
                             </select>
-                            <div class="invalid-feedback">Debe seleccionar un tipo.</div>
+                            <div class="invalid-feedback">Debe seleccionar un grupo.</div>
                         </div>
                     </div>
                     <div class="row">
-                        <div id="precioProd" class="form-group col-7 col-md-5 col-lg-3">
+                        <div id="precioProd" class="form-group col-7 col-md-5 col-lg-4">
                             <label for="precioProducto">Precio</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -40,45 +44,32 @@
                                         <i class="fa fa-dollar-sign"></i>
                                     </span>
                                 </div>
-                                <input type="number" maxlength="7" class="form-control" name="precioProducto" value="<%= producto[0].precio %>" required>
+                                <input type="text" class="form-control" name="precioProducto" value="<%= producto.precio %>" required>
                                 <div class="invalid-feedback">Debe ingresar un precio de venta.</div>
                             </div>
                         </div>
-                        <div id="ofertaProd" class="form-group d-flex justify-content-center align-items-center col-5 col-md-5 col-lg-3">
-                            <div class="custom-control custom-switch">
-                                <% if( producto[0].oferta) { %>
-                                    <input type="checkbox" class="custom-control-input" id="ofertaSwich" name="ofertaSwich" data-toggle="collapse" data-target="#precioOferta" aria-expanded="false" checked>
-
-                                <% } else { %>
-                                    <input type="checkbox" class="custom-control-input collapse" id="ofertaSwich" name="ofertaSwich" data-toggle="collapse" data-target="#precioOferta" aria-expanded="true">
-                                <% } %>
-                                <label for="ofertaSwich" class="custom-control-label">Oferta</label>
-                            </div>
-                        </div>
-                        <div>
-                            <div id="precioOferta" class="collapse">
-                                <div class="row">
-                                    <div class="form-group col-6 col-md-5 col-lg-4">
-                                        <label for="descuentoProducto">Descuento</label>
-                                        <div class="input-group">
-                                            <input type="number" maxlength="3"  name="descuento" class="form-control" placeholder="0">
-                                            <span class="input-group-text">
-                                                <i class="fa fa-percent"></i>
-                                            </span>
-                                            <div class="invalid-feedback">Ingrese porcentaje de descuento.</div>
-                                        </div>
+                        <div id="ofertaProd" class="form-group col-5 col-md-7 col-lg-8">
+                            <div class="row">
+                                <div class="form-group col-6 col-md-5 col-lg-4">
+                                    <label for="descuentoProducto">Descuento</label>
+                                    <div class="input-group">
+                                        <input type="text" name="descuento" class="form-control" value="<%= producto.descuento_oferta %>">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-percent"></i>
+                                        </span>
+                                        <div class="invalid-feedback">Ingrese porcentaje de descuento.</div>
                                     </div>
-                                    <div class="form-group col-6 col-md-5 col-lg-4">
-                                        <label for="precioOferta">Precio oferta</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">
-                                                    <i class="fa fa-dollar-sign"></i>
-                                                </span>
-                                            </div>
-                                            <input type="number" maxlength="7" name="precioOferta" class="form-control" placeholder="0">
-                                            <div class="invalid-feedback">Ingrese precio de oferta.</div>
+                                </div>
+                                <div class="form-group col-6 col-md-5 col-lg-4">
+                                    <label for="precioOferta">Precio oferta</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-dollar-sign"></i>
+                                            </span>
                                         </div>
+                                        <input type="text" name="precioOferta" class="form-control" value="<%= producto.precio_oferta %>">
+                                        <div class="invalid-feedback">Ingrese precio de oferta.</div>
                                     </div>
                                 </div>
                             </div>
@@ -86,27 +77,30 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-xs-6 col-md-5 col-lg-4">
-                            <label for="grupo">Grupo</label>
+                            <label for="grupo">Rubro</label>
                             <select class="custom-select form-control" id="grupo" name="grupo" required>
-                                <option value="">Seleccione un grupo</option>
-                                <option value="generico">Generico</option>
-                                <option value="grupo2">Grupo 1</option>
-                                <option value="grupo3">Grupo 2</option>
-                                <option value="grupo4">Grupo 3</option>
-                                <option value="grupo5">Grupo 4</option>
+                                <option value="">Seleccione un rubro</option>
+                                <% for (let i=0; i < rubros.length; i++) { %>
+                                    <% if(producto.rubro_id == rubros[i].id) { %>
+                                        <option value="<%= rubros[i].id %>" selected><%= rubros[i].descripcion %></option>
+                                    <% } else { %>
+                                        <option value="<%= rubros[i].id %>"><%= rubros[i].descripcion %></option>
+                                    <% } %>
+                                <% } %>
                             </select>
-
-                            <div class="invalid-feedback">Debe seleccionar un grupo.</div>
+                            <div class="invalid-feedback">Debe seleccionar un rubro.</div>
                         </div>
                         <div class="form-group col-xs-6 col-md-5 col-lg-4">
                             <label for="marca">Marca</label>
                             <select class="custom-select form-control" name="marca" required>
-                                <option value="" selected>Seleccione una marca</option>
-                                <option value="generica">Generica</option>
-                                <option value="marca2">Marca 1</option>
-                                <option value="marca3">Marca 2</option>
-                                <option value="marca4">Marca 3</option>
-                                <option value="marca5">Marca 4</option>
+                                <option value="">Seleccione una marca</option>
+                                <% for (let i=0; i < marcas.length; i++) { %>
+                                    <% if(producto.marca_id == marcas[i].id) { %>
+                                        <option value="<%= marcas[i].id %>" selected><%= marcas[i].descripcion %></option>
+                                    <% } else { %>
+                                        <option value="<%= marcas[i].id %>"><%= marcas[i].descripcion %></option>
+                                    <% } %>
+                                <% } %>
                             </select>
                             <div class="invalid-feedback">Debe seleccionar una marca.</div>
                         </div>
@@ -114,29 +108,26 @@
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-12 col-lg-8">
                             <label for="txtDescripcion">Descripción</label>
-                            <textarea class="form-control" name="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"  required><%= producto[0].descripcion%></textarea>
+                            <textarea class="form-control" name="txtDescripcion" rows="3" required><%= producto.detalle %></textarea>
                             <div class="invalid-feedback">Debe agregar una descripción valida.</div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-12 col-lg-8">
                             <p>Cantidad comensales</p>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio1" name="radioPersonas" value="1" checked>
-                                <label class="form-check-label" for="radio1">1</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio2" name="radioPersonas" value="2">
-                                <label class="form-check-label" for="cradio2">2</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio3" name="radioPersonas" value="4">
-                                <label class="form-check-label" for="radio3">4</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio4" name="radioPersonas" value="6">
-                                <label class="form-check-label" for="radio4">Mas de 6</label>
-                            </div>
+                            <% for (let i=0; i < cantComensales.length; i++) { %>
+                                <% if(producto.cant_comensales == cantComensales[i].nro_comensales) { %>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="radio1" name="radioPersonas" value="<%= producto.cant_comensales %>" checked>
+                                        <label class="form-check-label" for="radio1"><%= cantComensales[i].nro_comensales %></label>
+                                    </div>
+                                <% } else { %>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="radio1" name="radioPersonas" value="<%= cantComensales[i].nro_comensales %>">
+                                        <label class="form-check-label" for="radio1"><%= cantComensales[i].nro_comensales %></label>
+                                    </div>
+                                <% } %>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -147,27 +138,26 @@
                     <div class="row">
                         <div class="form-group col-12 col-md-6 col-lg-4">
                             <label for="ingredientes">Ingredientes</label>
-                            <select multiple class="custom-select mr-sm-2 form-control" name="ingredientes" required>
-                                <option value="1">Ingrediente 1</option>
-                                <option value="2">Ingrediente 2</option>
-                                <option value="3">Ingrediente 3</option>
-                                <option value="4">Ingrediente 4</option>
-                                <option value="5">Ingrediente 5</option>
-                                <option value="6">Ingrediente 6</option>
-                                <option value="7">Ingrediente 7</option>
-                                <option value="8">Ingrediente 8</option>
+                            <select multiple class="custom-select mr-sm-2 form-control" name="ingredientes">
+                                <% for (let i=0; i < ingredientes.length; i++) { %>
+                                    <% if(producto.ingredientes.some(ingrediente => ingrediente.id == ingredientes[i].id)) { %>
+                                        <option value="<%= ingredientes[i].id %>" selected><%= ingredientes[i].descripcion %></option>
+                                    <% } else { %>
+                                        <option value="<%= ingredientes[i].id %>"><%= ingredientes[i].descripcion %></option>
+                                    <% } %>
+                                <% } %>
                               </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-5 col-md-3 col-lg-3">
                             <label for="txtCalorias">Calorías</label>
-                            <input type="text" class="form-control" name="calorias" value="<%= producto[0].calorias%>" required>
+                            <input type="text" class="form-control" name="calorias" value="<%= producto.calorias %>" required>
                             <div class="invalid-feedback">Ingrese cantidad calorias.</div>
                         </div>
                         <div class="form-group col-5 col-md-3 col-lg-3">
                             <label for="txtPeso">Peso (KG)</label>
-                            <input type="text" class="form-control" name="peso"  value="<%= producto[0].peso%>" required>
+                            <input type="text" class="form-control" name="peso" value="<%= producto.peso %>" required>
                             <div class="invalid-feedback">Ingrese peso en kilogramos.</div>
                         </div>
                     </div>
@@ -176,27 +166,44 @@
             <div class="card">
                 <div class="card-header">Fotos</div>
                 <div class="card-body">
-                    <div class="container contenedorImg">
-                        <div class="row rowImagenes">
-                            <div class="col-12 col-md-4 col-lg-3 imgUp">
-                                <div class="imagePreview"></div>
-                                    <label class="btn btn-primary">Cargar
-                                        <input type="file" class="uploadFile img" name="fotos" value="Upload Photo">
-                                    </label>
-                                </div><!-- col-2 -->
-                                <i class="fa fa-plus imgAdd"></i>
-                        </div><!-- row -->
-                    </div><!-- container -->
+                    <div class="row">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <div>
+                                <label class="lblSelect" for="image_uploads">Seleccionar imagen/es (.jpg, .jpeg, .png)</label>
+                                <input class="inputFileCustom" type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
+                            </div>
+                            <div class="preview">
+                                <% if(producto.fotos.length > 0) { %>
+                                    <ol>
+                                    <% for (let i=0; i < producto.fotos.length; i++) { %>
+                                        <li><img src="/images/products/<%= producto.product_type_id %>/<%= producto.fotos[i].nombre %>">
+                                        <p>Archivo: <%= producto.fotos[i].nombre %></p>
+                                        </li>
+                                    <% } %>
+                                    </ol>
+                                <% } else { %>
+                                    <p class="pPreview">No hay archivos seleccionados para cargar.</p>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">Receta</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="form-group col-10 col-md-8 col-lg-6">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="pdfFile">
-                                <label class="custom-file-label" for="customFile">Cargar receta</label>
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <div>
+                                <label class="lblSelect" for="pdfFile">Seleccionar receta (.pdf)</label>
+                                <input class="inputFileCustom" type="file" id="pdfFile" name="pdfFile" accept=".pdf">
+                            </div>
+                            <div class="previewReceta">
+                                <% if(producto.receta != null && producto.receta !='' ) { %>
+                                    <p class="pPreview">Receta: <%= producto.receta %>.</p>
+                                <% } else { %>
+                                    <p class="pPreview">No hay ninguna receta para cargar.</p>
+                                <% } %>
                             </div>
                         </div>
                     </div>
@@ -204,15 +211,17 @@
             </div>
             <div class="row btnForm">
                 <div class="itemBtn col-4 col-md-2 col-lg-2">
-                    <button class="btn btn-primary" type="reset" value="limpiarProd">Limpiar</button>
+                    <button class="btn btn-primary" type="reset" value="limpiarProd">Cancelar</button>
                 </div>
                 <div class="itemBtn col-4 col-md-2 col-lg-2">
-                    <button class="btn btn-primary" type="submit" value="guardarProd">Editar</button>
+                    <button class="btn btn-primary" type="submit" value="guardarProd">Guardar</button>
                 </div>
             </div>
         </form>
     </div>
     <%-include('./partials/footer')%>
+    <script src="/js/uploadImages.js" type="text/javascript"></script>
+
     <%-include('./partials/script')%>
 </body>
 </html>

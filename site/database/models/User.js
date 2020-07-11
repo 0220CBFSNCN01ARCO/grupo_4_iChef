@@ -56,6 +56,13 @@ module.exports = (sequelize, DataTypes) => {
             as: "categoriaUsuario",
             foreignKey: "categorie_id"
         });
+
+        //User - UserStatus
+        User.belongsTo(models.UserStatus, {
+            as: "estadoUsuario",
+            foreignKey: "estado"
+        });
+
     }
 
     return User;

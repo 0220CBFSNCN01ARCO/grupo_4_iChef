@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Cart.associate = function(models){
         /*Cart - StatursCart*/
-        Cart.belongsTo(models.StatusCart, {
+        Cart.belongsTo(models.CartStatus, {
             as: "estadoCart",
             foreignKey: "estado"
         });
@@ -54,10 +54,9 @@ module.exports = (sequelize, DataTypes) => {
 
         /*Cart - User*/
         Cart.belongsTo(models.User, {
-            as: "usuario",
+            as: "usuarioCart",
             foreignKey: "user_id"
-        });               
+        });
     }
-  
     return Cart;
 }

@@ -16,9 +16,9 @@ const storage = multer.diskStorage({
       },
       filename: function (req, file, cb) {
         if (file.originalname.match(/\.(pdf)$/)){
-          cb(null, 'Receta-' + req.codigoProducto + path.extname(file.originalname))
+          cb(null, 'Receta-' + req.body.codigoProducto + path.extname(file.originalname))
         }else {
-          cb(null, req.body.tipo + '-' + req.body.codigoProducto + path.extname(file.originalname))
+          cb(null, req.body.tipo + '-' + req.body.codigoProducto + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname))
         }
       }
   })
@@ -51,8 +51,10 @@ router.post('/create', upload.fields([{ name: 'image_uploads', maxCount: 5 },
 //5. /products/​:id​/edit ​(GET)  Formulario de edición de productos 
 router.get('/:id/edit', authMiddleware, productController.editProductById);
 
-//6. /products/​:id​ (PUT)  Acción de edición (a donde se envía el formulario): 
-router.put('/:id/edit',authMiddleware, productController.saveProductById);
+//6. /products/​:id​ (POST)  Acción de edición (a donde se envía el formulario): 
+router.post('/:id/edit',upload.fields([{ name: 'image_uploads', maxCount: 5 },
+                                       { name: 'pdfFile', maxCount: 1}]),
+                        authMiddleware, productController.saveProductById);
 
 //7. /products/​:id​ (DELETE) Acción de borrado
 router.delete('/:idProducto', authMiddleware, productController.deleteProductById);

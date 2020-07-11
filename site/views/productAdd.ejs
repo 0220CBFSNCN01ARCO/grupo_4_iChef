@@ -103,22 +103,19 @@
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-12 col-lg-8">
                             <p>Cantidad comensales</p>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio1" name="radioPersonas" value="1" checked>
-                                <label class="form-check-label" for="radio1">1</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio2" name="radioPersonas" value="2">
-                                <label class="form-check-label" for="cradio2">2</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio3" name="radioPersonas" value="4">
-                                <label class="form-check-label" for="radio3">4</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="radio4" name="radioPersonas" value="6">
-                                <label class="form-check-label" for="radio4">Mas de 6</label>
-                            </div>
+                            <% for (let i=0; i < cantComensales.length; i++) { %>
+                                <% if(i == 0) { %>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="radio1" name="radioPersonas" value="<%= cantComensales[i].nro_comensales %>" checked>
+                                        <label class="form-check-label" for="radio1"><%= cantComensales[i].nro_comensales %></label>
+                                    </div>
+                                <% } else { %>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="radio1" name="radioPersonas" value="<%= cantComensales[i].nro_comensales %>">
+                                        <label class="form-check-label" for="radio1"><%= cantComensales[i].nro_comensales %></label>
+                                    </div>
+                                <% } %>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -187,7 +184,7 @@
                     <button class="btn btn-primary" type="reset" value="limpiarProd">Cancelar</button>
                 </div>
                 <div class="itemBtn col-4 col-md-2 col-lg-2">
-                    <button class="btn btn-primary" type="submit" value="guardarProd">Guardar</button>
+                    <button class="btn btn-primary" type="submit" value="guardarProd">Crear</button>
                 </div>
             </div>
         </form>

@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         /*Photo - Product*/
         Photo.belongsTo(models.Product, {
             as: "fotoProducto",
-            foreignKey: "id_producto"
+            foreignKey: "product_id"
         });
 
     }
