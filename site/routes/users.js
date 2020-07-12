@@ -23,6 +23,14 @@ var storage = multer.diskStorage({
       //console.log(nombre);
 
       cb(null, nombre[0] + '-' + fecha + path.extname(file.originalname))
+    },
+    fileFilter: function (req, file, cb) {
+      if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg"|| file.mimetype == "image/gif") {
+        cb(null, true);
+      } else {
+        cb(null, false);
+        return cb(new Error('Solamente .png, .jpg .jpeg .gif formatos permitidos!'));
+      }
     }
   })
 
