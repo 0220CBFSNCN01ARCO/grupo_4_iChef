@@ -1,0 +1,22 @@
+<tbody>
+    <%for(let i=0; i < marcasProd.length; i++ ) { %>
+        <tr>
+            <th class="contentTable" scope="row"><%= marcasProd[i].id %></th>
+            <td class="contentTable"><%= marcasProd[i].descripcion %></td>
+            <td>
+                <div class="row justify-content-around align-items-center d-flex">
+                    <div class="row-item">
+                        <a class="editLink" data-toggle="tooltip" href="/config/<%= marcasProd[i].id %>/edit">
+                            <i class="fa fa-pencil fa-1x"></i>
+                        </a>
+                    </div>
+                    <div class="row-item">
+                        <form method="POST" action="/config/<%= marcasProd[i].id %>?_method=DELETE">
+                            <button class="btn deleteLink" type="submit"><i class="fa fa-trash fa-1x"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    <% } %>
+    </tbody>

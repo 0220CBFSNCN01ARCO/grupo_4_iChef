@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+    <div class="row headTable">
+        <div class="col">
+            <h5>Configuración parametros</h5>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active text-dark" id="marcas-tab" href="#marcas" data-toggle="tab" role="tab" aria-controls="marcas" aria-selected="true">Marcas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" id="grupos-tab" href="#grupos" data-toggle="tab" role="tab" aria-controls="grupos" aria-selected="false">Grupos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" id="ingredientes-tab" href="#ingredientes" data-toggle="tab" role="tab" aria-controls="ingredientes" aria-selected="false">Ingredientes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" id="general-tab" href="#general" data-toggle="tab" role="tab" aria-controls="general" aria-selected="false">General</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="tabContentProduct">
+            <div class="tab-pane fade show active" id="marcas" role="tabpanel" aria-labelledby="marcas-tab">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="titleHead" scope="col">Id</th>
+                        <th class="titleHead" scope="col">Descripción</th>
+                        <th class="titleHead" scope="col">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%- include('./partials/tableConfig', { marcasProd }) %>
+                </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                          <!-- skip_page = (num_page-1)*20 -->
+                        </a>
+                      </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="tab-pane fade" id="grupos" role="tabpanel" aria-labelledby="grupos-tab">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="titleHead" scope="col">Id</th>
+                        <th class="titleHead" scope="col">Descripción</th>
+                        <th class="titleHead" scope="col">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%- include('./partials/tableConfig', { rubrosProd }) %>
+                </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                          <!-- skip_page = (num_page-1)*20 -->
+                        </a>
+                      </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="tab-pane fade" id="ingredientes" role="tabpanel" aria-labelledby="ingredientes-tab">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="titleHead" scope="col">Id</th>
+                        <th class="titleHead" scope="col">Descripción</th>
+                        <th class="titleHead" scope="col">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%- include('./partials/tableConfig', { ingredientesProd }) %>
+                </table>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                          <!-- skip_page = (num_page-1)*20 -->
+                        </a>
+                      </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="usuarios-tab">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="titleHead" scope="col">Id</th>
+                        <th class="titleHead" scope="col">Descripción</th>
+                        <th class="titleHead" scope="col">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%- include('./partials/tableConfig', { tipoProducto }) %>
+                </table>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="titleHead" scope="col">Id</th>
+                        <th class="titleHead" scope="col">Nro. comensales</th>
+                        <th class="titleHead" scope="col">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%- include('./partials/tableConfig', { cantComensales }) %>
+                </table>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="titleHead" scope="col">Id</th>
+                        <th class="titleHead" scope="col">Descripción</th>
+                        <th class="titleHead" scope="col">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%- include('./partials/tableConfig', { estadoUsuario }) %>
+                </table>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/footer') %>
+    <%-include('./partials/script')%>
+</body>
+</html>
