@@ -12,7 +12,7 @@ const db = require('../database/models');
 const storage = multer.diskStorage({
       destination: function (req, file, cb) {
         if (file.originalname.match(/\.(pdf)$/)){
-          cb(null, 'public/recetas')
+          cb(null, 'public/images/products/recetas')
         }else{
           cb(null, `public/images/products/${req.body.tipo}`)
         }
@@ -68,8 +68,7 @@ router.post('/create', upload.fields([{ name: 'image_uploads', maxCount: 5 },
   check("precioProducto")
   .exists()
   .withMessage("Debe ingresar un precio")
-],
-                       productController.createProduct);
+], productController.createProduct);
 
 //5. /products/​:id​/edit ​(GET)  Formulario de edición de productos 
 router.get('/:id/edit', authMiddleware, productController.editProductById);
