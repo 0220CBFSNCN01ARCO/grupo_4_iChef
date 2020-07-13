@@ -2,8 +2,7 @@ const db = require('../database/models');
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
-
-const getPagination = (page, size) => {
+const getPagination = (page, size) => {//0,5
     const limit = size ? +size : 5;
     const offset = page ? page * limit : 0;
     return { limit, offset };
@@ -16,29 +15,31 @@ const getPagination = (page, size) => {
     return { totalItems, tutorials, totalPages, currentPage };
   };
 
-
 let configController = {
     getConfig: async function (req, res, next) {
-        const size = 5;
-        const page = 0
+        const limit = 5;
+        try {
+            const tipoProducto = await db.ProductType.findAndCountAll({ limit}, {order:[['descripcion','ASC']]});
+            const rubrosProd = await db.Heading.findAndCountAll({ limit }, {order:[['descripcion','ASC']]})
+            const marcasProd = await db.Brand.findAndCountAll({ limit }, {order:[['descripcion','ASC']]})
+            const ingredientesProd = await db.Ingredient.findAndCountAll({ limit }, {order:[['descripcion','ASC']]})
+            const cantComensales = await db.Diners.findAndCountAll({ limit }, {order:[['nro_comensales','ASC']]});
+            const estadoUsuario = await db.UserStatus.findAndCountAll({ limit }, {order:[['descripcion','ASC']]});
 
-        const { limit, offset } = getPagination(page, size);
+            //console.log(marcasProd.rows);
 
-        const tipoProducto = await db.ProductType.findAndCountAll({ limit, offset }, {order:[['descripcion','ASC']]});
-        const rubrosProd = await db.Heading.findAndCountAll({ limit, offset }, {order:[['descripcion','ASC']]})
-        const marcasProd = await db.Brand.findAndCountAll({ limit, offset }, {order:[['descripcion','ASC']]})
-        const ingredientesProd = await db.Ingredient.findAndCountAll({ limit, offset }, {order:[['descripcion','ASC']]})
-        const cantComensales = await db.Diners.findAndCountAll({ limit, offset }, {order:[['nro_comensales','ASC']]});
-        const estadoUsuario = await db.UserStatus.findAndCountAll({ limit, offset }, {order:[['descripcion','ASC']]});
+            return res.render('configParameter', { title: 'iChef',
+                                                    tipoProducto: tipoProducto.rows,
+                                                    rubrosProd: rubrosProd.rows,
+                                                    marcasProd: marcasProd.rows,
+                                                    ingredientesProd: ingredientesProd.rows,
+                                                    cantComensales: cantComensales.rows,
+                                                    estadoUsuario: estadoUsuario.rows,
+                                                    usuario: req.session.usuarioLogueado });
+        } catch (error) {
+          console.log(error);
+        }
 
-        return res.render('configParameter', { title: 'iChef',
-                                                tipoProducto,
-                                                rubrosProd,
-                                                marcasProd,
-                                                ingredientesProd,
-                                                cantComensales,
-                                                estadoUsuario,
-                                                usuario: req.session.usuarioLogueado });
     },
 
     getMarcas: async function (req, res, next) {
@@ -46,7 +47,7 @@ let configController = {
         const { limit, offset } = getPagination(page, 5);
 
         const response = getPagingData(marcasProd, page, limit);
-
+      
         return res.render('configParameter', { title: 'iChef',
                                                 tipoProducto,
                                                 rubrosProd,

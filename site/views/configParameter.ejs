@@ -28,13 +28,13 @@
                 <div class="container">
                   <div class="row">
                     <form method="POST" action="#" enctype="multipart/form-data" novalidate>
-                      <input type="text" class="form-control" name="valor">
-                      <div id="formAction">
-                        <a class="btn btn-dark" href="#">Nuevo</a>
-                        <a class="btn btn-dark" href="#">Editar</a>
-                        <a class="btn btn-dark" href="#">Borrar</a>
-                        <button class="btn btn-dark" type="submit">Guardar</button>
-                      </div>
+                        <input type="text" class="form-control" name="valor">
+                        <div id="formAction">
+                          <a class="btn btn-dark" href="#">Nuevo</a>
+                          <a class="btn btn-dark" href="#">Editar</a>
+                          <a class="btn btn-dark" href="#">Borrar</a>
+                          <button class="btn btn-dark" type="submit">Guardar</button>
+                        </div>
                     </form>
                   </div>
                   <div class="row">
@@ -47,7 +47,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <%- include('./partials/tableConfig', { marcasProd }) %>
+                      <%- include('./partials/tableConfig',{ datos: marcasProd, tipoParametro: 'marcasProd' }) %>
                     </table>
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
@@ -82,7 +82,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <%- include('./partials/tableConfig', { rubrosProd }) %>
+                    <%- include('./partials/tableConfig', { datos: rubrosProd, tipoParametro: 'rubrosProd'  }) %>
                 </table>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
@@ -115,7 +115,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <%- include('./partials/tableConfig', { ingredientesProd }) %>
+                    <%- include('./partials/tableConfig', { datos: ingredientesProd, tipoParametro: 'ingredientesProd' }) %>
                 </table>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
@@ -148,7 +148,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <%- include('./partials/tableConfig', { tipoProducto }) %>
+                    <%- include('./partials/tableConfig', { datos: tipoProducto, tipoParametro: 'tipoProducto' }) %>
                 </table>
                 <table class="table table-striped">
                     <thead class="thead-dark">
@@ -159,7 +159,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <%- include('./partials/tableConfig', { cantComensales }) %>
+                    <%- include('./partials/tableConfig', { datos: cantComensales, tipoParametro: 'cantComensales' }) %>
                 </table>
                 <table class="table table-striped">
                     <thead class="thead-dark">
@@ -170,7 +170,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <%- include('./partials/tableConfig', { estadoUsuario }) %>
+                    <%- include('./partials/tableConfig', { datos: estadoUsuario, tipoParametro: 'estadoUsuario' }) %>
                 </table>
             </div>
         </div>
