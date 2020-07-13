@@ -20,9 +20,9 @@ const getPagination = (page, size) => {
 let configController = {
     getConfig: async function (req, res, next) {
         const size = 5;
-        const pagina = 1
+        const page = 0
 
-        const { limit, offset } = getPagination(pagina, size);
+        const { limit, offset } = getPagination(page, size);
 
         const tipoProducto = await db.ProductType.findAndCountAll({ limit, offset }, {order:[['descripcion','ASC']]});
         const rubrosProd = await db.Heading.findAndCountAll({ limit, offset }, {order:[['descripcion','ASC']]})

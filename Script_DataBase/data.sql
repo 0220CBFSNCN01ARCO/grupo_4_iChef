@@ -86,17 +86,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `ingredients_products` WRITE;
 /*!40000 ALTER TABLE `ingredients_products` DISABLE KEYS */;
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (1,1),
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (2,1)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,39)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,8)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,19)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,30)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,7)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,13)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (14,18)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (14,26)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (14,15)
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (1,1),(2,1),(13,39),(13,8),(13,19),(13,30),(13,7),(13,13),(14,18),(14,26),(14,15);
 /*!40000 ALTER TABLE `ingredients_products` ENABLE KEYS */;
 UNLOCK TABLES;
 

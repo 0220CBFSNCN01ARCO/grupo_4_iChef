@@ -5,7 +5,7 @@
     <%- include('./partials/header') %>
     <div class="row headTable">
         <div class="col">
-            <h5>Configuración parametros</h5>
+            <h5>Configuración</h5>
         </div>
     </div>
     <div class="container-fluid">
@@ -25,37 +25,52 @@
         </ul>
         <div class="tab-content" id="tabContentProduct">
             <div class="tab-pane fade show active" id="marcas" role="tabpanel" aria-labelledby="marcas-tab">
-                <table class="table table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th class="titleHead" scope="col">Id</th>
-                        <th class="titleHead" scope="col">Descripción</th>
-                        <th class="titleHead" scope="col">Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%- include('./partials/tableConfig', { marcasProd }) %>
-                </table>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                          <span class="sr-only">Previous</span>
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                          <span class="sr-only">Next</span>
-                          <!-- skip_page = (num_page-1)*20 -->
-                        </a>
-                      </li>
-                    </ul>
-                </nav>
+                <div class="container">
+                  <div class="row">
+                    <form method="POST" action="#" enctype="multipart/form-data" novalidate>
+                      <input type="text" class="form-control" name="valor">
+                      <div id="formAction">
+                        <a class="btn btn-dark" href="#">Nuevo</a>
+                        <a class="btn btn-dark" href="#">Editar</a>
+                        <a class="btn btn-dark" href="#">Borrar</a>
+                        <button class="btn btn-dark" type="submit">Guardar</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="row">
+                    <table class="table table-striped">
+                      <thead class="thead-dark">
+                      <tr>
+                          <th class="titleHead" scope="col">Id</th>
+                          <th class="titleHead" scope="col">Descripción</th>
+                          <th class="titleHead" scope="col">Acciones</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <%- include('./partials/tableConfig', { marcasProd }) %>
+                    </table>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              <span class="sr-only">Next</span>
+                              <!-- skip_page = (num_page-1)*20 -->
+                            </a>
+                          </li>
+                        </ul>
+                    </nav>
+                  </div>
+                </div>
             </div>
             <div class="tab-pane fade" id="grupos" role="tabpanel" aria-labelledby="grupos-tab">
                 <table class="table table-striped">
