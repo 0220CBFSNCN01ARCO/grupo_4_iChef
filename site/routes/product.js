@@ -12,7 +12,7 @@ const db = require('../database/models');
 const storage = multer.diskStorage({
       destination: function (req, file, cb) {
         if (file.originalname.match(/\.(pdf)$/)){
-          cb(null, 'public/recetas')
+          cb(null, 'public/images/products/recetas')
         }else{
           cb(null, `public/images/products/${req.body.tipo}`)
         }
