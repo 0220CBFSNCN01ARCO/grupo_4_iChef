@@ -1431,3 +1431,14 @@ justify-content: space-around;
 .frmProducto{
   margin-top: 20px;
 }
+
+/*CONFIGURACION PARAMETROS*/
+
+.formParams {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.indiceTabla {
+  justify-content: center;
+}
