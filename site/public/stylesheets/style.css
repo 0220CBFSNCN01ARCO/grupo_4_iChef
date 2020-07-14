@@ -580,6 +580,24 @@ margin-left: 15px;
   text-align: center;
 }
 
+
+.table td, .table th {
+  padding: 0;
+}
+
+#ptopId, #ptopDesc {
+  padding-top: 8px;
+}
+
+.configAccion, .itemAccion {
+  padding: 0px 25px 0px 10px;
+}
+
+.rowConfig {
+  margin: 10px 0px 10px 0;
+}
+
+
 .editLink{
   color: #F4D03F;
 }
@@ -964,6 +982,10 @@ a.btn-whatsapp:hover {
 .row {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.rowConfig {
+  margin: 10px 0px 10px 0;
 }
 
 .rowImagenes {
@@ -1441,4 +1463,12 @@ justify-content: space-around;
 
 .indiceTabla {
   justify-content: center;
+}
+
+.rowTipos, .rowCantidades, .rowUsuarios {
+  margin: 5px 0px 5px 0px;
+  flex-direction: column;
+}
+.inputBuscarConfig {
+  padding-top: 10px;
 }

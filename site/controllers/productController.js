@@ -187,8 +187,8 @@ let productController = {
     },
     saveProductById: async function (req, res, next) {
       //console.log(req);
-      console.log(req.body);
-      console.log(req.files);
+      //console.log(req.body);
+      //console.log(req.files);
       let precioOferta = 0;
       let descuento = 0;
       if(req.body.precioOferta > 0 || req.body.descuento > 0 ){
@@ -200,43 +200,50 @@ let productController = {
       }else {
         recetaPDF = ""
       }
+      try {
+          const productoUpdate = await db.Product.update({
+            codigo: req.body.codigoProducto,
+            descripcion: req.body.nombreProducto,
+            product_type_id: req.body.tipo,
+            precio: req.body.precioProducto,
+            precio_oferta: precioOferta,
+            descuento_oferta: descuento,
+            rubro_id: req.body.grupo,
+            marca_id :req.body.marca,
+            detalle: req.body.txtDescripcion,
+            cant_comensales: req.body.radioPersonas,
+            calorias: req.body.calorias,
+            peso: req.body.peso,
+            receta: recetaPDF
+        },{
+          where: {id_product: req.params.id }
+        });
 
-      const productoUpdate = await db.Product.update({
-          codigo: req.body.codigoProducto,
-          descripcion: req.body.nombreProducto,
-          product_type_id: req.body.tipo,
-          precio: req.body.precioProducto,
-          precio_oferta: precioOferta,
-          descuento_oferta: descuento,
-          rubro_id: req.body.grupo,
-          marca_id :req.body.marca,
-          detalle: req.body.txtDescripcion,
-          cant_comensales: req.body.radioPersonas,
-          calorias: req.body.calorias,
-          peso: req.body.peso,
-          receta: recetaPDF
-      },{
-        where: {id_product: req.params.id }
-      });
+        const delIngredientes = await db.Photo
+            .destroy({ where: {product_id: req.params.id }} );
 
-      for (i = 0; i < req.body.ingredientes.length ; i++){
-        const ingredientes = await db.IngredientProduct
-          .upsert({ product_id: productoUpdate.id_product ,
-                    ingredient_id: req.body.ingredientes[i] });
-      }
+        const delFotos = await db.IngredientProduct
+            .destroy({ where: {product_id: req.params.id }} );
 
-      if(typeof req.files.image_uploads != 'undefined'){
-        for (i = 0; i < req.files.image_uploads.length ; i++){
-          const foto = await db.Photo
-            .upsert({ product_id: productoUpdate.id_product,
-                      nombre: req.files.image_uploads[i].filename });
+        for (i = 0; i < req.body.ingredientes.length ; i++){
+          const ingredientes = await db.IngredientProduct
+            .create({ product_id: req.params.id,
+                      ingredient_id: req.body.ingredientes[i] } );
         }
-      }
 
-      if (productoUpdate instanceof db.Product){
+        if(typeof req.files.image_uploads != 'undefined'){
+          for (i = 0; i < req.files.image_uploads.length ; i++){
+            const foto = await db.Photo
+              .create({ product_id: req.params.id,
+                        nombre: req.files.image_uploads[i].filename } );
+          }
+        }
+
         return res.redirect(301, '/product' );
-      }
 
+      } catch (error) {
+         console.log(error);
+      }
     },
     productDelete:function (req, res, next) {
         res.render('productDelete', { title: 'iChef - Producto borrado',

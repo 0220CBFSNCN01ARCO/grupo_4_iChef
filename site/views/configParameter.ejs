@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="container-fluid">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">
               <a class="nav-link active text-dark" id="marcas-tab" href="#marcas" data-toggle="tab" role="tab" aria-controls="marcas" aria-selected="true">Marcas</a>
             </li>
@@ -28,22 +28,22 @@
               <div class="container">
                 <form method="POST" class="formParams" action="#" enctype="multipart/form-data" novalidate>
                     <div class="row">
-                      <div class="col-sm-12 col-md-6 col-lg-6">
+                      <div class="col-sm-12 col-md-6 col-lg-6 configAccion">
                         <div class="row">
-                          <div class="col-sm-8 col-md-8 col-lg-6">
+                          <div class="col-sm-8 col-md-8 col-lg-6 itemAccion">
                             <input type="text" class="form-control" placeholder="Marca" name="valor">
                           </div>
-                          <div class="col-sm-4 col-md-4 col-lg-3">
+                          <div class="col-sm-4 col-md-4 col-lg-3 itemAccion">
                             <button class="btn btn-dark" type="submit">Agregar</button>
                           </div>
                         </div>
                       </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6">
+                      <div class="col-sm-12 col-md-6 col-lg-6 configAccion">
                         <div class="row">
-                          <div class="col-sm-8 col-md-8 col-lg-6">
+                          <div class="col-sm-8 col-md-8 col-lg-6 itemAccion">
                             <input class="form-control mr-sm-2" type="search" name="buscarMarca" placeholder="Buscar marca" aria-label="Buscar">
                           </div>
-                          <div class="col-sm-4 col-md-4 col-lg-3">
+                          <div class="col-sm-4 col-md-4 col-lg-3 itemAccion">
                             <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
                           </div>
                         </div>
@@ -60,7 +60,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <%- include('./partials/tableConfig',{ datos: marcasProd, tipoParametro: 'pMarcas' }) %>
+                    <%- include('./partials/tableConfig',{ datos: marcasProd.rows, tipoParametro: 'pMarcas' }) %>
                   </table>
                 </div>
                 <div class="row indiceTabla">
@@ -123,7 +123,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <%- include('./partials/tableConfig',{ datos: rubrosProd, tipoParametro: 'pRubros' }) %>
+                    <%- include('./partials/tableConfig',{ datos: rubrosProd.rows, tipoParametro: 'pRubros' }) %>
                   </table>
                 </div>
                 <div class="row indiceTabla">
@@ -186,7 +186,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <%- include('./partials/tableConfig',{ datos: ingredientesProd, tipoParametro: 'pIngredientes' }) %>
+                    <%- include('./partials/tableConfig',{ datos: ingredientesProd.rows, tipoParametro: 'pIngredientes' }) %>
                   </table>
                 </div>
                 <div class="row indiceTabla">
@@ -214,121 +214,146 @@
               </div>
             </div>
             <div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="general-tab">
-              <div class="container">
-                <form method="POST" class="formParams" action="#" enctype="multipart/form-data" novalidate>
-                    <div class="row">
-                      <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="row rowConfig">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-header text-white bg-dark mb-3">Tipos de productos</div>
+                    <div class="card-body">
+                      <div class="container">
+                        <form method="POST" class="formParams" action="#" enctype="multipart/form-data" novalidate>
+                            <div class="row rowTipos">
+                              <div class="inputBuscarConfig">
+                                <div class="row">
+                                  <div class="col-sm-8 col-md-8 col-lg-6">
+                                    <input type="text" class="form-control" placeholder="Tipo producto" name="valor">
+                                  </div>
+                                  <div class="col-sm-4 col-md-4 col-lg-3">
+                                    <button class="btn btn-dark" type="submit">Agregar</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="inputBuscarConfig">
+                                <div class="row">
+                                  <div class="col-sm-8 col-md-8 col-lg-6">
+                                    <input class="form-control mr-sm-2" type="search" name="buscarTipoProducto" placeholder="Buscar tipo" aria-label="Buscar">
+                                  </div>
+                                  <div class="col-sm-4 col-md-4 col-lg-3">
+                                    <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </form>
                         <div class="row">
-                          <div class="col-sm-8 col-md-8 col-lg-6">
-                            <input type="text" class="form-control" placeholder="Tipo producto" name="valor">
-                          </div>
-                          <div class="col-sm-4 col-md-4 col-lg-3">
-                            <button class="btn btn-dark" type="submit">Agregar</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6">
-                        <div class="row">
-                          <div class="col-sm-8 col-md-8 col-lg-6">
-                            <input class="form-control mr-sm-2" type="search" name="buscarTipoProducto" placeholder="Buscar tipoProducto" aria-label="Buscar">
-                          </div>
-                          <div class="col-sm-4 col-md-4 col-lg-3">
-                            <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
-                          </div>
+                          <table class="table table-striped">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th class="titleHead" scope="col">Id</th>
+                                <th class="titleHead" scope="col">Descripción</th>
+                                <th class="titleHead" scope="col">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%- include('./partials/tableConfig', { datos: tipoProducto.rows, tipoParametro: 'pTipoProducto' }) %>
+                          </table>
                         </div>
                       </div>
                     </div>
-                </form>
-                <div class="row">
-                  <table class="table table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th class="titleHead" scope="col">Id</th>
-                        <th class="titleHead" scope="col">Descripción</th>
-                        <th class="titleHead" scope="col">Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%- include('./partials/tableConfig', { datos: tipoProducto, tipoParametro: 'pTipoProducto' }) %>
-                  </table>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-header text-white bg-dark mb-3">Cantidad comensales</div>
+                    <div class="card-body">
+                      <div class="container">
+                        <form method="POST" class="formParams" action="#" enctype="multipart/form-data" novalidate>
+                            <div class="row rowCantidades">
+                              <div class="inputBuscarConfig">
+                                <div class="row">
+                                  <div class="col-sm-8 col-md-8 col-lg-6">
+                                    <input type="text" class="form-control" placeholder="Comensales" name="valor">
+                                  </div>
+                                  <div class="col-sm-4 col-md-4 col-lg-3">
+                                    <button class="btn btn-dark" type="submit">Agregar</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="inputBuscarConfig">
+                                <div class="row">
+                                  <div class="col-sm-8 col-md-8 col-lg-6">
+                                    <input class="form-control mr-sm-2" type="search" name="buscarComensales" placeholder="Buscar comensales" aria-label="Buscar">
+                                  </div>
+                                  <div class="col-sm-4 col-md-4 col-lg-3">
+                                    <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </form>
+                        <div class="row">
+                          <table class="table table-striped">
+                            <thead class="thead-dark">
+                            <tr>
+                              <th class="titleHead" scope="col">Id</th>
+                              <th class="titleHead" scope="col">Nro. comensales</th>
+                              <th class="titleHead" scope="col">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%- include('./partials/tableConfig', { datos: cantComensales.rows, tipoParametro: 'pComensales' }) %>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="container">
-                <form method="POST" class="formParams" action="#" enctype="multipart/form-data" novalidate>
-                    <div class="row">
-                      <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="row rowConfig">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-header text-white bg-dark mb-3">Estado usuarios</div>
+                    <div class="card-body">
+                      <div class="container">
+                        <form method="POST" class="formParams" action="#" enctype="multipart/form-data" novalidate>
+                            <div class="row rowUsuarios">
+                              <div class="inputBuscarConfig">
+                                <div class="row">
+                                  <div class="col-sm-8 col-md-8 col-lg-6">
+                                    <input type="text" class="form-control" placeholder="Estado" name="valor">
+                                  </div>
+                                  <div class="col-sm-4 col-md-4 col-lg-3">
+                                    <button class="btn btn-dark" type="submit">Agregar</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="inputBuscarConfig">
+                                <div class="row">
+                                  <div class="col-sm-8 col-md-8 col-lg-6">
+                                    <input class="form-control mr-sm-2" type="search" name="buscarEstadoUsuario" placeholder="Buscar estado" aria-label="Buscar">
+                                  </div>
+                                  <div class="col-sm-4 col-md-4 col-lg-3">
+                                    <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </form>
                         <div class="row">
-                          <div class="col-sm-8 col-md-8 col-lg-6">
-                            <input type="text" class="form-control" placeholder="Comensales" name="valor">
-                          </div>
-                          <div class="col-sm-4 col-md-4 col-lg-3">
-                            <button class="btn btn-dark" type="submit">Agregar</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6">
-                        <div class="row">
-                          <div class="col-sm-8 col-md-8 col-lg-6">
-                            <input class="form-control mr-sm-2" type="search" name="buscarComensales" placeholder="Buscar comensales" aria-label="Buscar">
-                          </div>
-                          <div class="col-sm-4 col-md-4 col-lg-3">
-                            <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </form>
-                <div class="row">
-                  <table class="table table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                      <th class="titleHead" scope="col">Id</th>
-                      <th class="titleHead" scope="col">Nro. comensales</th>
-                      <th class="titleHead" scope="col">Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%- include('./partials/tableConfig', { datos: cantComensales, tipoParametro: 'pComensales' }) %>
-                  </table>
-                </div>
-              </div>
-              <div class="container">
-                <form method="POST" class="formParams" action="#" enctype="multipart/form-data" novalidate>
-                    <div class="row">
-                      <div class="col-sm-12 col-md-6 col-lg-6">
-                        <div class="row">
-                          <div class="col-sm-8 col-md-8 col-lg-6">
-                            <input type="text" class="form-control" placeholder="Estado" name="valor">
-                          </div>
-                          <div class="col-sm-4 col-md-4 col-lg-3">
-                            <button class="btn btn-dark" type="submit">Agregar</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6">
-                        <div class="row">
-                          <div class="col-sm-8 col-md-8 col-lg-6">
-                            <input class="form-control mr-sm-2" type="search" name="buscarEstadoUsuario" placeholder="Buscar estado" aria-label="Buscar">
-                          </div>
-                          <div class="col-sm-4 col-md-4 col-lg-3">
-                            <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
-                          </div>
+                          <table class="table table-striped">
+                            <thead class="thead-dark">
+                            <tr>
+                              <th class="titleHead" scope="col">Id</th>
+                              <th class="titleHead" scope="col">Descripción</th>
+                              <th class="titleHead" scope="col">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%- include('./partials/tableConfig', { datos: estadoUsuario.rows, tipoParametro: 'pEstadoUsuario' }) %>
+                          </table>
                         </div>
                       </div>
                     </div>
-                </form>
-                <div class="row">
-                  <table class="table table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                      <th class="titleHead" scope="col">Id</th>
-                      <th class="titleHead" scope="col">Descripción</th>
-                      <th class="titleHead" scope="col">Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <%- include('./partials/tableConfig', { datos: estadoUsuario, tipoParametro: 'pEstadoUsuario' }) %>
-                  </table>
+                  </div>
                 </div>
               </div>
             </div>

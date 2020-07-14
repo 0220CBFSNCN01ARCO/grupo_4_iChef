@@ -26,15 +26,17 @@ let configController = {
             const cantComensales = await db.Diners.findAndCountAll({ limit }, {order:[['nro_comensales','ASC']]});
             const estadoUsuario = await db.UserStatus.findAndCountAll({ limit }, {order:[['descripcion','ASC']]});
 
-            //console.log(marcasProd.rows);
+            console.log(marcasProd.count);
+
+            let pageCount = marcasProd.count/6
 
             return res.render('configParameter', { title: 'iChef',
-                                                    tipoProducto: tipoProducto.rows,
-                                                    rubrosProd: rubrosProd.rows,
-                                                    marcasProd: marcasProd.rows,
-                                                    ingredientesProd: ingredientesProd.rows,
-                                                    cantComensales: cantComensales.rows,
-                                                    estadoUsuario: estadoUsuario.rows,
+                                                    tipoProducto,
+                                                    rubrosProd,
+                                                    marcasProd,
+                                                    ingredientesProd,
+                                                    cantComensales,
+                                                    estadoUsuario,
                                                     usuario: req.session.usuarioLogueado });
         } catch (error) {
           console.log(error);

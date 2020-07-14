@@ -14,20 +14,22 @@
         </div>
     </div>
     <div class="container-fluid">
-        <table class="table table-striped">
-            <thead class="thead-dark">
-            <tr>
-                <th class="titleHead" scope="col">id</th>
-                <th class="titleHead" scope="col">Apellido</th>
-                <th class="titleHead" scope="col">Nombre</th>
-                <th class="titleHead" scope="col">Email</th>
-                <th class="titleHead" scope="col">Categoria</th>
-                <th class="titleHead" scope="col">Estado</th>
-                <th class="titleHead" scope="col">Acciones</th>
-            </tr>
-            </thead>
-            <%- include('./partials/tableUsers') %>
-        </table>
+        <div class="row">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th class="titleHead" scope="col">id</th>
+                    <th class="titleHead" scope="col">Nombre</th>
+                    <th class="titleHead" scope="col">Apellido</th>
+                    <th class="titleHead" scope="col">Email</th>
+                    <th class="titleHead" scope="col">Categoria</th>
+                    <th class="titleHead" scope="col">Estado</th>
+                    <th class="titleHead" scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <%- include('./partials/tableUsers') %>
+            </table>
+        </div>
     </div>
     <%- include('./partials/footer') %>
     <%-include('./partials/script')%>
