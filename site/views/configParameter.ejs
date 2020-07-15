@@ -26,29 +26,25 @@
         <div class="tab-content" id="tabContentProduct">
             <div class="tab-pane fade show active" id="marcas" role="tabpanel" aria-labelledby="marcas-tab">
               <div class="container">
-                <form method="POST" class="formParams" action="#" enctype="multipart/form-data" novalidate>
-                    <div class="row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 configAccion">
-                        <div class="row">
-                          <div class="col-sm-8 col-md-8 col-lg-6 itemAccion">
-                            <input type="text" class="form-control" placeholder="Marca" name="valor">
-                          </div>
-                          <div class="col-sm-4 col-md-4 col-lg-3 itemAccion">
-                            <button class="btn btn-dark" type="submit">Agregar</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 configAccion">
-                        <div class="row">
-                          <div class="col-sm-8 col-md-8 col-lg-6 itemAccion">
-                            <input class="form-control mr-sm-2" type="search" name="buscarMarca" placeholder="Buscar marca" aria-label="Buscar">
-                          </div>
-                          <div class="col-sm-4 col-md-4 col-lg-3 itemAccion">
-                            <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
-                          </div>
-                        </div>
-                      </div>
+                <form method="POST" class="formParams" action="/config/addMarca">
+                  <div class="row">
+                    <div class="col-sm-8 col-md-8 col-lg-6 itemAccion">
+                      <input type="text" class="form-control" placeholder="Marca" id="inMarca" name="inMarca">
                     </div>
+                    <div class="col-sm-4 col-md-4 col-lg-3 itemAccion">
+                      <button id="btnAddMarca" class="btn btn-dark" type="submit">Agregar</button>
+                    </div>
+                  </div>
+                </form>
+                <form method="POST" class="formParams" action="#" enctype="multipart/form-data" novalidate>
+                  <div class="row">
+                    <div class="col-sm-8 col-md-8 col-lg-6 itemAccion">
+                      <input class="form-control mr-sm-2" type="search" name="buscarMarca" placeholder="Buscar marca" aria-label="Buscar">
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-3 itemAccion">
+                      <button id="btnBuscarMarca" class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
+                    </div>
+                  </div>
                 </form>
                 <div class="row">
                   <table class="table table-striped">
@@ -94,10 +90,10 @@
                       <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="row">
                           <div class="col-sm-8 col-md-8 col-lg-6">
-                            <input type="text" class="form-control" placeholder="Rubro" name="valor">
+                            <input type="text" class="form-control" placeholder="Rubro" id="inRubro" name="inRubro">
                           </div>
                           <div class="col-sm-4 col-md-4 col-lg-3">
-                            <button class="btn btn-dark" type="submit">Agregar</button>
+                            <button id="btnAddGrupo" class="btn btn-dark" type="submit">Agregar</button>
                           </div>
                         </div>
                       </div>
@@ -107,7 +103,7 @@
                             <input class="form-control mr-sm-2" type="search" name="buscarRubro" placeholder="Buscar rubro" aria-label="Buscar">
                           </div>
                           <div class="col-sm-4 col-md-4 col-lg-3">
-                            <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
+                            <button id="btnBuscarGrupo" class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
                           </div>
                         </div>
                       </div>
@@ -157,10 +153,10 @@
                       <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="row">
                           <div class="col-sm-8 col-md-8 col-lg-6">
-                            <input type="text" class="form-control" placeholder="Ingrediente" name="valor">
+                            <input type="text" class="form-control" placeholder="Ingrediente" id="inIngrediente" name="inIngrediente">
                           </div>
                           <div class="col-sm-4 col-md-4 col-lg-3">
-                            <button class="btn btn-dark" type="submit">Agregar</button>
+                            <button id="btnAddIngrediente" class="btn btn-dark" type="submit">Agregar</button>
                           </div>
                         </div>
                       </div>
@@ -170,7 +166,7 @@
                             <input class="form-control mr-sm-2" type="search" name="buscarIngrediente" placeholder="Buscar Ingrediente" aria-label="Buscar">
                           </div>
                           <div class="col-sm-4 col-md-4 col-lg-3">
-                            <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
+                            <button id="btnBuscarIngrediente" class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
                           </div>
                         </div>
                       </div>
@@ -225,10 +221,10 @@
                               <div class="inputBuscarConfig">
                                 <div class="row">
                                   <div class="col-sm-8 col-md-8 col-lg-6">
-                                    <input type="text" class="form-control" placeholder="Tipo producto" name="valor">
+                                    <input type="text" class="form-control" placeholder="Tipo producto" id="inTipoProd" name="inTipoProd">
                                   </div>
                                   <div class="col-sm-4 col-md-4 col-lg-3">
-                                    <button class="btn btn-dark" type="submit">Agregar</button>
+                                    <button id="btnAddTipoProducto" class="btn btn-dark" type="submit">Agregar</button>
                                   </div>
                                 </div>
                               </div>
@@ -238,7 +234,7 @@
                                     <input class="form-control mr-sm-2" type="search" name="buscarTipoProducto" placeholder="Buscar tipo" aria-label="Buscar">
                                   </div>
                                   <div class="col-sm-4 col-md-4 col-lg-3">
-                                    <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
+                                    <button id="btnBuscarTipoProducto" class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
                                   </div>
                                 </div>
                               </div>
@@ -271,10 +267,10 @@
                               <div class="inputBuscarConfig">
                                 <div class="row">
                                   <div class="col-sm-8 col-md-8 col-lg-6">
-                                    <input type="text" class="form-control" placeholder="Comensales" name="valor">
+                                    <input type="text" class="form-control" placeholder="Comensales" id="inCantComensal" name="inCantComensal">
                                   </div>
                                   <div class="col-sm-4 col-md-4 col-lg-3">
-                                    <button class="btn btn-dark" type="submit">Agregar</button>
+                                    <button id="btnAddCantComensal" class="btn btn-dark" type="submit">Agregar</button>
                                   </div>
                                 </div>
                               </div>
@@ -284,7 +280,7 @@
                                     <input class="form-control mr-sm-2" type="search" name="buscarComensales" placeholder="Buscar comensales" aria-label="Buscar">
                                   </div>
                                   <div class="col-sm-4 col-md-4 col-lg-3">
-                                    <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
+                                    <button id="btnBuscarCantComensal" class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
                                   </div>
                                 </div>
                               </div>
@@ -319,10 +315,10 @@
                               <div class="inputBuscarConfig">
                                 <div class="row">
                                   <div class="col-sm-8 col-md-8 col-lg-6">
-                                    <input type="text" class="form-control" placeholder="Estado" name="valor">
+                                    <input type="text" class="form-control" placeholder="Estado" id="inEstado" name="inEstado">
                                   </div>
                                   <div class="col-sm-4 col-md-4 col-lg-3">
-                                    <button class="btn btn-dark" type="submit">Agregar</button>
+                                    <button id="btnAddEstadoUser" class="btn btn-dark" type="submit">Agregar</button>
                                   </div>
                                 </div>
                               </div>
@@ -332,7 +328,7 @@
                                     <input class="form-control mr-sm-2" type="search" name="buscarEstadoUsuario" placeholder="Buscar estado" aria-label="Buscar">
                                   </div>
                                   <div class="col-sm-4 col-md-4 col-lg-3">
-                                    <button class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
+                                    <button id="btnBuscarEstadoUser" class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
                                   </div>
                                 </div>
                               </div>

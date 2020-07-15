@@ -43,13 +43,12 @@ let configController = {
         }
 
     },
-
     getMarcas: async function (req, res, next) {
         const page = req.params.pagina;
         const { limit, offset } = getPagination(page, 5);
 
         const response = getPagingData(marcasProd, page, limit);
-      
+
         return res.render('configParameter', { title: 'iChef',
                                                 tipoProducto,
                                                 rubrosProd,
@@ -59,8 +58,33 @@ let configController = {
                                                 estadoUsuario,
                                                 usuario: req.session.usuarioLogueado });
 
-    }
+    },
+    addMarca: async function (req,res,next){
+      const brandName = req.body.inMarca;
+      //console.log(req.body);
+      try {
+        const marca = await db.Brand.create({descripcion: brandName});
+        if(marca instanceof db.Brand){
+          return res.redirect(301, '/config' );
+        }
+      } catch (error) {
+        console.log(error)
+      }
 
+    },
+    addRubro: async function (req,res,next){
+      const headingName = req.body.inRubro;
+      //console.log(req.body);
+      try {
+        const rubro = await db.Heading.create({descripcion: headingName});
+        if(rubro instanceof db.Heading){
+          return res.redirect(301, '/config' );
+        }
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
 
 };
 

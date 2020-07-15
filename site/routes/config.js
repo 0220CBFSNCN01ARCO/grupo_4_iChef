@@ -7,6 +7,11 @@ router.get('/', configController.getConfig);
 
 router.get('/marcas/:pagina', configController.getConfig);
 
+
+router.post('/addMarca', configController.addMarca);
+
+router.post('/addRubro', configController.addRubro);
+
 /*
 /api/tutorials?page=1&size=5
 /api/tutorials?size=5: using default value for page
