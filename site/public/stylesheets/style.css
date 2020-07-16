@@ -1472,3 +1472,17 @@ justify-content: space-around;
 .inputBuscarConfig {
   padding-top: 10px;
 }
+
+.btnConfig {
+  width: 150px;
+  height: 150px;
+}
+
+
+.btnMargin {
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+.btnIcon {
+  font-size: 3.0rem;
+}

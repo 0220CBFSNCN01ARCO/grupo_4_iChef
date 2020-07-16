@@ -5,10 +5,12 @@ const configController = require('../controllers/configController');
 
 router.get('/', configController.getConfig);
 
-router.get('/marcas/:pagina', (req,res,next) => {
-    console.log(req.body)
-})//configController.getMarcas);
-
+router.get('/Marcas' , configController.getMarcas);
+router.get('/Rubros' , configController.getRubros);
+router.get('/Ingredientes' , configController.getIngredientes);
+router.get('/Tipos' , configController.getTipos);
+router.get('/Roles' , configController.getRoles);
+router.get('/Comensales' , configController.getComensales);
 
 router.post('/addMarca', configController.addMarca);
 router.post('/addRubro', configController.addRubro);
