@@ -66,9 +66,7 @@ nav .menuList li a:hover, nav .menuUser li a:hover {
 #btnMenu {
   color: white;
   border: 1px solid white;
-  margin-right: 20px;
-  margin-left: 10px;
-  margin-bottom: 10px;
+  margin: 20px 20px 20px 20px;
 }
 
 #formBuscar {
@@ -98,6 +96,15 @@ nav .menuList li a:hover, nav .menuUser li a:hover {
 
 #inputBuscar{
   border-radius: 20px;
+}
+
+.form-control {
+  width: 90%;
+}
+
+.container-menu-header {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 
@@ -880,10 +887,6 @@ p {
   margin-top: 15px;
 }
 
-.rowNombre{
-  height: 50px;
-}
-
 .rowMarca{
   margin-top: 15px;
   margin-bottom: 10px;
@@ -1485,4 +1488,162 @@ justify-content: space-around;
 }
 .btnIcon {
   font-size: 3.0rem;
+}
+
+
+/*NUEVO MENU NAVEGACION*/
+
+.main-menu,.menu-carrito,.menu-buscar,.menu-user {
+  background-color: #B30E0B;
+  color: #fff;
+  padding-left: 10px;
+}
+
+.main-menu a,.menu-user a {
+  display: block;
+  padding:  15px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.6);
+  font-weight: 300;
+  font-size: 14px;
+  transition: .3s ease color;
+}
+
+.main-menu a:hover,.menu-user a:hover {
+  color: #B30E0B;
+}
+
+.pushbar .btn-cerrar.btn-derecha {
+  text-align: right;
+}
+
+.pushbar .btn-cerrar.btn-izquierda {
+  text-align: left;
+}
+
+.pushbar .btn-cerrar button {
+  background: none;
+  color:#fff;
+  cursor: pointer;
+  border: none;
+  padding-right: 10px;
+  font-size: 20px;
+}
+
+#logoHeader,#avatarUsuario {
+  text-align: center;
+}
+#logo-link,#avatar-link {
+  border: none;
+}
+
+[data-pushbar-direction="top"][data-pushbar-id], [data-pushbar-direction="bottom"][data-pushbar-id] {
+  min-height: 110px;
+}
+
+#btn-user, #btn-carrito, #btn-buscar-menu {
+  color: #fff;
+}
+
+.margin-left {
+  margin-left: 10px;
+}
+
+/*FIN NUEVO MENU NAVEGACION*/
+
+/*NUEVO MENU CARRITO*/
+
+.menu-carrito {
+  width: 320px;
+}
+
+.menu-carrito #titulo-carrito {
+  font-size: 18px;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  margin: 10px 10px 10px 0px;
+}
+
+.menu-carrito .item-carrito {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  margin-right: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.menu-carrito .item-carrito img{
+  width: 100%;
+  max-width: 65px;
+  max-height: 65px;
+}
+
+.menu-carrito .item-carrito p{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+descripcion-item-carrito
+
+.menu-carrito .textos-carrito {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.menu-carrito .textos-carrito .descripcion-item-carrito{
+ color: #aaaaaa;
+}
+
+.menu-carrito .total-carrito {
+  display: flex;
+  margin: 20px 47px 20px 0;
+  justify-content: space-between;
+}
+
+.menu-carrito .total-carrito .descripcion-total {
+  color: #aaaaaa;
+}
+
+/*FIN NUEVO MENU CARRITO*/
+
+.card .img-lista-productos {
+  width: 130px;
+  height: 130px;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.card-body .row-actions a{
+  font-size: xx-small;
+}
+
+.rowMarca p {
+  font-size: xx-small;
+}
+
+.card-body .rowNombre, .card-body .rowMarca {
+  margin: 0;
+}
+
+.row .card-producto {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.card-body .rowNombre .card-descripcion {
+  margin-bottom: 5px;
+}
+
+.card .img-lista-productos {
+  padding-top: 5px;
+}
+
+.card-producto .card {
+  align-items: center;
+}
+
+.card-body .row-actions .col-accion{
+  padding-left: 5px;
+  padding-right: 5px;
 }
