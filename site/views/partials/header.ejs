@@ -51,20 +51,26 @@
     <button data-pushbar-close><span class="ichef-close iconiChef"></span></button>
   </div>
   <p id="titulo-carrito">Carrito de compras</p>
-  <div class="item-carrito">
-    <img src="/images/products/1/1-14.png" alt=item-1>
-    <div class="textos-carrito">
-      <p class="descripcion-item-carrito">descripcion</p>
-      <p class="precio-item-carrito">$1000</p>
+    <div class="item-carrito">
+      <img src="/images/products/1/1-14.png" alt=item-1>
+      <div class="textos-carrito">
+        <p class="descripcion-item-carrito">descripcion</p>
+        <p class="cantidad">2 x</p>
+        <p class="precio-item-carrito">$1000</p>
+      </div>
     </div>
-  </div>
-  <div class="total-carrito">
-    <p class="descripcion-total">Total:</p>
-    <p class="importe-total">$1000</p>
-  </div>
-  <div class="btn-finalizar btn-derecha">
-    <button class="btn btn-dark"><span class="ichef-shopping-bag iconiChef"></span> Finalizar</button>
-  </div>
+    <div class="total-carrito">
+      <p class="descripcion-total">Total:</p>
+      <p class="importe-total">$1000</p>
+    </div>
+    <div class="acciones-carrito btn-derecha">
+      <form action="/cart/?_method=DELETE" method="POST">
+        <button class="btn btn-dark"><span class="ichef-remove_shopping_cart iconiChef"></span> Vaciar</button>
+      </form>
+      <form action="/cart" method="GET">
+        <button class="btn btn-dark"><span class="ichef-done_outline iconiChef"></span> Ver</button>
+      </form>
+    </div>
 </div>
 <div data-pushbar-id="menu-user" class="pushbar menu-user" data-pushbar-direction="left">
   <div class="btn-cerrar btn-derecha">

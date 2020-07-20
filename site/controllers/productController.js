@@ -13,11 +13,6 @@ let productController = {
                                           subtitle: 'Detalle caja',
                                           usuario: req.session.usuarioLogueado });
     },
-    productCart: function (req, res, next) {
-        res.render('productCart', { title: 'iChef - Carrito compras',
-                                    subtitle: 'Mi Carrito',
-                                    usuario: req.session.usuarioLogueado });
-    },
     listarProductos: function (req, res, next) {
       //console.log("Tipo de producto: " + req.params.tipo);
       db.Product.findAll({

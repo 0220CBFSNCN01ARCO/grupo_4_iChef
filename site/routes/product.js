@@ -38,7 +38,6 @@ const storage = multer.diskStorage({
 
 router.get('/detail', productController.productDetail);
 router.get('/detail-box', productController.product_boxDetail);
-router.get('/cart', authMiddleware, productController.productCart);
 router.get('/list/:tipo', productController.listarProductos);
 router.get('/productDelete', productController.productDelete);
 

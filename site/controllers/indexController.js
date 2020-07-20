@@ -1,4 +1,3 @@
-
 let indexController = {
     getIndex: function (req, res, next) {
         //console.log("Usuario logueado: " + req.session);

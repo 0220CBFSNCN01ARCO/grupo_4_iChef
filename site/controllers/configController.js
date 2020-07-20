@@ -3,8 +3,9 @@ const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
 const getPagination = (page, size) => {//0,5
-    const limit = size ? +size : 10;
-    const offset = page ? page * limit : 0;
+    const limit = size ? +size: 10;
+    const offset = page ? page * limit: 0;
+    console.log("LIMITE: " + limit + " - OFFSET: " + offset);
     return { limit, offset };
   };
 

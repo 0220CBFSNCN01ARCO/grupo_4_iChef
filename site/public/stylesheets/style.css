@@ -1579,8 +1579,6 @@ justify-content: space-around;
   margin-bottom: 0;
 }
 
-descripcion-item-carrito
-
 .menu-carrito .textos-carrito {
   display: flex;
   flex-direction: column;
@@ -1663,4 +1661,9 @@ descripcion-item-carrito
 
 #input-buscar::placeholder {
   color: white;
+}
+
+.acciones-carrito {
+  display: flex;
+  justify-content: space-around;
 }
