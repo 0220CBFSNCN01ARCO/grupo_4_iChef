@@ -94,9 +94,6 @@ nav .menuList li a:hover, nav .menuUser li a:hover {
   width: 180px;
 }
 
-#inputBuscar{
-  border-radius: 20px;
-}
 
 .form-control {
   width: 90%;
@@ -1031,8 +1028,8 @@ a.btn-whatsapp:hover {
     margin-left: 80px;
   }*/
 
-  #inputBuscar {
-    width: 25vw;
+  #input-buscar {
+    width: 45vw;
   }
 
   .menuList {
@@ -1101,8 +1098,8 @@ a.btn-whatsapp:hover {
 
 @media (min-width: 1200px) {
 
-  #inputBuscar {
-    width: 15vw;
+  #input-buscar {
+    width: 35vw;
   }
 
   .menuUser {
@@ -1646,4 +1643,24 @@ descripcion-item-carrito
 .card-body .row-actions .col-accion{
   padding-left: 5px;
   padding-right: 5px;
+}
+
+#input-buscar{
+  border: none;
+  outline: none;
+  color: white;
+  background: #B30E0B;
+  border-bottom: 2px solid rgba(255,255,255,1);
+}
+
+#input-buscar::-webkit-input-placeholder { /* Edge */
+  color: white;
+}
+
+#input-buscar:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+#input-buscar::placeholder {
+  color: white;
 }
