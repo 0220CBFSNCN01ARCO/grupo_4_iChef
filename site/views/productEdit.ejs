@@ -12,12 +12,25 @@
                         <div class="form-group col-sm-12 col-md-3 col-lg-2">
                             <label for="codigoProducto">Codigo</label>
                             <input type="text" class="form-control" name="codigoProducto" value="<%= producto.codigo %>">
-                            <div class="invalid-feedback">Debe ingresar un codigo para el producto</div>
+                            <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'codigoProducto' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
+                            </div>
                         </div>
                         <div class="form-group col-sm-12 col-md-6 col-lg-7">
                             <label for="nombreProducto">Nombre</label>
                             <input type="text" class="form-control" name="nombreProducto" value="<%= producto.descripcion %>" required>
-                            <div class="invalid-feedback">Debe ingresar un nombre para el producto.</div>
+                            <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'nombreProducto' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
                         </div>
                         <div class="form-group col-sm-12 col-md-3 col-lg-3">
                             <label for="tipo">Tipo de producto</label>
@@ -31,8 +44,13 @@
                                     <% } %>
                                 <% } %>
                             </select>
-                            <div class="invalid-feedback">Debe seleccionar un grupo.</div>
-                        </div>
+                            <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'tipo' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
                     </div>
                     <div class="row">
                         <div id="precioProd" class="form-group col-7 col-md-5 col-lg-4">
@@ -45,7 +63,13 @@
                                     </span>
                                 </div>
                                 <input type="text" class="form-control" name="precioProducto" value="<%= producto.precio %>" required>
-                                <div class="invalid-feedback">Debe ingresar un precio de venta.</div>
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                        <% if(errores[i].param == 'precioProducto' ) { %>
+                                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
                             </div>
                         </div>
                         <div id="ofertaProd" class="form-group col-5 col-md-7 col-lg-8">
@@ -88,7 +112,13 @@
                                     <% } %>
                                 <% } %>
                             </select>
-                            <div class="invalid-feedback">Debe seleccionar un rubro.</div>
+                            <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'grupo' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
                         </div>
                         <div class="form-group col-xs-6 col-md-5 col-lg-4">
                             <label for="marca">Marca</label>
@@ -102,14 +132,26 @@
                                     <% } %>
                                 <% } %>
                             </select>
-                            <div class="invalid-feedback">Debe seleccionar una marca.</div>
+                            <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'marca' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-12 col-lg-8">
                             <label for="txtDescripcion">Descripción</label>
                             <textarea class="form-control" name="txtDescripcion" rows="3" required><%= producto.detalle %></textarea>
-                            <div class="invalid-feedback">Debe agregar una descripción valida.</div>
+                            <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'txtDescripcion' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
                         </div>
                     </div>
                     <div class="row">
@@ -153,12 +195,24 @@
                         <div class="form-group col-5 col-md-3 col-lg-3">
                             <label for="txtCalorias">Calorías</label>
                             <input type="text" class="form-control" name="calorias" value="<%= producto.calorias %>" required>
-                            <div class="invalid-feedback">Ingrese cantidad calorias.</div>
+                            <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'calorias' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
                         </div>
                         <div class="form-group col-5 col-md-3 col-lg-3">
                             <label for="txtPeso">Peso (KG)</label>
                             <input type="text" class="form-control" name="peso" value="<%= producto.peso %>" required>
-                            <div class="invalid-feedback">Ingrese peso en kilogramos.</div>
+                            <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'peso' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
                         </div>
                     </div>
                 </div>

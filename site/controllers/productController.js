@@ -2,6 +2,7 @@ const fs = require('fs');
 const db = require('../database/models');
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
+const {check, validationResult, body} = require('express-validator');
 
 let productController = {
     productDetail: function (req, res, next) {
@@ -106,6 +107,9 @@ let productController = {
       };
     },
     createProduct: async function (req, res, next) {
+      let errores = validationResult(req);
+      //console.log(errores);
+      if(errores.isEmpty()){
       let precioOferta = 0;
       let descuento = 0;
       if(req.body.precioOferta > 0 || req.body.descuento > 0 ){
@@ -155,6 +159,8 @@ let productController = {
           }
       }catch(error){
         console.log(error);
+      }}else{
+        return res.render('productAdd',{ title: 'iChef - Crear producto', errores: errores.errors });
       }
 
     },
@@ -187,6 +193,9 @@ let productController = {
       }
     },
     saveProductById: async function (req, res, next) {
+      let errores = validationResult(req);
+      //console.log(errores);
+      if(errores.isEmpty()){
       //console.log(req);
       console.log(req.body);
       console.log(req.files);
@@ -236,6 +245,8 @@ let productController = {
 
       if (productoUpdate instanceof db.Product){
         return res.redirect(301, '/product' );
+      }}else{
+        return res.render('productEdit',{ title: 'iChef - Editando el producto', errores: errores.errors });
       }
 
     },
@@ -246,7 +257,12 @@ let productController = {
     deleteProductById: async function (req, res, next) {
       try {
         const productoDelete = await db.Product.destroy({
-          where: {id: req.params.idProducto }
+          include:[{association:"productType"},
+                  {association:"marca"},
+                  {association:"rubro"},
+                  {association:"fotos"},
+                  {association:"ingredientes"}],
+          where: {id_product: req.params.idProducto }
         })
         if (productoDelete instanceof db.Product){
           return res.redirect(301, '/product' );

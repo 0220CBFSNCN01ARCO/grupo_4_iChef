@@ -58,16 +58,33 @@ router.get('/:id', productController.getProductById);
 router.post('/create', upload.fields([{ name: 'image_uploads', maxCount: 5 },
                                       { name: 'pdfFile', maxCount: 1}]),
 [
+  check("codigoProducto")
+  .isInt()
+  .withMessage("Debe ingresar un codigo para el producto"),
   check("nombreProducto")
-  .exists()
   .isLength({min:5})
   .withMessage("El nombre del producto debe tener al menos 5 caracteres"),
+  check("tipo")
+  .isInt({min:1,max:2})
+  .withMessage("Debe seleccionar un tipo de producto."),
+  check("precioProducto")
+  .isFloat()
+  .withMessage("Debe ingresar un precio"),
+  check("grupo")
+  .isInt()
+  .withMessage("Debe seleccionar un rubro."),
+  check("marca")
+  .isInt()
+  .withMessage("Debe seleccionar una marca."),
   check("txtDescripcion")
   .isLength({min:20})
   .withMessage("La descripcion del producto debe tener al menos 20 caracteres"),
-  check("precioProducto")
-  .exists()
-  .withMessage("Debe ingresar un precio")
+  check("calorias")
+  .isFloat()
+  .withMessage("Ingrese cantidad calorias."),
+  check("calorias")
+  .isFloat()
+  .withMessage("Ingrese peso en kilogramos")
 ],
                        productController.createProduct);
 
@@ -78,18 +95,35 @@ router.get('/:id/edit', authMiddleware, productController.editProductById);
 router.post('/:id/edit',upload.fields([{ name: 'image_uploads', maxCount: 5 },
                                        { name: 'pdfFile', maxCount: 1}]),
                         authMiddleware,
-[
-  check("nombreProducto")
-  .exists()
-  .isLength({min:5})
-  .withMessage("El nombre del producto debe tener al menos 5 caracteres"),
-  check("txtDescripcion")
-  .isLength({min:20})
-  .withMessage("La descripcion del producto debe tener al menos 20 caracteres"),
-  check("precioProducto")
-  .exists()
-  .withMessage("Debe ingresar un precio")
-],
+                        [
+                          check("codigoProducto")
+                          .isInt()
+                          .withMessage("Debe ingresar un codigo para el producto"),
+                          check("nombreProducto")
+                          .isLength({min:5})
+                          .withMessage("El nombre del producto debe tener al menos 5 caracteres"),
+                          check("tipo")
+                          .isInt({min:1,max:2})
+                          .withMessage("Debe seleccionar un tipo de producto."),
+                          check("precioProducto")
+                          .isFloat()
+                          .withMessage("Debe ingresar un precio"),
+                          check("grupo")
+                          .isInt()
+                          .withMessage("Debe seleccionar un rubro."),
+                          check("marca")
+                          .isInt()
+                          .withMessage("Debe seleccionar una marca."),
+                          check("txtDescripcion")
+                          .isLength({min:20})
+                          .withMessage("La descripcion del producto debe tener al menos 20 caracteres"),
+                          check("calorias")
+                          .isFloat()
+                          .withMessage("Ingrese cantidad calorias."),
+                          check("calorias")
+                          .isFloat()
+                          .withMessage("Ingrese peso en kilogramos")
+                        ],
                         productController.saveProductById);
 
 //7. /products/​:id​ (DELETE) Acción de borrado

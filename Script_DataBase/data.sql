@@ -86,17 +86,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `ingredients_products` WRITE;
 /*!40000 ALTER TABLE `ingredients_products` DISABLE KEYS */;
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (1,1),
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (2,1)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,39)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,8)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,19)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,30)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,7)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (13,13)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (14,18)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (14,26)
-INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (14,15)
+INSERT INTO `ingredients_products` (product_id,ingredient_id) VALUES (1,1),(2,1),(13,39),(13,8),(13,19),(13,30),(13,7),(13,13),(14,18),(14,26),(14,15);
 /*!40000 ALTER TABLE `ingredients_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,4 +119,3 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'Admin','Admin','admin@ichef.com','$2b$10$7wmTOptmvMBtQ.dWxXenyO8cbrvRMuWUMNk8Me5qQ0pGIbO42ppei','11111111','admin-23-06-2020.jpg',1,'2020-06-30 02:48:27','2020-06-29 20:48:27',1),(2,'jose','jose','jose@ichef.com','$2b$10$6PUC9H6bHrmrIV5Z1lIjJeRN08ZMWrtrH4RKT7G7mAj24f2OsMwLK','1234567891','jose-30-06-2020.png',4,'2020-07-01 03:14:29','2020-07-01 00:14:29',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
-
