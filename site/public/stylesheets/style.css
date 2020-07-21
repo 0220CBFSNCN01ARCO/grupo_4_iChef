@@ -1667,3 +1667,10 @@ justify-content: space-around;
   display: flex;
   justify-content: space-around;
 }
+
+.btnAddProduct{
+  width: 50%;
+}
+.form-producto-list{
+  width: 90%;
+}

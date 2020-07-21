@@ -83,8 +83,8 @@ check("emailUsuario")
   .isEmail()
   .normalizeEmail()
   .withMessage("Debe ingresar un email valido.")
-]
-,usersController.loguearUsuario);
+],
+usersController.loguearUsuario);
 
 router.get('/logout', usersController.logoutUser);
 router.get('/:id/userprofile', usersController.userProfile);

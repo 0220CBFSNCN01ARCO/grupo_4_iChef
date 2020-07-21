@@ -9,9 +9,11 @@
         <% for(let i=0; i < productos.length; i++) { %>
           <div class="card-producto col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
             <div class="card h-100">
-              <form action="/cart" method="post">
-                <img src="/images/products/<%=productos[i].product_type_id %>/<%=productos[i].fotos[0].nombre %>"
-                    class="card-img-top img-fluid img-lista-productos" alt="<%= productos[i].descripcion %>">
+              <form class="form-producto-list" action="/cart/addcart/<%= productos[i].codigo %>" method="post">
+                <a href="/product/<%= productos[i].codigo %>">
+                  <img src="/images/products/<%=productos[i].product_type_id %>/<%=productos[i].fotos[0].nombre %>"
+                  class="card-img-top img-fluid img-lista-productos" alt="<%= productos[i].descripcion %>">
+                </a>
                 <div class="card-body">
                   <div class="row rowNombre">
                     <h5 class="card-title card-descripcion"><%= productos[i].descripcion %></h5>
@@ -24,10 +26,7 @@
                   </div>
                   <div class="card-body">
                     <div class="row row-actions justify-content-around">
-                      <div class="col-8 col-accion">
-                        <a href="/product/<%= productos[i].codigo %>" class="btn btn-dark">Ver detalle</a>
-                      </div>
-                      <div class="col-4 col-accion">
+                      <div class="col col-accion">
                         <button type="submit" class="btn btn-dark btnAddProduct">
                           <i class="fa fa-cart-plus"></i>
                         </button>

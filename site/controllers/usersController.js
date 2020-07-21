@@ -3,6 +3,18 @@ const {check, validationResult, body} = require('express-validator');
 const bcrypt = require('bcrypt');
 const saltNumber = 10;
 const db = require('../database/models');
+const jwt = require('jsonwebtoken');
+
+const generateToken = (datoUser) => {
+  let privateKey = "secret"
+  jwt.sign(
+    { user: { email: datoUser}  },
+    privateKey,
+    { expiresIn: '1h' },
+    function(err, token) {
+      return res.json(token);
+    });
+}
 
 let usersController = {
     userRegister: function (req, res, next) {
@@ -86,6 +98,7 @@ let usersController = {
                   if(req.body.checkRecordame != undefined){
                     res.cookie('recordame', usuarioLoguear.email, { maxAge: 120000 })
                   }
+
                   return res.redirect(301, '/');
                 }else{
                     return res.render('login', { title: 'Login',
