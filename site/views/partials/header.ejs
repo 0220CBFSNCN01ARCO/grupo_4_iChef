@@ -78,7 +78,11 @@
   </div>
   <div id="avatarUsuario">
     <a id="avatar-link" href="/" aria-label="Avatar usuario">
-      <img src="/images/users/user-default.png" width="100px" height="100px">
+      <% if( typeof usuario != 'undefined') { %>
+        <img src="/images/users/<%= usuario.avatar %>" class="rounded-circle" width="100px" height="100px">
+      <% } else { %>
+        <img src="/images/users/user-default.png" class="rounded-circle" width="100px" height="100px">
+      <% } %>
     </a>
   </div>
   <div>

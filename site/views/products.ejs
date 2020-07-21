@@ -8,7 +8,7 @@
       <div class="row align-items-center">
         <% for(let i=0; i < productos.length; i++) { %>
           <div class="card-producto col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
-            <div class="card h-100">
+            <div class="card h-100 card-producto">
               <form class="form-producto-list" action="/cart/addcart/<%= productos[i].codigo %>" method="post">
                 <a href="/product/<%= productos[i].codigo %>">
                   <img src="/images/products/<%=productos[i].product_type_id %>/<%=productos[i].fotos[0].nombre %>"
@@ -28,8 +28,19 @@
                     <div class="row row-actions justify-content-around">
                       <div class="col col-accion">
                         <button type="submit" class="btn btn-dark btnAddProduct">
-                          <i class="fa fa-cart-plus"></i>
+                          <i class="ichef-add_shopping_cart"></i>
                         </button>
+                        <div id="cantidadProd<%= i %>" class="cantidades-producto d-none">
+                          <form id='myform' method='POST' action='#'>
+                            <button type="submit" class="btn btn-dark qtyminus" field='quantity'>
+                              <i class="ichef-minus"></i>
+                            </button>
+                            <input type='text' name='quantity' value='0' class='qty' />
+                            <button type="submit" class="btn btn-dark qtyplus" field='quantity'>
+                              <i class="ichef-plus"></i>
+                            </button>
+                          </form>
+                        </div>
                       </div>
                     </div>
                   </div>
