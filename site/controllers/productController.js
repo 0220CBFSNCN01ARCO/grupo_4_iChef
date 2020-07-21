@@ -244,17 +244,13 @@ let productController = {
         }
 
         return res.redirect(301, '/product' );
-<<<<<<< HEAD
-      }}else{
-        return res.render('productEdit',{ title: 'iChef - Editando el producto', errores: errores.errors });
-      }
-=======
->>>>>>> fead45ad39209ada9c27a1f56c50c82f693d33f2
-
       } catch (error) {
          console.log(error);
       }
-    },
+    }else{
+      return res.render('productEdit',{ title: 'iChef - Editando el producto', errores: errores.errors });
+    }
+  },
     productDelete:function (req, res, next) {
         res.render('productDelete', { title: 'iChef - Producto borrado',
                                     usuario: req.session.usuarioLogueado });
