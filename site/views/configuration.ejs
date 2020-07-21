@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+    <div class="row headTable">
+        <div class="col">
+            <h5>Configuración</h5>
+        </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="btn-toolbar" role="toolbar">
+            <div class="btn-group mr-2" role="group">
+                <div class="row align-items-center">
+                    <a class="btn btn-dark btnConfig col-sm-6 col-md-3 col-lg-3 col-xl-2 btnMargin" href="/config/Marcas?page=1"><span class="ichef-database btnIcon"></span><p>Marcas</p></a>
+                    <a class="btn btn-dark btnConfig col-sm-6 col-md-3 col-lg-3 col-xl-2 btnMargin" href="/config/Rubros?page=1"><span class="ichef-slideshare btnIcon"></span><p>Rubros</p></a>
+                    <a class="btn btn-dark btnConfig col-sm-6 col-md-3 col-lg-3 col-xl-2 btnMargin" href="/config/Ingredientes?page=1"><span class="ichef-sliders btnIcon"></span><p>Ingredientes</p></a>
+                    <a class="btn btn-dark btnConfig col-sm-6 col-md-3 col-lg-3 col-xl-2 btnMargin" href="/config/Tipos?page=1"><span class="ichef-tasks btnIcon"></span> <p>Tipos productos</p></a>
+                    <a class="btn btn-dark btnConfig col-sm-6 col-md-3 col-lg-3 col-xl-2 btnMargin" href="/config/Roles?page=1"><span class="ichef-child btnIcon"></span><p>Roles usuario</p></a>
+                    <a class="btn btn-dark btnConfig col-sm-6 col-md-3 col-lg-3 col-xl-2 btnMargin" href="/config/Comensales?page=1"><span class="ichef-stack-overflow btnIcon"></span><p>Cantidad comensales</p></a>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <%- include('./partials/footer') %>
+    <%-include('./partials/script')%>
+</body>
+</html>

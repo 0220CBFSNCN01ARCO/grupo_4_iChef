@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+    <div class="row headTable">
+        <div class="col">
+            <h5>Configuración</h5>
+        </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container">
+        <form method="POST" class="formParams" action="/config/add<%= tipoConfig %>">
+          <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-6">
+              <input type="text" class="form-control" placeholder="<%= tipoConfig %>" id="in<%= tipoConfig %>" name="in<%= tipoConfig %>">
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-3">
+              <button id="btnAdd<%= tipoConfig %>" class="btn btn-dark" type="submit">Agregar</button>
+            </div>
+          </div>
+        </form>
+        <form method="POST" class="formParams" action="/config/buscar<%= tipoConfig %>">
+          <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-6">
+              <input class="form-control mr-sm-2" type="search" name="buscar<%= tipoConfig %>" placeholder="Buscar <%= tipoConfig %>" aria-label="Buscar">
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-3">
+              <button id="btnBuscarGrupo" class="btn btn-dark my-2 my-sm-0" type="submit"><span class="ichef-search1"></span></button>
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th class="titleHead" scope="col">Id</th>
+                <th class="titleHead" scope="col">Descripción</th>
+                <th class="titleHead" scope="col">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%- include('./partials/tableConfig',{ datos: configuracion.datos, tipoConfig }) %>
+          </table>
+        </div>
+        <div class="row indiceTabla">
+          <nav>
+            <ul class="pagination pagination-sm">
+            <%if ( configuracion.currentPage == 0 ){ %>
+              <li class="page-item disabled">
+            <% } else { %>
+              <li class="page-item"></li>
+            <% } %>
+                <a class="page-link" href="/config/<%= tipoConfig %>?page=<%= configuracion.currentPage-1 %>" tabindex="-1" aria-disabled="true">Previous</a>
+              </li>
+              <%for(let i=1; i < configuracion.totalPages+1; i++ ) { %>
+                <%if ( i == configuracion.currentPage ){ %>
+                  <li class="page-item active" ><a class="page-link" href="/config/<%= tipoConfig %>?page=<%= i %>"><%= i %></a></li>
+                <% } else { %>
+                  <li class="page-item" ><a class="page-link" href="/config/<%= tipoConfig %>?page=<%= i %>"><%= i %></a></li>
+                <% } %>
+              <% } %>
+              <%if ( configuracion.totalPages == configuracion.currentPage ){ %>
+                <li class="page-item" disabled>
+              <% } else { %>
+                <li class="page-item"></li>
+              <% } %>
+                  <a class="page-link" href="/config/<%= tipoConfig %>?page=<%= configuracion.currentPage+1 %>">Next</a>
+                </li>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <%- include('./partials/footer') %>
+    <%-include('./partials/script')%>
+</body>
+</html>

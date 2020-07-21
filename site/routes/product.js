@@ -12,7 +12,7 @@ const db = require('../database/models');
 const storage = multer.diskStorage({
       destination: function (req, file, cb) {
         if (file.originalname.match(/\.(pdf)$/)){
-          cb(null, 'public/recetas')
+          cb(null, 'public/images/products/recetas')
         }else{
           cb(null, `public/images/products/${req.body.tipo}`)
         }
@@ -38,7 +38,6 @@ const storage = multer.diskStorage({
 
 router.get('/detail', productController.productDetail);
 router.get('/detail-box', productController.product_boxDetail);
-router.get('/cart', authMiddleware, productController.productCart);
 router.get('/list/:tipo', productController.listarProductos);
 router.get('/productDelete', productController.productDelete);
 

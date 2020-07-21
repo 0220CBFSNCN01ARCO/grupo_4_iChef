@@ -14,7 +14,11 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                       </div>
-                      <input type="email" class="form-control" name="emailUsuario" placeholder="Email">
+                      <% if (typeof emailIngresado != 'undefined') { %>
+                        <input type="email" class="form-control" name="emailUsuario" placeholder="Email" value="<%= emailIngresado %>">
+                      <% } else { %>
+                        <input type="email" class="form-control" name="emailUsuario" placeholder="Email">
+                      <% } %>
                       <% if (typeof errores != 'undefined') { %>
                         <% for (let i=0; i < errores.length; i++) { %>
                           <% if(errores[i].param == 'emailUsuario' ) { %>

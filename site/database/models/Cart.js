@@ -1,34 +1,34 @@
 module.exports = (sequelize, DataTypes) => {
     let alias = "Cart";
     let cols = {
-        id : {
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        user_id : {
+        user_id: {
             type: DataTypes.INTEGER,
             foreignKey: true
         },
-        cantidad_items : {
+        cantidad_items: {
             type: DataTypes.INTEGER
         },
-        neto_total : {
+        neto_total: {
             type: DataTypes.FLOAT
         },
-        subtotal : {
+        subtotal: {
             type: DataTypes.FLOAT
         },
-        importe_descuentos : {
+        importe_descuentos: {
             type: DataTypes.FLOAT
         },
-        total : {
+        total: {
             type: DataTypes.FLOAT
         },
-        fecha : {
+        fecha: {
             type: DataTypes.DATE
         },
-        estado : {
+        estado: {
             type: DataTypes.INTEGER
         }
     }

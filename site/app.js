@@ -10,6 +10,8 @@ let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let productRouter = require('./routes/product');
 let infoRouter  = require('./routes/info');
+let configRouter  = require('./routes/config');
+let cartRouter  = require('./routes/cart');
 
 let logMiddleware = require('./middleware/logMiddleware');
 let recordameMiddleware = require ('./middleware/recordameMiddleware');
@@ -30,16 +32,16 @@ app.use(session({secret: 'iChefSession'}));
 
 let bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-
+app.use(bodyParser.urlencoded({ extended: false })); // support encoded bodies
 
 app.use(recordameMiddleware);
 
 app.use('/', logMiddleware ,indexRouter);
 app.use('/users', usersRouter);
 app.use('/product', productRouter);
-app.use('/info',infoRouter)
-
+app.use('/info',infoRouter);
+app.use('/config',configRouter);
+app.use('/cart',cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
