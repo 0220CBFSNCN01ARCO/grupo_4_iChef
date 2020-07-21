@@ -89,6 +89,7 @@ let usersController = {
                                                       param: 'emailUsuario',
                                                       location: 'body'}
                                                     ],
+                                            emailIngresado: req.body.emailUsuario,
                                             usuario: req.session.usuarioLogueado });
             }else {
                 //console.log(usuarioLoguear);
@@ -107,6 +108,7 @@ let usersController = {
                                                               param: 'passwordUsuario',
                                                               location: 'body'}
                                                             ],
+                                                emailIngresado: req.body.emailUsuario,
                                                 usuario: req.session.usuarioLogueado });
                 }
             }
@@ -118,6 +120,7 @@ let usersController = {
                                                           param: 'passwordUsuario',
                                                           location: 'body'}
                                                         ],
+                                             emailIngresado: req.body.emailUsuario,
                                              usuario: req.session.usuarioLogueado });
             }
       }else{
