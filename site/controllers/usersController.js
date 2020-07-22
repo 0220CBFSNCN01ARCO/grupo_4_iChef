@@ -99,7 +99,6 @@ let usersController = {
                   if(req.body.checkRecordame != undefined){
                     res.cookie('recordame', usuarioLoguear.email, { maxAge: 120000 })
                   }
-
                   return res.redirect(301, '/');
                 }else{
                     return res.render('login', { title: 'Login',
@@ -113,7 +112,7 @@ let usersController = {
                 }
             }
         }catch(error){
-              console.log(error);
+              //console.log(error);
               return res.render('login', { title: 'Login',
                                              errores: [{ value: '',
                                                           msg: 'Error al validar usuario.',
@@ -145,11 +144,15 @@ let usersController = {
       });
     },
     logoutUser: function (req, res, next) {
-      //req.session.destroy();
-      //res.redirect('/');
-      req.cookies.recordame = undefined;
-      req.session.destroy((error) => {
-        return res.redirect('/users/login')
+      sessionData = req.session;
+      sessionData.destroy(function(err) {
+      if(err){
+            msg = 'Error destroy session';
+            res.render('error', { title: 'Error',
+                                  usuario: req.session.usuarioLogueado });
+      }else{
+            return res.redirect('/users/login');
+      }
       });
     },
     userProfile: function (req, res, next) {

@@ -7,7 +7,7 @@ let cartController = {
     addcart: function (req, res, next) {
         console.log("producto agregado");
 
-        
+        req.session.productCard
 
 
 

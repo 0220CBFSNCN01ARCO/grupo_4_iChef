@@ -1,11 +1,10 @@
 function authMiddleware (req, res, next){
-    if(req.session.usuarioLogueado != undefined){
+    if(req.session.usuarioLogueado){
         next();
     } else {
         //console.log("Usuario no logueado.")
         return res.redirect("/users/login");
     }
-
 }
 
 
