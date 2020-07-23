@@ -4,53 +4,46 @@
 <body class='body_market'>
     <%- include('./partials/header') %>
     <!--cuerpo-->
-    <div class = "container-fluid grillaProductos">
-      <div class="row align-items-center">
+    <div class="container">
+      <div>
+        <h3 class="h3">Market</h3>
+      </div>
+      <div class="row">
         <% for(let i=0; i < productos.length; i++) { %>
-          <div class="card-producto col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
-            <div class="card h-100 card-producto">
-              <form class="form-producto-list" action="/cart/addcart/<%= productos[i].codigo %>" method="post">
-                <a href="/product/<%= productos[i].codigo %>">
-                  <img src="/images/products/<%=productos[i].product_type_id %>/<%=productos[i].fotos[0].nombre %>"
-                  class="card-img-top img-fluid img-lista-productos" alt="<%= productos[i].descripcion %>">
-                </a>
-                <div class="card-body">
-                  <div class="row rowNombre">
-                    <h5 class="card-title card-descripcion"><%= productos[i].descripcion %></h5>
+        <div class="col-md-4 col-sm-6">
+              <div class="product-grid">
+                  <div class="product-image">
+                      <a href="/product/<%= productos[i].codigo %>">
+                          <img class="pic-1" src="/images/products/<%=productos[i].product_type_id %>/<%=productos[i].fotos[0].nombre %>" alt="<%= productos[i].descripcion %>">
+                          <img class="pic-2" src="/images/products/<%=productos[i].product_type_id %>/<%=productos[i].fotos[0].nombre %>" alt="<%= productos[i].descripcion %>">
+                      </a>
+                      <ul class="accion-cart">
+                          <li>
+                            <a href="" class="ichef-add_shopping_cart"></a>
+                          </li>
+                      </ul>
+                      <% if(productos[i].descuento_oferta > 0 ) { %>
+                      <span class="product-discount-label">-<%= productos[i].descuento_oferta %>%</span>
+                      <% } %>
                   </div>
-                  <div class="row rowMarca">
-                    <p class="card-text text-muted">Marca: <%= productos[i].marca.descripcion %></p>
-                  </div>
-                  <div class="row rowprecio">
-                    <p class="p-market">$<%= productos[i].precio %></p>
-                  </div>
-                  <div class="card-body">
-                    <div class="row row-actions justify-content-around">
-                      <div class="col col-accion">
-                        <button type="submit" class="btn btn-dark btnAddProduct">
-                          <i class="ichef-add_shopping_cart"></i>
-                        </button>
-                        <div id="cantidadProd<%= i %>" class="cantidades-producto d-none">
-                          <form id='myform' method='POST' action='#'>
-                            <button type="submit" class="btn btn-dark qtyminus" field='quantity'>
-                              <i class="ichef-minus"></i>
-                            </button>
-                            <input type='text' name='quantity' value='0' class='qty' />
-                            <button type="submit" class="btn btn-dark qtyplus" field='quantity'>
-                              <i class="ichef-plus"></i>
-                            </button>
-                          </form>
-                        </div>
+                  <div class="product-content">
+                    <% if(productos[i].precio > productos[i].precio_oferta && productos[i].precio_oferta > 0 ) { %>
+                      <div class="price">$<%= productos[i].precio_oferta  %>
+                        <span>Antes $<%= productos[i].precio %></span>
                       </div>
-                    </div>
+                    <% } else { %>
+                      <div class="price">$<%= productos[i].precio %></div>
+                    <% } %>
+                      <span class="product-brand">Marca: <%= productos[i].marca.descripcion %></span>
+                      <h3 class="title"><a href="/product/<%= productos[i].codigo %>"><%= productos[i].descripcion %></a></h3>
+                      <a class="all-deals" href="/product/<%= productos[i].id_product %>">Ver detalle<i class="fa fa-angle-right icon"></i></a>
                   </div>
-                </div>
-              </form>
-            </div>
-          </div>
+              </div>
+        </div>
         <% } %>
       </div>
     </div>
+
     <%- include('./partials/footer') %>
     <%-include('./partials/script')%>
 </body>

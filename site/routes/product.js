@@ -81,9 +81,9 @@ router.post('/create', upload.fields([{ name: 'image_uploads', maxCount: 5 },
   check("calorias")
   .isFloat()
   .withMessage("Ingrese cantidad calorias."),
-  check("calorias")
+  check("peso")
   .isFloat()
-  .withMessage("Ingrese peso en kilogramos")
+  .withMessage("Ingrese el peso en kilogramos.")
 ],
                        productController.createProduct);
 

@@ -1,15 +1,5 @@
 window.addEventListener("load",() => {
-    let btnAddProduct = document.querySelectorAll(".btnAddProduct");
 
-	//console.log(btnAddProduct);
-    for(let i=0; i< btnAddProduct.length; i++){
-        btnAddProduct[i].addEventListener("click",function() {
-			alert("Boton presionado: " + this);
-
-			this.style.display = "none";
-			//let btnAddProduct = document.querySelectorAll(".btnAddProduct"); 
-        });
-    }
 
 
 })

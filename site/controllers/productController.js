@@ -102,59 +102,61 @@ let productController = {
     },
     createProduct: async function (req, res, next) {
       let errores = validationResult(req);
-      //console.log(errores);
+      console.log(req.body);
+
       if(errores.isEmpty()){
-      let precioOferta = 0;
-      let descuento = 0;
-      if(req.body.precioOferta > 0 || req.body.descuento > 0 ){
-          precioOferta = req.body.precioOferta;
-          descuento = req.body.descuento;
-      }
-      if(typeof req.files.pdfFile != 'undefined'){
-        recetaPDF = req.files.pdfFile[0].originalname
-      }else {
-        recetaPDF = ""
-      }
+        let precioOferta = 0;
+        let descuento = 0;
+        if(req.body.precioOferta > 0 || req.body.descuento > 0 ){
+            precioOferta = req.body.precioOferta;
+            descuento = req.body.descuento;
+        }
+        if(typeof req.files.pdfFile != 'undefined'){
+          recetaPDF = req.files.pdfFile[0].originalname
+        }else {
+          recetaPDF = ""
+        }
+        try{
+            const productNew = await db.Product.create({
+                codigo: req.body.codigoProducto,
+                descripcion: req.body.nombreProducto,
+                product_type_id: req.body.tipo,
+                precio: req.body.precioProducto,
+                precio_oferta: precioOferta,
+                descuento_oferta: descuento,
+                rubro_id: req.body.grupo,
+                marca_id :req.body.marca,
+                detalle: req.body.txtDescripcion,
+                cant_comensales: req.body.radioPersonas,
+                calorias: req.body.calorias,
+                peso: req.body.peso,
+                receta: recetaPDF
+            }); //fin create
 
-      try{
-          const productNew = await db.Product.create({
-              codigo: req.body.codigoProducto,
-              descripcion: req.body.nombreProducto,
-              product_type_id: req.body.tipo,
-              precio: req.body.precioProducto,
-              precio_oferta: precioOferta,
-              descuento_oferta: descuento,
-              rubro_id: req.body.grupo,
-              marca_id :req.body.marca,
-              detalle: req.body.txtDescripcion,
-              cant_comensales: req.body.radioPersonas,
-              calorias: req.body.calorias,
-              peso: req.body.peso,
-              receta: recetaPDF
-          }); //fin create
+            //console.log("ID producto: " + productNew.id_product);
+            //console.log(req.files);
 
-          //console.log("ID producto: " + productNew.id_product);
-          //console.log(req.files);
+            for (i = 0; i < req.body.ingredientes.length ; i++){
+              const ingredientes = await db.IngredientProduct
+                .create({ product_id: productNew.id_product ,
+                          ingredient_id: req.body.ingredientes[i] });
+            }
 
-          for (i = 0; i < req.body.ingredientes.length ; i++){
-            const ingredientes = await db.IngredientProduct
-              .create({ product_id: productNew.id_product ,
-                        ingredient_id: req.body.ingredientes[i] });
-          }
+            for (i = 0; i < req.files.image_uploads.length ; i++){
+              const foto = await db.Photo
+                .create({ nombre: req.files.image_uploads[i].filename ,
+                          product_id: productNew.id_product });
+            }
 
-          for (i = 0; i < req.files.image_uploads.length ; i++){
-            const foto = await db.Photo
-              .create({ nombre: req.files.image_uploads[i].filename ,
-                        product_id: productNew.id_product });
-          }
-
-          if (productNew instanceof db.Product){
-            return res.redirect(301, '/product' );
-          }
-      }catch(error){
-        console.log(error);
-      }}else{
-        return res.render('productAdd',{ title: 'iChef - Crear producto', errores: errores.errors });
+            if (productNew instanceof db.Product){
+              return res.redirect(301, '/product' );
+            }
+        }catch(error){
+          console.log(error);
+        }
+      }else{
+        console.log(errores);
+        return res.redirect('back');
       }
 
     },
