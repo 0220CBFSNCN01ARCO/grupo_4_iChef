@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head') %>
+<body class="body-productDetail">
+    <%- include('./partials/header') %>
+    <%- include('./partials/subtitle') %>
+    <div class="volver-productDetail">
+        <a href="/product/list/2" class="icono-flecha-detail">Volver
+          <!--img src="/images/icon-flecha.png" alt="Volver" width="35vw" height="35vw"-->
+        </a>
+    </div>
+    <div class="container-fluid">
+      <div class="row row-detailProduct">
+        <div id="carousel-producto" class="carousel slide col-12 col-md-6 col-lg-6 carousel-productDetail" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-producto" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-producto" data-slide-to="1"></li>
+          </ol>
+          <div>
+            <div class="carousel-inner">
+              <% for( let i = 0; i < producto.fotos.length; i++ ) { %>
+                <% if(i==0){ %>
+                  <div class="carousel-item active">
+                    <img src="/images/products/<%=producto.productType.id%>/<%=producto.fotos[i].nombre%>" class="d-block w-100 img-fluid" alt="...">
+                  </div>
+                <% } else { %>
+                  <div class="carousel-item">
+                    <img src="/images/products/<%=producto.productType.id %>/<%=producto.fotos[i].nombre %>" class="d-block w-100 img-fluid" alt="...">
+                  </div>
+                <% } %>
+              <% } %>
+            </div>
+            <a class="carousel-control-prev" href="#carousel-producto" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-producto" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Siguiente</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-6 div-productDetail">
+          <h2 class="h2-productDetail"><%=producto.descripcion %>  </h2>
+
+          <h4><%=producto.marca.descripcion %></h4>
+
+          <p class="p-productDetail">Descripción del producto: <%=producto.detalle %> </p>
+          <p class="p-productDetail">Ingredientes:</p>
+          <ul>
+          <% producto.ingredientes.forEach(ingrediente => { %>
+            <li><%=ingrediente.descripcion%></li>
+          <% }) %>
+          </ul>
+          <p class="p-productDetail"><%=producto.peso %> g, <%=producto.calorias %> Kcal </p>
+
+          <h2>$<%=producto.precio%></h2>
+
+          <div class="cantidad-productDetail">
+            <div class="cant-prodDetail">
+              <!--input type="number" id="cantidad_carrito" step="1" min="1" max="99"
+              name="quantity" value="1" title="Cantidad"
+              inputmode="numeric"-->
+              <input type="number" size="10" min="1"  max="10" name="cantidad" class="input-cant-prodDetail" placeholder="1"> 
+              <label for="cantidad"><h6 class="cant-padd-prodDetail">Cantidad</h6></label></h6>
+            </div>
+
+            <button title="Agregar al Carrito" class="button-carrito-prodDetail"><h6 class="text-carrito-prodDetail">Agregar al carrito</h6><img src="/images/icon/icon-carrito.png" alt="Carrito de compras" width="40" height="40"> </button>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <%- include('./partials/footer') %>
+    <%- include('./partials/script')%>
+</body>
+</html>
