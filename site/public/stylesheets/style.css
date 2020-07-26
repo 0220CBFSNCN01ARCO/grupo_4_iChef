@@ -1879,6 +1879,9 @@ button.qtyplus, button.qtyminus {
 .nav-link {
   color:#000;
 }
+.nav-link-w {
+  color:#fff;
+}
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
   color: #fff;
@@ -2028,9 +2031,6 @@ div.section > div > input {
   border: 1px solid #aaaaaa;
 }
 
-.carousel-control-next, .carousel-control-prev {
-  color: #B30E0B;
-}
 
 .list-group-item.active {
   background-color: #ffff;
@@ -2048,7 +2048,24 @@ div.section > div > input {
 .col-p-none{
   padding-left: 0px;
   padding-right: 0px;
-  border: 1px solid #aaaaaa;
 }
 
 /*border: 1px solid #aaaaaa;*/
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 20px;
+  color: #B30E0B;
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 20px;
+  color: #B30E0B;
+}

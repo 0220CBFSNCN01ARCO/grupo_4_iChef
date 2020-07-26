@@ -12,6 +12,9 @@ let productRouter = require('./routes/product');
 let infoRouter  = require('./routes/info');
 let configRouter  = require('./routes/config');
 let cartRouter  = require('./routes/cart');
+/*RUTAS API*/
+let apiUsersRouter = require('./routes/api/users');
+let apiProductRouter = require('./routes/api/products');
 
 let logMiddleware = require('./middleware/logMiddleware');
 let recordameMiddleware = require ('./middleware/recordameMiddleware');
@@ -42,6 +45,10 @@ app.use('/product', productRouter);
 app.use('/info',infoRouter);
 app.use('/config',configRouter);
 app.use('/cart',cartRouter);
+/*API*/
+app.use('/api/users', apiUsersRouter);
+app.use('/api/products', apiProductRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

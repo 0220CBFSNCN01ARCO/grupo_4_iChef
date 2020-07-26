@@ -1,4 +1,3 @@
-const fs = require('fs');
 const {check, validationResult, body} = require('express-validator');
 const bcrypt = require('bcrypt');
 const saltNumber = 10;

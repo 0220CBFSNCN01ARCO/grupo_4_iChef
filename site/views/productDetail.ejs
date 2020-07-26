@@ -16,10 +16,10 @@
                                     <img src="/images/products/<%=producto.productType.id%>/<%=producto.fotos[i].nombre%>" alt="" class="img-fluid" />
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="/images/products/<%=producto.productType.id%>/<%=producto.fotos[i].nombre%>" alt="" class="img-fluid" />
+                                    <img src="/images/products/<%=producto.productType.id%>/prod-2.png" alt="" class="img-fluid" />
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="/images/products/<%=producto.productType.id%>/<%=producto.fotos[i].nombre%>" alt="" class="img-fluid" />
+                                    <img src="/images/products/<%=producto.productType.id%>/prod-4.png" alt="" class="img-fluid" />
                                 </div>
                             <% } else { %>
                                 <div class="carousel-item">
@@ -41,14 +41,14 @@
                         <ol class="carousel-indicador list-group">
                             <% for( let i = 0; i < producto.fotos.length; i++ ) { %>
                                 <% if(i==0){ %>
-                                <li data-target="#carousel-imagenes" data-slide-to='<%= i %>' class="active list-group-item p-0 mb-1">
+                                <li data-target="#carousel-imagenes" data-slide-to='<%= i %>' class="list-group-item p-0 mb-1">
                                     <img src='/images/products/<%=producto.productType.id%>/<%=producto.fotos[i].nombre%>' alt="" class="img-fluid" />
                                 </li>
                                 <li data-target="#carousel-imagenes" data-slide-to='<%= 1 %>' class="list-group-item p-0 mb-1">
-                                    <img src="/images/products/<%=producto.productType.id%>/<%=producto.fotos[i].nombre%>" alt="" class="img-fluid" />
+                                    <img src="/images/products/<%=producto.productType.id%>/prod-2.png" alt="" class="img-fluid" />
                                 </li>
                                 <li data-target="#carousel-imagenes" data-slide-to='<%= 2 %>' class="list-group-item p-0 mb-1">
-                                    <img src="/images/products/<%=producto.productType.id%>/<%=producto.fotos[i].nombre%>" alt="" class="img-fluid" />
+                                    <img src="/images/products/<%=producto.productType.id%>/prod-4.png" alt="" class="img-fluid" />
                                 </li>
                                 <% } else { %>
                                 <li data-target="#carousel-imagenes" data-slide-to='<%= i %>' class="list-group-item p-0 mb-1">
@@ -66,7 +66,7 @@
 
                 <!-- Precios -->
                 <h6 class="titulo-precio"><small>Precio</small></h6>
-                <h3 style="margin-top:0px;">$ <%=producto.precio%></h3>
+                <h3 style="margin-top:0px;">$<%=producto.precio%></h3>
 
                 <!-- Detalles especificos del producto -->
                 <div class="section">
@@ -97,8 +97,8 @@
 
                 <!-- Botones de compra -->
                 <div class="section" style="padding-bottom:20px;">
-                    <button class="btn btn-success">
-                        <span style="margin-right:20px" class="ichef-add_shopping_cart" aria-hidden="true"></span> Agregar
+                    <button class="btn btn-dark">
+                        <span style="margin-right:20px" class="ichef-add_shopping_cart" aria-hidden="true"></span>Agregar
                     </button>
                 </div>
             </div>
