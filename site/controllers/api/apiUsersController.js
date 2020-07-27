@@ -1,14 +1,35 @@
 
 const {User} = require('../../database/models');
 
+const getPagination = (page, size) => {//0,5
+    const limit = size ? +size: 10;
+    const offset = page ? page * limit: 0;
+    console.log("LIMITE: " + limit + " - OFFSET: " + offset);
+    return { limit, offset };
+  };
+const getPagingData = (data, page, limit) => {
+    const { count: totalItems, rows: datos } = data;
+    const currentPage = page ? +page : 0;
+    const totalPages = Math.ceil(totalItems / limit);
+    return { totalItems, datos, totalPages, currentPage };
+  };
+
 let apiUsersController = {
 
     listUsers: async function (req, res, next) {
+        let lim = 10;
+        let off;
+        let page = Number(req.query.page);
+
+        if(typeof page != undefined){ off = (page - 1) * lim }else { off = 0 }
+
         try {
             let usuarios = await User.findAll(
                 {include:[{association: "categoriaUsuario"},
-                          {association: "estadoUsuario"} ]}
-              )
+                          {association: "estadoUsuario"} ,
+                           ],
+                           offset: off,
+                           limit: lim, })
             let arrayUser = [];
             for(let i=0;i< usuarios.length;i++){
                 let userAdd = {
@@ -19,8 +40,39 @@ let apiUsersController = {
                 }
                 arrayUser.push(userAdd);
             }
+            const totalPages = Math.ceil(usuarios.length / lim);
+            let pageNext;
+            let pagePrevious;
+            if(typeof page == undefined){
+                pageNext = `/api/users/?page=2`;
+                pagePrevious = null;
+            }else {
+                if(page == totalPages){
+                    pageNext = null;
+                    if(page == 1){
+                        pagePrevious = null;
+                    }else{
+                        pagePrevious = `/api/users/?page=${ page - 1 }`;
+                    }
+                }else{
+                    pageNext = `/api/users/?page=${ page + 1 }`;
+                    if(page == 1){
+                        pagePrevious = null;
+                    }else{
+                        pagePrevious = `/api/users/?page=${ page-1 }`;
+                    }
+                }
+            }
+            console.log("Pagina: ",page);
+            console.log("LIMIT: ",lim);
+            console.log("OFFSET: ",off);
+            console.log("pageNext: ",pageNext);
+            console.log("pagePrevious: ",pagePrevious);
+
             let endUser = {
                 "count": usuarios.length,
+                "next": pageNext,
+                "previous": pagePrevious,
                 "users": arrayUser
             }
             return res.status(200).json(endUser);

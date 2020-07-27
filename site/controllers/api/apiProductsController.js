@@ -1,15 +1,38 @@
 const {Product} = require('../../database/models');
 const {Heading} = require('../../database/models');
 
+const getPagination = (page, size) => {//0,5
+  const limit = size ? +size: 10;
+  const offset = page ? page * limit: 0;
+  console.log("LIMITE: " + limit + " - OFFSET: " + offset);
+  return { limit, offset };
+};
+const getPagingData = (data, page, limit) => {
+  const { count: totalItems, rows: datos } = data;
+  const currentPage = page ? +page : 0;
+  const totalPages = Math.ceil(totalItems / limit);
+  return { totalItems, datos, totalPages, currentPage };
+};
+
 let apiProductsController = {
     listProducts: async function (req, res, next) {
+      let lim = 10;
+      let off;
+      let page = req.query.page;
+
+      if(typeof page != undefined){ off = (page - 1) * lim }else { off = 0 }
+      console.log("Pagina: ",page);
+      console.log("LIMIT: ",lim);
+      console.log("OFFSET: ",off);
       try {
         const listProduct = await Product.findAll({
           include:[{association: "productType"},
                    {association: "marca"},
                    {association: "rubro"},
                    {association: "fotos"},
-                   {association: "productStatus"}]
+                   {association: "productStatus"}],
+                   offset: 0,
+                   limit: 10,
         });
         const countByCategory = await Product.findAll({
           attributes: ["rubro.descripcion",[Heading.sequelize.fn('COUNT', 'rubro.id'), 'countRubro']],
@@ -29,11 +52,19 @@ let apiProductsController = {
             }
             arrayProduct.push(productAdd);
         }
+        const totalPages = Math.ceil(listProduct.length / lim);
+        let pageNext = `/api/products/?page=${pageNext}`
+        let pagePrevious = 0
+
         let endProduct = {
           "count": listProduct.length,
+          "next": pageNext,
+          "previous": null,
           "countByCategory": countByCategory,
           "products": arrayProduct
         }
+
+
         return res.status(200).json(endProduct);
       } catch (error) {
         //console.log(error)
