@@ -1,29 +1,18 @@
 const {Product} = require('../../database/models');
 const {Heading} = require('../../database/models');
 
-const getPagination = (page, size) => {//0,5
-  const limit = size ? +size: 10;
-  const offset = page ? page * limit: 0;
-  console.log("LIMITE: " + limit + " - OFFSET: " + offset);
-  return { limit, offset };
-};
-const getPagingData = (data, page, limit) => {
-  const { count: totalItems, rows: datos } = data;
-  const currentPage = page ? +page : 0;
-  const totalPages = Math.ceil(totalItems / limit);
-  return { totalItems, datos, totalPages, currentPage };
-};
-
 let apiProductsController = {
     listProducts: async function (req, res, next) {
       let lim = 10;
       let off;
-      let page = req.query.page;
+      let page = Number(req.query.page);
 
-      if(typeof page != undefined){ off = (page - 1) * lim }else { off = 0 }
-      console.log("Pagina: ",page);
-      console.log("LIMIT: ",lim);
-      console.log("OFFSET: ",off);
+      if(!isNaN(page)){
+          off = (page - 1) * lim
+      }else{
+          page = 1
+      }
+
       try {
         const listProduct = await Product.findAll({
           include:[{association: "productType"},
@@ -31,9 +20,13 @@ let apiProductsController = {
                    {association: "rubro"},
                    {association: "fotos"},
                    {association: "productStatus"}],
-                   offset: 0,
-                   limit: 10,
+                   offset: off,
+                   limit: lim,
         });
+        if (listProduct.length == 0 ){
+          return res.status(404).json(msg = {codigo: 404,
+            error: `No hay registros que mostrar en la page ${ page }.`});
+        }
         const countByCategory = await Product.findAll({
           attributes: ["rubro.descripcion",[Heading.sequelize.fn('COUNT', 'rubro.id'), 'countRubro']],
           include:[{association: "rubro",
@@ -53,13 +46,35 @@ let apiProductsController = {
             arrayProduct.push(productAdd);
         }
         const totalPages = Math.ceil(listProduct.length / lim);
-        let pageNext = `/api/products/?page=${pageNext}`
-        let pagePrevious = 0
+        let pageNext;
+        let pagePrevious;
+
+        if(page == totalPages){
+            pageNext = null;
+            if(page == 1){
+                pagePrevious = null;
+            }else{
+                pagePrevious = `/api/products/?page=${ page - 1 }`;
+            }
+        }else{
+            pageNext = `/api/products/?page=${ page + 1 }`;
+            if(page == 1){
+                pagePrevious = null;
+            }else{
+                pagePrevious = `/api/products/?page=${ page-1 }`;
+            }
+        }
+
+        console.log("Pagina: ",page);
+        console.log("LIMIT: ",lim);
+        console.log("OFFSET: ",off);
+        console.log("pageNext: ",pageNext);
+        console.log("pagePrevious: ",pagePrevious);
 
         let endProduct = {
           "count": listProduct.length,
           "next": pageNext,
-          "previous": null,
+          "previous": pagePrevious,
           "countByCategory": countByCategory,
           "products": arrayProduct
         }
@@ -85,7 +100,7 @@ let apiProductsController = {
             if (!productFind){
                 return res.status(404).json(
                             msg = {codigo: 404,
-                                   error: "No se encontro el producto."});
+                                   error: `No se encontro el producto con el id ${ req.params.id }.`});
             }
             let data = {
                   "id_product": productFind.id_product,
@@ -130,7 +145,7 @@ let apiProductsController = {
         } catch (error) {
             return res.status(500).json(
                 msg = {codigo: 500,
-                        error: "No se pudo obtener el producto."});
+                        error: `No se pudo obtener datos del id de producto ${ req.params.id }.`});
         }
     }
 

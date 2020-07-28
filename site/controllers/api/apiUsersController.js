@@ -18,10 +18,14 @@ let apiUsersController = {
 
     listUsers: async function (req, res, next) {
         let lim = 10;
-        let off;
+        let off = 0;
         let page = Number(req.query.page);
 
-        if(typeof page != undefined){ off = (page - 1) * lim }else { off = 0 }
+        if(!isNaN(page)){
+            off = (page - 1) * lim
+        }else{
+            page = 1
+        }
 
         try {
             let usuarios = await User.findAll(
@@ -43,26 +47,23 @@ let apiUsersController = {
             const totalPages = Math.ceil(usuarios.length / lim);
             let pageNext;
             let pagePrevious;
-            if(typeof page == undefined){
-                pageNext = `/api/users/?page=2`;
-                pagePrevious = null;
-            }else {
-                if(page == totalPages){
-                    pageNext = null;
-                    if(page == 1){
-                        pagePrevious = null;
-                    }else{
-                        pagePrevious = `/api/users/?page=${ page - 1 }`;
-                    }
+
+            if(page == totalPages){
+                pageNext = null;
+                if(page == 1){
+                    pagePrevious = null;
                 }else{
-                    pageNext = `/api/users/?page=${ page + 1 }`;
-                    if(page == 1){
-                        pagePrevious = null;
-                    }else{
-                        pagePrevious = `/api/users/?page=${ page-1 }`;
-                    }
+                    pagePrevious = `/api/users/?page=${ page - 1 }`;
+                }
+            }else{
+                pageNext = `/api/users/?page=${ page + 1 }`;
+                if(page == 1){
+                    pagePrevious = null;
+                }else{
+                    pagePrevious = `/api/users/?page=${ page-1 }`;
                 }
             }
+
             console.log("Pagina: ",page);
             console.log("LIMIT: ",lim);
             console.log("OFFSET: ",off);
