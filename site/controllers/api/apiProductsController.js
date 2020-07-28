@@ -4,7 +4,7 @@ const {Heading} = require('../../database/models');
 let apiProductsController = {
     listProducts: async function (req, res, next) {
       let lim = 10;
-      let off;
+      let off = 0;
       let page = Number(req.query.page);
 
       if(!isNaN(page)){
@@ -34,6 +34,10 @@ let apiProductsController = {
           group: 'Product.rubro_id',
           raw:true
         });
+        let objCategory = {}
+        for(let i=0;i< countByCategory.length;i++){
+          objCategory[countByCategory[i].descripcion] = countByCategory[i].countRubro
+        }
         //console.log(listProduct);
         let arrayProduct = [];
         for(let i=0;i< listProduct.length;i++){
@@ -75,7 +79,7 @@ let apiProductsController = {
           "count": listProduct.length,
           "next": pageNext,
           "previous": pagePrevious,
-          "countByCategory": countByCategory,
+          "countByCategory": objCategory,
           "products": arrayProduct
         }
 

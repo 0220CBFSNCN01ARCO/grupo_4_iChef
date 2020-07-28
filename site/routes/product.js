@@ -2,39 +2,51 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
+
 const authMiddleware = require ('../middleware/authMiddleware');
 
 const productController = require('../controllers/productController');
 
 const {check, validationResult, body} = require('express-validator');
-const db = require('../database/models');
+
+let countImage = 0;
 
 const storage = multer.diskStorage({
-      destination: function (req, file, cb) {
+      destination: function (req, file, callback) {
+        let dest;
         if (file.originalname.match(/\.(pdf)$/)){
-          cb(null, 'public/images/products/recetas')
+          dest = `public/images/products/recetas/${req.body.codigoProducto}`
         }else{
-          cb(null, `public/images/products/${req.body.tipo}`)
+          dest = `public/images/products/${req.body.tipo}/${req.body.codigoProducto}`
         }
+        if(!fs.existsSync(dest)){
+          fs.mkdirSync(dest)
+        }
+        callback(null, dest)
       },
-      filename: function (req, file, cb) {
+      filename: function (req, file, callback) {
+        //console.log("BODY:",file)
         if (file.originalname.match(/\.(pdf)$/)){
-          cb(null, 'Receta-' + req.body.codigoProducto + path.extname(file.originalname))
+          callback(null, `Receta-${req.body.codigoProducto}${path.extname(file.originalname)}`)
         }else {
-          cb(null, req.body.tipo + '-' + req.body.codigoProducto + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname))
+          callback(null, `foto-${req.body.codigoProducto}${countImage}${path.extname(file.originalname)}`)
+          countImage++;
         }
       },
-      fileFilter: function (req, file, cb) {
+      fileFilter: function (req, file, callback) {
         if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype == "application/pdf" || file.mimetype == "image/gif") {
-          cb(null, true);
+          callback(null, true);
         } else {
-          cb(null, false);
+          callback(null, false);
           return cb(new Error('Solamente .png, .jpg .jpeg .gif (.pdf para recetas) formatos permitidos!'));
         }
       }
   })
 
-  const upload = multer({ storage: storage })
+const upload = multer({ storage: storage }).fields([{
+  name: 'image_uploads', maxCount: 4}, {
+  name: 'pdfFile', maxCount: 1}])
 
 router.get('/detail', productController.productDetail);
 router.get('/detail-box', productController.product_boxDetail);
@@ -54,8 +66,7 @@ router.get('/:id', productController.getProductById);
 //4. /products​ (POST)  Acción de creación (a donde se envía el formulario) 
 //router.post('/create', productController.createProduct);
 
-router.post('/create', upload.fields([{ name: 'image_uploads', maxCount: 5 },
-                                      { name: 'pdfFile', maxCount: 1}]),
+router.post('/create', upload,
 [
   check("codigoProducto")
   .isInt()
@@ -91,8 +102,7 @@ router.post('/create', upload.fields([{ name: 'image_uploads', maxCount: 5 },
 router.get('/:id/edit', authMiddleware, productController.editProductById);
 
 //6. /products/​:id​ (POST)  Acción de edición (a donde se envía el formulario): 
-router.post('/:id/edit',upload.fields([{ name: 'image_uploads', maxCount: 5 },
-                                       { name: 'pdfFile', maxCount: 1}]),
+router.post('/:id/edit',upload,
                         authMiddleware,
                         [
                           check("codigoProducto")

@@ -230,7 +230,7 @@
                                 <% if(producto.fotos.length > 0) { %>
                                     <ol>
                                     <% for (let i=0; i < producto.fotos.length; i++) { %>
-                                        <li><img src="/images/products/<%= producto.product_type_id %>/<%= producto.fotos[i].nombre %>">
+                                        <li><img src="/images/products/<%= producto.product_type_id %>/<%= producto.codigo %>/<%= producto.fotos[i].nombre %>">
                                         <p>Archivo: <%= producto.fotos[i].nombre %></p>
                                         </li>
                                     <% } %>
