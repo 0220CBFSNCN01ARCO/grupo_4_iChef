@@ -9,27 +9,30 @@ const usersController = require('../controllers/usersController');
 const {check, validationResult, body} = require('express-validator');
 const guestMiddleware = require('../middleware/guestMiddleware')
 const authMiddleware = require ('../middleware/authMiddleware');
-
-const db = require('../database/models');
+const fs = require('fs');
 
 var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'public/images/users')
+    destination: function (req, file, callback) {
+      let dest = 'public/images/users'
+      if(!fs.existsSync(dest)){
+        fs.mkdirSync(dest)
+      }
+      callback(null, dest)
     },
-    filename: function (req, file, cb) {
+    filename: function (req, file, callback) {
       //console.log(req);
       let fecha = moment().format('DD-MM-YYYY');
       let nombre = req.body.emailUser.split('@');
       //console.log(nombre);
-
-      cb(null, nombre[0] + '-' + fecha + path.extname(file.originalname))
+      let dest = nombre[0] + '-' + fecha + path.extname(file.originalname)
+      callback(null, dest)
     },
-    fileFilter: function (req, file, cb) {
+    fileFilter: function (req, file, callback) {
       if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg"|| file.mimetype == "image/gif") {
-        cb(null, true);
+        callback(null, true);
       } else {
-        cb(null, false);
-        return cb(new Error('Solamente .png, .jpg .jpeg .gif formatos permitidos!'));
+        callback(null, false);
+        return callback(new Error('Solamente .png, .jpg .jpeg .gif formatos permitidos!'));
       }
     }
   })
