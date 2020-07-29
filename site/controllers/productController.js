@@ -135,11 +135,12 @@ let productController = {
 
             //console.log("ID producto: " + productNew.id_product);
             //console.log(req.files);
-
-            for (i = 0; i < req.body.ingredientes.length ; i++){
-              const ingredientes = await db.IngredientProduct
-                .create({ product_id: productNew.id_product ,
-                          ingredient_id: req.body.ingredientes[i] });
+            if(typeof req.body.ingredientes != undefined){
+              for (i = 0; i < req.body.ingredientes.length ; i++){
+                const ingredientes = await db.IngredientProduct
+                  .create({ product_id: productNew.id_product ,
+                            ingredient_id: req.body.ingredientes[i] });
+              }
             }
 
             for (i = 0; i < req.files.image_uploads.length ; i++){
