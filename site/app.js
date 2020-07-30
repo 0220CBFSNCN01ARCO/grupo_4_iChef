@@ -12,7 +12,7 @@ let productRouter = require('./routes/product');
 let infoRouter  = require('./routes/info');
 let configRouter  = require('./routes/config');
 let cartRouter  = require('./routes/cart');
-/*RUTAS API*/
+/*ROUTER API*/
 let apiUsersRouter = require('./routes/api/users');
 let apiProductRouter = require('./routes/api/products');
 
