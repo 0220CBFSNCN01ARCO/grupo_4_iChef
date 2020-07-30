@@ -107,9 +107,16 @@ let productController = {
       if(errores.isEmpty()){
         let precioOferta = 0;
         let descuento = 0;
-        if(req.body.precioOferta > 0 || req.body.descuento > 0 ){
-            precioOferta = req.body.precioOferta;
-            descuento = req.body.descuento;
+
+        //console.log("Oferta:",req.body.precioOferta);
+        //console.log("Descuento:",req.body.descuento);
+        if(req.body.precioOferta > 0 && req.body.precioOferta != '' ){
+          console.log("Precio, soy un numero")
+          precioOferta = req.body.precioOferta;
+        }
+        if(req.body.descuento > 0 && req.body.descuento != '' ){
+          console.log("Descuento, soy un numero")
+          descuento = req.body.descuento;
         }
         if(typeof req.files.pdfFile != 'undefined'){
           recetaPDF = req.files.pdfFile[0].originalname
@@ -134,8 +141,8 @@ let productController = {
             }); //fin create
 
             //console.log("ID producto: " + productNew.id_product);
-            //console.log(req.files);
-            if(typeof req.body.ingredientes != undefined){
+            //console.log("Ingredientes:",req.body.ingredientes);
+            if(req.body.ingredientes){
               for (i = 0; i < req.body.ingredientes.length ; i++){
                 const ingredientes = await db.IngredientProduct
                   .create({ product_id: productNew.id_product ,
@@ -194,14 +201,17 @@ let productController = {
       //console.log(errores);
       if(errores.isEmpty()){
       //console.log(req);
-      //console.log(req.body);
-      //console.log(req.files);
+      //console.log("Oferta:",req.body.precioOferta);
+      //console.log("Descuento:",req.body.descuento);
       let precioOferta = 0;
       let descuento = 0;
-      if(req.body.precioOferta > 0 || req.body.descuento > 0 ){
+      if(req.body.precioOferta > 0 && !isNaN(req.body.precioOferta) ){
           precioOferta = req.body.precioOferta;
-          descuento = req.body.descuento;
       }
+      if(req.body.descuento > 0 && !isNaN(req.body.descuento) ){
+        descuento = req.body.descuento;
+      }
+
       if(typeof req.files.pdfFile != 'undefined'){
         recetaPDF = req.files.pdfFile[0].originalname
       }else {
@@ -300,8 +310,5 @@ let productController = {
         });
     }
 };
-
-
-
 
 module.exports = productController;
