@@ -76,6 +76,7 @@ let apiUsersController = {
                 "previous": pagePrevious,
                 "users": arrayUser
             }
+            res.setHeader('Access-Control-Allow-Origin', '*');
             return res.status(200).json(endUser);
         } catch (error) {
             return res.status(500).json(msg = {codigo: 500,

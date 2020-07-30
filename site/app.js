@@ -49,6 +49,10 @@ app.use('/cart',cartRouter);
 app.use('/api/users', apiUsersRouter);
 app.use('/api/products', apiProductRouter);
 
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
