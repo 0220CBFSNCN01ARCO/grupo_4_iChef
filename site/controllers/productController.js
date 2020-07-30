@@ -126,14 +126,14 @@ let productController = {
         try{
             const productNew = await db.Product.create({
                 codigo: req.body.codigoProducto,
-                descripcion: req.body.nombreProducto,
+                descripcion: req.body.nombreProducto.substring(0,150),
                 product_type_id: req.body.tipo,
                 precio: req.body.precioProducto,
                 precio_oferta: precioOferta,
                 descuento_oferta: descuento,
                 rubro_id: req.body.grupo,
                 marca_id :req.body.marca,
-                detalle: req.body.txtDescripcion,
+                detalle: req.body.txtDescripcion.substring(0,150),
                 cant_comensales: req.body.radioPersonas,
                 calorias: req.body.calorias,
                 peso: req.body.peso,
@@ -220,14 +220,14 @@ let productController = {
       try {
           const productoUpdate = await db.Product.update({
             codigo: req.body.codigoProducto,
-            descripcion: req.body.nombreProducto,
+            descripcion: req.body.nombreProducto.substring(0,150),
             product_type_id: req.body.tipo,
             precio: req.body.precioProducto,
             precio_oferta: precioOferta,
             descuento_oferta: descuento,
             rubro_id: req.body.grupo,
             marca_id :req.body.marca,
-            detalle: req.body.txtDescripcion,
+            detalle: req.body.txtDescripcion.substring(0,150),
             cant_comensales: req.body.radioPersonas,
             calorias: req.body.calorias,
             peso: req.body.peso,
