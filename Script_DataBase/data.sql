@@ -103,16 +103,6 @@ INSERT INTO `photos` VALUES (1,'foto-12.jpg',1),(2,'foto-13.jpg',1),(3,'foto-20.
 UNLOCK TABLES;
 
 --
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Admin','Admin','admin@ichef.com','$2b$10$7wmTOptmvMBtQ.dWxXenyO8cbrvRMuWUMNk8Me5qQ0pGIbO42ppei','11111111','admin-23-06-2020.jpg',1,'2020-06-30 05:48:27','2020-06-29 20:48:27',1),(2,'jose','jose','jose@ichef.com','$2b$10$6PUC9H6bHrmrIV5Z1lIjJeRN08ZMWrtrH4RKT7G7mAj24f2OsMwLK','1234567891','jose-30-06-2020.png',4,'2020-07-01 06:14:29','2020-07-01 00:14:29',1);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Dumping data for table `users_categories`
 --
 
@@ -130,4 +120,14 @@ LOCK TABLES `users_status` WRITE;
 /*!40000 ALTER TABLE `users_status` DISABLE KEYS */;
 INSERT INTO `users_status` VALUES (1,'Activo'),(2,'Suspendido'),(3,'Bloqueado'),(4,'Dado baja');
 /*!40000 ALTER TABLE `users_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Admin','Admin','admin@ichef.com','$2b$10$7wmTOptmvMBtQ.dWxXenyO8cbrvRMuWUMNk8Me5qQ0pGIbO42ppei','11111111','admin-23-06-2020.jpg',1,'2020-06-30 05:48:27','2020-06-29 20:48:27',1),(2,'jose','jose','jose@ichef.com','$2b$10$6PUC9H6bHrmrIV5Z1lIjJeRN08ZMWrtrH4RKT7G7mAj24f2OsMwLK','1234567891','jose-30-06-2020.png',4,'2020-07-01 06:14:29','2020-07-01 00:14:29',1);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;

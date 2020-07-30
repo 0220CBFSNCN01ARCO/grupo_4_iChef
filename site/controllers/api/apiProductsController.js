@@ -83,7 +83,7 @@ let apiProductsController = {
           "products": arrayProduct
         }
 
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
         return res.status(200).json(endProduct);
       } catch (error) {
         //console.log(error)
@@ -144,7 +144,7 @@ let apiProductsController = {
             //■ una propiedad por cada campo en base
             //■ un array por cada relación de uno a muchos (categories, colors,sizes, etc)
             //■ Una URL para la imagen del producto (para mostrar la imagen)
-            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
             return res.status(200).json(endProduct);
         } catch (error) {
             return res.status(500).json(
