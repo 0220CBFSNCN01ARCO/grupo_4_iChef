@@ -100,6 +100,7 @@ let apiUsersController = {
                 "avatar": userFind.avatar,
                 "urlAvatar": `images/users/${ userFind.avatar }`
             }
+            res.setHeader('Access-Control-Allow-Origin', '*');
             return res.status(200).json(endUser);
         } catch (error) {
             return res.status(500).json(
