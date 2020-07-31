@@ -76,7 +76,7 @@ let apiUsersController = {
                 "previous": pagePrevious,
                 "users": arrayUser
             }
-            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
             return res.status(200).json(endUser);
         } catch (error) {
             return res.status(500).json(msg = {codigo: 500,
@@ -100,7 +100,7 @@ let apiUsersController = {
                 "avatar": userFind.avatar,
                 "urlAvatar": `images/users/${ userFind.avatar }`
             }
-            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
             return res.status(200).json(endUser);
         } catch (error) {
             return res.status(500).json(

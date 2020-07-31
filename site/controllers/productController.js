@@ -238,11 +238,13 @@ let productController = {
         const delFotos = await db.IngredientProduct
             .destroy({ where: {product_id: req.params.id }} );
 
-        for (i = 0; i < req.body.ingredientes.length ; i++){
-          const ingredientes = await db.IngredientProduct
-            .create({ product_id: req.params.id,
-                      ingredient_id: req.body.ingredientes[i] } );
-        }
+        if(req.body.ingredientes){
+          for (i = 0; i < req.body.ingredientes.length ; i++){
+            const ingredientes = await db.IngredientProduct
+              .create({ product_id: req.params.id,
+                        ingredient_id: req.body.ingredientes[i] } );
+          }
+       }
 
         if(typeof req.files.image_uploads != 'undefined'){
           for (i = 0; i < req.files.image_uploads.length ; i++){
