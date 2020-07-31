@@ -95,8 +95,7 @@ router.post('/create', upload,
   check("peso")
   .isFloat()
   .withMessage("Ingrese el peso en kilogramos.")
-],
-                       productController.createProduct);
+], productController.createProduct);
 
 //5. /products/​:id​/edit ​(GET)  Formulario de edición de productos 
 router.get('/:id/edit', authMiddleware, productController.editProductById);
