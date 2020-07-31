@@ -111,11 +111,9 @@ let productController = {
         //console.log("Oferta:",req.body.precioOferta);
         //console.log("Descuento:",req.body.descuento);
         if(req.body.precioOferta > 0 && req.body.precioOferta != '' ){
-          console.log("Precio, soy un numero")
           precioOferta = req.body.precioOferta;
         }
         if(req.body.descuento > 0 && req.body.descuento != '' ){
-          console.log("Descuento, soy un numero")
           descuento = req.body.descuento;
         }
         if(typeof req.files.pdfFile != 'undefined'){
@@ -163,8 +161,10 @@ let productController = {
           console.log(error);
         }
       }else{
-        console.log(errores);
-        return res.redirect('back');
+        return res.render('productAdd',{ title: 'Registro',
+                                    errores: errores.errors });
+        //console.log(errores);
+        //return res.redirect('back');
       }
 
     },
@@ -198,11 +198,7 @@ let productController = {
     },
     saveProductById: async function (req, res, next) {
       let errores = validationResult(req);
-      //console.log(errores);
       if(errores.isEmpty()){
-      //console.log(req);
-      //console.log("Oferta:",req.body.precioOferta);
-      //console.log("Descuento:",req.body.descuento);
       let precioOferta = 0;
       let descuento = 0;
       if(req.body.precioOferta > 0 && !isNaN(req.body.precioOferta) ){

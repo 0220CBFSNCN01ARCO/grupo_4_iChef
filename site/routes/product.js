@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const sharp = require('sharp');
 
 const authMiddleware = require ('../middleware/authMiddleware');
 
@@ -10,8 +11,8 @@ const productController = require('../controllers/productController');
 
 const {check, validationResult, body} = require('express-validator');
 
-let countImage = 0;
 
+let countImage = 0;
 const storage = multer.diskStorage({
       destination: function (req, file, callback) {
         let dest;
@@ -25,24 +26,32 @@ const storage = multer.diskStorage({
         }
         callback(null, dest)
       },
-      filename: function (req, file, callback) {
+      filename: async function (req, file, callback) {
         //console.log("BODY:",file)
+        let fileName;
         if (file.originalname.match(/\.(pdf)$/)){
-          callback(null, `Receta-${req.body.codigoProducto}${path.extname(file.originalname)}`)
+          fileName = `Receta-${req.body.codigoProducto}${path.extname(file.originalname)}`
         }else {
-          callback(null, `foto-${req.body.codigoProducto}${countImage}${path.extname(file.originalname)}`)
+          fileName = `foto-${req.body.codigoProducto}${countImage}${path.extname(file.originalname)}`
           countImage++;
         }
+        //callback(null, fileName)
+        await sharp(file.buffer)
+        .resize(800, 800)
+        .toFormat("png")
+        .jpeg({ quality: 90 })
+        .toFile(fileName);
+
       },
       fileFilter: function (req, file, callback) {
         if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype == "application/pdf" || file.mimetype == "image/gif") {
           callback(null, true);
         } else {
           callback(null, false);
-          return cb(new Error('Solamente .png, .jpg .jpeg .gif (.pdf para recetas) formatos permitidos!'));
+          return callback(new Error('Solamente .png, .jpg .jpeg .gif (.pdf para recetas) formatos permitidos!'));
         }
       }
-  })
+})
 
 const upload = multer({ storage: storage }).fields([{
   name: 'image_uploads', maxCount: 4}, {
@@ -66,7 +75,8 @@ router.get('/:id', productController.getProductById);
 //4. /products​ (POST)  Acción de creación (a donde se envía el formulario) 
 //router.post('/create', productController.createProduct);
 
-router.post('/create', upload,
+router.post('/create',
+upload,
 [
   check("codigoProducto")
   .isInt()
