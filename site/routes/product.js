@@ -3,14 +3,10 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const sharp = require('sharp');
 
 const authMiddleware = require ('../middleware/authMiddleware');
-
 const productController = require('../controllers/productController');
-
 const {check, validationResult, body} = require('express-validator');
-
 
 let countImage = 0;
 const storage = multer.diskStorage({
@@ -26,7 +22,7 @@ const storage = multer.diskStorage({
         }
         callback(null, dest)
       },
-      filename: async function (req, file, callback) {
+      filename: function (req, file, callback) {
         //console.log("BODY:",file)
         let fileName;
         if (file.originalname.match(/\.(pdf)$/)){
@@ -35,13 +31,7 @@ const storage = multer.diskStorage({
           fileName = `foto-${req.body.codigoProducto}${countImage}${path.extname(file.originalname)}`
           countImage++;
         }
-        //callback(null, fileName)
-        await sharp(file.buffer)
-        .resize(800, 800)
-        .toFormat("png")
-        .jpeg({ quality: 90 })
-        .toFile(fileName);
-
+        callback(null, fileName)
       },
       fileFilter: function (req, file, callback) {
         if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype == "application/pdf" || file.mimetype == "image/gif") {

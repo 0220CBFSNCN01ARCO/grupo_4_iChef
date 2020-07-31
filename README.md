@@ -87,3 +87,9 @@ Consultamos los siguientes links para dar forma a nuestro proyecto, de los cuale
  - https://www.lanacion.com.ar/lifestyle/las-fiaca-de-la-cocina-nid1479070
  - https://www.homechef.com/
  - https://www.instagram.com/almacendemario/?hl=es-la
+
+Donations
+---------
+Donations are **greatly appreciated!**
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif "iChef")](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NZ2F35XVZ5528&source=url "Donate")
