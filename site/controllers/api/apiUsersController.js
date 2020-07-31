@@ -64,11 +64,11 @@ let apiUsersController = {
                 }
             }
 
-            console.log("Pagina: ",page);
+            /*console.log("Pagina: ",page);
             console.log("LIMIT: ",lim);
             console.log("OFFSET: ",off);
             console.log("pageNext: ",pageNext);
-            console.log("pagePrevious: ",pagePrevious);
+            console.log("pagePrevious: ",pagePrevious);*/
 
             let endUser = {
                 "count": usuarios.length,

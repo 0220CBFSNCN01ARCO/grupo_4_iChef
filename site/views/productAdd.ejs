@@ -22,7 +22,11 @@
                         </div>
                         <div class="form-group col-sm-12 col-md-6 col-lg-7">
                             <label for="nombreProducto">Nombre</label>
+                            <% if (typeof datosForm != 'undefined') { %>
+                            <input type="text" class="form-control" name="nombreProducto" placeholder="Ingrese nombre del producto" value="<%= datosForm.descripcion %>" required>
+                            <% } else { %>
                             <input type="text" class="form-control" name="nombreProducto" placeholder="Ingrese nombre del producto" required>
+                            <% } %>
                             <% if (typeof errores != 'undefined') { %>
                                 <% for (let i=0; i < errores.length; i++) { %>
                                     <% if(errores[i].param == 'nombreProducto' ) { %>
@@ -36,7 +40,15 @@
                             <select class="custom-select form-control" id="tipo" name="tipo" required>
                                 <option value="" selected>Seleccione un tipo</option>
                                 <% for (let i=0; i < tipoProducto.length; i++) { %>
-                                    <option value="<%= tipoProducto[i].id %>"><%= tipoProducto[i].descripcion %></option>
+                                    <% if (typeof datosForm != 'undefined') { %>
+                                        <% if (datosForm.product_type_id == tipoProducto[i].id) { %>
+                                            <option selected value="<%= tipoProducto[i].id %>"><%= tipoProducto[i].descripcion %></option>
+                                        <% } else { %>
+                                            <option value="<%= tipoProducto[i].id %>"><%= tipoProducto[i].descripcion %></option>
+                                        <% } %>
+                                    <% } else { %>
+                                        <option value="<%= tipoProducto[i].id %>"><%= tipoProducto[i].descripcion %></option>
+                                    <% } %>
                                 <% } %>
                             </select>
                             <% if (typeof errores != 'undefined') { %>
@@ -54,11 +66,14 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                        <!--Ver agregar icono-->
                                         <i class="fa fa-dollar-sign"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control" name="precioProducto" placeholder="0" required>
+                                <% if (typeof datosForm != 'undefined') { %>
+                                    <input type="text" class="form-control" name="precioProducto" placeholder="0" value="<%= datosForm.precio %>" required>
+                                <% } else { %>
+                                    <input type="text" class="form-control" name="precioProducto" placeholder="0" required>
+                                <% } %>
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                         <% if(errores[i].param == 'precioProducto' ) { %>
@@ -73,7 +88,15 @@
                                 <div class="form-group col-6 col-md-5 col-lg-4">
                                     <label for="descuentoProducto">Descuento</label>
                                     <div class="input-group">
-                                        <input type="text" name="descuento" class="form-control" placeholder="0">
+                                        <% if (typeof datosForm != 'undefined') { %>
+                                            <% if ( datosForm.descuento_oferta > 0) { %>
+                                                <input type="text" name="descuento" class="form-control" placeholder="0" value="<%= datosForm.descuento_oferta %>">
+                                            <% } else { %>
+                                                <input type="text" name="descuento" class="form-control" placeholder="0">
+                                            <% } %>
+                                        <% } else { %>
+                                            <input type="text" name="descuento" class="form-control" placeholder="0">
+                                        <% } %>
                                         <span class="input-group-text">
                                             <i class="fa fa-percent"></i>
                                         </span>
@@ -88,7 +111,15 @@
                                                 <i class="fa fa-dollar-sign"></i>
                                             </span>
                                         </div>
-                                        <input type="text" name="precioOferta" class="form-control" placeholder="0">
+                                        <% if (typeof datosForm != 'undefined') { %>
+                                            <% if ( datosForm.precioOferta > 0) { %>
+                                                <input type="text" name="precioOferta" class="form-control" placeholder="0" value="<%= datosForm.precioOferta %>">
+                                            <% } else { %>
+                                                <input type="text" name="precioOferta" class="form-control" placeholder="0">
+                                            <% } %>
+                                        <% } else { %>
+                                            <input type="text" name="precioOferta" class="form-control" placeholder="0">
+                                        <% } %>
                                         <div class="invalid-feedback">Ingrese precio de oferta.</div>
                                     </div>
                                 </div>

@@ -102,25 +102,38 @@ let productController = {
     },
     createProduct: async function (req, res, next) {
       let errores = validationResult(req);
-      console.log(req.body);
+      //console.log(req.body);
+
+      let precioOferta = 0;
+      let descuento = 0;
+      if(req.body.precioOferta > 0 && req.body.precioOferta != '' ){
+        precioOferta = req.body.precioOferta;
+      }
+      if(req.body.descuento > 0 && req.body.descuento != '' ){
+        descuento = req.body.descuento;
+      }
+      if(typeof req.files.pdfFile != 'undefined'){
+        recetaPDF = req.files.pdfFile[0].originalname
+      }else {
+        recetaPDF = ""
+      }
+      let datosForm = {
+        codigo: req.body.codigoProducto,
+        descripcion: req.body.nombreProducto.substring(0,150),
+        product_type_id: req.body.tipo,
+        precio: req.body.precioProducto,
+        precio_oferta: precioOferta,
+        descuento_oferta: descuento,
+        rubro_id: req.body.grupo,
+        marca_id :req.body.marca,
+        detalle: req.body.txtDescripcion.substring(0,150),
+        cant_comensales: req.body.radioPersonas,
+        calorias: req.body.calorias,
+        peso: req.body.peso,
+        receta: recetaPDF
+      }
 
       if(errores.isEmpty()){
-        let precioOferta = 0;
-        let descuento = 0;
-
-        //console.log("Oferta:",req.body.precioOferta);
-        //console.log("Descuento:",req.body.descuento);
-        if(req.body.precioOferta > 0 && req.body.precioOferta != '' ){
-          precioOferta = req.body.precioOferta;
-        }
-        if(req.body.descuento > 0 && req.body.descuento != '' ){
-          descuento = req.body.descuento;
-        }
-        if(typeof req.files.pdfFile != 'undefined'){
-          recetaPDF = req.files.pdfFile[0].originalname
-        }else {
-          recetaPDF = ""
-        }
         try{
             const productNew = await db.Product.create({
                 codigo: req.body.codigoProducto,
@@ -137,9 +150,6 @@ let productController = {
                 peso: req.body.peso,
                 receta: recetaPDF
             }); //fin create
-
-            //console.log("ID producto: " + productNew.id_product);
-            //console.log("Ingredientes:",req.body.ingredientes);
             if(req.body.ingredientes){
               for (i = 0; i < req.body.ingredientes.length ; i++){
                 const ingredientes = await db.IngredientProduct
@@ -161,8 +171,33 @@ let productController = {
           console.log(error);
         }
       }else{
-        return res.render('productAdd',{ title: 'Registro',
-                                    errores: errores.errors });
+        try{
+          const tipoProducto = await db.ProductType.findAll();
+          const rubros = await db.Heading.findAll({order:[['descripcion','ASC']]});
+          const marcas = await db.Brand.findAll({order:[['descripcion','ASC']]});
+          const ingredientes = await db.Ingredient.findAll({order:[['descripcion','ASC']]});
+          const cantComensales = await db.Diners.findAll();
+          const maxCodigo = await db.Product.findAll({
+            attributes: [[Sequelize.fn('max', Sequelize.col('id_product')), 'codigo']],
+            raw: true
+          });
+          console.log(datosForm);
+          let codigo = maxCodigo[0].codigo + 1
+          res.render('productAdd', {  title: 'iChef - Crear producto',
+                                      errores: errores.errors,
+                                      datosForm: datosForm,
+                                      codigo,
+                                      tipoProducto,
+                                      rubros,
+                                      marcas,
+                                      ingredientes,
+                                      cantComensales,
+                                      usuario: req.session.usuarioLogueado });
+        }catch(errorP){
+          return res.render('error', { title: 'Error',
+                                         error: errorP,
+                                         usuario: req.session.usuarioLogueado });
+        };
         //console.log(errores);
         //return res.redirect('back');
       }

@@ -2071,3 +2071,18 @@ div.section > div > input {
   font-size: 20px;
   color: #B30E0B;
 }
+
+.titleConfig {
+  background-color: #D5D8DC;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+}
+
+.btnVolverConfig {
+  padding: 0px;
+}
+
+.encaConfig {
+  padding-top: 10px;
+}

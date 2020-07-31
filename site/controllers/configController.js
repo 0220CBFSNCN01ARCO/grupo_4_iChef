@@ -2,19 +2,20 @@ const db = require('../database/models');
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
-const getPagination = (page, size) => {//0,5
-    const limit = size ? +size: 10;
-    const offset = page ? page * limit: 0;
-    console.log("LIMITE: " + limit + " - OFFSET: " + offset);
+  const getPagination = (page) => {
+    let limit = 10;
+    let offset = 0;
+    offset = (page - 1) * limit
+
     return { limit, offset };
   };
+  const getCountData = (data,limit) => {
+    const totalPages = Math.ceil(data.count / limit);
+    const totalItems = data.count;
+    const dataRow = data.rows
+    return { totalItems, totalPages, dataRow };
+  }
 
-  const getPagingData = (data, page, limit) => {
-    const { count: totalItems, rows: datos } = data;
-    const currentPage = page ? +page : 0;
-    const totalPages = Math.ceil(totalItems / limit);
-    return { totalItems, datos, totalPages, currentPage };
-  };
 
 let configController = {
     getConfig: function (req, res, next) {
@@ -22,22 +23,14 @@ let configController = {
                                           usuario: req.session.usuarioLogueado });
     },
     getAllConfig: async function (req, res, next) {
-        let poffset = 10;
-        let page = 0;
-        const { limit, offset } = getPagination(page, poffset);
-        try {
-            const tipoProducto = await db.ProductType.findAndCountAll({ limit: limit, offset: offset}, {order:[['descripcion','ASC']]});
-            const rubrosProd = await db.Heading.findAndCountAll({ limit: limit, offset: offset }, {order:[['descripcion','ASC']]})
-            const marcasProductos = await db.Brand.findAndCountAll({ limit: limit, offset: offset }, {order:[['descripcion','ASC']]})
-            const ingredientesProd = await db.Ingredient.findAndCountAll({ limit: limit, offset: offset }, {order:[['descripcion','ASC']]})
-            const cantComensales = await db.Diners.findAndCountAll({ limit: limit, offset: offset }, {order:[['nro_comensales','ASC']]});
-            const estadoUsuario = await db.UserStatus.findAndCountAll({ limit: limit, offset: offset }, {order:[['descripcion','ASC']]});
 
-            const resMarcas = getPagingData(marcasProductos, page, limit);
-            console.log("Total registros: " + resMarcas.totalItems)
-            console.log("Cant x pagina: " + resMarcas.datos.length)
-            console.log("Total paginas: " + resMarcas.totalPages)
-            console.log("Pagina actual: " + resMarcas.currentPage)
+        try {
+            const tipoProducto = await db.ProductType.findAndCountAll( {order:[['descripcion','ASC']]});
+            const rubrosProd = await db.Heading.findAndCountAll( {order:[['descripcion','ASC']]})
+            const marcasProductos = await db.Brand.findAndCountAll( {order:[['descripcion','ASC']]})
+            const ingredientesProd = await db.Ingredient.findAndCountAll( {order:[['descripcion','ASC']]})
+            const cantComensales = await db.Diners.findAndCountAll( {order:[['nro_comensales','ASC']]});
+            const estadoUsuario = await db.UserStatus.findAndCountAll( {order:[['descripcion','ASC']]});
 
             return res.render('configParameter', { title: 'iChef',
                                                     tipoProducto,
@@ -53,19 +46,25 @@ let configController = {
 
     },
     getMarcas: async function (req, res, next) {
-        let poffset = 10;
-        const { limit, offset } = getPagination(req.params.page-1, poffset);
-        try {
+      let page = Number(req.query.page);
+      if(isNaN(page)){ page = 1 }
+      const { limit, offset } = getPagination(page);
+      try {
             const marcasProductos = await db.Brand
               .findAndCountAll({ limit: limit,
                                  offset: offset},
                                  {order:[['descripcion','ASC']]})
-
-            const configMarcas = getPagingData(marcasProductos, req.params.page, limit);
-            console.log("Total registros: " + configMarcas.totalItems)
-            console.log("Cant x pagina: " + configMarcas.datos.length)
-            console.log("Total paginas: " + configMarcas.totalPages)
-            console.log("Pagina actual: " + configMarcas.currentPage)
+            const { totalItems, totalPages, dataRow } = getCountData(marcasProductos,limit);
+            const configMarcas = {
+                            totalItems: totalItems,
+                            datos: dataRow,
+                            totalPages: totalPages,
+                            currentPage: page };
+            ///const configMarcas = getPagingData(marcasProductos, req.params.page, limit);
+            //console.log("Total registros: " , configMarcas.totalItems)
+            //console.log("Cant x pagina: " , configMarcas.datos.length)
+            //console.log("Total paginas: " , configMarcas.totalPages)
+            //console.log("Pagina actual: " , configMarcas.currentPage)
 
             return res.render('configParameter', { title: 'iChef',
                                                     configuracion: configMarcas,
@@ -90,16 +89,20 @@ let configController = {
 
     },
     getRubros: async function (req, res, next) {
-      let poffset = 10;
-      const { limit, offset } = getPagination(req.params.page-1, poffset);
+      let page = Number(req.query.page);
+      if(isNaN(page)){ page = 1 }
+      const { limit, offset } = getPagination(page);
       try {
-          const rubrosProd = await db.Heading.findAndCountAll({ limit: limit, offset: offset }, {order:[['descripcion','ASC']]})
+          const rubrosProd = await db.Heading
+                                  .findAndCountAll({ limit: limit, offset: offset },
+                                    {order:[['descripcion','ASC']]})
 
-          const configRubros = getPagingData(rubrosProd, req.params.page, limit);
-          console.log("Total registros: " + configRubros.totalItems)
-          console.log("Cant x pagina: " + configRubros.datos.length)
-          console.log("Total paginas: " + configRubros.totalPages)
-          console.log("Pagina actual: " + configRubros.currentPage)
+          const { totalItems, totalPages, dataRow } = getCountData(rubrosProd,limit);
+          const configRubros = {
+                            totalItems: totalItems,
+                            datos: dataRow,
+                            totalPages: totalPages,
+                            currentPage: page };
 
           return res.render('configParameter', { title: 'iChef',
                                                   configuracion: configRubros,
@@ -122,17 +125,20 @@ let configController = {
       }
     },
     getIngredientes: async function (req, res, next) {
-      let poffset = 10;
-      const { limit, offset } = getPagination(req.params.page-1, poffset);
+      let page = Number(req.query.page);
+      if(isNaN(page)){ page = 1 }
+      const { limit, offset } = getPagination(page);
+
       try {
-          const ingredientesProd = await db.Ingredient.findAndCountAll({ limit: limit, offset: offset }, {order:[['descripcion','ASC']]})
-
-          const configIngredientes = getPagingData(ingredientesProd, req.params.page, limit);
-          console.log("Total registros: " + configIngredientes.totalItems)
-          console.log("Cant x pagina: " + configIngredientes.datos.length)
-          console.log("Total paginas: " + configIngredientes.totalPages)
-          console.log("Pagina actual: " + configIngredientes.currentPage)
-
+          const ingredientesProd = await db.Ingredient
+                        .findAndCountAll({ limit: limit, offset: offset },
+                          {order:[['descripcion','ASC']]})
+          const { totalItems, totalPages, dataRow } = getCountData(ingredientesProd,limit);
+          const configIngredientes = {
+                            totalItems: totalItems,
+                            datos: dataRow,
+                            totalPages: totalPages,
+                            currentPage: page };
           return res.render('configParameter', { title: 'iChef',
                                                   configuracion: configIngredientes,
                                                   tipoConfig: 'Ingredientes',
@@ -155,16 +161,20 @@ let configController = {
       }
     },
     getTipos: async function (req, res, next) {
-      let poffset = 10;
-      const { limit, offset } = getPagination(req.params.page-1, poffset);
+      let page = Number(req.query.page);
+      if(isNaN(page)){ page = 1 }
+      const { limit, offset } = getPagination(page);
       try {
-          const tipoProducto = await db.ProductType.findAndCountAll({ limit: limit, offset: offset}, {order:[['descripcion','ASC']]});
+          const tipoProducto = await db.ProductType
+                                  .findAndCountAll({ limit: limit, offset: offset},
+                                    {order:[['descripcion','ASC']]});
 
-          const configTipos = getPagingData(tipoProducto, req.params.page, limit);
-          console.log("Total registros: " + configTipos.totalItems)
-          console.log("Cant x pagina: " + configTipos.datos.length)
-          console.log("Total paginas: " + configTipos.totalPages)
-          console.log("Pagina actual: " + configTipos.currentPage)
+          const { totalItems, totalPages, dataRow } = getCountData(tipoProducto,limit);
+          const configTipos = {
+                            totalItems: totalItems,
+                            datos: dataRow,
+                            totalPages: totalPages,
+                            currentPage: page };
 
           return res.render('configParameter', { title: 'iChef',
                                                   configuracion: configTipos,
@@ -188,16 +198,19 @@ let configController = {
       }
     },
     getComensales: async function (req, res, next) {
-      let poffset = 10;
-      const { limit, offset } = getPagination(req.params.page-1, poffset);
+      let page = Number(req.query.page);
+      if(isNaN(page)){ page = 1 }
+      const { limit, offset } = getPagination(page);
       try {
-          const cantComensales = await db.Diners.findAndCountAll({ limit: limit, offset: offset }, {order:[['nro_comensales','ASC']]});
-
-          const configComensales = getPagingData(cantComensales, req.params.page, limit);
-          console.log("Total registros: " + configComensales.totalItems)
-          console.log("Cant x pagina: " + configComensales.datos.length)
-          console.log("Total paginas: " + configComensales.totalPages)
-          console.log("Pagina actual: " + configComensales.currentPage)
+          const cantComensales = await db.Diners
+                                    .findAndCountAll({ limit: limit, offset: offset },
+                                      {order:[['nro_comensales','ASC']]});
+          const { totalItems, totalPages, dataRow } = getCountData(cantComensales,limit);
+          const configComensales = {
+                            totalItems: totalItems,
+                            datos: dataRow,
+                            totalPages: totalPages,
+                            currentPage: page };
 
           return res.render('configParameter', { title: 'iChef',
                                                   configuracion: configComensales,
@@ -221,16 +234,21 @@ let configController = {
       }
     },
     getEstados: async function (req, res, next) {
-      let poffset = 10;
-      const { limit, offset } = getPagination(req.params.page-1, poffset);
-      try {
-          const estadoUsuario = await db.UserStatus.findAndCountAll({ limit: limit, offset: offset }, {order:[['descripcion','ASC']]});
+      let page = Number(req.query.page);
+      if(isNaN(page)){ page = 1 }
+      const { limit, offset } = getPagination(page);
 
-          const configEstado = getPagingData(estadoUsuario, req.params.page, limit);
-          console.log("Total registros: " + configEstado.totalItems)
-          console.log("Cant x pagina: " + configEstado.datos.length)
-          console.log("Total paginas: " + configEstado.totalPages)
-          console.log("Pagina actual: " + configEstado.currentPage)
+      try {
+          const estadoUsuario = await db.UserStatus
+                                        .findAndCountAll({ limit: limit,
+                                          offset: offset }, {order:[['descripcion','ASC']]});
+
+          const { totalItems, totalPages, dataRow } = getCountData(estadoUsuario,limit);
+          const configEstado = {
+                            totalItems: totalItems,
+                            datos: dataRow,
+                            totalPages: totalPages,
+                            currentPage: page };
 
           return res.render('configParameter', { title: 'iChef',
                                                   configuracion: configEstado,
@@ -254,16 +272,19 @@ let configController = {
       }
     },
     getRoles: async function (req, res, next) {
-      let poffset = 10;
-      const { limit, offset } = getPagination(req.params.page-1, poffset);
+      let page = Number(req.query.page);
+      if(isNaN(page)){ page = 1 }
+      const { limit, offset } = getPagination(page);
       try {
-          const rolesUsuario = await db.UserCategorie.findAndCountAll({ limit: limit, offset: offset }, {order:[['descripcion','ASC']]});
-
-          const configRoles = getPagingData(rolesUsuario, req.params.page, limit);
-          console.log("Total registros: " + configRoles.totalItems)
-          console.log("Cant x pagina: " + configRoles.datos.length)
-          console.log("Total paginas: " + configRoles.totalPages)
-          console.log("Pagina actual: " + configRoles.currentPage)
+          const rolesUsuario = await db.UserCategorie
+                                      .findAndCountAll({ limit: limit, offset: offset }, 
+                                        {order:[['descripcion','ASC']]});
+          const { totalItems, totalPages, dataRow } = getCountData(rolesUsuario,limit);
+          const configRoles = {
+                            totalItems: totalItems,
+                            datos: dataRow,
+                            totalPages: totalPages,
+                            currentPage: page };
 
           return res.render('configParameter', { title: 'iChef',
                                                   configuracion: configRoles,
@@ -277,3 +298,18 @@ let configController = {
 };
 
 module.exports = configController;
+
+
+/*const getPagination = (page, size) => {
+    const limit = size ? +size: 10;
+    const offset = page ? page * limit: 0;
+    //console.log("LIMITE: " + limit + " - OFFSET: " + offset);
+    return { limit, offset };
+  };
+
+  const getPagingData = (data, page, limit) => {
+    const { count: totalItems, rows: datos } = data;
+    const currentPage = page ? +page : 0;
+    const totalPages = Math.ceil(totalItems / limit);
+    return { totalItems, datos, totalPages, currentPage };
+  };*/

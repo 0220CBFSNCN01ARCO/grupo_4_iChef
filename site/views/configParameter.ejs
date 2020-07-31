@@ -3,10 +3,17 @@
     <%- include('./partials/head') %>
 <body>
     <%- include('./partials/header') %>
-    <div class="row headTable">
-        <div class="col">
-            <h5>Configuración</h5>
+    <div class="container-fluid">
+      <div class="row headTable badge-dark encaConfig">
+        <div class="col-7 col-md-10 col-lg-10">
+            <a>Configuración - <%= tipoConfig %></a>
         </div>
+        <div class="col-5 col-md-2 col-lg-2">
+            <a class="btn btn-dark btnVolverConfig" href="/config">
+                <i class="ichef-reply1"></i> Volver
+            </a>
+        </div>
+      </div>
     </div>
     <div class="container-fluid">
       <div class="container">
@@ -30,6 +37,34 @@
             </div>
           </div>
         </form>
+        <div class="row indiceTabla">
+          <nav>
+            <ul class="pagination pagination-sm">
+            <%if ( configuracion.currentPage == 1 ){ %>
+              <li class="page-item disabled">
+            <% } else { %>
+              <li class="page-item"></li>
+            <% } %>
+                <a class="page-link" href="/config/<%= tipoConfig %>/?page=<%= configuracion.currentPage-1 %>" tabindex="-1" aria-disabled="true">Previous</a>
+              </li>
+              <%for(let i=1; i < configuracion.totalPages+1; i++ ) { %>
+                <%if ( i == configuracion.currentPage ){ %>
+                  <li class="page-item active" ><a class="page-link" href="/config/<%= tipoConfig %>/?page=<%= i %>"><%= i %></a></li>
+                <% } else { %>
+                  <li class="page-item" ><a class="page-link" href="/config/<%= tipoConfig %>/?page=<%= i %>"><%= i %></a></li>
+                <% } %>
+              <% } %>
+              <%if ( configuracion.totalPages == configuracion.currentPage ){ %>
+                <li class="page-item disabled" >
+              <% } else { %>
+                <li class="page-item"></li>
+              <% } %>
+                  <a class="page-link" href="/config/<%= tipoConfig %>/?page=<%= configuracion.currentPage+1 %>">Next</a>
+                </li>
+              </li>
+            </ul>
+          </nav>
+        </div>
         <div class="row">
           <table class="table table-striped">
             <thead class="thead-dark">
@@ -42,34 +77,6 @@
             <tbody>
             <%- include('./partials/tableConfig',{ datos: configuracion.datos, tipoConfig }) %>
           </table>
-        </div>
-        <div class="row indiceTabla">
-          <nav>
-            <ul class="pagination pagination-sm">
-            <%if ( configuracion.currentPage == 0 ){ %>
-              <li class="page-item disabled">
-            <% } else { %>
-              <li class="page-item"></li>
-            <% } %>
-                <a class="page-link" href="/config/<%= tipoConfig %>?page=<%= configuracion.currentPage-1 %>" tabindex="-1" aria-disabled="true">Previous</a>
-              </li>
-              <%for(let i=1; i < configuracion.totalPages+1; i++ ) { %>
-                <%if ( i == configuracion.currentPage ){ %>
-                  <li class="page-item active" ><a class="page-link" href="/config/<%= tipoConfig %>?page=<%= i %>"><%= i %></a></li>
-                <% } else { %>
-                  <li class="page-item" ><a class="page-link" href="/config/<%= tipoConfig %>?page=<%= i %>"><%= i %></a></li>
-                <% } %>
-              <% } %>
-              <%if ( configuracion.totalPages == configuracion.currentPage ){ %>
-                <li class="page-item" disabled>
-              <% } else { %>
-                <li class="page-item"></li>
-              <% } %>
-                  <a class="page-link" href="/config/<%= tipoConfig %>?page=<%= configuracion.currentPage+1 %>">Next</a>
-                </li>
-              </li>
-            </ul>
-          </nav>
         </div>
       </div>
     </div>
