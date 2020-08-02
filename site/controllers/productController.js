@@ -157,11 +157,12 @@ let productController = {
                             ingredient_id: req.body.ingredientes[i] });
               }
             }
-
-            for (i = 0; i < req.files.image_uploads.length ; i++){
-              const foto = await db.Photo
-                .create({ nombre: req.files.image_uploads[i].filename ,
-                          product_id: productNew.id_product });
+            if(req.files.image_uploads){
+              for (i = 0; i < req.files.image_uploads.length ; i++){
+                const foto = await db.Photo
+                  .create({ nombre: req.files.image_uploads[i].filename ,
+                            product_id: productNew.id_product });
+              }
             }
 
             if (productNew instanceof db.Product){
@@ -311,7 +312,8 @@ let productController = {
                   {association:"ingredientes"}],
           where: {id_product: req.params.idProducto }
         })
-        if (productoDelete instanceof db.Product){
+        //console.log(productoDelete)
+        if (productoDelete == 1){
           return res.redirect(301, '/product' );
         }
       } catch (error) {
