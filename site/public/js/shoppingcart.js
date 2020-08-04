@@ -12,7 +12,7 @@ $(".attr,.attr2").on("click",function(){
 	$("." + clase).removeClass("active");
 	$(this).addClass("active");
 })
-
+/*
 //-- Click on QUANTITY
 $(".btn-minus").on("click",function(){
 	var now = $(".inputQty").val();
@@ -32,7 +32,7 @@ $(".btn-plus").on("click",function(){
 		$(".inputQty").val("1");
 	}
 })
-
+*/
 
 
 })

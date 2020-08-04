@@ -38,14 +38,10 @@
                 <span class="product-brand">Marca: <%= productos[i].marca.descripcion %></span>
                 <h3 class="title"><a href="/product/<%= productos[i].codigo %>"><%= productos[i].descripcion %></a></h3>
                 <div class="qtyCart">
-                  <div class="section colQty">
-                    <div class="btn-minus">
-                        <span class="ichef-minus"></span>
-                    </div>
-                    <input id="inputQty<%= productos[i].id_product %>" class="border-input inputQty" value="1" />
-                    <div class="btn-plus">
-                        <span class="ichef-plus"></span>
-                    </div>
+                  <div class="section colQty qtyAddCart">
+                    <div class="qty-minus"><span class="ichef-minus"></span></div>
+                    <input class="border-input inputQty" value="1" />
+                    <div class="qty-plus"><span class="ichef-plus"></span></div>
                   </div>
                   <div class="colBtnAdd">
                     <button type="submit" class="btn btn-dark"><i class="ichef-add_shopping_cart"></i> Agregar</button>
@@ -59,7 +55,7 @@
       </div>
     </div>
     <%- include('./partials/footer') %>
-    <script src="/js/shoppingcart.js"></script>
+    <script type="text/javascript" src="/js/store.js"></script>
     <%-include('./partials/script')%>
 </body>
 </html>

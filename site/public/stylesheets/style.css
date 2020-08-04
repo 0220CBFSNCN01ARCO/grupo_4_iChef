@@ -1937,7 +1937,7 @@ button.qtyplus, button.qtyminus {
   color:black;
 }
 
-.btn-minus, .btn-plus {
+.qty-minus, .qty-plus {
   cursor:pointer;
   font-size:7px;
   display:flex;
@@ -1948,11 +1948,11 @@ button.qtyplus, button.qtyminus {
   border:1px solid gray;
   /*border-radius:2px;*/
 }
-.btn-minus{
+.qty-minus{
   border-right:0px;
 }
 
-.btn-plus{
+.qty-plus{
   border-left:0px;
 }
 
@@ -2114,6 +2114,10 @@ textarea {
 .qtyCart{
   display: flex;
   justify-content: space-between;
+}
+
+.qtyCartDetail{
+  display: flex;
 }
 
 .itemList {
