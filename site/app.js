@@ -15,6 +15,7 @@ let cartRouter  = require('./routes/cart');
 /*ROUTER API*/
 let apiUsersRouter = require('./routes/api/users');
 let apiProductRouter = require('./routes/api/products');
+let apiCategoriesRouter = require('./routes/api/categories');
 
 let logMiddleware = require('./middleware/logMiddleware');
 let recordameMiddleware = require ('./middleware/recordameMiddleware');
@@ -48,6 +49,7 @@ app.use('/cart',cartRouter);
 /*API*/
 app.use('/api/users', apiUsersRouter);
 app.use('/api/products', apiProductRouter);
+app.use('/api/categories', apiCategoriesRouter);
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
