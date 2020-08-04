@@ -19,6 +19,9 @@ let apiProductRouter = require('./routes/api/products');
 let logMiddleware = require('./middleware/logMiddleware');
 let recordameMiddleware = require ('./middleware/recordameMiddleware');
 
+const config = require('./controllers/Config');
+const Security = require('./controllers/Security');
+
 let app = express();
 
 // view engine setup
@@ -35,7 +38,6 @@ app.use(session({secret: 'iChefSession',
                   resave: false,
                   saveUninitialized: true,
                   unset: 'destroy',
-                  store: store,
                   name: config.name + '-' + Security.generateId(),
                   genid: (req) => {return Security.generateId()}
 }));

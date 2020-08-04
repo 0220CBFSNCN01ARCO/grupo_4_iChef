@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const moment = require('moment');
-const bcrypt = require('bcrypt');
+//const moment = require('moment');
+//const bcrypt = require('bcrypt');
 
 const usersController = require('../controllers/usersController');
 const {check, validationResult, body} = require('express-validator');
@@ -11,7 +11,7 @@ const guestMiddleware = require('../middleware/guestMiddleware')
 const authMiddleware = require ('../middleware/authMiddleware');
 const fs = require('fs');
 
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: function (req, file, callback) {
       let dest = 'public/images/users'
       if(!fs.existsSync(dest)){
@@ -20,12 +20,14 @@ var storage = multer.diskStorage({
       callback(null, dest)
     },
     filename: function (req, file, callback) {
-      //console.log(req);
-      let fecha = moment().format('DD-MM-YYYY');
+      //console.log("filename: ",req.file);
+      //console.log("file: ",file)
+
+      //let fecha = moment().format('DD-MM-YYYY');
       let nombre = req.body.emailUser.split('@');
       //console.log(nombre);
-      let dest = nombre[0] + '-' + fecha + path.extname(file.originalname)
-      callback(null, dest)
+      let fileName = nombre[0] + '-userFile' + path.extname(file.originalname);
+      callback(null, fileName)
     },
     fileFilter: function (req, file, callback) {
       if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg"|| file.mimetype == "image/gif") {
@@ -35,16 +37,16 @@ var storage = multer.diskStorage({
         return callback(new Error('Solamente .png, .jpg .jpeg .gif formatos permitidos!'));
       }
     }
-  })
+  });
 
-var upload = multer({ storage: storage })
+const upload = multer({ storage: storage }).single("fotoPerfil");
 
 /* GET users listing. */
 router.get('/',authMiddleware, usersController.userList);
 
 router.get('/register' , guestMiddleware ,usersController.userRegister);
 
-router.post('/create', upload.single('fotoPerfil'),
+router.post('/create', upload,
 [
   check("nombreUser")
     .isLength({ min: 2 })
@@ -60,10 +62,12 @@ router.post('/create', upload.single('fotoPerfil'),
     .normalizeEmail()
     .withMessage("Debe ingresar un email valido."),
   check("passwordUser")
-    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
     .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
   check("repeatPasswordUser")
-    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
     .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
   body("fotoPerfil")
     .custom(function(value){
@@ -75,7 +79,6 @@ router.post('/create', upload.single('fotoPerfil'),
     })
     .withMessage("Debe seleccionar una imagen de perfil.")
 ]
-
 , usersController.createUser);
 
 router.get('/login', usersController.userLogin);
@@ -90,12 +93,12 @@ check("emailUsuario")
 usersController.loguearUsuario);
 
 router.get('/logout', usersController.logoutUser);
-router.get('/:id/userprofile', usersController.userProfile);
+router.get('/:id/userprofile', authMiddleware, usersController.userProfile);
 
-router.get('/:id/userAccount', usersController.userAccount);
+router.get('/:id/userAccount', authMiddleware, usersController.userAccount);
 
-router.get('/:id/edit', usersController.userEdit);
-router.put('/:id/edit', upload.single('fotoPerfil'),
+router.get('/:id/edit', authMiddleware, usersController.userEdit);
+router.put('/:id/edit', upload, authMiddleware,
 [
   check("nombreUser")
     .isLength({ min: 2 })
@@ -107,10 +110,10 @@ router.put('/:id/edit', upload.single('fotoPerfil'),
     .isLength({ min: 7 })
     .withMessage("Debe ingresar un número de telefono.")
 ]
- ,usersController.updateUser);
+,usersController.updateUser);
 
-router.get('/:id/changePassword', usersController.changePassword);
-router.put('/:id/changePassword',
+router.get('/:id/changePassword', authMiddleware, usersController.changePassword);
+router.put('/:id/changePassword', authMiddleware,
 [
   check("passwordUser")
     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
@@ -124,6 +127,6 @@ router.put('/:id/changePassword',
   ]
  ,usersController.updatePassword);
 
-router.delete('/:idUser', usersController.deleteUserById);
+router.delete('/:idUser', authMiddleware, usersController.deleteUserById);
 
 module.exports = router;
