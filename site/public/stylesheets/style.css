@@ -952,6 +952,10 @@ a.btn-whatsapp:hover {
     /*width: 50vw;*/
     display: contents;
   }
+  .containerProduct {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 
   .menuList, .menuUser {
     width: 30vw;
@@ -2093,3 +2097,31 @@ textarea {
   word-spacing: -1px;
   text-align: left;
 }
+
+.inputQty {
+  text-align: center;
+  width: 40px;
+}
+.colQty{
+  display: flex;
+  width: 40%;
+}
+
+.colBtnAdd{
+  width: 50%;
+}
+
+.qtyCart{
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemList {
+  margin-bottom: 20px;
+}
+
+.rowProducts {
+  justify-content: space-evenly;
+}
+
+
