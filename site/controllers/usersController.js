@@ -21,9 +21,9 @@ let usersController = {
                                  subtitle: 'Registro usuario',
                                  usuario: req.session.usuarioLogueado});
     },
-    createUser: function (req, res, next) {
+    createUser: async function (req, res, next) {
       let errores = validationResult(req);
-      //console.log(errores);
+      //console.log("file",req.file);
       if(errores.isEmpty()){
         if(req.body.passwordUser != req.body.repeatPasswordUser){
           return res.render('register', { title: 'iChef - Registro',
@@ -34,9 +34,9 @@ let usersController = {
                                                     }] });
         }else {
             try{
-              let usuario = db.User.findOne({where: {email: req.body.emailUsuario}});
-              console.log(usuario);
-              if (usuario){
+              const usuarioFind = await db.User.findOne({where: {email: req.body.emailUser}});
+              //console.log(usuarioFind);
+              if (usuarioFind instanceof db.User){
                 return res.render('register', { title: 'Registro',
                                           errores: [{ value: '',
                                                       msg: 'El email ingresado ya existe.',
@@ -44,22 +44,28 @@ let usersController = {
                                                       location: 'body'
                                                     }] });
               }else{
-                db.User.create({
+                const newUsuario = await db.User.create({
                   nombre: req.body.nombreUser,
                   apellido: req.body.apellidoUser,
                   email: req.body.emailUser.toLowerCase(),
                   password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
                   nroTelefono: req.body.nroTelefonoUser,
-                  categorie_id: 4,
-                  avatar: req.file.filename
+                  avatar: req.file.filename,
+                  categorie_id: 4
                 });
-                return res.render('userMsg', { title: 'Usuario',
-                                                tipo: 'success',
-                                                mensaje: newUsuario.nombre,
-                                                errores: errores.errors,
-                                                usuario: req.session.usuarioLogueado });
+                //console.log("new: ",newUsuario);
+                if (newUsuario instanceof db.User){
+                    //return res.redirect(301, '/login' );
+                    return res.render('userMsg', { title: 'Usuario',
+                                                    tipo: 'success',
+                                                    mensaje: newUsuario.nombre,
+                                                    errores: errores.errors,
+                                                    usuario: req.session.usuarioLogueado });
+                }
+
               }
           }catch(error){
+             //console.log(error);
               return res.render('errordb', { title: 'Error',
                                                       error: error,
                                                       usuario: req.session.usuarioLogueado });
@@ -182,7 +188,10 @@ let usersController = {
       });
     },
     updateUser: function (req, res, next) {
-      //console.log(req.file)
+      console.log("imagen usuario",req.files)
+      console.log("imagen", req.file)
+      console.log("body", req.body)
+
       db.User.update({
           nombre: req.body.nombreUser,
           apellido: req.body.apellidoUser,

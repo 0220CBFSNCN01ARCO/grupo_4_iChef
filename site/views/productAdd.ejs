@@ -130,9 +130,20 @@
                         <div class="form-group col-xs-6 col-md-5 col-lg-4">
                             <label for="grupo">Rubro</label>
                             <select class="custom-select form-control" id="grupo" name="grupo" required>
-                                <option value="" selected>Seleccione un rubro</option>
-                                <% for (let i=0; i < rubros.length; i++) { %>
-                                    <option value="<%= rubros[i].id %>"><%= rubros[i].descripcion %></option>
+                                <% if (typeof datosForm != 'undefined') { %>
+                                    <option value="">Seleccione un rubro</option>
+                                    <% for (let i=0; i < rubros.length; i++) { %>
+                                        <% if ( datosForm.rubro_id == rubros[i].id ) { %>
+                                        <option value="<%= rubros[i].id %>" selected><%= rubros[i].descripcion %></option>
+                                        <% } else { %>
+                                        <option value="<%= rubros[i].id %>"><%= rubros[i].descripcion %></option>
+                                        <% } %>
+                                    <% } %>
+                                <% } else { %>
+                                    <option value="" selected>Seleccione un rubro</option>
+                                    <% for (let i=0; i < rubros.length; i++) { %>
+                                        <option value="<%= rubros[i].id %>"><%= rubros[i].descripcion %></option>
+                                    <% } %>
                                 <% } %>
                             </select>
                             <% if (typeof errores != 'undefined') { %>
@@ -146,9 +157,20 @@
                         <div class="form-group col-xs-6 col-md-5 col-lg-4">
                             <label for="marca">Marca</label>
                             <select class="custom-select form-control" name="marca" required>
-                                <option value="" selected>Seleccione una marca</option>
-                                <% for (let i=0; i < marcas.length; i++) { %>
-                                    <option value="<%= marcas[i].id %>"><%= marcas[i].descripcion %></option>
+                                <% if (typeof datosForm != 'undefined') { %>
+                                    <option value="">Seleccione una marca</option>
+                                    <% for (let i=0; i < marcas.length; i++) { %>
+                                        <% if ( datosForm.marca_id == marcas[i].id ) { %>
+                                        <option value="<%= marcas[i].id %>" selected><%= marcas[i].descripcion %></option>
+                                        <% } else { %>
+                                        <option value="<%= marcas[i].id %>"><%= marcas[i].descripcion %></option>
+                                        <% } %>
+                                    <% } %>
+                                <% } else { %>
+                                    <option value="" selected>Seleccione una marca</option>
+                                    <% for (let i=0; i < marcas.length; i++) { %>
+                                        <option value="<%= marcas[i].id %>"><%= marcas[i].descripcion %></option>
+                                    <% } %>
                                 <% } %>
                             </select>
                             <% if (typeof errores != 'undefined') { %>
@@ -163,7 +185,15 @@
                     <div class="row">
                         <div class="form-group col-xs-12 col-md-12 col-lg-8">
                             <label for="txtDescripcion">Descripción</label>
-                            <textarea class="form-control" name="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"  required></textarea>
+                            <% if (typeof datosForm != 'undefined') { %>
+                                <% if (datosForm.detalle != '') { %>
+                                <textarea maxlength="150" class="form-control" name="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"  required><%= datosForm.detalle %></textarea>
+                                <% } else { %>
+                                <textarea maxlength="150" class="form-control" name="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"  required></textarea>
+                                <% } %>
+                            <% } else { %>
+                                <textarea maxlength="150" class="form-control" name="txtDescripcion" rows="3" placeholder="Ingrese una breve descripción"  required></textarea>
+                            <% } %>
                             <% if (typeof errores != 'undefined') { %>
                                 <% for (let i=0; i < errores.length; i++) { %>
                                     <% if(errores[i].param == 'txtDescripcion' ) { %>

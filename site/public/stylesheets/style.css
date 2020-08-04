@@ -2086,3 +2086,10 @@ div.section > div > input {
 .encaConfig {
   padding-top: 10px;
 }
+
+textarea {
+  white-space: normal;
+  word-break: break-all;
+  word-spacing: -1px;
+  text-align: left;
+}

@@ -20,6 +20,9 @@ let apiCategoriesRouter = require('./routes/api/categories');
 let logMiddleware = require('./middleware/logMiddleware');
 let recordameMiddleware = require ('./middleware/recordameMiddleware');
 
+const config = require('./controllers/Config');
+const Security = require('./controllers/Security');
+
 let app = express();
 
 // view engine setup
@@ -32,7 +35,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
-app.use(session({secret: 'iChefSession'}));
+app.use(session({secret: 'iChefSession',
+                  resave: false,
+                  saveUninitialized: true,
+                  unset: 'destroy',
+                  name: config.name + '-' + Security.generateId(),
+                  genid: (req) => {return Security.generateId()}
+}));
 
 let bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
