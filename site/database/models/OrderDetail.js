@@ -1,12 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
-    let alias = "CarDetail";
+    let alias = "OrderDetail";
     let cols = {
         id : {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        cart_id : {
+        order_id : {
             type: DataTypes.INTEGER,
             foreignKey: true
         },
@@ -34,27 +34,27 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     let config = {
-        tableName : "car_detail",
+        tableName : "Order_detail",
         timestamps : false
     };
 
-    const CarDetail = sequelize.define(alias, cols, config);
+    const OrderDetail = sequelize.define(alias, cols, config);
 
-    CarDetail.associate = function(models){
+    OrderDetail.associate = function(models){
 
-        /*CarDetail - Product*/
-        CarDetail.belongsTo(models.Product, {
+        /*OrderDetail - Product*/
+        OrderDetail.belongsTo(models.Product, {
             as: "producto",
             foreignKey: "id"
         });
 
-        /*CarDetail - Cart*/
-        CarDetail.belongsTo(models.Cart, {
-            as: "carrito",
-            foreignKey: "cart_id"
-        });      
+        /*OrderDetail - Cart*/
+        OrderDetail.belongsTo(models.Order, {
+            as: "orden",
+            foreignKey: "order_id"
+        });
     }
 
-   
-    return CarDetail;
+
+    return OrderDetail;
 }
