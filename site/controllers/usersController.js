@@ -313,6 +313,73 @@ let usersController = {
                                         error: error,
                                         usuario: req.session.usuarioLogueado });
       });
+    },
+    userAdd: async function (req, res, next) {
+      try {
+          const roles = await db.UserCategorie.findAll({order:[['descripcion','ASC']]});
+          const estados = await db.UserStatus.findAll({order:[['descripcion','ASC']]});
+          return res.render('userAdd', { title: 'iChef - Alta usuario',
+                                          subtitle: 'Alta usuario',
+                                          roles,
+                                          estados,
+                                          usuario: req.session.usuarioLogueado});
+      } catch (error) {
+          console.log("Error userAdd:",error);
+      }
+    },
+    userSave: async function (req, res, next) {
+      let errores = validationResult(req);
+      //console.log("Errores: ",errores);
+      console.log('Foto: ', req.file)
+      if(errores.isEmpty()){
+        try {
+          let fotoperfil;
+          if(!req.file.filename){
+            fotoperfil = 'default-user.png'
+          }else{
+            fotoperfil = req.file.filename
+          }
+
+          const newUser = await db.User.create({
+                            nombre: req.body.nombreUser,
+                            apellido: req.body.apellidoUser,
+                            email: req.body.emailUser.toLowerCase(),
+                            password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
+                            nroTelefono: req.body.nroTelefonoUser,
+                            avatar: fotoperfil,
+                            categorie_id: req.body.rolUser,
+                            estado: req.body.estadoUsr
+          });
+          return res.redirect(301,'/users')
+        } catch (error) {
+            console.log("Error userSave:",error);
+        }
+      } else {
+        //console.log("Body: ",req.body);
+        let datosForm = {
+          nombre: req.body.nombreUser,
+          apellido: req.body.apellidoUser,
+          email: req.body.emailUser.toLowerCase(),
+          password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
+          nroTelefono: req.body.nroTelefonoUser,
+          categorie_id: req.body.rolUser,
+          estado: req.body.estadoUsr
+        };
+        try {
+          const roles = await db.UserCategorie.findAll({order:[['descripcion','ASC']]});
+          const estados = await db.UserStatus.findAll({order:[['descripcion','ASC']]});
+
+          return res.render('userAdd', { title: 'iChef - Alta usuario',
+                                  subtitle: 'Alta usuario',
+                                  roles,
+                                  estados,
+                                  datosForm,
+                                  errores: errores.errors,
+                                  usuario: req.session.usuarioLogueado});
+        } catch (error) {
+            console.log(error);
+        }
+      }
     }
 };
 

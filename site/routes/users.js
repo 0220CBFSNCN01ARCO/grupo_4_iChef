@@ -129,4 +129,39 @@ router.put('/:id/changePassword', authMiddleware,
 
 router.delete('/:idUser', authMiddleware, usersController.deleteUserById);
 
+router.get('/register' , guestMiddleware ,usersController.userRegister);
+
+router.get('/userAdd', authMiddleware, usersController.userAdd);
+
+router.post('/userAdd', upload,
+[
+  check("nombreUser")
+    .isLength({ min: 2 })
+    .withMessage("Debe ingresar un nombre valido."),
+  check("apellidoUser")
+    .isLength({ min: 2 })
+    .withMessage("Debe ingresar un apellido valido."),
+  check("nroTelefonoUser")
+    .isLength({ min: 7 })
+    .withMessage("Debe ingresar un número de telefono."),
+  check("emailUser")
+    .isEmail()
+    .normalizeEmail()
+    .withMessage("Debe ingresar un email valido."),
+  check("passwordUser")
+    //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
+    .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
+  check("repeatPasswordUser")
+    //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
+    .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
+  check("rolUser")
+    .isInt({min:1,max:10})
+    .withMessage("Debe seleccionar una categoria."),
+  check("estadoUsr")
+    .isInt({min:1,max:10})
+    .withMessage("Debe seleccionar un estado para el usuario.")
+], usersController.userSave);
+
 module.exports = router;
