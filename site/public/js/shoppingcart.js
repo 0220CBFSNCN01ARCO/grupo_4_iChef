@@ -12,27 +12,27 @@ $(".attr,.attr2").on("click",function(){
 	$("." + clase).removeClass("active");
 	$(this).addClass("active");
 })
-
-
+/*
 //-- Click on QUANTITY
 $(".btn-minus").on("click",function(){
-	var now = $(".section > div > input").val();
+	var now = $(".inputQty").val();
 	if ($.isNumeric(now)){
 		if (parseInt(now) -1 > 0){ now--;}
-		$(".section > div > input").val(now);
+		$(".inputQty").val(now);
 	}else{
-		$(".section > div > input").val("1");
-	}
-})
-$(".btn-plus").on("click",function(){
-	var now = $(".section > div > input").val();
-	if ($.isNumeric(now)){
-		$(".section > div > input").val(parseInt(now)+1);
-	}else{
-		$(".section > div > input").val("1");
+		$(".inputQty").val("1");
 	}
 })
 
+$(".btn-plus").on("click",function(){
+	var now = $(".inputQty").val();
+	if ($.isNumeric(now)){
+		$(".inputQty").val(parseInt(now)+1);
+	}else{
+		$(".inputQty").val("1");
+	}
+})
+*/
 
 
 })

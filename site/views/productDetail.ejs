@@ -67,17 +67,12 @@
                 </div>
                 <div class="section" style="padding-bottom:20px;">
                     <h6 class="title-attr"><small>Cantidad</small></h6>
-                    <div>
-                        <div class="btn-minus">
-                            <span class="ichef-minus"></span>
-                        </div>
-                        <input class="border-input" value="1" />
-                        <div class="btn-plus">
-                            <span class="ichef-plus"></span>
-                        </div>
+                    <div class="qtyAddCart">
+                        <div class="qty-minus"><span class="ichef-minus"></span></div>
+                        <input class="border-input inputQty" value="1" />
+                        <div class="qty-plus"><span class="ichef-plus"></span></div>
                     </div>
                 </div>
-
                 <!-- Botones de compra -->
                 <div class="section" style="padding-bottom:20px;">
                     <button class="btn btn-dark">
@@ -121,7 +116,8 @@
       </div>
     </div>
     <%- include('./partials/footer') %>
-    <script src="/js/shoppingcart.js"></script>
+    <script type="text/javascript" src="/js/shoppingcart.js"></script>
+    <script type="text/javascript" src="/js/store.js"></script>
     <%- include('./partials/script')%>
 </body>
 </html>

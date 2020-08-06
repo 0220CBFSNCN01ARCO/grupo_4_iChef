@@ -25,6 +25,8 @@ const Security = require('./controllers/Security');
 
 let app = express();
 
+require('dotenv').config();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -35,7 +37,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
-app.use(session({secret: 'iChefSession',
+app.use(session({secret: process.env.SESION_SECRET,
                   resave: false,
                   saveUninitialized: true,
                   unset: 'destroy',

@@ -32,13 +32,13 @@ CREATE TABLE `brand` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `cart`
+-- Table structure for table `order`
 --
 
-DROP TABLE IF EXISTS `cart`;
+DROP TABLE IF EXISTS `order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cart` (
+CREATE TABLE `order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `cantidad_items` int(11) NOT NULL,
@@ -51,21 +51,21 @@ CREATE TABLE `cart` (
   PRIMARY KEY (`id`),
   KEY `estado_fk_idx` (`estado`),
   KEY `usuario_fk_idx` (`user_id`),
-  CONSTRAINT `estado_fk` FOREIGN KEY (`estado`) REFERENCES `cart_status` (`id`),
+  CONSTRAINT `estado_fk` FOREIGN KEY (`estado`) REFERENCES `order_status` (`id`),
   CONSTRAINT `usuario_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `cart_detail`
+-- Table structure for table `order_detail`
 --
 
-DROP TABLE IF EXISTS `cart_detail`;
+DROP TABLE IF EXISTS `order_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cart_detail` (
+CREATE TABLE `order_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cart_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio_unitario` float NOT NULL,
@@ -74,21 +74,21 @@ CREATE TABLE `cart_detail` (
   `subtotal` float NOT NULL,
   `total` float NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `detalle_fk_idx` (`cart_id`),
+  KEY `detalle_fk_idx` (`order_id`),
   KEY `product_fk_idx` (`id_producto`),
-  CONSTRAINT `detalle_fk` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`),
+  CONSTRAINT `detalle_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`),
   CONSTRAINT `product_fk` FOREIGN KEY (`id_producto`) REFERENCES `product` (`id_product`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `cart_status`
+-- Table structure for table `order_status`
 --
 
-DROP TABLE IF EXISTS `cart_status`;
+DROP TABLE IF EXISTS `order_status`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cart_status` (
+CREATE TABLE `order_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)

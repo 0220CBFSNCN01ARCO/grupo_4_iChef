@@ -81,9 +81,9 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: "rubro_id"
         });
 
-        /*Product - CarDetail*/
-        Product.hasMany(models.CarDetail, {
-            as: "detallesCarrito",
+        /*Product - OrderDetail*/
+        Product.hasMany(models.OrderDetail, {
+            as: "detallesOrdenes",
             foreignKey: "id_producto"
         });
 

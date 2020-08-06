@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+<body class="hold-transition login-page" onload="loadImage()">
+    <%- include('./partials/header') %>
+    <div class="container-fuid fondoFormulario">
+        <div id="formUsr" class="container">
+            <form method="POST" id="formRegister" action="/users/userAdd" enctype="multipart/form-data" novalidate>
+                <div class="row">
+                    <div id="formDatos" class="col-sm-12 col-md-12 col-lg-6">
+                        <label>Datos de la cuenta</label>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" name="nombreUser" placeholder="Nombre">
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                        <% if(errores[i].param == 'nombreUser' ) { %>
+                                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="text" class="form-control" name="apellidoUser" placeholder="Apellido">
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                        <% if(errores[i].param == 'apellidoUser' ) { %>
+                                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                              <input type="text" minlength="10" class="form-control" name="nroTelefonoUser" placeholder="Nro. teléfono">
+                              <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'nroTelefonoUser' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                              <% } %>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                              <input type="email" class="form-control" name="emailUser" placeholder="Email">
+                              <% if (typeof errores != 'undefined') { %>
+                                <% for (let i=0; i < errores.length; i++) { %>
+                                    <% if(errores[i].param == 'emailUser' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                    <% } %>
+                                <% } %>
+                              <% } %>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <input type="password" class="form-control" name="passwordUser" placeholder="Password">
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                      <% if(errores[i].param == 'passwordUser' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                      <% } %>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <input type="password" class="form-control" name="repeatPasswordUser" placeholder="Confirmar password">
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                        <% if(errores[i].param == 'repeatPasswordUser' ) { %>
+                                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <select class="custom-select form-control" id="rolUser" name="rolUser" required>
+                                    <% if (typeof datosForm != 'undefined') { %>
+                                        <option value="">Seleccione una categoria</option>
+                                        <% for (let i=0; i < roles.length; i++) { %>
+                                            <% if ( datosForm.rolUser == roles[i].id ) { %>
+                                            <option value="<%= roles[i].id %>" selected><%= roles[i].descripcion %></option>
+                                            <% } else { %>
+                                            <option value="<%= roles[i].id %>"><%= roles[i].descripcion %></option>
+                                            <% } %>
+                                        <% } %>
+                                    <% } else { %>
+                                        <option value="" selected>Seleccione un rol</option>
+                                        <% for (let i=0; i < roles.length; i++) { %>
+                                            <option value="<%= roles[i].id %>"><%= roles[i].descripcion %></option>
+                                        <% } %>
+                                    <% } %>
+                                </select>
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                      <% if(errores[i].param == 'rolUser' ) { %>
+                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                      <% } %>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <select class="custom-select form-control" id="estadoUsr" name="estadoUsr" required>
+                                    <% if (typeof datosForm != 'undefined') { %>
+                                        <option value="">Seleccione un estado</option>
+                                        <% for (let i=0; i < estados.length; i++) { %>
+                                            <% if ( datosForm.estadoUsr == estados[i].id ) { %>
+                                            <option value="<%= estados[i].id %>" selected><%= estados[i].descripcion %></option>
+                                            <% } else { %>
+                                            <option value="<%= estados[i].id %>"><%= estados[i].descripcion %></option>
+                                            <% } %>
+                                        <% } %>
+                                    <% } else { %>
+                                        <option value="" selected>Seleccione un estado</option>
+                                        <% for (let i=0; i < estados.length; i++) { %>
+                                            <option value="<%= estados[i].id %>"><%= estados[i].descripcion %></option>
+                                        <% } %>
+                                    <% } %>
+                                </select>
+                                <% if (typeof errores != 'undefined') { %>
+                                    <% for (let i=0; i < errores.length; i++) { %>
+                                        <% if(errores[i].param == 'estadoUsr' ) { %>
+                                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="formImagen" class="col-sm-12 col-md-12 col-lg-6">
+                        <div class="imgUp">
+                            <div>
+                                <img id="imgAvatar" class="imagePreview" alt="Imagen perfil">
+                            </div>
+                            <div>
+                                <label for="fotoPerfil" id="btnUpload"><span class="ichef-file_upload iconiChef"></span> Cargar
+                                    <input type="file" class="img" id="fotoPerfil" name="fotoPerfil" accept="image/png, .jpeg, .jpg, image/gif" onchange="mostrar()">
+                                </label>
+                            </div>
+                        </div>
+                        <% if (typeof errores != 'undefined') { %>
+                            <% for (let i=0; i < errores.length; i++) { %>
+                              <% if(errores[i].param == 'fotoPerfil' ) { %>
+                                <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
+                              <% } %>
+                            <% } %>
+                        <% } %>
+                    </div>
+                    <div id="formAction">
+                        <button class="btn btn-dark" type="submit">Guardar</button>
+                        <a class="btn btn-dark btnVolverConfig" href="/usrs">
+                            <i class="ichef-reply1"></i> Volver
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <%- include('./partials/footer') %>
+    <%-include('./partials/script')%>
+</body>
+</html>

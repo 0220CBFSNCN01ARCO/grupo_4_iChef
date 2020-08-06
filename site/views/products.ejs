@@ -4,48 +4,60 @@
 <body class='body_market'>
     <%- include('./partials/header') %>
     <!--cuerpo-->
-    <div class="container">
-      <div>
-        <h3 class="h3">Market</h3>
+    <div class="container containerProduct">
+      <div class="row headTable badge-dark encaProducts">
+        <div class="col">
+            <a>Nuestros productos</a>
+        </div>
       </div>
-      <div class="row">
+      <div class="row rowProducts">
         <% for(let i=0; i < productos.length; i++) { %>
-        <div class="col-md-4 col-sm-6">
-              <div class="product-grid">
-                  <div class="product-image">
-                      <a href="/product/<%= productos[i].codigo %>">
-                        <% for( let f = 0; f < 2; f++ ) { %>
-                          <img class="pic-<%= f %>" src="/images/products/<%=productos[i].product_type_id %>/<%=productos[i].codigo %>/<%=productos[i].fotos[f].nombre %>" alt="<%= productos[i].descripcion %>">
-                        <% } %>
-                      </a>
-                      <ul class="accion-cart">
-                          <li>
-                            <a href="" class="ichef-eye"></a>
-                          </li>
-                      </ul>
-                      <% if(productos[i].descuento_oferta > 0 ) { %>
-                      <span class="product-discount-label">-<%= productos[i].descuento_oferta %>%</span>
-                      <% } %>
+        <div class="col-sm-6 col-md-5 col-lg-4 itemList">
+          <div class="product-grid">
+            <div class="product-image">
+              <a href="/product/<%= productos[i].codigo %>">
+                <% for( let f = 0; f < 2; f++ ) { %>
+                  <img class="pic-<%= f %>" src="/images/products/<%=productos[i].product_type_id %>/<%=productos[i].codigo %>/<%=productos[i].fotos[f].nombre %>" alt="<%= productos[i].descripcion %>">
+                <% } %>
+              </a>
+              <ul class="accion-cart">
+                  <li>
+                    <a href="/product/<%= productos[i].id_product %>" class="ichef-eye"></a>
+                  </li>
+              </ul>
+              <% if(productos[i].descuento_oferta > 0 ) { %>
+              <span class="product-discount-label">-<%= productos[i].descuento_oferta %>%</span>
+              <% } %>
+            </div>
+            <div class="product-content">
+              <% if(productos[i].precio > productos[i].precio_oferta && productos[i].precio_oferta > 0 ) { %>
+                <div class="price">$<%= productos[i].precio_oferta  %>
+                  <span>Antes $<%= productos[i].precio %></span>
+                </div>
+              <% } else { %>
+                <div class="price">$<%= productos[i].precio %></div>
+              <% } %>
+                <span class="product-brand">Marca: <%= productos[i].marca.descripcion %></span>
+                <h3 class="title"><a href="/product/<%= productos[i].codigo %>"><%= productos[i].descripcion %></a></h3>
+                <div class="qtyCart">
+                  <div class="section colQty qtyAddCart">
+                    <div class="qty-minus"><span class="ichef-minus"></span></div>
+                    <input class="border-input inputQty" value="1" />
+                    <div class="qty-plus"><span class="ichef-plus"></span></div>
                   </div>
-                  <div class="product-content">
-                    <% if(productos[i].precio > productos[i].precio_oferta && productos[i].precio_oferta > 0 ) { %>
-                      <div class="price">$<%= productos[i].precio_oferta  %>
-                        <span>Antes $<%= productos[i].precio %></span>
-                      </div>
-                    <% } else { %>
-                      <div class="price">$<%= productos[i].precio %></div>
-                    <% } %>
-                      <span class="product-brand">Marca: <%= productos[i].marca.descripcion %></span>
-                      <h3 class="title"><a href="/product/<%= productos[i].codigo %>"><%= productos[i].descripcion %></a></h3>
-                      <a class="all-deals" href="/product/<%= productos[i].id_product %>"><i class="ichef-add_shopping_cart"></i> Agregar</a>
+                  <div class="colBtnAdd">
+                    <button type="submit" class="btn btn-dark"><i class="ichef-add_shopping_cart"></i> Agregar</button>
+                    <!--a class="all-deals" href="/cart/add/"><i class="ichef-add_shopping_cart"></i> Agregar</a-->
                   </div>
-              </div>
+                </div>
+            </div>
+          </div>
         </div>
         <% } %>
       </div>
     </div>
-
     <%- include('./partials/footer') %>
+    <script type="text/javascript" src="/js/store.js"></script>
     <%-include('./partials/script')%>
 </body>
 </html>

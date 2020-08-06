@@ -23,6 +23,4 @@ let apiCategoriesController = {
 
 }
 
-
-
 module.exports = apiCategoriesController;

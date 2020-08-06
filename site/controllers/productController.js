@@ -182,7 +182,7 @@ let productController = {
             attributes: [[Sequelize.fn('max', Sequelize.col('id_product')), 'codigo']],
             raw: true
           });
-          console.log(datosForm);
+          //console.log(datosForm);
           let codigo = maxCodigo[0].codigo + 1
           res.render('productAdd', {  title: 'iChef - Crear producto',
                                       errores: errores.errors,
@@ -297,7 +297,7 @@ let productController = {
     }else{
       return res.render('productEdit',{ title: 'iChef - Editando el producto', errores: errores.errors });
     }
-  },
+    },
     productDelete:function (req, res, next) {
         res.render('productDelete', { title: 'iChef - Producto borrado',
                                     usuario: req.session.usuarioLogueado });
