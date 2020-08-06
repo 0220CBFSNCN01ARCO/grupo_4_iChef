@@ -45,7 +45,8 @@ let apiProductsController = {
                 "id": listProduct[i].id_product,
                 "name": listProduct[i].descripcion,
                 "descripcion":listProduct[i].detalle,
-                "detail": `/api/products/${ listProduct[i].id_product }`
+                "detail": `/api/products/${ listProduct[i].id_product }`,
+                "urlImagen": `images/products/${listProduct[i].productType.id}/${listProduct[i].id_product}/${ listProduct[i].fotos[0].nombre }`
             }
             arrayProduct.push(productAdd);
         }
@@ -139,7 +140,7 @@ let apiProductsController = {
                 "peso": productFind.peso,
                 "receta": productFind.receta,
                 "relaciones": arrayRelaciones,
-                "urlImagen": `images/users/${ productFind.fotos[0].nombre }`
+                "urlImagen": `images/products/${productFind.productType.id}/${productFind.id_product}/${ productFind.fotos[0].nombre }`
             }
             //■ una propiedad por cada campo en base
             //■ un array por cada relación de uno a muchos (categories, colors,sizes, etc)
