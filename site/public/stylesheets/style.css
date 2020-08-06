@@ -2100,6 +2100,12 @@ div.section > div > input {
   padding-top: 10px;
 }
 
+.encaProducts {
+  padding-top: 10px;
+  margin-bottom: 15px
+}
+
+
 textarea {
   white-space: normal;
   word-break: break-all;
