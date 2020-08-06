@@ -1,19 +1,6 @@
 
 const {User} = require('../../database/models');
 
-const getPagination = (page, size) => {//0,5
-    const limit = size ? +size: 10;
-    const offset = page ? page * limit: 0;
-    console.log("LIMITE: " + limit + " - OFFSET: " + offset);
-    return { limit, offset };
-  };
-const getPagingData = (data, page, limit) => {
-    const { count: totalItems, rows: datos } = data;
-    const currentPage = page ? +page : 0;
-    const totalPages = Math.ceil(totalItems / limit);
-    return { totalItems, datos, totalPages, currentPage };
-  };
-
 let apiUsersController = {
 
     listUsers: async function (req, res, next) {
