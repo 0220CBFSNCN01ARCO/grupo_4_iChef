@@ -1,82 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/head') %>
-<body class="hold-transition login-page">
-    <%- include('./partials/header') %>
-    <div class="fondoFormulario">
-      <div class="login-box">
-          <div class="login-box-body">
-            <h3 class="login-box-msg"><b>Login</b></h3>
-            <form class="formLogin" action="login" method="POST">
-              <div class="row">
-                <div class="form-group col-12">
-                  <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                      </div>
-                      <% if (typeof emailIngresado != 'undefined') { %>
-                        <input type="email" class="form-control" name="emailUsuario" placeholder="Email" value="<%= emailIngresado %>">
-                      <% } else { %>
-                        <input type="email" class="form-control" name="emailUsuario" placeholder="Email">
-                      <% } %>
-                      <% if (typeof errores != 'undefined') { %>
-                        <% for (let i=0; i < errores.length; i++) { %>
-                          <% if(errores[i].param == 'emailUsuario' ) { %>
-                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
-                          <% } %>
-                        <% } %>
-                      <% } %>
-                  </div>
-                </div>
-                <div class="form-group col-12">
-                  <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-key"></i></span>
-                      </div>
-                      <input type="password" class="form-control" name="passwordUsuario" placeholder="Password">
-                      <% if (typeof errores != 'undefined') { %>
-                        <% for (let i=0; i < errores.length; i++) { %>
-                          <% if(errores[i].param == 'passwordUsuario' ) { %>
-                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span> <%= errores[i].msg %></div>
-                          <% } %>
-                        <% } %>
-                      <% } %>
-                  </div>
-                </div>
-              </div>
-              <div class="row rowLogin">
-                <div class="col-xs-8">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="checkRecordame" name="checkRecordame" checked>
-                    <label class="form-check-label" for="checkRecordame">
+<%- include('./partials/head') %>
+
+    <body class="hold-transition login-page">
+        <%- include('./partials/header') %>
+            <div class="fondoFormulario">
+                <div class="login-box">
+                    <div class="login-box-body">
+                        <% if (typeof alertaTipo != 'undefined') { %>
+                            <div class="alert alert-<%= alertaTipo %> alert-dismissible fade show" role="alert">
+                                <strong>debe ingresar o registrarse para oder realizar una compra</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <% } %>
+                                <h3 class="login-box-msg"><b>Login</b></h3>
+                                <form class="formLogin" action="login" method="POST">
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                                </div>
+                                                <% if (typeof emailIngresado != 'undefined') { %>
+                                                    <input type="email" class="form-control" name="emailUsuario" placeholder="Email" value="<%= emailIngresado %>">
+                                                    <% } else { %>
+                                                        <input type="email" class="form-control" name="emailUsuario" placeholder="Email">
+                                                        <% } %>
+                                                            <% if (typeof errores != 'undefined') { %>
+                                                                <% for (let i=0; i < errores.length; i++) { %>
+                                                                    <% if(errores[i].param == 'emailUsuario' ) { %>
+                                                                        <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span>
+                                                                            <%= errores[i].msg %>
+                                                                        </div>
+                                                                        <% } %>
+                                                                            <% } %>
+                                                                                <% } %>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                                </div>
+                                                <input type="password" class="form-control" name="passwordUsuario" placeholder="Password">
+                                                <% if (typeof errores != 'undefined') { %>
+                                                    <% for (let i=0; i < errores.length; i++) { %>
+                                                        <% if(errores[i].param == 'passwordUsuario' ) { %>
+                                                            <div class="msgError"><span class="ichef-brightness_1 iconiChef"></span>
+                                                                <%= errores[i].msg %>
+                                                            </div>
+                                                            <% } %>
+                                                                <% } %>
+                                                                    <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row rowLogin">
+                                        <div class="col-xs-8">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="checkRecordame" name="checkRecordame" checked>
+                                                <label class="form-check-label" for="checkRecordame">
                         Recordarme
                     </label>
-                  </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <button type="submit" class="btn btn-dark">Ingresar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="container social-auth-links text-center">
+                                    <div class="row">
+                                        <p class="col-12">- Ingresar con -</p>
+                                    </div>
+                                    <div class="row row-social">
+                                        <a href="#" class="col btn btn-social btn-facebookLogin btn-flat m-1">
+                                            <i class="iconSocial fa fa-facebook"></i> Facebook</a>
+                                        <a href="#" class="col btn btn-social btn-google btn-flat m-1">
+                                            <i class="iconSocial fa fa-google"></i> Google</a>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <a class="login-text col-12" href="#">Olvide mi contraseña</a><br>
+                                    <a class="login-text col-12" href="/users/register" class="text-center">Registrarme</a>
+                                </div>
+                    </div>
                 </div>
-                <div class="col-xs-4">
-                  <button type="submit" class="btn btn-dark">Ingresar</button>
-                </div>
-              </div>
-            </form>
-            <div class="container social-auth-links text-center">
-              <div class="row">
-                <p class="col-12">- Ingresar con -</p>
-              </div>
-              <div class="row row-social">
-                <a href="#" class="col btn btn-social btn-facebookLogin btn-flat m-1">
-                  <i class="iconSocial fa fa-facebook"></i> Facebook</a>
-                <a href="#" class="col btn btn-social btn-google btn-flat m-1">
-                  <i class="iconSocial fa fa-google"></i> Google</a>
-              </div>
             </div>
-            <div class="row mt-2">
-              <a class="login-text col-12" href="#">Olvide mi contraseña</a><br>
-              <a class="login-text col-12" href="/users/register" class="text-center">Registrarme</a>
-            </div>
-          </div>
-      </div>
-    </div>
-      <%- include('./partials/footer') %>
-      <%-include('./partials/script')%>
-</body>
+            <%- include('./partials/footer') %>
+                <%-include('./partials/script')%>
+    </body>
+
 </html>
