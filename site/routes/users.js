@@ -9,6 +9,7 @@ const usersController = require('../controllers/usersController');
 const {check, validationResult, body} = require('express-validator');
 const guestMiddleware = require('../middleware/guestMiddleware')
 const authMiddleware = require ('../middleware/authMiddleware');
+
 const fs = require('fs');
 
 const storage = multer.diskStorage({

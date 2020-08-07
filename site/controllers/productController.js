@@ -8,14 +8,16 @@ let productController = {
         res.render('productDetail', {
             title: 'iChef - Detalle productos',
             subtitle: 'Detalle producto',
-            usuario: req.session.usuarioLogueado
+            usuario: req.session.usuarioLogueado,
+            itemCart: req.session.cart
         });
     },
     product_boxDetail: function(req, res, next) {
         res.render('product-boxDetail', {
             title: 'iChef - Detalle caja',
             subtitle: 'Detalle caja',
-            usuario: req.session.usuarioLogueado
+            usuario: req.session.usuarioLogueado,
+            itemCart: req.session.cart
         });
     },
     listarProductos: function(req, res, next) {
@@ -33,14 +35,16 @@ let productController = {
                 res.render('products', {
                     title: 'iChef - Productos',
                     usuario: req.session.usuarioLogueado,
-                    productos: productos
+                    productos: productos,
+                    itemCart: req.session.cart
                 });
             })
             .catch(function(error) {
                 return res.render('errordb', {
                     title: 'Error',
                     error: error,
-                    usuario: req.session.usuarioLogueado
+                    usuario: req.session.usuarioLogueado,
+                    itemCart: req.session.cart
                 });
             });
     },
@@ -56,14 +60,16 @@ let productController = {
                 res.render('productList', {
                     title: 'iChef - Productos',
                     usuario: req.session.usuarioLogueado,
-                    productos: productos
+                    productos: productos,
+                    itemCart: req.session.cart
                 });
             })
             .catch(function(error) {
                 return res.render('errordb', {
                     title: 'Error',
                     error: error,
-                    usuario: req.session.usuarioLogueado
+                    usuario: req.session.usuarioLogueado,
+                    itemCart: req.session.cart
                 });
             });
     },
@@ -81,6 +87,7 @@ let productController = {
                     title: 'iChef - Producto ' + producto.codigo,
                     subtitle: 'Detalle producto',
                     usuario: req.session.usuarioLogueado,
+                    itemCart: req.session.cart,
                     producto: producto
                 });
             })
@@ -88,7 +95,8 @@ let productController = {
                 return res.render('errordb', {
                     title: 'Error',
                     error: error,
-                    usuario: req.session.usuarioLogueado
+                    usuario: req.session.usuarioLogueado,
+                    itemCart: req.session.cart
                 });
             });
     },

@@ -48,8 +48,8 @@ function calcularPrice(precio, precio_oferta, descuento_oferta) {
         impDescuento = (precioFinal * descuento_oferta) / 100;
         precioFinal = precioFinal - impDescuento;
     }
-    console.log("calulado impDescuento: ", impDescuento);
-    console.log("calculado precioFinal: ", precioFinal);
+    //console.log("calulado impDescuento: ", impDescuento);
+    //console.log("calculado precioFinal: ", precioFinal);
     return {
         precioFinal,
         impDescuento
@@ -58,10 +58,11 @@ function calcularPrice(precio, precio_oferta, descuento_oferta) {
 
 let cartController = {
     getCart: function(req, res, next) {
-        return res.render('productCart', {
+        return res.render('cart', {
             title: 'iChef - Carrito compras',
             subtitle: 'Mi Carrito',
-            usuario: req.session.usuarioLogueado
+            usuario: req.session.usuarioLogueado,
+            itemCart: req.session.cart
         });
     },
     addcart: async function(req, res, next) {
@@ -81,6 +82,8 @@ let cartController = {
             if (!inCart(productBD.id_product, cart)) {
                 itemAdd = {
                     id: productBD.id_product,
+                    codigo: productBD.codigo,
+                    tipo: productBD.product_type_id,
                     descripcion: productBD.descripcion,
                     foto: productBD.fotos[0].nombre,
                     precioUnit: precioFinal,
@@ -89,17 +92,21 @@ let cartController = {
                     totalItem: precioFinal * qtyAdd
                 }
                 cart.items.push(itemAdd);
+                cart.subtotal += (precioFinal * qtyAdd);
                 cart.descuentoTotal += impDescuento
-                cart.total += (precioFinal * qtyAdd)
+                cart.total += ((precioFinal * qtyAdd) - cart.descuentoTotal);
 
-                console.log("Precio item: ", productBD.precio);
-                console.log("Precio oferta item: ", productBD.precio_oferta);
-                console.log("descuento item: ", productBD.descuento_oferta);
-                console.log("Descuento Total: ", cart.descuentoTotal);
-                console.log("Total: ", cart.total);
-                console.log("Product add: ", itemAdd)
+                //console.log("Precio item: ", productBD.precio);
+                //console.log("Precio oferta item: ", productBD.precio_oferta);
+                //console.log("descuento item: ", productBD.descuento_oferta);
+                //console.log("Descuento Total: ", cart.descuentoTotal);
+                //console.log("Total: ", cart.total);
+                //console.log("Product add: ", itemAdd)
             } else {
                 updateQtyCart(productBD.id_product, cart, qtyAdd);
+                cart.subtotal += (precioFinal * qtyAdd);
+                cart.descuentoTotal += impDescuento;
+                cart.total += ((precioFinal * qtyAdd) - cart.descuentoTotal);
             }
         } catch (error) {
             console.log(error);
