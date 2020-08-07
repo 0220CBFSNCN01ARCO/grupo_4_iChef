@@ -267,10 +267,10 @@ let productController = {
         },{
           where: {id_product: req.params.id }
         });
-
+        if(req.files.image_uploads){
         const delIngredientes = await db.Photo
             .destroy({ where: {product_id: req.params.id }} );
-
+        }
         const delFotos = await db.IngredientProduct
             .destroy({ where: {product_id: req.params.id }} );
 
@@ -281,8 +281,8 @@ let productController = {
                         ingredient_id: req.body.ingredientes[i] } );
           }
        }
-
-        if(typeof req.files.image_uploads != 'undefined'){
+        //console.log("Imagenes: ", req.files.image_uploads)
+        if(req.files.image_uploads){
           for (i = 0; i < req.files.image_uploads.length ; i++){
             const foto = await db.Photo
               .create({ product_id: req.params.id,
