@@ -49,36 +49,36 @@
                 </div>
             </div>
             <div class="col-xs-10 col-md-6" style="border:0px solid gray">
-                <h2 class="descripcion-producto"><%=producto.descripcion %></h2>
-                <h6 class="titulo-precio"><small>Precio</small></h6>
-                <h3 style="margin-top:0px;">$<%=producto.precio%></h3>
-                <div class="section">
-                    <h6 class="title-attr" style="margin-top:15px;" ><small>Marca</small></h6>
-                    <div>
-                        <div class="attr"><%=producto.marca.descripcion %></div>
+                <form method="POST" action="/cart/add/<%= producto.id_product %>" novalidate>
+                    <h2 class="descripcion-producto"><%=producto.descripcion %></h2>
+                    <h6 class="titulo-precio"><small>Precio</small></h6>
+                    <h3 style="margin-top:0px;">$<%=producto.precio%></h3>
+                    <div class="section">
+                        <h6 class="title-attr" style="margin-top:15px;" ><small>Marca</small></h6>
+                        <div>
+                            <div class="attr"><%=producto.marca.descripcion %></div>
+                        </div>
                     </div>
-                </div>
-                <div class="section" style="padding-bottom:5px;">
-                    <h6 class="title-attr"><small>Información nutricional</small></h6>
-                    <div>
-                        <div class="attr2"><%=producto.peso %> gr</div>
-                        <div class="attr2"><%=producto.calorias %> Kcal</div>
+                    <div class="section" style="padding-bottom:5px;">
+                        <h6 class="title-attr"><small>Información nutricional</small></h6>
+                        <div>
+                            <div class="attr2"><%=producto.peso %> gr</div>
+                            <div class="attr2"><%=producto.calorias %> Kcal</div>
+                        </div>
                     </div>
-                </div>
-                <div class="section" style="padding-bottom:20px;">
-                    <h6 class="title-attr"><small>Cantidad</small></h6>
-                    <div class="qtyAddCart">
-                        <div class="qty-minus"><span class="ichef-minus"></span></div>
-                        <input class="border-input inputQty" value="1" />
-                        <div class="qty-plus"><span class="ichef-plus"></span></div>
+                    <div class="section" style="padding-bottom:20px;">
+                        <h6 class="title-attr"><small>Cantidad</small></h6>
+                        <div class="qtyAddCart">
+                            <div class="qty-minus"><span class="ichef-minus"></span></div>
+                            <input class="border-input inputQty" name="qtyAdd" value="1" readonly />
+                            <div class="qty-plus"><span class="ichef-plus"></span></div>
+                        </div>
                     </div>
-                </div>
-                <!-- Botones de compra -->
-                <div class="section" style="padding-bottom:20px;">
-                    <button class="btn btn-dark">
-                        <span style="margin-right:20px" class="ichef-add_shopping_cart" aria-hidden="true"></span>Agregar
-                    </button>
-                </div>
+                    <!-- Botones de compra -->
+                    <div class="section" style="padding-bottom:20px;">
+                        <button type="submit " class="btn btn-dark"><i class="ichef-add_shopping_cart "></i> Agregar</button>
+                    </div>
+                </form>
             </div>
         </div>
       </div>

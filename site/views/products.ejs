@@ -14,7 +14,7 @@
                 <div class="row rowProducts">
                     <% for(let i=0; i < productos.length; i++) { %>
                         <div class="col-sm-6 col-md-5 col-lg-4 itemList">
-                            <form method="POST" action="/cart/addcart/<%= productos[i].id_product %>" novalidate>
+                            <form method="POST" action="/cart/add/<%= productos[i].id_product %>" novalidate>
                                 <div class="product-grid">
                                     <div class="product-image">
                                         <a href="/product/<%= productos[i].codigo %>">

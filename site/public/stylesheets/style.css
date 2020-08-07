@@ -2211,11 +2211,13 @@ hr.style-seven:before {
         .descripcion-descuentos,
         .importe-descuentos,
         .descripcion-total,
-        .importe-total {
+        .importe-total,
+        .importe-subtotal,
+        .descripcion-subtotal {
             margin-top: 5px;
             margin-bottom: 5px;
         }
 
-        .importe-total,.importe-descuentos {
+        .importe-total,.importe-descuentos,.importe-subtotal {
             margin-left: 10px;
         }
