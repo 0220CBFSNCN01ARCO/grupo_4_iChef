@@ -1,48 +1,48 @@
 module.exports = (sequelize, DataTypes) => {
     let alias = "Product";
     let cols = {
-        id_product : {
+        id_product: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        codigo : {
+        codigo: {
             type: DataTypes.INTEGER
         },
-        descripcion : {
+        descripcion: {
             type: DataTypes.STRING
         },
-        product_type_id : {
+        product_type_id: {
             type: DataTypes.INTEGER,
             foreignKey: true
         },
-        precio : {
+        precio: {
             type: DataTypes.FLOAT
         },
-        precio_oferta : {
+        precio_oferta: {
             type: DataTypes.FLOAT
         },
-        descuento_oferta : {
+        descuento_oferta: {
             type: DataTypes.FLOAT
         },
-        rubro_id : {
+        rubro_id: {
             type: DataTypes.INTEGER,
             foreignKey: true
         },
-        marca_id : {
+        marca_id: {
             type: DataTypes.INTEGER,
             foreignKey: true
         },
-        detalle : {
+        detalle: {
             type: DataTypes.STRING
         },
-        cant_comensales : {
+        cant_comensales: {
             type: DataTypes.INTEGER
         },
-        calorias : {
+        calorias: {
             type: DataTypes.FLOAT
         },
-        peso : {
+        peso: {
             type: DataTypes.FLOAT
         },
         receta: {
@@ -50,13 +50,13 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     let config = {
-        tableName : "product",
-        timestamps : 0
+        tableName: "product",
+        timestamps: 0
     };
 
     const Product = sequelize.define(alias, cols, config);
 
-    Product.associate = function(models){
+    Product.associate = function(models) {
         /*Product - ProductType*/
         Product.belongsTo(models.ProductType, {
             as: "productType",
@@ -95,11 +95,11 @@ module.exports = (sequelize, DataTypes) => {
 
         /*Product - Ingredient */
         Product.belongsToMany(models.Ingredient, {
-                as:'ingredientes',
-                through: 'ingredients_products',
-                foreignKey: 'product_id',
-                otherKey: 'ingredient_id',
-                timestamps: 0
+            as: 'ingredientes',
+            through: 'ingredients_products',
+            foreignKey: 'product_id',
+            otherKey: 'ingredient_id',
+            timestamps: 0
         });
 
     }

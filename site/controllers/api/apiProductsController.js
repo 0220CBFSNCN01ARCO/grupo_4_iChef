@@ -70,11 +70,11 @@ let apiProductsController = {
             }
         }
 
-        console.log("Pagina: ",page);
-        console.log("LIMIT: ",lim);
-        console.log("OFFSET: ",off);
-        console.log("pageNext: ",pageNext);
-        console.log("pagePrevious: ",pagePrevious);
+        //console.log("Pagina: ",page);
+        //console.log("LIMIT: ",lim);
+        //console.log("OFFSET: ",off);
+        //console.log("pageNext: ",pageNext);
+        //console.log("pagePrevious: ",pagePrevious);
 
         let endProduct = {
           "count": listProduct.length,
@@ -156,7 +156,5 @@ let apiProductsController = {
 
 
 }
-
-
 
 module.exports = apiProductsController;
