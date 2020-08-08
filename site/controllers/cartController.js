@@ -10,29 +10,25 @@ function inCart(productID, cart) {
     return found;
 }
 
-function updateQtyCart(productID, cart, qty) {
+const updateQtyCart = (productID, cart, qty) => {
     cart.items.forEach(item => {
         if (item.id == productID) {
             item.qty += qty;
+            item.totalItem = (item.precioUnit * item.qty)
+            return item.qty;
         }
     });
 }
 
-function calcularTotales(cart) {
+const updateTotales = (cart) => {
+    cart.subtotal = 0.00;
+    cart.descuentoTotal = 0.00;
     cart.total = 0.00;
     cart.items.forEach(item => {
-        try {
-            let price = item.price;
-            let qty = item.qty;
-            let amount = price * qty;
-
-            cart.totals += amount;
-        } catch (error) {
-            console.log(error);
-        }
-
+        cart.subtotal += (item.totalItem);
+        cart.descuentoTotal += (item.descuentoUnit * item.qty);
     });
-    this.setFormattedTotals(cart);
+    cart.total = (cart.subtotal - cart.descuentoTotal);
 }
 
 function calcularPrice(precio, precio_oferta, descuento_oferta) {
@@ -45,8 +41,7 @@ function calcularPrice(precio, precio_oferta, descuento_oferta) {
         precioFinal = precio;
     }
     if (descuento_oferta > 0) {
-        impDescuento = (precioFinal * descuento_oferta) / 100;
-        precioFinal = precioFinal - impDescuento;
+        impDescuento = ((precioFinal * descuento_oferta) / 100)*-1;
     }
     //console.log("calulado impDescuento: ", impDescuento);
     //console.log("calculado precioFinal: ", precioFinal);
@@ -60,7 +55,6 @@ let cartController = {
     getCart: function(req, res, next) {
         return res.render('cart', {
             title: 'iChef - Carrito compras',
-            subtitle: 'Mi Carrito',
             usuario: req.session.usuarioLogueado,
             itemCart: req.session.cart
         });
@@ -74,9 +68,9 @@ let cartController = {
                 .findByPk(req.params.id, {
                     include: [{ association: "fotos" }]
                 });
-            let pPrecio = Number(productBD.precio);
-            let pPrecioOf = Number(productBD.precio_oferta);
-            let pdescuento = Number(productBD.descuento_oferta);
+            let pPrecio = Number(productBD.precio)
+            let pPrecioOf = Number(productBD.precio_oferta)
+            let pdescuento = Number(productBD.descuento_oferta)
             const { precioFinal, impDescuento } = calcularPrice(pPrecio, pPrecioOf, pdescuento);
 
             if (!inCart(productBD.id_product, cart)) {
@@ -88,25 +82,18 @@ let cartController = {
                     foto: productBD.fotos[0].nombre,
                     precioUnit: precioFinal,
                     qty: qtyAdd,
-                    descuentoUnit: impDescuento,
+                    descuentoUnit: impDescuento*-1,
                     totalItem: precioFinal * qtyAdd
                 }
                 cart.items.push(itemAdd);
-                cart.subtotal += (precioFinal * qtyAdd);
-                cart.descuentoTotal += impDescuento
-                cart.total += ((precioFinal * qtyAdd) - cart.descuentoTotal);
-
-                //console.log("Precio item: ", productBD.precio);
-                //console.log("Precio oferta item: ", productBD.precio_oferta);
-                //console.log("descuento item: ", productBD.descuento_oferta);
-                //console.log("Descuento Total: ", cart.descuentoTotal);
-                //console.log("Total: ", cart.total);
-                //console.log("Product add: ", itemAdd)
+                updateTotales(cart);
+                //cart.total = (Math.round(Number(cart.total) * 100) / 100).toFixed(2)
+                console.log("cart ", cart);
             } else {
                 updateQtyCart(productBD.id_product, cart, qtyAdd);
-                cart.subtotal += (precioFinal * qtyAdd);
-                cart.descuentoTotal += impDescuento;
-                cart.total += ((precioFinal * qtyAdd) - cart.descuentoTotal);
+                updateTotales(cart);
+                //cart.total = (Math.round(Number(cart.total) * 100) / 100).toFixed(2)
+                console.log("cart update ", cart);
             }
         } catch (error) {
             console.log(error);

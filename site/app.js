@@ -5,6 +5,7 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let methodOverride = require('method-override');
 let session = require('express-session');
+let bodyParser = require('body-parser');
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
@@ -39,13 +40,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(session({secret: process.env.SESION_SECRET,
                   resave: false,
-                  saveUninitialized: true,
-                  unset: 'destroy',
-                  name: config.name + '-' + Security.generateId(),
-                  genid: (req) => {return Security.generateId()}
-}));
+                  saveUninitialized: false}));
 
-let bodyParser = require('body-parser');
+
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: false })); // support encoded bodies
 

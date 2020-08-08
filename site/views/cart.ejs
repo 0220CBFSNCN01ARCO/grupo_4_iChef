@@ -3,109 +3,84 @@
   <%- include('./partials/head') %>
 <body>
     <%- include('./partials/header') %>
-    <div class="container-fluid headerCart">
-      <h4 id="text-cart">Mi carrito</h4>
+    <div class="container-fluid mb-4">
+      <div class="row headCart badge-dark">
+        <div class="col">
+            <a>Mi carrito</a>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid mb-4">
+      <div class="d-flex flex-row-reverse bd-highlight accionCart">
+        <div class="p-2 bd-highlight">
+          <a class="btn btn-dark" href="/product/list/1">
+            <i class="ichef-reply1"></i> Continuar comprando
+          </a>
+        </div>
+        <div class="p-2 bd-highlight">
+          <form action="/cart/updateCart" method="POST">
+            <button class="btn btn-success"><span class="ichef-credit_card iconiChef"></span> Actualizar carro</button>
+          </form>
+        </div>
+      </div>
     </div>
     <div class="container-fluid detalleCart">
-      <div class="row item-cart align-items-center">
-          <div id="imagen-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
-            <img src="/images/gourmet1.jpg" class="img-producto" alt="" width="50px">
+      <% if( typeof itemCart != 'undefined') { %>
+        <% if( itemCart.items.length > 0) { %>
+          <% for(let i=0; i < itemCart.items.length; i++) { %>
+          <div class="row item-cart align-items-center">
+              <div id="imagen-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
+                <img src="/images/products/<%=itemCart.items[i].tipo %>/<%=itemCart.items[i].codigo %>/<%=itemCart.items[i].foto %>" class="img-producto" alt="" width="50px">
+              </div>
+              <div id="descripcion-cart" class="col-8 col-md-4 col-lg-4 col-xl-4">
+                <p><%=itemCart.items[i].descripcion %></p>
+              </div>
+              <div id="pu-cart" class="col-3 col-md-2 col-lg-2 col-xl-2">
+                <p>$ <%=itemCart.items[i].precioUnit %></p>
+              </div>
+              <div id="cantidad-cart" class="col-3 col-md-1 col-lg-1 col-xl-1">
+                <div class="sectionCart colQty qtyAddCart">
+                  <div class="qty-minus"><span class="ichef-minus"></span></div>
+                  <input type="text" class="border-input inputQty" name="qtyAdd" value="<%=itemCart.items[i].qty %>" readonly/>
+                  <div class="qty-plus "><span class="ichef-plus "></span></div>
+                </div>
+              </div>
+              <div id="total-item-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
+                <p>$ <%=itemCart.items[i].totalItem %></p>
+              </div>
+              <div id="accion-cart" class="col-1 col-md-1 col-lg-1 col-xl-1">
+                <form action="">
+                  <a class="deleteLink" data-toggle="tooltip" href="">
+                      <i class="fa fa-trash fa-1x"></i>
+                  </a>
+                </form>
+              </div>
           </div>
-          <div id="descripcion-cart" class="col-8 col-md-4 col-lg-4 col-xl-4">
-            <p>Descripción producto 1</p>
+          <% } %>
+        <% } else { %>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="alert alert-warning" role="alert">
+                No hay productos agregados al carrito.
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <img class="img-fluid imgEmptyCart" src="/images/fondos/empty-cart.png" alt="Carrito empty">
+            </div>
           </div>
-          <div id="pu-cart" class="col-3 col-md-2 col-lg-2 col-xl-2">
-            <p>$850</p>
+          <% } %>
+      <% } else { %>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-12 col-xl-12">
+            <div class="alert alert-warning" role="alert">
+              No hay productos agregados al carrito.
+            </div>
           </div>
-          <div id="cantidad-cart" class="col-3 col-md-1 col-lg-1 col-xl-1">
-            <select class="custom-select" id="cantidad-cart">
-              <option value="1" selected>1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-            </select></td>
+          <div class="col-sm-12 col-md-6 col-lg-12 col-xl-12">
+              <img class="img-fluid imgEmptyCart" src="/images/fondos/empty-cart.png" alt="Carrito empty">
           </div>
-          <div id="total-item-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
-            <p>$26800</p>
-          </div>
-          <div id="accion-cart" class="col-1 col-md-1 col-lg-1 col-xl-1">
-            <form action="">
-              <a class="deleteLink" data-toggle="tooltip" href="">
-                  <i class="fa fa-trash fa-1x"></i>
-              </a>
-            </form>
-          </div>
-      </div>
-      <div class="row item-cart align-items-center">
-        <div id="imagen-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
-          <img src="/images/gourmet1.jpg" class="img-producto" alt="" width="50px">
         </div>
-        <div id="descripcion-cart" class="col-8 col-md-4 col-lg-4 col-xl-4">
-          <p>Descripción producto 2</p>
-        </div>
-        <div id="pu-cart" class="col-3 col-md-2 col-lg-2 col-xl-2">
-          <p>$100</p>
-        </div>
-        <div id="cantidad-cart" class="col-3 col-md-1 col-lg-1 col-xl-1">
-          <select class="custom-select" id="cantidad-cart">
-            <option value="1" selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-          </select></td>
-        </div>
-        <div id="total-item-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
-          <p>$100000</p>
-        </div>
-        <div id="accion-cart" class="col-1 col-md-1 col-lg-1 col-xl-1">
-          <form action="">
-            <a class="deleteLink" data-toggle="tooltip" href="">
-                <i class="fa fa-trash fa-1x"></i>
-            </a>
-          </form>
-        </div>
-      </div>
-      <div class="row item-cart align-items-center">
-        <div id="imagen-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
-          <img src="/images/gourmet1.jpg" class="img-producto" alt="" width="50px">
-        </div>
-        <div id="descripcion-cart" class="col-8 col-md-4 col-lg-4 col-xl-4">
-          <p>Descripción producto 3</p>
-        </div>
-        <div id="pu-cart" class="col-3 col-md-2 col-lg-2 col-xl-2">
-          <p>$50</p>
-        </div>
-        <div id="cantidad-cart" class="col-3 col-md-1 col-lg-1 col-xl-1">
-          <select class="custom-select" id="cantidad-cart">
-            <option value="1" selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-          </select></td>
-        </div>
-        <div id="total-item-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
-          <p>$30500</p>
-        </div>
-        <div id="accion-cart" class="col-1 col-md-1 col-lg-1 col-xl-1">
-          <form action="">
-            <a class="deleteLink" data-toggle="tooltip" href="">
-                <i class="fa fa-trash fa-1x"></i>
-            </a>
-          </form>
-        </div>
-      </div>
+      <% } %>
     </div>
     <div class="container-fluid resumenCart">
       <div class="row row-resumen">
@@ -125,29 +100,33 @@
           </div>
           <!-- /.col -->
           <div class="col-6">
-            <p class="tituloResumen"><b>Resumen compra</b></p>
+            <div class="tituloResumen badge-dark">
+              <p id="pResumen"><b>Resumen compra</b></p>
+            </div>
             <div class="table-responsive">
               <table class="table">
                 <tbody>
                 <tr class="row">
-                  <th class="col" style="width:50%">Subtotal</th>
-                  <td class="col">$250.30</td>
+                  <th class="col-sm-12 col-md-4 col-lg-3">Subtotal</th>
+                  <td class="col-sm-12 col-md-8 col-lg-9">$ <%=itemCart.subtotal %></td>
                 </tr>
                 <tr class="row">
-                  <th class="col">Descuentos</th>
-                  <td class="col">-$1.80</td>
+                  <th class="col-sm-12 col-md-4 col-lg-3">Descuentos</th>
+                  <td class="col-sm-12 col-md-8 col-lg-9">$ <%=itemCart.descuentoTotal %></td>
                 </tr>
                 <tr class="row">
-                  <th class="col">Envio</th>
-                  <td class="col">$5.80</td>
+                  <th class="col-sm-12 col-md-4 col-lg-3">Envio</th>
+                  <td class="col-sm-12 col-md-8 col-lg-9">$ 0.00</td>
                 </tr>
                 <tr class="row">
-                  <th class="col">Total</th>
-                  <td class="col">$265.24</td>
+                  <th class="col-sm-12 col-md-4 col-lg-3">Total</th>
+                  <td class="col-sm-12 col-md-8 col-lg-9">$ <%=itemCart.total %></td>
                 </tr>
                 <tr>
-                  <th class="col">
-                      <button type="submit" class="btn btn-primary btn-block btn-flat">Finalizar</button>
+                  <th class="col-sm-12 col-md-8 col-lg-6 col-xl-4">
+                    <form id="formPay" action="/cart/pay" method="POST">
+                      <button class="btn btn-success"><span class="ichef-credit_card iconiChef"></span> Pagar</button>
+                    </form>
                   </th>
                 </tr>
               </tbody></table>
@@ -157,6 +136,7 @@
       </div>
     </div>
     <%- include('./partials/footer') %>
+    <script type="text/javascript " src="/js/store.js "></script>
     <%-include('./partials/script')%>
 </body>
 </html>

@@ -884,10 +884,32 @@ hr.style-seven:before {
         
         .tituloResumen {
             text-align: center;
-            background-color: #ccc;
             padding-top: 5px;
             padding-bottom: 5px;
+            margin-bottom: 15px;
         }
+
+        .headCart {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        #formPay {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        #pResumen{
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .sectionCart {
+            width: 100%;
+            padding: 2px;
+        }
+
         /*REGISTRACION*/
         
         .register-box {
@@ -978,15 +1000,37 @@ hr.style-seven:before {
             table thead {
                 display: none;
             }
+
+            .imgEmptyCart {
+                max-width: 300px;
+                max-height: 300px;
+            }
+
         }
         
         @media (min-width: 576px) {
             .imagePreview {
                 height: 248px;
             }
+
+            .imgEmptyCart {
+                max-width: 300px;
+                max-height: 300px;
+            }
+
         }
         
         @media (min-width: 768px) {
+
+            .imgEmptyCart {
+                max-width: 300px;
+                max-height: 300px;
+            }
+
+            #items-cartr {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
             #formBuscar {
                 /*width: 50vw;*/
                 display: contents;
@@ -1052,11 +1096,18 @@ hr.style-seven:before {
                 margin-right: 0px;
             }
         }
-        
+
         @media (min-width: 992px) {
-            /*.menuUser {
-    margin-left: 80px;
-  }*/
+
+            .imgEmptyCart {
+                max-width: 400px;
+                max-height: 400px;
+            }
+
+            #items-cartr {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
             #input-buscar {
                 width: 45vw;
             }
@@ -1092,8 +1143,6 @@ hr.style-seven:before {
             .row-resumen {
                 padding-right: 0;
                 padding-left: 0;
-                margin-right: 5px;
-                margin-left: 5px;
             }
             .row-item {
                 margin-left: 0;
@@ -1612,15 +1661,22 @@ hr.style-seven:before {
             display: flex;
             flex-direction: column;
             margin-left: 10px;
+            margin-right: 10px;
             justify-content: space-between;
             align-items: flex-end;
+            width: 160px;
         }
         
         .menu-carrito .textos-carrito .descripcion-item-carrito {
             color: #aaaaaa;
-            font-size: smaller;
+            font-size: small;
+            width: 160px;
         }
-        
+
+        .cantidad, .precio-item-carrito {
+            font-size: small;
+        }
+
         .menu-carrito .total-carrito {
             display: flex;
             margin: 20px 47px 20px 0;
@@ -1983,7 +2039,6 @@ hr.style-seven:before {
             padding: 2px;
             padding-left: 15px;
             padding-right: 15px;
-            background: #f8f9f9
         }
         
         .descripcion-producto {
@@ -2220,4 +2275,9 @@ hr.style-seven:before {
 
         .importe-total,.importe-descuentos,.importe-subtotal {
             margin-left: 10px;
+        }
+
+        .accionCart {
+            margin-left: 20px;
+            margin-right: 20px;
         }

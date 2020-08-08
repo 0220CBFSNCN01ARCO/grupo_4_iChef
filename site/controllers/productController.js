@@ -20,33 +20,31 @@ let productController = {
             itemCart: req.session.cart
         });
     },
-    listarProductos: function(req, res, next) {
+    listarProductos: async function(req, res, next) {
         //console.log("Tipo de producto: " + req.params.tipo);
-        db.Product.findAll({
+        try {
+            const productos = await db.Product.findAll({
                 include: [{ association: "productType" },
                     { association: "marca" },
                     { association: "rubro" },
                     { association: "fotos" }
-                ],
-                where: { product_type_id: req.params.tipo }
-            })
-            .then((productos) => {
-                //console.log(productos);
+                ], where: { product_type_id: req.params.tipo } });
+            if(productos){
                 res.render('products', {
                     title: 'iChef - Productos',
                     usuario: req.session.usuarioLogueado,
                     productos: productos,
                     itemCart: req.session.cart
                 });
-            })
-            .catch(function(error) {
-                return res.render('errordb', {
-                    title: 'Error',
-                    error: error,
-                    usuario: req.session.usuarioLogueado,
-                    itemCart: req.session.cart
-                });
+            }
+        } catch (error) {
+            return res.render('errordb', {
+                title: 'Error',
+                error: error,
+                usuario: req.session.usuarioLogueado,
+                itemCart: req.session.cart
             });
+        }
     },
     listProduct: function(req, res, next) {
         db.Product.findAll({

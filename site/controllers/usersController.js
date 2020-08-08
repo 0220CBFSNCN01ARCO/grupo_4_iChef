@@ -120,10 +120,18 @@ let usersController = {
                 } else {
                     //console.log(usuarioLoguear);
                     if (bcrypt.compareSync(req.body.passwordUsuario, usuarioLoguear.password)) {
-                        req.session.usuarioLogueado = usuarioLoguear;
-                        if (req.body.checkRecordame != undefined) {
+                        req.session.usuarioLogueado = {
+                                                id: usuarioLoguear.id,
+                                                mail: usuarioLoguear.email,
+                                                nombre: usuarioLoguear.nombre,
+                                                apellido: usuarioLoguear.apellido,
+                                                avatar: usuarioLoguear.avatar
+                                            };
+                        if (req.body.checkRecordame) {
+                            console.log("Se recuerda usuario.");
                             res.cookie('recordame', usuarioLoguear.email, { maxAge: 120000 })
                         }
+                        //console.log("Usuario session: ", req.session.usuarioLogueado);
                         return res.redirect(301, '/');
                     } else {
                         return res.render('login', {
@@ -195,7 +203,8 @@ let usersController = {
                     usuario: req.session.usuarioLogueado
                 });
             } else {
-                return res.redirect('/users/login');
+                res.clearCookie('recordame');
+                return res.redirect('/');
             }
         });
     },
