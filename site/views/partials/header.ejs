@@ -101,13 +101,10 @@
             </div>
         </div>
         <div class="acciones-carrito btn-derecha">
-            <form action="/cart/removeAll?_method=DELETE" method="POST">
+            <form action="/cart/emptyCart" method="POST">
                 <button class="btn btn-dark"><span class="ichef-remove_shopping_cart iconiChef"></span> Vaciar</button>
             </form>
             <a class="btn btn-dark" href="/cart"><span class="ichef-done_outline iconiChef"></span> Ver</a>
-            <!--form action="/cart" method="GET">
-                <button class="btn btn-dark"><span class="ichef-done_outline iconiChef"></span> Ver</button>
-            </form-->
         </div>
     <% } %>
 </div>

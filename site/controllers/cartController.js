@@ -42,6 +42,9 @@ function calcularPrice(precio, precio_oferta, descuento_oferta) {
     }
     if (descuento_oferta > 0) {
         impDescuento = ((precioFinal * descuento_oferta) / 100)*-1;
+        console.log("Antes round: ",impDescuento)
+        impDescuento = impDescuento.toFixed(2);
+        console.log("Despues round: ",impDescuento)
     }
     //console.log("calulado impDescuento: ", impDescuento);
     //console.log("calculado precioFinal: ", precioFinal);
@@ -58,6 +61,29 @@ let cartController = {
             usuario: req.session.usuarioLogueado,
             itemCart: req.session.cart
         });
+    },
+    deleteItem: function(req, res, next) {
+        //delete item cart
+        let cart = req.session.cart
+        let idProduct = Number(req.params.id);
+        console.log("SE ELIMINA ITEM: ", idProduct);
+
+        const newItemsCart = cart.items.filter( item => {
+          return item.id != idProduct
+        });
+        req.session.cart.items = newItemsCart;
+        updateTotales(cart);
+        res.redirect('back');
+    },
+    emptyCart: function(req, res, next) {
+        //vacia todo el cart
+        req.session.cart = {
+            items: [],
+            subtotal: 0.00,
+            descuentoTotal: 0.00,
+            total: 0.00
+        };
+        return res.redirect("back");
     },
     addcart: async function(req, res, next) {
         let itemAdd = {};
@@ -87,20 +113,16 @@ let cartController = {
                 }
                 cart.items.push(itemAdd);
                 updateTotales(cart);
-                //cart.total = (Math.round(Number(cart.total) * 100) / 100).toFixed(2)
-                console.log("cart ", cart);
+                //console.log("cart ", cart);
             } else {
                 updateQtyCart(productBD.id_product, cart, qtyAdd);
                 updateTotales(cart);
-                //cart.total = (Math.round(Number(cart.total) * 100) / 100).toFixed(2)
-                console.log("cart update ", cart);
+                //console.log("cart update ", cart);
             }
         } catch (error) {
             console.log(error);
         }
-
         //console.log("producto agregado");
-
         return res.redirect("back");
     }
 };

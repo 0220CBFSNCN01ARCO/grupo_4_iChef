@@ -10,78 +10,76 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid mb-4">
-      <div class="d-flex flex-row-reverse bd-highlight accionCart">
-        <div class="p-2 bd-highlight">
-          <a class="btn btn-dark" href="/product/list/1">
-            <i class="ichef-reply1"></i> Continuar comprando
-          </a>
-        </div>
-        <div class="p-2 bd-highlight">
-          <form action="/cart/updateCart" method="POST">
-            <button class="btn btn-success"><span class="ichef-credit_card iconiChef"></span> Actualizar carro</button>
-          </form>
+    <form action="/cart/updateCart" method="POST">
+      <div class="container-fluid mb-4">
+        <div class="d-flex flex-row-reverse bd-highlight accionCart">
+          <div class="p-2 bd-highlight">
+            <a class="btn btn-dark" href="/product/list/1">
+              <i class="ichef-reply1"></i> Continuar comprando
+            </a>
+          </div>
+          <div class="p-2 bd-highlight">
+              <button class="btn btn-success"><span class="ichef-credit_card iconiChef"></span> Actualizar carro</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="container-fluid detalleCart">
-      <% if( typeof itemCart != 'undefined') { %>
-        <% if( itemCart.items.length > 0) { %>
-          <% for(let i=0; i < itemCart.items.length; i++) { %>
-          <div class="row item-cart align-items-center">
-              <div id="imagen-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
-                <img src="/images/products/<%=itemCart.items[i].tipo %>/<%=itemCart.items[i].codigo %>/<%=itemCart.items[i].foto %>" class="img-producto" alt="" width="50px">
-              </div>
-              <div id="descripcion-cart" class="col-8 col-md-4 col-lg-4 col-xl-4">
-                <p><%=itemCart.items[i].descripcion %></p>
-              </div>
-              <div id="pu-cart" class="col-3 col-md-2 col-lg-2 col-xl-2">
-                <p>$ <%=itemCart.items[i].precioUnit %></p>
-              </div>
-              <div id="cantidad-cart" class="col-3 col-md-1 col-lg-1 col-xl-1">
-                <div class="sectionCart colQty qtyAddCart">
-                  <div class="qty-minus"><span class="ichef-minus"></span></div>
-                  <input type="text" class="border-input inputQty" name="qtyAdd" value="<%=itemCart.items[i].qty %>" readonly/>
-                  <div class="qty-plus "><span class="ichef-plus "></span></div>
+      <div class="container-fluid detalleCart">
+        <% if( typeof itemCart != 'undefined') { %>
+          <% if( itemCart.items.length > 0) { %>
+            <% for(let i=0; i < itemCart.items.length; i++) { %>
+            <div class="row item-cart align-items-center">
+                <div id="imagen-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
+                  <img src="/images/products/<%=itemCart.items[i].tipo %>/<%=itemCart.items[i].codigo %>/<%=itemCart.items[i].foto %>" class="img-producto" alt="" width="50px">
+                </div>
+                <div id="descripcion-cart" class="col-8 col-md-4 col-lg-4 col-xl-4">
+                  <p><%=itemCart.items[i].descripcion %></p>
+                </div>
+                <div id="pu-cart" class="col-3 col-md-2 col-lg-2 col-xl-2">
+                  <p>$ <%=itemCart.items[i].precioUnit %></p>
+                </div>
+                <div id="cantidad-cart" class="col-3 col-md-1 col-lg-1 col-xl-1">
+                  <div class="sectionCart colQty qtyAddCart">
+                    <div class="qty-minus"><span class="ichef-minus"></span></div>
+                    <input type="text" class="border-input inputQty" name="qtyAdd" value="<%=itemCart.items[i].qty %>" readonly/>
+                    <div class="qty-plus "><span class="ichef-plus "></span></div>
+                  </div>
+                </div>
+                <div id="total-item-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
+                  <p>$ <%=itemCart.items[i].totalItem %></p>
+                </div>
+                <div id="accion-cart" class="col-1 col-md-1 col-lg-1 col-xl-1">
+                    <a class="deleteLink" data-toggle="tooltip" href="/cart/deleteItem/<%=itemCart.items[i].id %>">
+                        <i class="fa fa-trash fa-1x"></i>
+                    </a>
+                </div>
+            </div>
+            <% } %>
+          <% } else { %>
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="alert alert-warning" role="alert">
+                  No hay productos agregados al carrito.
                 </div>
               </div>
-              <div id="total-item-cart" class="col-4 col-md-2 col-lg-2 col-xl-2">
-                <p>$ <%=itemCart.items[i].totalItem %></p>
+              <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <img class="img-fluid imgEmptyCart" src="/images/fondos/empty-cart.png" alt="Carrito empty">
               </div>
-              <div id="accion-cart" class="col-1 col-md-1 col-lg-1 col-xl-1">
-                <form action="">
-                  <a class="deleteLink" data-toggle="tooltip" href="">
-                      <i class="fa fa-trash fa-1x"></i>
-                  </a>
-                </form>
-              </div>
-          </div>
-          <% } %>
+            </div>
+            <% } %>
         <% } else { %>
           <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-12">
               <div class="alert alert-warning" role="alert">
                 No hay productos agregados al carrito.
               </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="col-sm-12 col-md-6 col-lg-12 col-xl-12">
                 <img class="img-fluid imgEmptyCart" src="/images/fondos/empty-cart.png" alt="Carrito empty">
             </div>
           </div>
-          <% } %>
-      <% } else { %>
-        <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-12 col-xl-12">
-            <div class="alert alert-warning" role="alert">
-              No hay productos agregados al carrito.
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-12 col-xl-12">
-              <img class="img-fluid imgEmptyCart" src="/images/fondos/empty-cart.png" alt="Carrito empty">
-          </div>
-        </div>
-      <% } %>
-    </div>
+        <% } %>
+      </div>
+    </form>
     <div class="container-fluid resumenCart">
       <div class="row row-resumen">
           <!-- accepted payments column -->
