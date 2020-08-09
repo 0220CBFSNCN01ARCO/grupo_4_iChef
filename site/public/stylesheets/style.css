@@ -2281,3 +2281,18 @@ hr.style-seven:before {
             margin-left: 20px;
             margin-right: 20px;
         }
+
+
+        .contPayment{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+
+        .iconPay {
+            font-size: 60px;
+        }
+
+        .detailOrder{
+            color: #383838;
+        }

@@ -13,9 +13,6 @@ module.exports = (sequelize, DataTypes) => {
         cantidad_items: {
             type: DataTypes.INTEGER
         },
-        neto_total: {
-            type: DataTypes.FLOAT
-        },
         subtotal: {
             type: DataTypes.FLOAT
         },

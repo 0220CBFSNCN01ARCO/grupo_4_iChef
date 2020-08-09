@@ -42,9 +42,9 @@ function calcularPrice(precio, precio_oferta, descuento_oferta) {
     }
     if (descuento_oferta > 0) {
         impDescuento = ((precioFinal * descuento_oferta) / 100)*-1;
-        console.log("Antes round: ",impDescuento)
+        //console.log("Antes round: ",impDescuento)
         impDescuento = impDescuento.toFixed(2);
-        console.log("Despues round: ",impDescuento)
+        //console.log("Despues round: ",impDescuento)
     }
     //console.log("calulado impDescuento: ", impDescuento);
     //console.log("calculado precioFinal: ", precioFinal);

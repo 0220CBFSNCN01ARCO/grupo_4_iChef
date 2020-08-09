@@ -122,6 +122,7 @@ let usersController = {
                     if (bcrypt.compareSync(req.body.passwordUsuario, usuarioLoguear.password)) {
                         req.session.usuarioLogueado = {
                                                 id: usuarioLoguear.id,
+                                                categorie_id: usuarioLoguear.categorie_id,
                                                 mail: usuarioLoguear.email,
                                                 nombre: usuarioLoguear.nombre,
                                                 apellido: usuarioLoguear.apellido,

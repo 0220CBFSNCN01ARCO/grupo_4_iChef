@@ -12,6 +12,7 @@ async function recordameMiddleware (req, res, next){
       if(usuario){
         req.session.usuarioLogueado = {
                               id: usuario.id,
+                              categorie_id: usuario.categorie_id,
                               mail: usuario.email,
                               nombre: usuario.nombre,
                               apellido: usuario.apellido,

@@ -6,6 +6,7 @@ let logger = require('morgan');
 let methodOverride = require('method-override');
 let session = require('express-session');
 let bodyParser = require('body-parser');
+require('dotenv').config();
 
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
@@ -13,6 +14,9 @@ let productRouter = require('./routes/product');
 let infoRouter  = require('./routes/info');
 let configRouter  = require('./routes/config');
 let cartRouter  = require('./routes/cart');
+let paymentRouter  = require('./routes/payment');
+let ordersRouter  = require('./routes/order');
+
 /*ROUTER API*/
 let apiUsersRouter = require('./routes/api/users');
 let apiProductRouter = require('./routes/api/products');
@@ -25,8 +29,6 @@ const config = require('./controllers/Config');
 const Security = require('./controllers/Security');
 
 let app = express();
-
-require('dotenv').config();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -54,6 +56,10 @@ app.use('/product', productRouter);
 app.use('/info',infoRouter);
 app.use('/config',configRouter);
 app.use('/cart',cartRouter);
+app.use('/payment',paymentRouter);
+app.use('/orders',ordersRouter);
+
+
 /*API*/
 app.use('/api/users', apiUsersRouter);
 app.use('/api/products', apiProductRouter);
