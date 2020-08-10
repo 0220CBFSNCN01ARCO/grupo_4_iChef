@@ -7,9 +7,9 @@ let orderController = {
             const orders = await Order.findAll({
                 attributes: ["Order.id","Order.cantidad_items","Order.total",
                 [Sequelize.fn('date_format', Sequelize.col('Order.fecha'), '%Y-%m-%d %H:%i:%s'), 'fecha'],
-                "usuarioOrder.nombre","usuarioOrder.apellido","estadoOrder.descripcion"],
+                "usuarioOrder.email","estadoOrder.descripcion"],
                 include: [{ association: "usuarioOrder" ,
-                            attributes: ["nombre","apellido"]},
+                            attributes: ["email"]},
                           { association: "estadoOrder",
                             attributes: ["descripcion"] } ],
                             raw:true});

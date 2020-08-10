@@ -2,16 +2,6 @@ const { check, validationResult, body } = require('express-validator');
 const bcrypt = require('bcrypt');
 const saltNumber = 10;
 const db = require('../database/models');
-const jwt = require('jsonwebtoken');
-
-const generateToken = (datoUser) => {
-    let privateKey = "secret"
-    jwt.sign({ user: { email: datoUser } },
-        privateKey, { expiresIn: '1h' },
-        function(err, token) {
-            return res.json(token);
-        });
-}
 
 let usersController = {
     userRegister: function(req, res, next) {
@@ -210,13 +200,13 @@ let usersController = {
         });
     },
     userProfile: async function(req, res, next) {
-        //console.log(req.session.usuarioLogueado.id);
+        console.log("parametro id: ",req.params.id);
         try {
             const userPro = await db.User.findByPk(req.params.id);
             if (userPro) {
                 return res.render('userProfile', {
                     title: 'iChef - Perfil usuario',
-                    usuarioEdit: usuarioEdit,
+                    usuarioEdit: userPro,
                     usuario: req.session.usuarioLogueado,
                     itemCart: req.session.cart
                 });
@@ -232,9 +222,10 @@ let usersController = {
     },
     userEdit: async function(req, res, next) {
         try {
-            const userEdit = db.User.findByPk(req.params.id)
+            const userEdit = db.User.findByPk(req.params.id);
+            console.log("Usuario edit: ", userEdit);
             if (userEdit) {
-                return res.render('userProfile', {
+                return res.render('userAdd', {
                     title: 'iChef - Perfil',
                     usuarioEdit: usuarioEdit,
                     usuario: req.session.usuarioLogueado,
@@ -442,40 +433,74 @@ let usersController = {
         let errores = validationResult(req);
         //console.log("Errores: ",errores);
         console.log('Foto: ', req.file)
-        if (errores.isEmpty()) {
-            try {
-                let fotoperfil;
-                if (!req.file.filename) {
-                    fotoperfil = 'default-user.png'
-                } else {
-                    fotoperfil = req.file.filename
-                }
+        let datosForm = {
+            nombre: req.body.nombreUser,
+            apellido: req.body.apellidoUser,
+            email: req.body.emailUser.toLowerCase(),
+            password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
+            nroTelefono: req.body.nroTelefonoUser,
+            categorie_id: req.body.rolUser,
+            estado: req.body.estadoUsr
+        };
 
-                const newUser = await db.User.create({
-                    nombre: req.body.nombreUser,
-                    apellido: req.body.apellidoUser,
-                    email: req.body.emailUser.toLowerCase(),
-                    password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
-                    nroTelefono: req.body.nroTelefonoUser,
-                    avatar: fotoperfil,
-                    categorie_id: req.body.rolUser,
-                    estado: req.body.estadoUsr
-                });
-                return res.redirect(301, '/users')
-            } catch (error) {
-                console.log("Error userSave:", error);
+        if(req.file) {
+            if (errores.isEmpty()) {
+                try {
+                    let fotoperfil;
+                    if (!req.file.filename) {
+                        fotoperfil = 'default-user.png'
+                    } else {
+                        fotoperfil = req.file.filename
+                    }
+                    const newUser = await db.User.create({
+                        nombre: req.body.nombreUser,
+                        apellido: req.body.apellidoUser,
+                        email: req.body.emailUser.toLowerCase(),
+                        password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
+                        nroTelefono: req.body.nroTelefonoUser,
+                        avatar: fotoperfil,
+                        categorie_id: req.body.rolUser,
+                        estado: req.body.estadoUsr
+                    });
+                    return res.redirect(301, '/users')
+                } catch (error) {
+                    console.log("Error userSave:", error);
+                }
+            } else {
+                //console.log("Body: ",req.body);
+                try {
+                    const roles = await db.UserCategorie.findAll({
+                        order: [
+                            ['descripcion', 'ASC']
+                        ]
+                    });
+                    const estados = await db.UserStatus.findAll({
+                        order: [
+                            ['descripcion', 'ASC']
+                        ]
+                    });
+    
+                    return res.render('userAdd', {
+                        title: 'iChef - Alta usuario',
+                        subtitle: 'Alta usuario',
+                        roles,
+                        estados,
+                        datosForm,
+                        errores: errores.errors,
+                        usuario: req.session.usuarioLogueado
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
             }
-        } else {
-            //console.log("Body: ",req.body);
-            let datosForm = {
-                nombre: req.body.nombreUser,
-                apellido: req.body.apellidoUser,
-                email: req.body.emailUser.toLowerCase(),
-                password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
-                nroTelefono: req.body.nroTelefonoUser,
-                categorie_id: req.body.rolUser,
-                estado: req.body.estadoUsr
+        }else {
+
+            let errorFoto = {  value: '',
+                msg: 'Debe seleccionar una foto.',
+                param: 'fotoPerfil',
+                location: 'body'
             };
+            errores.errors.push(errorFoto);
             try {
                 const roles = await db.UserCategorie.findAll({
                     order: [
@@ -487,7 +512,7 @@ let usersController = {
                         ['descripcion', 'ASC']
                     ]
                 });
-
+                //console.log(errores);
                 return res.render('userAdd', {
                     title: 'iChef - Alta usuario',
                     subtitle: 'Alta usuario',
@@ -501,6 +526,7 @@ let usersController = {
                 console.log(error);
             }
         }
+
     }
 };
 
