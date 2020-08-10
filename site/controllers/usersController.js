@@ -2,6 +2,7 @@ const { check, validationResult, body } = require('express-validator');
 const bcrypt = require('bcrypt');
 const saltNumber = 10;
 const db = require('../database/models');
+const { User }  = require('../database/models');
 
 let usersController = {
     userRegister: function(req, res, next) {
@@ -15,69 +16,92 @@ let usersController = {
     createUser: async function(req, res, next) {
         let errores = validationResult(req);
         //console.log("file",req.file);
-        if (errores.isEmpty()) {
-            if (req.body.passwordUser != req.body.repeatPasswordUser) {
+
+        let datosForm = {
+            nombre: req.body.nombreUser,
+            apellido: req.body.apellidoUser,
+            email: req.body.emailUser.toLowerCase(),
+            password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
+            nroTelefono: req.body.nroTelefonoUser,
+        };
+        if(req.file) {
+            if (errores.isEmpty()) {
+                if (req.body.passwordUser != req.body.repeatPasswordUser) {
+                    return res.render('register', {
+                        title: 'iChef - Registro',
+                        errores: [{
+                            value: '',
+                            msg: 'Las contraseñas no coinciden.',
+                            param: 'passwordUser',
+                            location: 'body'
+                        }]
+                    });
+                } else {
+                    try {
+                        const usuarioFind = await db.User.findOne({ where: { email: req.body.emailUser } });
+                        //console.log(usuarioFind);
+                        if (usuarioFind instanceof db.User) {
+                            return res.render('register', {
+                                title: 'iChef - Registro',
+                                errores: [{
+                                    value: '',
+                                    msg: 'El email ingresado ya existe.',
+                                    param: 'emailUser',
+                                    location: 'body'
+                                }]
+                            });
+                        } else {
+                            const newUsuario = await db.User.create({
+                                nombre: req.body.nombreUser,
+                                apellido: req.body.apellidoUser,
+                                email: req.body.emailUser.toLowerCase(),
+                                password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
+                                nroTelefono: req.body.nroTelefonoUser,
+                                avatar: req.file.filename,
+                                categorie_id: 4
+                            });
+                            //console.log("new: ",newUsuario);
+                            if (newUsuario instanceof db.User) {
+                                //return res.redirect(301, '/login' );
+                                return res.render('userMsg', {
+                                    title: 'Usuario',
+                                    tipo: 'success',
+                                    mensaje: newUsuario.nombre,
+                                    errores: errores.errors,
+                                    usuario: req.session.usuarioLogueado
+                                });
+                            }
+                        }
+                    } catch (error) {
+                        //console.log(error);
+                        return res.render('errordb', {
+                            title: 'Error',
+                            error: error,
+                            usuario: req.session.usuarioLogueado
+                        });
+                    }
+                }
+            } else {
                 return res.render('register', {
                     title: 'iChef - Registro',
-                    errores: [{
-                        value: '',
-                        msg: 'Las contraseñas no coinciden.',
-                        param: 'passwordUser',
-                        location: 'body'
-                    }]
+                    errores: errores.errors
                 });
-            } else {
-                try {
-                    const usuarioFind = await db.User.findOne({ where: { email: req.body.emailUser } });
-                    //console.log(usuarioFind);
-                    if (usuarioFind instanceof db.User) {
-                        return res.render('register', {
-                            title: 'Registro',
-                            errores: [{
-                                value: '',
-                                msg: 'El email ingresado ya existe.',
-                                param: 'emailUser',
-                                location: 'body'
-                            }]
-                        });
-                    } else {
-                        const newUsuario = await db.User.create({
-                            nombre: req.body.nombreUser,
-                            apellido: req.body.apellidoUser,
-                            email: req.body.emailUser.toLowerCase(),
-                            password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
-                            nroTelefono: req.body.nroTelefonoUser,
-                            avatar: req.file.filename,
-                            categorie_id: 4
-                        });
-                        //console.log("new: ",newUsuario);
-                        if (newUsuario instanceof db.User) {
-                            //return res.redirect(301, '/login' );
-                            return res.render('userMsg', {
-                                title: 'Usuario',
-                                tipo: 'success',
-                                mensaje: newUsuario.nombre,
-                                errores: errores.errors,
-                                usuario: req.session.usuarioLogueado
-                            });
-                        }
-
-                    }
-                } catch (error) {
-                    //console.log(error);
-                    return res.render('errordb', {
-                        title: 'Error',
-                        error: error,
-                        usuario: req.session.usuarioLogueado
-                    });
-                }
             }
-        } else {
+        }else {
+            let errorFoto = {  value: '',
+            msg: 'Debe seleccionar una foto.',
+            param: 'fotoPerfil',
+            location: 'body'};
+            errores.errors.push(errorFoto);
+
             return res.render('register', {
-                title: 'Registro',
+                title: 'iChef - Registro',
+                datosForm,
                 errores: errores.errors
             });
+
         }
+
     },
     userLogin: function(req, res, next) {
         return res.render('login', {
@@ -200,7 +224,7 @@ let usersController = {
         });
     },
     userProfile: async function(req, res, next) {
-        console.log("parametro id: ",req.params.id);
+        //console.log("parametro id: ",req.params.id);
         try {
             const userPro = await db.User.findByPk(req.params.id);
             if (userPro) {
@@ -222,14 +246,31 @@ let usersController = {
     },
     userEdit: async function(req, res, next) {
         try {
-            const userEdit = db.User.findByPk(req.params.id);
-            console.log("Usuario edit: ", userEdit);
+            const userEdit = await db.User.findByPk(req.params.id);
+            //console.log("Usuario edit: ", userEdit);
+            const roles = await db.UserCategorie.findAll({
+                order: [['descripcion', 'ASC']]});
+            const estados = await db.UserStatus.findAll({
+                order: [['descripcion', 'ASC']]});
+            let datosForm = {
+                id: userEdit.id,
+                nombre: userEdit.nombre,
+                apellido: userEdit.apellido,
+                email: userEdit.email,
+                nroTelefono: userEdit.nroTelefono,
+                avatar: userEdit.avatar,
+                categorie_id: userEdit.categorie_id,
+                estado: userEdit.estado
+            };
+            //console.log("User edit: ", userEdit);
             if (userEdit) {
                 return res.render('userAdd', {
-                    title: 'iChef - Perfil',
-                    usuarioEdit: usuarioEdit,
-                    usuario: req.session.usuarioLogueado,
-                    itemCart: req.session.cart
+                    title: 'iChef - Edición usuario',
+                    roles,
+                    estados,
+                    edicion: 1,
+                    datosForm,
+                    usuario: req.session.usuarioLogueado
                 });
             }
         } catch (error) {
@@ -271,29 +312,17 @@ let usersController = {
                 });
             });
     },
-    deleteUserById: function(req, res, next) {
-        db.User.destroy({
-                where: { id: req.params.idUser }
-            })
-            .then(function(result) {
-                //console.log(result)
-                let mensaje = "Usuario eliminado correctamente"
-                res.render('message', {
-                    title: 'iChef - Usuario',
-                    tipo: 'success',
-                    mensaje: mensaje,
-                    usuario: req.session.usuarioLogueado,
-                    itemCart: req.session.cart
-                });
-            })
-            .catch(function(error) {
-                return res.render('errordb', {
-                    title: 'Error',
-                    error: error,
-                    usuario: req.session.usuarioLogueado,
-                    itemCart: req.session.cart
-                });
-            });
+    deleteUserById: async function(req, res, next) {
+        try {
+            const UserDelete = await User.findByPk(req.params.idUser);
+            //console.log("Usuario a eliminar: ", UserDelete);
+            UserDelete.estado = 4;
+            await UserDelete.save();
+            return res.redirect(301, '/users');
+        } catch (error) {
+            console.log(error)
+        }
+
     },
     changePassword: function(req, res, next) {
         db.User.findByPk(req.params.id)
@@ -409,25 +438,79 @@ let usersController = {
     userAdd: async function(req, res, next) {
         try {
             const roles = await db.UserCategorie.findAll({
-                order: [
-                    ['descripcion', 'ASC']
-                ]
-            });
+                order: [['descripcion', 'ASC']]});
             const estados = await db.UserStatus.findAll({
-                order: [
-                    ['descripcion', 'ASC']
-                ]
-            });
+                order: [['descripcion', 'ASC']]});
             return res.render('userAdd', {
                 title: 'iChef - Alta usuario',
                 subtitle: 'Alta usuario',
                 roles,
+                alta: 1,
                 estados,
                 usuario: req.session.usuarioLogueado
             });
         } catch (error) {
             console.log("Error userAdd:", error);
         }
+    },
+    saveEdit: async function(req, res, next) {
+        let errores = validationResult(req);
+        //console.log("Errores: ",errores);
+        console.log('Foto: ', req.file)
+        let idUser = req.params.id;
+        let datosForm = {
+            id: idUser,
+            nombre: req.body.nombreUser,
+            apellido: req.body.apellidoUser,
+            email: req.body.emailUser.toLowerCase(),
+            nroTelefono: req.body.nroTelefonoUser,
+            categorie_id: req.body.rolUser,
+            estado: req.body.estadoUsr
+        };
+
+        if (errores.isEmpty()) {
+            try {
+                let fotoperfil;
+                if (!req.file) {
+                    fotoperfil = 'default-user.png'
+                } else {
+                    fotoperfil = req.file.filename
+                }
+                const newUser = await db.User.update({
+                    nombre: req.body.nombreUser,
+                    apellido: req.body.apellidoUser,
+                    email: req.body.emailUser.toLowerCase(),
+                    nroTelefono: req.body.nroTelefonoUser,
+                    avatar: fotoperfil,
+                    categorie_id: req.body.rolUser,
+                    estado: req.body.estadoUsr
+                }, { where: { id: idUser }});
+                return res.redirect(301, '/users')
+            } catch (error) {
+                console.log("Error userSave:", error);
+            }
+        } else {
+            //console.log("Body: ",req.body);
+            try {
+                const roles = await db.UserCategorie.findAll({
+                    order: [['descripcion', 'ASC']]});
+                const estados = await db.UserStatus.findAll({
+                    order: [['descripcion', 'ASC']]});
+
+                return res.render('userAdd', {
+                    title: 'iChef - Alta usuario',
+                    subtitle: 'Alta usuario',
+                    roles,
+                    estados,
+                    datosForm,
+                    errores: errores.errors,
+                    usuario: req.session.usuarioLogueado
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
     },
     userSave: async function(req, res, next) {
         let errores = validationResult(req);
@@ -443,64 +526,30 @@ let usersController = {
             estado: req.body.estadoUsr
         };
 
-        if(req.file) {
-            if (errores.isEmpty()) {
-                try {
-                    let fotoperfil;
-                    if (!req.file.filename) {
-                        fotoperfil = 'default-user.png'
-                    } else {
-                        fotoperfil = req.file.filename
-                    }
-                    const newUser = await db.User.create({
-                        nombre: req.body.nombreUser,
-                        apellido: req.body.apellidoUser,
-                        email: req.body.emailUser.toLowerCase(),
-                        password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
-                        nroTelefono: req.body.nroTelefonoUser,
-                        avatar: fotoperfil,
-                        categorie_id: req.body.rolUser,
-                        estado: req.body.estadoUsr
-                    });
-                    return res.redirect(301, '/users')
-                } catch (error) {
-                    console.log("Error userSave:", error);
+        if (errores.isEmpty()) {
+            try {
+                let fotoperfil;
+                if (!req.file) {
+                    fotoperfil = 'default-user.png'
+                } else {
+                    fotoperfil = req.file.filename
                 }
-            } else {
-                //console.log("Body: ",req.body);
-                try {
-                    const roles = await db.UserCategorie.findAll({
-                        order: [
-                            ['descripcion', 'ASC']
-                        ]
-                    });
-                    const estados = await db.UserStatus.findAll({
-                        order: [
-                            ['descripcion', 'ASC']
-                        ]
-                    });
-    
-                    return res.render('userAdd', {
-                        title: 'iChef - Alta usuario',
-                        subtitle: 'Alta usuario',
-                        roles,
-                        estados,
-                        datosForm,
-                        errores: errores.errors,
-                        usuario: req.session.usuarioLogueado
-                    });
-                } catch (error) {
-                    console.log(error);
-                }
+                const newUser = await db.User.create({
+                    nombre: req.body.nombreUser,
+                    apellido: req.body.apellidoUser,
+                    email: req.body.emailUser.toLowerCase(),
+                    password: bcrypt.hashSync(req.body.passwordUser, saltNumber),
+                    nroTelefono: req.body.nroTelefonoUser,
+                    avatar: fotoperfil,
+                    categorie_id: req.body.rolUser,
+                    estado: req.body.estadoUsr
+                });
+                return res.redirect(301, '/users')
+            } catch (error) {
+                console.log("Error userSave:", error);
             }
-        }else {
-
-            let errorFoto = {  value: '',
-                msg: 'Debe seleccionar una foto.',
-                param: 'fotoPerfil',
-                location: 'body'
-            };
-            errores.errors.push(errorFoto);
+        } else {
+            //console.log("Body: ",req.body);
             try {
                 const roles = await db.UserCategorie.findAll({
                     order: [
@@ -512,7 +561,7 @@ let usersController = {
                         ['descripcion', 'ASC']
                     ]
                 });
-                //console.log(errores);
+
                 return res.render('userAdd', {
                     title: 'iChef - Alta usuario',
                     subtitle: 'Alta usuario',
@@ -526,6 +575,7 @@ let usersController = {
                 console.log(error);
             }
         }
+
 
     }
 };

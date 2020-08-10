@@ -1,4 +1,5 @@
 const db = require('../database/models');
+const { Product } = require('../database/models');
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 const { check, validationResult, body } = require('express-validator');
@@ -78,7 +79,10 @@ let productController = {
                     { association: "rubro" },
                     { association: "fotos" },
                     { association: "ingredientes" }
-                ]
+                ],
+                where: {
+                    estado: 1
+                }
             })
             .then((producto) => {
                 res.render('productDetail', {
@@ -386,25 +390,17 @@ let productController = {
     },
     productDelete: function(req, res, next) {
         res.render('productDelete', {
-            title: 'iChef - Producto borrado',
+            title: 'iChef - Producto',
             usuario: req.session.usuarioLogueado
         });
     },
     deleteProductById: async function(req, res, next) {
         try {
-            const productoDelete = await db.Product.destroy({
-                    include: [{ association: "productType" },
-                        { association: "marca" },
-                        { association: "rubro" },
-                        { association: "fotos" },
-                        { association: "ingredientes" }
-                    ],
-                    where: { id_product: req.params.idProducto }
-                })
-                //console.log(productoDelete)
-            if (productoDelete == 1) {
-                return res.redirect(301, '/product');
-            }
+            const productoDelete = await Product.findByPk(req.params.idProducto);
+            //console.log("Producto a eliminar: ", productoDelete);
+            productoDelete.estado = 3;
+            await productoDelete.save();
+            return res.redirect(301, '/product');
         } catch (error) {
             console.log(error)
         }

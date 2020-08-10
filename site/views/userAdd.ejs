@@ -15,13 +15,21 @@
             </div>
         </div>
         <div id="formUsr" class="container">
+            <% if (typeof edicion != 'undefined') { %>
+            <form method="POST" id="formRegister" action="/users/userEdit/<%= datosForm.id %>" enctype="multipart/form-data" novalidate>
+            <% } else { %>
             <form method="POST" id="formRegister" action="/users/userAdd" enctype="multipart/form-data" novalidate>
+            <% } %>
                 <div class="row">
                     <div id="formDatos" class="col-sm-12 col-md-12 col-lg-6">
                         <label>Datos de la cuenta</label>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control" name="nombreUser" placeholder="Nombre">
+                                <% if (typeof datosForm != 'undefined') { %>
+                                    <input type="text" class="form-control" name="nombreUser" placeholder="Nombre" value="<%= datosForm.nombre %>">
+                                <% } else { %>
+                                    <input type="text" class="form-control" name="nombreUser" placeholder="Nombre">
+                                <% } %>
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                         <% if(errores[i].param == 'nombreUser' ) { %>
@@ -31,7 +39,11 @@
                                 <% } %>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control" name="apellidoUser" placeholder="Apellido">
+                                <% if (typeof datosForm != 'undefined') { %>
+                                    <input type="text" class="form-control" name="apellidoUser" placeholder="Apellido" value="<%= datosForm.apellido %>">
+                                <% } else { %>
+                                    <input type="text" class="form-control" name="apellidoUser" placeholder="Apellido">
+                                <% } %>
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                         <% if(errores[i].param == 'apellidoUser' ) { %>
@@ -43,7 +55,11 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
-                              <input type="text" minlength="10" class="form-control" name="nroTelefonoUser" placeholder="Nro. teléfono">
+                              <% if (typeof datosForm != 'undefined') { %>
+                              <input type="text" class="form-control" name="nroTelefonoUser" placeholder="Nro. teléfono" value="<%= datosForm.nroTelefono %>">
+                              <% } else { %>
+                              <input type="text" class="form-control" name="nroTelefonoUser" placeholder="Nro. teléfono">
+                              <% } %>
                               <% if (typeof errores != 'undefined') { %>
                                 <% for (let i=0; i < errores.length; i++) { %>
                                     <% if(errores[i].param == 'nroTelefonoUser' ) { %>
@@ -53,7 +69,11 @@
                               <% } %>
                             </div>
                             <div class="col-md-6 mb-3">
+                              <% if (typeof datosForm != 'undefined') { %>
+                              <input type="email" class="form-control" name="emailUser" placeholder="Email" value="<%= datosForm.email %>">
+                              <% } else { %>
                               <input type="email" class="form-control" name="emailUser" placeholder="Email">
+                              <% } %>
                               <% if (typeof errores != 'undefined') { %>
                                 <% for (let i=0; i < errores.length; i++) { %>
                                     <% if(errores[i].param == 'emailUser' ) { %>
@@ -63,6 +83,7 @@
                               <% } %>
                             </div>
                         </div>
+                        <% if (typeof edicion == 'undefined') { %>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <input type="password" class="form-control" name="passwordUser" placeholder="Password">
@@ -85,13 +106,14 @@
                                 <% } %>
                             </div>
                         </div>
+                        <% } %>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <select class="custom-select form-control" id="rolUser" name="rolUser" required>
                                     <% if (typeof datosForm != 'undefined') { %>
                                         <option value="">Seleccione una categoria</option>
                                         <% for (let i=0; i < roles.length; i++) { %>
-                                            <% if ( datosForm.rolUser == roles[i].id ) { %>
+                                            <% if ( datosForm.categorie_id == roles[i].id ) { %>
                                             <option value="<%= roles[i].id %>" selected><%= roles[i].descripcion %></option>
                                             <% } else { %>
                                             <option value="<%= roles[i].id %>"><%= roles[i].descripcion %></option>
@@ -117,7 +139,7 @@
                                     <% if (typeof datosForm != 'undefined') { %>
                                         <option value="">Seleccione un estado</option>
                                         <% for (let i=0; i < estados.length; i++) { %>
-                                            <% if ( datosForm.estadoUsr == estados[i].id ) { %>
+                                            <% if ( datosForm.estado == estados[i].id ) { %>
                                             <option value="<%= estados[i].id %>" selected><%= estados[i].descripcion %></option>
                                             <% } else { %>
                                             <option value="<%= estados[i].id %>"><%= estados[i].descripcion %></option>
@@ -142,9 +164,15 @@
                     </div>
                     <div id="formImagen" class="col-sm-12 col-md-12 col-lg-6">
                         <div class="imgUp">
+                            <% if (typeof edicion != 'undefined') { %>
+                            <div>
+                                <img src="/images/users/<%= datosForm.avatar %>" id="imgAvatar" class="imagePreview" alt="Imagen perfil">
+                            </div>
+                            <% } else { %>
                             <div>
                                 <img id="imgAvatar" class="imagePreview" alt="Imagen perfil">
                             </div>
+                            <% } %>
                             <div>
                                 <label for="fotoPerfil" id="btnUpload"><span class="ichef-file_upload iconiChef"></span> Cargar
                                     <input type="file" class="img" id="fotoPerfil" name="fotoPerfil" accept="image/png, .jpeg, .jpg, image/gif" onchange="mostrar()">

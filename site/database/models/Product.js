@@ -47,6 +47,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         receta: {
             type: DataTypes.STRING
+        },
+        estado: {
+            type: DataTypes.INTEGER
         }
     }
     let config = {

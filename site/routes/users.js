@@ -52,35 +52,28 @@ router.get('/register' , guestMiddleware ,usersController.userRegister);
 router.post('/create', upload,
 [
   check("nombreUser")
-    .isLength({ min: 2 })
-    .withMessage("Debe ingresar un nombre valido."),
+    .isLength({ min: 2 }).withMessage("El nombre debe tener al menos 2 caracteres.")
+    .isString().withMessage("El nombre debe contener solo letras.")
+    .notEmpty().withMessage("El nombre no puede estar vacio."),
   check("apellidoUser")
-    .isLength({ min: 2 })
-    .withMessage("Debe ingresar un apellido valido."),
+    .isLength({ min: 2 }).withMessage("El apellido debe tener al menos 2 caracteres.")
+    .notEmpty().withMessage("El apellido no puede estar vacio."),
   check("nroTelefonoUser")
-    .isLength({ min: 7 })
-    .withMessage("Debe ingresar un número de telefono."),
+    .matches(/\d/).withMessage("Solo se permiten números.")
+    .isLength({ min: 7 }).withMessage("El numero de telefono debe tener al menos 7 caracteres.")
+    .notEmpty().withMessage("El nro. de telefono no puede estar vacio."),
   check("emailUser")
-    .isEmail()
-    .normalizeEmail()
-    .withMessage("Debe ingresar un email valido."),
+    .isEmail().withMessage("Debe ingresar un email valido.")
+    .notEmpty().withMessage("El email no puede estar vacio.")
+    .normalizeEmail(),
   check("passwordUser")
     //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
-    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
-    .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i").withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial.")
+    .notEmpty().withMessage("El password no puede estar vacio."),
   check("repeatPasswordUser")
     //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
-    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
-    .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
-  body("fotoPerfil")
-    .custom(function(value){
-      //console.log("Dato foto:" + value);
-      if(value == ''){
-        return false;
-      }
-      return true;
-    })
-    .withMessage("Debe seleccionar una imagen de perfil.")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i").withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial.")
+    .notEmpty().withMessage("El password no puede estar vacio.")
 ]
 , usersController.createUser);
 
@@ -139,32 +132,53 @@ router.get('/userAdd', userNotLogged, usersController.userAdd);
 router.post('/userAdd', upload,
 [
   check("nombreUser")
-    .isLength({ min: 2 })
-    .withMessage("Debe ingresar un nombre valido."),
+    .isLength({ min: 2 }).withMessage("El nombre debe tener al menos 2 caracteres.")
+    .isString().withMessage("El nombre debe contener solo letras.")
+    .notEmpty().withMessage("El nombre no puede estar vacio."),
   check("apellidoUser")
-    .isLength({ min: 2 })
-    .withMessage("Debe ingresar un apellido valido."),
+    .isLength({ min: 2 }).withMessage("El apellido debe tener al menos 2 caracteres.")
+    .notEmpty().withMessage("El apellido no puede estar vacio."),
   check("nroTelefonoUser")
-    .isLength({ min: 7 })
-    .withMessage("Debe ingresar un número de telefono."),
+    .matches(/\d/).withMessage("Solo se permiten números.")
+    .isLength({ min: 7 }).withMessage("El numero de telefono debe tener al menos 7 caracteres.")
+    .notEmpty().withMessage("El nro. de telefono no puede estar vacio."),
   check("emailUser")
-    .isEmail()
-    .normalizeEmail()
-    .withMessage("Debe ingresar un email valido."),
+    .isEmail().withMessage("Debe ingresar un email valido.")
+    .notEmpty().withMessage("El email no puede estar vacio.")
+    .normalizeEmail(),
   check("passwordUser")
-    //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
-    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
-    .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i").withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial.")
+    .notEmpty().withMessage("El password no puede estar vacio."),
   check("repeatPasswordUser")
-    //.matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
-    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
-    .withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial."),
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i").withMessage("La contraseña debe tener un minimo de 8 caracteres, letras mayúsculas, minúsculas, un número y un carácter especial.")
+    .notEmpty().withMessage("El password no puede estar vacio."),
   check("rolUser")
-    .isInt({min:1,max:10})
-    .withMessage("Debe seleccionar una categoria."),
+    .isInt({min:1,max:10}).withMessage("Debe seleccionar una categoria."),
   check("estadoUsr")
-    .isInt({min:1,max:10})
-    .withMessage("Debe seleccionar un estado para el usuario.")
+    .isInt({min:1,max:10}).withMessage("Debe seleccionar un estado para el usuario.")
 ], usersController.userSave);
+
+router.post('/userEdit/:id', upload,
+[
+  check("nombreUser")
+    .isLength({ min: 2 }).withMessage("El nombre debe tener al menos 2 caracteres.")
+    .isString().withMessage("El nombre debe contener solo letras.")
+    .notEmpty().withMessage("El nombre no puede estar vacio."),
+  check("apellidoUser")
+    .isLength({ min: 2 }).withMessage("El apellido debe tener al menos 2 caracteres.")
+    .notEmpty().withMessage("El apellido no puede estar vacio."),
+  check("nroTelefonoUser")
+    .matches(/\d/).withMessage("Solo se permiten números.")
+    .isLength({ min: 7 }).withMessage("El numero de telefono debe tener al menos 7 caracteres.")
+    .notEmpty().withMessage("El nro. de telefono no puede estar vacio."),
+  check("emailUser")
+    .isEmail().withMessage("Debe ingresar un email valido.")
+    .notEmpty().withMessage("El email no puede estar vacio.")
+    .normalizeEmail(),
+  check("rolUser")
+    .isInt({min:1,max:10}).withMessage("Debe seleccionar una categoria."),
+  check("estadoUsr")
+    .isInt({min:1,max:10}).withMessage("Debe seleccionar un estado para el usuario.")
+], usersController.saveEdit);
 
 module.exports = router;
