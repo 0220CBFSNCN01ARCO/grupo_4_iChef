@@ -17,23 +17,24 @@
                 <div class="row align-items-center">
                     <div class="col-sm-12 col-md-4 col-lg-2" style="text-align: center;">
                         <p>
-                            <% if( typeMsg = 'success') { %>
+                            <% if( typeMsg == 'success') { %>
                             <span class="ichef-sentiment_very_satisfied iconPay"></span>
                             <% } else { %>
-                                <% if( typeMsg = 'warning') { %>
-                                    <span class="ichef-sentiment_dissatisfied iconPay"></span>
+                                <% if( typeMsg == 'warning') { %>
+                                    <span class="ichef-warning1 iconPay"></span>
                                 <% } else { %>
-                                    <span class="ichef-sentiment_very_dissati iconPay"></span>
+                                    <span class="ichef-error iconPay"></span>
                                 <% } %>
                             <% } %>
                         </p>
                     </div>
                     <div class="col-sm-12 col-md-8 col-lg-10">
-                        <p><%= mensaje %><a class="alert-link" href="/"> . Continuar comprando.</a></p>
+                        <p><%= mensaje %><a class="alert-link" href="/"> Continuar comprando.</a></p>
                     </div>
                 </div>
-                <% if( nroOrden > 0) { %>
+                <% if( nroOrden > 0 && typeMsg == 'success') { %>
                 <p>Se genero la orden de pedido <strong>nro: <%= nroOrden %></strong>.</p>
+                <p>Se envio un mail a tu casilla de correo con el detalle de la orden generada.</p>
                 <% } else { %>
                 <p>Se genero la orden de pedido pero quedo pendiente de pago.</p>
                 <% } %>

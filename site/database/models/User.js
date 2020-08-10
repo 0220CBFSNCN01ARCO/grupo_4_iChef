@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             foreignKey: true
         },
+        estado: {
+            type: DataTypes.INTEGER
+        },
         createdAt: {
             type: DataTypes.DATE,
             field: 'created_at'

@@ -14,7 +14,11 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" name="nombreUser">
+                                <% if (typeof datosForm != 'undefined') { %>
+                                    <input type="text" class="form-control" name="nombreUser" value="<%= datosForm.nombre %>">
+                                <% } else { %>
+                                    <input type="text" class="form-control" name="nombreUser">
+                                <% } %>
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                         <% if(errores[i].param == 'nombreUser' ) { %>
@@ -25,7 +29,11 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Apellido</label>
-                                <input type="text" class="form-control" name="apellidoUser">
+                                <% if (typeof datosForm != 'undefined') { %>
+                                    <input type="text" class="form-control" name="apellidoUser" value="<%= datosForm.apellido %>">
+                                <% } else { %>
+                                    <input type="text" class="form-control" name="apellidoUser">
+                                <% } %>
                                 <% if (typeof errores != 'undefined') { %>
                                     <% for (let i=0; i < errores.length; i++) { %>
                                         <% if(errores[i].param == 'apellidoUser' ) { %>
@@ -38,7 +46,11 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                               <label>Nro. teléfono</label>
-                              <input type="text" minlength="10" class="form-control" name="nroTelefonoUser">
+                              <% if (typeof datosForm != 'undefined') { %>
+                                <input type="text" class="form-control" name="nroTelefonoUser" value="<%= datosForm.nroTelefono %>">
+                              <% } else { %>
+                                <input type="text" class="form-control" name="nroTelefonoUser">
+                              <% } %>
                               <% if (typeof errores != 'undefined') { %>
                                 <% for (let i=0; i < errores.length; i++) { %>
                                     <% if(errores[i].param == 'nroTelefonoUser' ) { %>
@@ -49,7 +61,11 @@
                             </div>
                             <div class="col-md-6 mb-3">
                               <label>Email</label>
-                              <input type="email" class="form-control" name="emailUser">
+                              <% if (typeof datosForm != 'undefined') { %>
+                                <input type="email" class="form-control" name="emailUser" value="<%= datosForm.email %>">
+                              <% } else { %>
+                                <input type="email" class="form-control" name="emailUser">
+                              <% } %>
                               <% if (typeof errores != 'undefined') { %>
                                 <% for (let i=0; i < errores.length; i++) { %>
                                     <% if(errores[i].param == 'emailUser' ) { %>
