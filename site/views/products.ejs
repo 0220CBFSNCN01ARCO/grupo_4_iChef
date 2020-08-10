@@ -6,8 +6,25 @@
             <!--cuerpo-->
             <div class="container containerProduct">
                 <div class="row headTable badge-dark encaProducts">
-                    <div class="col">
+                    <div class="col-7 col-md-10 col-lg-10">
                         <a>Nuestros productos</a>
+                    </div>
+                    <div class="col-5 col-md-2 col-lg-2">
+                        <% if( typeof tipoProducto != 'undefined') { %>
+                            <% if(tipoProducto == 1 ) { %>
+                            <a class="btn btn-dark btnVolverConfig" href="/product/list/2">
+                                <i class="ichef-reply1"></i> Cocinar
+                            </a>
+                            <% } else { %>
+                            <a class="btn btn-dark btnVolverConfig" href="/product/list/1">
+                                <i class="ichef-reply1"></i> Market
+                            </a>
+                            <% } %>
+                        <% } else { %>
+                            <a class="btn btn-dark btnVolverConfig" href="/">
+                                <i class="ichef-reply1"></i> Home
+                            </a>
+                        <% } %>
                     </div>
                 </div>
                 <div class="row rowProducts">

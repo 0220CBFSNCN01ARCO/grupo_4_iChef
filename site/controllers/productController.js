@@ -31,9 +31,12 @@ let productController = {
                     { association: "fotos" }
                 ], where: { product_type_id: req.params.tipo } });
             if(productos){
+                let tipo = req.params.tipo;
+                if(!req.params.tipo){ tipo = 1 }
                 res.render('products', {
                     title: 'iChef - Productos',
                     usuario: req.session.usuarioLogueado,
+                    tipoProducto: tipo,
                     productos: productos,
                     itemCart: req.session.cart
                 });

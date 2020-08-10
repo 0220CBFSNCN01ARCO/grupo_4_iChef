@@ -1680,8 +1680,10 @@ hr.style-seven:before {
 
         .menu-carrito .total-carrito {
             display: flex;
-            margin: 20px 47px 20px 0;
+            margin: 20px 5px 20px 0;
             justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
         }
         
         .menu-carrito .total-carrito .descripcion-total .descripcion-descuentos {
@@ -2297,4 +2299,9 @@ hr.style-seven:before {
 
         .detailOrder{
             color: #383838;
+        }
+
+        #containerPDF {
+            width: 80vw;
+            height: 300px;
         }

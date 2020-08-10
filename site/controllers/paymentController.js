@@ -159,6 +159,12 @@ const failedPayment = async (req, res) => {
                 mensaje = 'El pago fue rechazado. Error.'
                 break;
         }
+        req.session.cart = {
+          items: [],
+          subtotal: 0.00,
+          descuentoTotal: 0.00,
+          total: 0.00
+        };
         return res.render('paymentResult',{
                     title: 'iChef - Pago',
                     mensaje,
@@ -183,6 +189,12 @@ const pendingPayment = async (req, res) => {
         await order.save();
 
         if(statusPay == 'pending') {
+            req.session.cart = {
+              items: [],
+              subtotal: 0.00,
+              descuentoTotal: 0.00,
+              total: 0.00
+              };
             return res.render("paymentResult",{
                     title: 'iChef - Pago',
                     mensaje: 'El pago aun no fue confirmado.',

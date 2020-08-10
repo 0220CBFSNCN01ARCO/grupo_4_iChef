@@ -62,8 +62,8 @@
                     <div class="section" style="padding-bottom:5px;">
                         <h6 class="title-attr"><small>Información nutricional</small></h6>
                         <div>
-                            <div class="attr2"><%=producto.peso %> gr</div>
-                            <div class="attr2"><%=producto.calorias %> Kcal</div>
+                            <div class="attr2">Peso: <%=producto.peso %> gr</div>
+                            <div class="attr2">Calorias: <%=producto.calorias %> Kcal</div>
                         </div>
                     </div>
                     <div class="section" style="padding-bottom:20px;">
@@ -94,6 +94,9 @@
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" id="envios-tab" data-toggle="tab" href="#envios" role="tab" aria-controls="Envios" aria-selected="false">Envios</a>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="recetas-tab" data-toggle="tab" href="#recetas" role="tab" aria-controls="Recetas" aria-selected="false">Recetas</a>
+                </li>
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="detalle" role="tabpanel" aria-labelledby="detalle-tab">
@@ -111,6 +114,15 @@
                 <div class="tab-pane fade" id="envios" role="tabpanel" aria-labelledby="envios-tab">
                     <small>Consultes costos de envio.</small>
                 </div>
+                <div class="tab-pane fade" id="recetas" role="tabpanel" aria-labelledby="envios-tab">
+                    <small>Receta del producto</small>
+                    <br>
+                    <% if (producto.receta != '') { %>
+                    <embed id="containerPDF" src="/images/products/recetas/<%= producto.codigo %>/<%= producto.receta %>" width="320" height="150" type="application/pdf">
+                    <!--iframe src="/images/products/recetas/<%= producto.codigo %>/<%= producto.receta %>" width="320px" height="150px"></iframe-->
+                    <% } %>
+                </div>
+
             </div>
         </div>
       </div>
