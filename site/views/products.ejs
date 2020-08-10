@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('./partials/head') %>
-
     <body class='body_market'>
         <%- include('./partials/header') %>
             <!--cuerpo-->
@@ -33,32 +32,29 @@
                                     </div>
                                     <div class="product-content">
                                         <% if(productos[i].precio > productos[i].precio_oferta && productos[i].precio_oferta > 0 ) { %>
-                                            <div class="price">$
-                                                <%= productos[i].precio_oferta  %>
-                                                    <span>Antes $<%= productos[i].precio %></span>
+                                            <div class="price">$<%= productos[i].precio_oferta  %>
+                                                <span>Antes $<%= productos[i].precio %></span>
                                             </div>
                                             <% } else { %>
-                                                <div class="price">$
-                                                    <%= productos[i].precio %>
+                                            <div class="price">$<%= productos[i].precio %></div>
+                                            <% } %>
+                                            <span class="product-brand">Marca: <%= productos[i].marca.descripcion %></span>
+                                            <h3 class="title">
+                                                <a href="/product/<%= productos[i].codigo %>">
+                                                    <%= productos[i].descripcion %>
+                                                </a>
+                                            </h3>
+                                            <div class="qtyCart">
+                                                <div class="section colQty qtyAddCart">
+                                                    <div class="qty-minus"><span class="ichef-minus"></span></div>
+                                                    <input type="text" class="border-input inputQty" name="qtyAdd" value="1" readonly/>
+                                                    <div class="qty-plus "><span class="ichef-plus "></span></div>
                                                 </div>
-                                                <% } %>
-                                                    <span class="product-brand">Marca: <%= productos[i].marca.descripcion %></span>
-                                                    <h3 class="title">
-                                                        <a href="/product/<%= productos[i].codigo %>">
-                                                            <%= productos[i].descripcion %>
-                                                        </a>
-                                                    </h3>
-                                                    <div class="qtyCart">
-                                                        <div class="section colQty qtyAddCart">
-                                                            <div class="qty-minus"><span class="ichef-minus"></span></div>
-                                                            <input type="text" class="border-input inputQty" name="qtyAdd" value="1" readonly/>
-                                                            <div class="qty-plus "><span class="ichef-plus "></span></div>
-                                                        </div>
-                                                        <div class="colBtnAdd ">
-                                                            <button type="submit " class="btn btn-dark "><i class="ichef-add_shopping_cart "></i> Agregar</button>
-                                                            <!--a class="all-deals " href="/cart/add/ "><i class="ichef-add_shopping_cart "></i> Agregar</a-->
-                                                        </div>
-                                                    </div>
+                                                <div class="colBtnAdd ">
+                                                    <button type="submit " class="btn btn-dark "><i class="ichef-add_shopping_cart "></i> Agregar</button>
+                                                    <!--a class="all-deals " href="/cart/add/ "><i class="ichef-add_shopping_cart "></i> Agregar</a-->
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
                             </form>
@@ -67,8 +63,8 @@
                 </div>
             </div>
             <%- include('./partials/footer') %>
-                <script type="text/javascript " src="/js/store.js "></script>
-                <%-include('./partials/script')%>
+            <script type="text/javascript " src="/js/store.js "></script>
+            <%-include('./partials/script')%>
     </body>
 
 </html>

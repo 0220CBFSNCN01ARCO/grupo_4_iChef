@@ -1,0 +1,29 @@
+<tbody>
+    <%for(let i=0; i < orders.length; i++ ) { %>
+        <% if( orders[i].descripcion == 'success' ) { %>
+        <tr class="bg-success">
+        <% } else {  %>
+            <% if( orders[i].descripcion == 'pending' ) { %>
+            <tr class="bg-warning">
+            <% } else {  %>
+            <tr class="bg-danger">
+            <% } %>
+        <% } %>
+            <th class="contentTable" scope="row"><%= orders[i].id %></th>
+            <td class="contentTable"><%= orders[i].cantidad_items %></td>
+            <td class="contentTable"><%= orders[i].total %></td>
+            <td class="contentTable"><%= orders[i].fecha %></td>
+            <td class="contentTable"><%= orders[i].email %></td>
+            <td class="contentTable"><%= orders[i].descripcion %></td>
+            <td>
+                <div class="row justify-content-center align-items-center d-flex">
+                    <div class="row-item">
+                        <a data-toggle="tooltip" href="/orders/<%= orders[i].id %>">
+                            <i class="ichef-pageview detailOrder"></i>
+                        </a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    <% } %>
+    </tbody>

@@ -20,13 +20,10 @@ module.exports = (sequelize, DataTypes) => {
         precio_unitario : {
             type: DataTypes.FLOAT
         },
-        neto_total : {
+        subtotal : {
             type: DataTypes.FLOAT
         },
         descuentos : {
-            type: DataTypes.FLOAT
-        },
-        subtotal : {
             type: DataTypes.FLOAT
         },
         total : {

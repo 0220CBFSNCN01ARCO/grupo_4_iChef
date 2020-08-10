@@ -1,14 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const authMiddleware = require('../middleware/authMiddleware');
+const {userNotLogged } = require('../middleware/authMiddleware');
 
 const cartController = require('../controllers/cartController');
 
-router.get('/', cartController.getCart);
+router.get('/',userNotLogged, cartController.getCart);
 
-router.post('/add/:id', authMiddleware, cartController.addcart);
+router.post('/add/:id',userNotLogged, cartController.addcart);
+
+router.post('/emptyCart',userNotLogged, cartController.emptyCart);
+
+router.get('/deleteItem/:id',userNotLogged, cartController.deleteItem);
 
 //Borra todos los items del carrito
-router.delete('/', authMiddleware, function(req, res, next) {});
+router.delete('/', userNotLogged, function(req, res, next) {});
 
 module.exports = router;

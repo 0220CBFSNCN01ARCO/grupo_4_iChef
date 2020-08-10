@@ -4,7 +4,8 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const authMiddleware = require ('../middleware/authMiddleware');
+const {userNotLogged } = require('../middleware/authMiddleware');
+
 const productController = require('../controllers/productController');
 const {check, validationResult, body} = require('express-validator');
 
@@ -54,10 +55,10 @@ router.get('/productDelete', productController.productDelete);
 
 
 //1. /products​ (GET) - Listado de productos
-router.get('/', authMiddleware,productController.listProduct);
+router.get('/', userNotLogged,productController.listProduct);
 
 //2. /products/create​ (GET)  Formulario de creación de productos 
-router.get('/create', authMiddleware,productController.productAdd);
+router.get('/create', userNotLogged,productController.productAdd);
 
 //3. /products/​:id​ ​(GET) Detalle de un producto particular 
 router.get('/:id', productController.getProductById);
@@ -98,11 +99,11 @@ upload,
 ], productController.createProduct);
 
 //5. /products/​:id​/edit ​(GET)  Formulario de edición de productos 
-router.get('/:id/edit', authMiddleware, productController.editProductById);
+router.get('/:id/edit', userNotLogged, productController.editProductById);
 
 //6. /products/​:id​ (POST)  Acción de edición (a donde se envía el formulario): 
 router.post('/:id/edit',upload,
-                        authMiddleware,
+                        userNotLogged,
                         [
                           check("codigoProducto")
                           .isInt()
@@ -135,7 +136,7 @@ router.post('/:id/edit',upload,
                         productController.saveProductById);
 
 //7. /products/​:id​ (DELETE) Acción de borrado
-router.delete('/:idProducto', authMiddleware, productController.deleteProductById);
+router.delete('/:idProducto', userNotLogged, productController.deleteProductById);
 
 //8. /products/​search ​(GET) Busca productos 
 router.post('/search', productController.searchProduct);

@@ -8,7 +8,9 @@ const path = require('path');
 const usersController = require('../controllers/usersController');
 const {check, validationResult, body} = require('express-validator');
 const guestMiddleware = require('../middleware/guestMiddleware')
-const authMiddleware = require ('../middleware/authMiddleware');
+const {userNotLogged } = require('../middleware/authMiddleware');
+
+const recordameMiddleware = require ('../middleware/recordameMiddleware');
 
 const fs = require('fs');
 
@@ -43,7 +45,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single("fotoPerfil");
 
 /* GET users listing. */
-router.get('/',authMiddleware, usersController.userList);
+router.get('/',userNotLogged, usersController.userList);
 
 router.get('/register' , guestMiddleware ,usersController.userRegister);
 
@@ -94,12 +96,12 @@ check("emailUsuario")
 usersController.loguearUsuario);
 
 router.get('/logout', usersController.logoutUser);
-router.get('/:id/userprofile', authMiddleware, usersController.userProfile);
+router.get('/:id/userprofile', userNotLogged, usersController.userProfile);
 
-router.get('/:id/userAccount', authMiddleware, usersController.userAccount);
+router.get('/:id/userAccount', userNotLogged, usersController.userAccount);
 
-router.get('/:id/edit', authMiddleware, usersController.userEdit);
-router.put('/:id/edit', upload, authMiddleware,
+router.get('/:id/edit', userNotLogged, usersController.userEdit);
+router.put('/:id/edit', upload, userNotLogged,
 [
   check("nombreUser")
     .isLength({ min: 2 })
@@ -113,8 +115,8 @@ router.put('/:id/edit', upload, authMiddleware,
 ]
 ,usersController.updateUser);
 
-router.get('/:id/changePassword', authMiddleware, usersController.changePassword);
-router.put('/:id/changePassword', authMiddleware,
+router.get('/:id/changePassword', userNotLogged, usersController.changePassword);
+router.put('/:id/changePassword', userNotLogged,
 [
   check("passwordUser")
     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
@@ -128,11 +130,11 @@ router.put('/:id/changePassword', authMiddleware,
   ]
  ,usersController.updatePassword);
 
-router.delete('/:idUser', authMiddleware, usersController.deleteUserById);
+router.delete('/:idUser', userNotLogged, usersController.deleteUserById);
 
 router.get('/register' , guestMiddleware ,usersController.userRegister);
 
-router.get('/userAdd', authMiddleware, usersController.userAdd);
+router.get('/userAdd', userNotLogged, usersController.userAdd);
 
 router.post('/userAdd', upload,
 [

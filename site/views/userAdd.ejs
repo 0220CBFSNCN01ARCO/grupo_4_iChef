@@ -4,6 +4,16 @@
 <body class="hold-transition login-page" onload="loadImage()">
     <%- include('./partials/header') %>
     <div class="container-fuid fondoFormulario">
+        <div class="row badge-dark encaConfig">
+            <div class="col-7 col-md-10 col-lg-10">
+                <a>Usuario</a>
+            </div>
+            <div class="col-5 col-md-2 col-lg-2">
+                <a class="btn btn-dark btnVolverConfig" href="/users">
+                    <i class="ichef-reply1"></i> Volver
+                </a>
+            </div>
+        </div>
         <div id="formUsr" class="container">
             <form method="POST" id="formRegister" action="/users/userAdd" enctype="multipart/form-data" novalidate>
                 <div class="row">
@@ -151,9 +161,6 @@
                     </div>
                     <div id="formAction">
                         <button class="btn btn-dark" type="submit">Guardar</button>
-                        <a class="btn btn-dark btnVolverConfig" href="/users">
-                            <i class="ichef-reply1"></i> Volver
-                        </a>
                     </div>
                 </div>
             </form>
